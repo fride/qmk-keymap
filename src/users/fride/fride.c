@@ -46,7 +46,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_N;  // TODO BEFORE
       case KC_C: // C
         return KC_Y;
-      case KC_D:
+      case HM_D:
         return KC_Y;
       case HM_E:
         return KC_U;
@@ -70,7 +70,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_A;
       case KC_P:
         return KC_Y;
-      case KC_R:
+      case HM_R:
         return KC_L;
       case HM_S:
         return KC_K;
@@ -88,10 +88,13 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_RPRN;
       case KC_MINS:
         return KC_GT;
-//case NAV_SPC:
-//        return MG_THE;
+    case NAV_SPC:
+        return MG_THE;
       case KC_ESC:
         return KC_COLON;
+      case KC_COMM:
+      case KC_DOT:
+        return M_SENTENCE;
       case KC_1 ... KC_0:
         return KC_DOT;
       default:
@@ -285,6 +288,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case MG_MENT:
       if (record->event.pressed) {
           SEND_STRING("ment");
+          return false;
+      }
+      case M_SENTENCE:
+      if (record->event.pressed) {
+          tap_code16(KC_SPC);
+          tap_code16(OS_LSFT);
           return false;
       }
       case MG_THE:
