@@ -18,7 +18,7 @@ My keymap is based mainly on the [magic sturdy](https://github.com/Ikcelaks/keyb
 - https://github.com/SiriusStarr/keyboard-layouts
 - https://github.com/EricGebhart/MyQMK/blob/Main/users/ericgebhart/readme.org
 >>>>>>> Stashed changes
-![Alt text](aptmak.png)
+![Alt text](a3ptmak.png)
 
 # Scratchpad!
 

@@ -120,6 +120,39 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
+
+#define ___A___ LT(NUM,KC_A)
+#define ___B___ KC_B
+#define ___C___ KC_C
+#define ___D___ LT(SYM,KC_D)
+#define ___E___ KC_E
+#define ___F___ KC_F
+#define ___G___ LGUI_T(KC_G)
+#define ___H___ RGUI_T(KC_H)
+#define ___I___ KC_I
+#define ___J___ LALT_T(KC_J)
+#define ___K___ LCTL_T(KC_K)
+#define ___L___ KC_L
+#define ___M___ KC_M
+#define ___N___ LT(SYM,KC_N)
+#define ___O___ KC_O
+#define ___P___ KC_P
+#define ___Q___ KC_Q
+#define ___R___ KC_R
+#define ___S___ KC_S
+#define ___T___ KC_T
+#define ___U___ KC_U
+#define ___V___ KC_V
+#define ___W___ KC_W
+#define ___X___ KC_X
+#define ___Y___ KC_Y
+#define ___Z___ KC_Z
+#define _COMMA_ KC_COMM
+#define __DOT__ KC_DOT
+#define _SLASH_ RCTL_T(KC_SLSH)
+#define _SQUOT_ RALT_T(KC_QUOT)
+#define _DQUOT_ KC_DQUO
+
 // Mod tap macros
 #define HM_S LT(SYM,KC_S)
 #define HM_T LCTL_T(KC_T)
@@ -147,7 +180,8 @@ enum custom_keycodes {
 #define EIGHT KC_8
 #define NINE  KC_9
 
-#define _______ KC_NO
+#define _______ KC_TRNS
+#define _XXXXX_ KC_NO
 #define ___________________________________________ _______, _______, _______, _______, _______
 
 /*
@@ -167,12 +201,12 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define ______________HANDS_DOWN_L3________________  KC_F,    KC_P,    KC_M,    KC_D,    KC_K
 #define ______________HANDS_DOWN_R3________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_QUOT, KC_J
 
-#define ______________MAGICSTURDY_L1_______________  KC_V,    KC_M,    KC_L,    KC_C,    KC_P
-#define ______________MAGICSTURDY_R1_______________  KC_B,    MAGIC,   KC_U,    KC_O,    KC_COMM
-#define ______________MAGICSTURDY_L2_______________  HM_S,    HM_T,    HM_R,    HM_D,    LT(NUM,KC_Y)
-#define ______________MAGICSTURDY_R2_______________  KC_F,    HM_N,    HM_E,    HM_A,    HM_I
-#define ______________MAGICSTURDY_L3_______________  KC_X,    KC_K,    KC_J,    KC_G,    KC_W
-#define ______________MAGICSTURDY_R3_______________  KC_Z,    KC_H,    KC_QUOT, KC_SLSH, KC_DOT
+#define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
+#define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
+#define ______________MAGICSTURDY_L2_______________  ___S___,    ___T___, ___R___, ___D___, ___Y___
+#define ______________MAGICSTURDY_R2_______________  ___F___,    ___N___, ___E___, ___A___, ___I___
+#define ______________MAGICSTURDY_L3_______________  ___X___,    ___K___, ___J___, ___G___, ___W___
+#define ______________MAGICSTURDY_R3_______________  ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
 
 
 #define ______________NUMBERLAYER_L1_______________  KC_EXLM, KC_AT,   _______, _______, _______

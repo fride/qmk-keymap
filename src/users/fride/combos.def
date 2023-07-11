@@ -4,37 +4,47 @@
 //    KC_X, KC_K, KC_J,    KC_G,    KC_W,      KC_Z    KC_H,  KC_COMM, KC_DOT, KC_UNDS
 //                         NAV_SPC, OS_MEH,    REPEAT, OS_LSFT
 
-COMB( combo_canel,      CANCEL,         HM_S, HM_I)
+COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 
-COMB( CMB_BOOT,         QK_BOOT,        KC_V, KC_COMM)
+COMB( CMB_BOOT,         QK_BOOT,        ___V___, _COMMA_)
 COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, OS_LSFT)
 
-COMB(CMB_AE,           A_UML,          HM_N, HM_A)
-COMB(CMB_UE,           U_UML,          HM_N, KC_U)
-COMB(CMB_OE,           O_UML,          HM_N, KC_O)
-COMB(CMB_SZ,           A(KC_S),        HM_N, HM_S)
+// COMB(CMB_AE,           A_UML,          HM_N, HM_A)
+// COMB(CMB_UE,           U_UML,          HM_N, KC_U)
+// COMB(CMB_OE,           O_UML,          HM_N, KC_O)
+// COMB(CMB_SZ,           A(KC_S),        HM_N, HM_S)
 
 // see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
 
-COMB(CMB_ESC,     KC_ESC,     HM_R, HM_S)
-COMB(CMB_COLON,   KC_COLON,   HM_N, HM_E)
+COMB(CMB_ESC,     KC_ESC,     ___R___, ___D___)
+COMB(CMB_COLON,   KC_COLON,   ___N___, ___E___)
+COMB(CMB_SCOLON,  KC_SCLN,    ___N___, _SQUOT_)
+COMB(CMB_CIRC,    KC_CIRC,    ___F___, ___N___)
+COMB(CMB_BSPC,    KC_BSPC,    _SQUOT_, _SLASH_)
 
-COMB(CMB_LCTL,    OS_LCTL,    HM_E, HM_A)
-COMB(CMB_RCTL,    OS_LCTL,    HM_T, HM_R)
-COMB(CMB_LGUI,    OS_LGUI,    KC_J, KC_G)
-COMB(CMB_RGUI,    OS_LGUI,    KC_H, KC_COMM)
-COMB(CMB_LALT,    OS_LALT,    KC_K, KC_J)
-COMB(CMB_RALT,    OS_LALT,    KC_COMM, KC_DOT)
-COMB(CMB_ENT,     KC_ENT,     HM_N, HM_E, HM_A)
-COMB(CMB_TAB,     KC_TAB,     HM_T, HM_R, HM_D)
+COMB(CMB_LPRN,    KC_LPRN,    HM_D, KC_L)
+COMB(CMB_LBRC,    KC_LBRC,    KC_G, HM_R)
+COMB(CMB_RPRN,    KC_RPRN,    HM_N, KC_U)
+COMB(CMB_RBRC,    KC_RBRC,    KC_H, HM_E)
 
-COMB(CMB_LPRN,    KC_LPRN,    HM_D, HM_N)
-COMB(CMB_RPRN,    KC_RPRN,    HM_D, MAGIC)
-COMB(CMB_LCBR,    KC_LCBR,    HM_D, HM_E)
-COMB(CMB_RCBR,    KC_RCBR,    HM_D, KC_U)
-COMB(CMB_LBRC,    KC_LBRC,    HM_D, HM_A)
-COMB(CMB_RBRC,    KC_RBRC,    HM_D, KC_O)
-COMB(CMB_LT,      KC_LT,      HM_D, HM_I)
-COMB(CMB_GT,      KC_GT,      HM_D, KC_QUOT)
+COMB(CMB_ENT,     KC_ENT,     ___N___, ___E___, ___A___)
+COMB(CMB_TAB,     KC_TAB,     ___T___, ___R___, ___D___)
+
+// COMB(CMB_LPRN,    KC_LPRN,    HM_D, HM_N)
+// COMB(CMB_RPRN,    KC_RPRN,    HM_D, MAGIC)
+// COMB(CMB_LCBR,    KC_LCBR,    HM_D, HM_E)
+// COMB(CMB_RCBR,    KC_RCBR,    HM_D, KC_U)
+// COMB(CMB_LBRC,    KC_LBRC,    HM_D, HM_A)
+// COMB(CMB_RBRC,    KC_RBRC,    HM_D, KC_O)
+// COMB(CMB_LT,      KC_LT,      HM_D, HM_I)
+// COMB(CMB_GT,      KC_GT,      HM_D, KC_QUOT)
 
 
+
+// one shot mods. Not needed!?
+// COMB(CMB_LCTL,    OS_LCTL,    HM_E, HM_A)
+// COMB(CMB_RCTL,    OS_LCTL,    HM_T, HM_R)
+// COMB(CMB_LGUI,    OS_LGUI,    KC_J, KC_G)
+// COMB(CMB_RGUI,    OS_LGUI,    KC_H, KC_COMM)
+// COMB(CMB_LALT,    OS_LALT,    KC_K, KC_J)
+// COMB(CMB_RALT,    OS_LALT,    KC_COMM, KC_DOT)

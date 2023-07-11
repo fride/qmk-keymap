@@ -40,47 +40,47 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case HM_A:
+      case ___A___:
         return KC_O;
-      case KC_B:
+      case ___B___:
         return KC_N;  // TODO BEFORE
-      case KC_C: // C
+      case ___C___: // C
         return KC_Y;
-      case HM_D:
+      case ___D___:
         return KC_Y;
-      case HM_E:
+      case ___E___:
         return KC_U;
-      case KC_F:
+      case ___F___:
         return KC_N;
-      case HM_N:
+      case ___N___:
         return KC_F;  // Fuenf!
-      case KC_G:
+      case ___G___:
         return KC_Y;
-      case HM_I:
+      case ___I___:
         return MG_ION;
-      case KC_J:
+      case ___J___:
         return MG_UST;
-      case KC_K:
+      case ___K___:
         return KC_S;
-      case KC_L:
+      case ___L___:
         return KC_K;
-      case KC_M:
+      case ___M___:
         return KC_T; // AMT and co in Germann ;)
-      case KC_O:
+      case ___O___:
         return KC_A;
-      case KC_P:
+      case ___P___:
         return KC_Y;
-      case HM_R:
+      case ___R___:
         return KC_L;
-      case HM_S:
+      case ___S___:
         return KC_K;
-      case HM_T:
+      case ___T___:
         return KC_M; //ment does not work that well with german
-      case KC_U:
+      case ___U___:
         return KC_E;
-      case KC_V:
+      case ___V___:
         return MG_VER;
-      case KC_Y:
+      case ___Y___:
         return KC_P;
       case KC_EQL:
         return KC_GT;
@@ -94,7 +94,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_COLON;
       case KC_COMM:
       case KC_DOT:
-        return M_SENTENCE;
+        return M_SENTENCE; // ODO does not work!
       case KC_1 ... KC_0:
         return KC_DOT;
       default:
@@ -163,7 +163,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
        if (rep_count > 0) {
             switch (keycode) {
-               case KC_N:
+               case HM_N:
                     unregister_weak_mods(MOD_MASK_CSAG);
                     send_char('f');
                     return false;
@@ -171,6 +171,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 case NAV_SPC:
                   set_oneshot_mods(MOD_BIT(KC_LSFT));
                   return false;
+                case KC_DOT:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    send_char(' ');
+                    add_oneshot_mods(MOD_MASK_SHIFT);
+                    //set_repeat_key_keycode(KC_SPC);
+                    return false;
                 case KC_I:
                   SEND_STRING("ng");
                   return false;                
@@ -293,7 +299,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case M_SENTENCE:
       if (record->event.pressed) {
           tap_code16(KC_SPC);
-          tap_code16(OS_LSFT);
+          add_weak_mods(MOD_BIT(KC_LSFT));
           return false;
       }
       case MG_THE:
@@ -427,9 +433,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case KC_X:
     case NAV_SPC:
-    // case HOME_SC:
-    // case QHOME_Z:
-    //case QHOME_SL:
+    case ___A___: // number layer toggle!
       return 0;  // Bypass Achordion for these keys.
   }
 
