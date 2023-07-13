@@ -129,7 +129,7 @@ enum custom_keycodes {
 #define ___F___ KC_F
 #define ___G___ LGUI_T(KC_G)
 #define ___H___ RGUI_T(KC_H)
-#define ___I___ KC_I
+#define ___I___ LT(SYM,KC_I)
 #define ___J___ LALT_T(KC_J)
 #define ___K___ LCTL_T(KC_K)
 #define ___L___ KC_L
@@ -139,7 +139,7 @@ enum custom_keycodes {
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ KC_R
-#define ___S___ KC_S
+#define ___S___ LT(SYM, KC_S)
 #define ___T___ KC_T
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -179,6 +179,8 @@ enum custom_keycodes {
 #define SEVEN KC_7
 #define EIGHT KC_8
 #define NINE  KC_9
+
+#define NAV_REP LT(NAV, QK_REP)
 
 #define _______ KC_TRNS
 #define _XXXXX_ KC_NO
@@ -238,7 +240,6 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	_______, _______, KC_HASH, KC_9,    KC_PERC,      KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS, \
 	                           NAV_SPC, OS_MEH,       REPEAT,  OS_LSFT
 
-
 // clang-format off
 #define _SYM \
 	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, KC_NO, \
@@ -246,6 +247,4 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
       KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS, \
 	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
 
-
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 
-

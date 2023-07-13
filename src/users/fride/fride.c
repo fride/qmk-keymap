@@ -111,11 +111,29 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   return KC_TRNS;
 }
 
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
+    switch (keycode) {
+        case NAV_REP:
+        case NAV_SPC:
+            return false;
+        case KC_A ... KC_Y:
+              if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+                *remembered_mods &= ~MOD_MASK_SHIFT;
+              }
+          break;
+    }
+    return true;
+}
+//TODO what is this!?
 bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
-  // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
-  // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.
   switch (keycode) {
+    case NAV_REP:
+    case NAV_SPC:
+        return false;
+
+    // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
+    // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.
     case KC_A ... KC_Y:
       if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
         *remembered_mods &= ~MOD_MASK_SHIFT;
@@ -185,6 +203,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
   
     switch (keycode) {
+         case NAV_REP:
+            if (record->event.pressed) {
+                if (record->tap.count > 0) {
+                    keyrecord_t press;
+                    press.event.type    = KEY_EVENT;
+                    press.tap.count     = 1;
+                    press.event.pressed = true;
+                    process_repeat_key(QK_REP, &press);
+                    keyrecord_t release;
+                    release.event.type    = KEY_EVENT;
+                    release.tap.count     = 1;
+                    release.event.pressed = false;
+                    process_repeat_key(QK_REP, &release);
+                    return true;;
+                }
+            }
+            break;
+
         // TODO REPEAT with Layer or Mods test
         case LT(NUM,REPEAT):
             if (record->event.pressed && record->tap.count > 0) {
@@ -416,7 +452,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   // are on the same hand
   switch (tap_hold_keycode) {
     case SYM_SPC:
-    case NAV_R:
+    case NAV_REP:
       return true;
   }
 
@@ -432,6 +468,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case KC_X:
+    case NAV_REP:
     case NAV_SPC:
     case ___A___: // number layer toggle!
       return 0;  // Bypass Achordion for these keys.

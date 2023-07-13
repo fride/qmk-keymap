@@ -26,7 +26,6 @@
 #define MY_REDOX(...) LAYOUT(__VA_ARGS__)
 
 
-#define SYM_R LT(SYM,KC_R)
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [ALPHA]  = MY_REDOX(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
@@ -38,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
        KC_LSFT ,______________MAGICSTURDY_L3_______________ ,KC_NO   ,  KC_NO ,        KC_HOME ,KC_NO   ,______________MAGICSTURDY_R3_______________ ,KC_RSFT ,
     //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-       KC_NO ,KC_UP   ,KC_UP   ,KC_DOWN ,       NAV_SPC ,    REPEAT , KC_ENTER  ,     KC_BSPC , OSL(SYM) ,    OS_LSFT  ,     KC_LBRC ,KC_RBRC ,ARROW_R,KC_NO
+       KC_NO ,KC_UP   ,KC_UP   ,KC_DOWN ,       NAV_SPC ,    NAV_REP , KC_ENTER  ,     KC_BSPC , OSL(SYM) ,    OS_LSFT  ,     KC_LBRC ,KC_RBRC ,ARROW_R,KC_NO
     //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
     ),
    [NAV] = REDOX(_NAV),
