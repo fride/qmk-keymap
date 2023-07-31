@@ -138,7 +138,7 @@ enum custom_keycodes {
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ KC_R
+#define ___R___ LT(NAV,KC_R)
 #define ___S___ LT(SYM, KC_S)
 #define ___T___ KC_T
 #define ___U___ KC_U
@@ -196,12 +196,12 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 */
 // clang-format off
 
-#define ______________HANDS_DOWN_L1________________  KC_V,    KC_W,    KC_X,    KC_G,    KC_EQL
-#define ______________HANDS_DOWN_R1________________  KC_MINS, KC_L,    KC_U,    KC_O,    KC_Y
-#define ______________HANDS_DOWN_L2________________  HM_S,    HM_C,    HM_N,    HM_T,    KC_B
-#define ______________HANDS_DOWN_R2________________  KC_COMM, HM_H,    HM_E,    HM_A,    HM_I
-#define ______________HANDS_DOWN_L3________________  KC_F,    KC_P,    KC_M,    KC_D,    KC_K
-#define ______________HANDS_DOWN_R3________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_QUOT, KC_J
+#define ______________HD_VIBRANIU_L1_______________  ___X___,    ___W___, ___M___, ___G___, ___J___
+#define ______________HD_VIBRANIU_R1_______________  KC_SCLN,    __DOT__, KC_EQL,  _SLASH_, _SQUOT_
+#define ______________HD_VIBRANIU_L2_______________  ___S___,    ___C___, ___N___, ___T___, ___B___
+#define ______________HD_VIBRANIU_R2_______________  _COMMA_,    ___A___, ___E___, ___I___, ___H___
+#define ______________HD_VIBRANIU_L3_______________  ___V___,    ___P___, ___L___, ___D___, ___K___
+#define ______________HD_VIBRANIU_R3_______________  KC_MINS,    ___U___, ___O___, ___Y___, ___F___
 
 #define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
 #define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_

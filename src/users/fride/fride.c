@@ -469,6 +469,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case KC_X:
     case NAV_REP:
+    case ___R___:
     case NAV_SPC:
     case ___A___: // number layer toggle!
       return 0;  // Bypass Achordion for these keys.
