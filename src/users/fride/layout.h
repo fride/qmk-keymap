@@ -3,7 +3,6 @@
 
 enum layers {
     ALPHA,
-    SYMNAV,
     NUM,
     SYM,
     MODS,
@@ -50,7 +49,6 @@ enum custom_keycodes {
   MG_UST,
   MG_MENT,
   MG_VER,
-  M_SENTENCE,
 
   // N-Shot Mods
   OS_LSFT, // OS Mods
@@ -71,7 +69,6 @@ enum custom_keycodes {
   ARROW_L,
   ARROW_R,  
   QU,
-  KC_SCH,
 
   COPY_PASTE,
   SP_MOD, // oneshot modifier and tap, nav layer on hold. See 'NAV_MOD'
@@ -114,8 +111,7 @@ enum custom_keycodes {
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
-
-// thumb keys!
+// #define REPEAT_SYM LT(SYM, REPEAT)
 #define NAV_SPC LT(NAV, KC_SPC)
 #define SYM_REP LT(SYM, QK_REP)
 
@@ -123,7 +119,7 @@ enum custom_keycodes {
 #define CLN_NUM LT(SYM, KC_COLON)
 
 #define OS_SYM OSL(SYM)
-#define OS_MEH OSM(MOD_MEH) 
+#define OS_MEH OSM(MOD_MEH)
 
 #define ___A___ KC_A
 #define ___B___ KC_B
@@ -178,15 +174,25 @@ enum custom_keycodes {
 // https://www.reddit.com/r/KeyboardLayouts/comments/y7jkyj/the_hands_down_ive_been_using_lately/?utm_source=share&utm_medium=web2x&context=3
 https://www.reddit.com/r/ErgoMechKeyboards/comments/13zj6qz/not_enough_keys/
 
+@  $€ &  |  ~    ^  7  8  9  %    (€ is shift+$)
+{  (  )  }  `    +  4  5  6  -    (= is combo +4)
+[  <  >  ]  #    *  1  2  3  /\   (\ is shift+/)
+ctl  sft  alt    _  0  .
 
 This way, ALL symbols + numbers of a traditional board fit on a single layer
 (excl. default layer punctuation)
 */
 // clang-format off
 
+#define ______________HANDS_DOWN_L1________________  KC_W,    KC_V,    KC_H,    KC_G,    KC_EQL
+#define ______________HANDS_DOWN_R1________________  KC_MINS, KC_X,   KC_U,    KC_O,    KC_Y
+#define ______________HANDS_DOWN_L2________________  HM_C,    HM_S,    HM_N,    HM_T,    KC_B
+#define ______________HANDS_DOWN_R2________________  KC_COMM, HM_L,    HM_E,    HM_A,    HM_I
+#define ______________HANDS_DOWN_L3________________  KC_P,    KC_F,    KC_M,    KC_D,    KC_K
+#define ______________HANDS_DOWN_R3________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_QUOT, KC_J
+
 
 #define __THUMBS_ ___R___, REPEAT,  MAGIC, NAV_SPC
-
 
 // clang-format off
 #define _BASE \
@@ -194,7 +200,7 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
 	                                        __THUMBS_
-// SYM_REP, 
+// SYM_REP,
 // OS_MEH
 // clang-format off
 #define _NAV \
@@ -222,3 +228,4 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	                                        __THUMBS_
 
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 
+
