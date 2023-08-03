@@ -221,9 +221,9 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 
 // clang-format off
 #define _BASE \
-	KC_V,    KC_M,    KC_L,    KC_C,    KC_P,        KC_B,    MAGIC,   KC_U,    KC_O,    KC_QUOT,   \
-	HM_S,    HM_T,    HM_R,    HM_D,    KC_Y,        KC_F,    HM_N,    HM_E,    HM_A,    HM_I,      \
-	KC_X,    KC_K,    KC_J,    KC_G,    KC_W,        KC_Z,    KC_H,    KC_COMM, KC_DOT,  KC_UNDS,   \
+	______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
+	______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
+	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \	
 	                           NAV_SPC, OS_MEH,      LT(NUM,REPEAT), OS_LSFT
 
 // clang-format off

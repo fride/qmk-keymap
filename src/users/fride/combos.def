@@ -1,14 +1,14 @@
 // Layout key reference
-//    KC_V, KC_M, KC_L,    KC_C,    KC_P,      KC_B    MAGIC, KC_U,    KC_O,   KC_QUOT
-//    HM_S, HM_T, HM_R,    HM_D,    KC_Y,      KC_F    HM_N,  HM_E,    HM_A,   HM_I
-//    KC_X, KC_K, KC_J,    KC_G,    KC_W,      KC_Z    KC_H,  KC_COMM, KC_DOT, KC_UNDS
-//                         NAV_SPC, OS_MEH,    REPEAT, OS_LSFT
-
+//  ___V___,    ___M___, ___L___, ___C___, ___P___,      ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
+//  ___S___,    ___T___, ___R___, ___D___, ___Y___,      ___F___,    ___N___, ___E___, ___A___, ___I___
+//  ___X___,    ___K___, ___J___, ___G___, ___W___,      ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
+//                                NAV_SPC, OS_MEH,      LT(NUM,REPEAT), OS_LSFT
 COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 
 COMB( CMB_BOOT,         QK_BOOT,        ___V___, _COMMA_)
 COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, OS_LSFT)
 
+COMB(CMB_Q,               QU,             ___V___, ___M___)
 // COMB(CMB_AE,           A_UML,          HM_N, HM_A)
 // COMB(CMB_UE,           U_UML,          HM_N, KC_U)
 // COMB(CMB_OE,           O_UML,          HM_N, KC_O)
