@@ -2,11 +2,11 @@
 //  ___V___,    ___M___, ___L___, ___C___, ___P___,      ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
 //  ___S___,    ___T___, ___R___, ___D___, ___Y___,      ___F___,    ___N___, ___E___, ___A___, ___I___
 //  ___X___,    ___K___, ___J___, ___G___, ___W___,      ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
-//                                NAV_SPC, OS_MEH,      LT(NUM,REPEAT), OS_LSFT
+//                                NAV_SPC, OS_MEH,      OS_LSFT, NUM_REP
 COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 
 COMB( CMB_BOOT,         QK_BOOT,        ___V___, _COMMA_)
-COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, OS_LSFT)
+COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, NUM_REP)
 
 COMB(CMB_Q,               QU,             ___V___, ___M___)
 // COMB(CMB_AE,           A_UML,          HM_N, HM_A)

@@ -112,34 +112,38 @@ enum custom_keycodes {
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
-// #define REPEAT_SYM LT(SYM, REPEAT)
+
+// thumb keys!
 #define NAV_SPC LT(NAV, KC_SPC)
+#define NUM_REP LT(NUM, QK_REP)
+
+
+
 #define ESC_SYM LT(SYM, KC_ESC)
 #define CLN_NUM LT(SYM, KC_COLON)
 
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-
-#define ___A___ LT(NUM,KC_A)
+#define ___A___ LT(SYM,KC_A)
 #define ___B___ KC_B
-#define ___C___ KC_C
-#define ___D___ LT(SYM,KC_D)
-#define ___E___ KC_E
+#define ___C___ LGUI_T(KC_C)
+#define ___D___ LT(NAV,KC_D)
+#define ___E___ LT(SYM,KC_E)
 #define ___F___ KC_F
-#define ___G___ LGUI_T(KC_G)
-#define ___H___ RGUI_T(KC_H)
-#define ___I___ LT(SYM,KC_I)
-#define ___J___ LALT_T(KC_J)
-#define ___K___ LCTL_T(KC_K)
-#define ___L___ KC_L
-#define ___M___ KC_M
-#define ___N___ LT(SYM,KC_N)
-#define ___O___ KC_O
+#define ___G___ KC_G
+#define ___H___ KC_H
+#define ___I___ LT(NUM,KC_I)
+#define ___J___ KC_J
+#define ___K___ KC_K
+#define ___L___ LALT_T(KC_L)
+#define ___M___ LCTL_T(KC_M)
+#define ___N___ LT(NAV,KC_N)
+#define ___O___ RALT_T(KC_O)
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ KC_R
-#define ___S___ LT(SYM, KC_S)
+#define ___R___ LT(SYM,KC_R)
+#define ___S___ LT(NUM, KC_S)
 #define ___T___ KC_T
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -153,16 +157,6 @@ enum custom_keycodes {
 #define _SQUOT_ RALT_T(KC_QUOT)
 #define _DQUOT_ KC_DQUO
 
-// Mod tap macros
-#define HM_S LT(SYM,KC_S)
-#define HM_T LCTL_T(KC_T)
-#define HM_R LALT_T(KC_R)
-#define HM_D LGUI_T(KC_D)
-
-#define HM_N RGUI_T(KC_N)
-#define HM_E RALT_T(KC_E)
-#define HM_A LCTL_T(KC_A)
-#define HM_I LT(SYM,KC_I)
 
 // does not work with the totem ;)
 // #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
@@ -180,7 +174,7 @@ enum custom_keycodes {
 #define EIGHT KC_8
 #define NINE  KC_9
 
-#define NAV_REP LT(NAV, QK_REP)
+
 
 #define _______ KC_TRNS
 #define _XXXXX_ KC_NO
@@ -196,12 +190,6 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 */
 // clang-format off
 
-#define ______________HANDS_DOWN_L1________________  KC_V,    KC_W,    KC_X,    KC_G,    KC_EQL
-#define ______________HANDS_DOWN_R1________________  KC_MINS, KC_L,    KC_U,    KC_O,    KC_Y
-#define ______________HANDS_DOWN_L2________________  HM_S,    HM_C,    HM_N,    HM_T,    KC_B
-#define ______________HANDS_DOWN_R2________________  KC_COMM, HM_H,    HM_E,    HM_A,    HM_I
-#define ______________HANDS_DOWN_L3________________  KC_F,    KC_P,    KC_M,    KC_D,    KC_K
-#define ______________HANDS_DOWN_R3________________  KC_SCLN, KC_DOT,  KC_SLSH, KC_QUOT, KC_J
 
 #define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
 #define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
@@ -224,7 +212,7 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
 	______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
 	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \	
-	                           NAV_SPC, OS_MEH,      LT(NUM,REPEAT), OS_LSFT
+	                           NAV_SPC, OS_MEH,      OS_LSFT, NUM_REP
 
 // clang-format off
 #define _NAV \
