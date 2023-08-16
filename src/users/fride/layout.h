@@ -199,6 +199,13 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define ______________MAGICSTURDY_L3_______________  ___X___,    ___K___, ___J___, ___G___, ___W___
 #define ______________MAGICSTURDY_R3_______________  ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
 
+#define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
+#define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
+#define ______________MAGICSTURDY_L2_______________  ___S___,    ___T___, ___R___, ___D___, ___Y___
+#define ______________MAGICSTURDY_R2_______________  ___F___,    ___N___, ___E___, ___A___, ___I___
+#define ______________MAGICSTURDY_L3_______________  ___X___,    ___K___, ___J___, ___G___, ___W___
+#define ______________MAGICSTURDY_R3_______________  ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
+
 
 #define ______________NUMBERLAYER_L1_______________  KC_EXLM, KC_AT,   _______, _______, _______
 #define ______________NUMBERLAYER_L2_______________  KC_7,    FIVE,    THREE,   ONE,     KC_PLUS
@@ -216,6 +223,11 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
 	______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
 	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \
+	                                        __THUMBS_
+#define _BIRD \
+	___X___, ___C___, ___L___, ___F___, ___V___, ___Z___, ___Y___, ___O___, ___U___, _SQUOT_, \
+	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
+	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
 	                                        __THUMBS_
 // SYM_REP, 
 // OS_MEH
