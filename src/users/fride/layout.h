@@ -3,6 +3,7 @@
 
 enum layers {
     ALPHA,
+    SYMNAV,
     NUM,
     SYM,
     MODS,
@@ -115,7 +116,7 @@ enum custom_keycodes {
 
 // thumb keys!
 #define NAV_SPC LT(NAV, KC_SPC)
-#define NUM_REP LT(NUM, QK_REP)
+#define SYM_REP LT(SYM, QK_REP)
 
 
 
@@ -128,7 +129,7 @@ enum custom_keycodes {
 #define ___A___ LT(SYM,KC_A)
 #define ___B___ KC_B
 #define ___C___ LGUI_T(KC_C)
-#define ___D___ LT(NAV,KC_D)
+#define ___D___ LSFT_T(KC_D)
 #define ___E___ LT(SYM,KC_E)
 #define ___F___ KC_F
 #define ___G___ KC_G
@@ -138,7 +139,7 @@ enum custom_keycodes {
 #define ___K___ KC_K
 #define ___L___ LALT_T(KC_L)
 #define ___M___ LCTL_T(KC_M)
-#define ___N___ LT(NAV,KC_N)
+#define ___N___ RSFT_T(KC_N)
 #define ___O___ RALT_T(KC_O)
 #define ___P___ KC_P
 #define ___Q___ KC_Q
@@ -207,32 +208,40 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define ______________NUMBERLAYER_R3_______________  KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS
 
 
+#define __THUMBS_ NUMWORD, OS_LSFT,   NAV_SPC, OSL(SYMNAV)
+
+
 // clang-format off
 #define _BASE \
 	______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
 	______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
-	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \	
-	                           NAV_SPC, OS_MEH,      OS_LSFT, NUM_REP
-
+	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \
+	                                        __THUMBS_
+// SYM_REP, 
+// OS_MEH
 // clang-format off
 #define _NAV \
 	SW_APP,  KC_ESC,  TAB_L,   TAB_R,   _______,     _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q,     \
 	OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, OS_MEH,      FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK,     \
-	_______, _______, _______, CPYPASTE,ALFRED,      _______, _______, _______, _______, _______,  \
-	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+	Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED,      _______, _______, _______, _______, _______,  \
+	                                        __THUMBS_
 
 // clang-format off
+#define _SYMNAV \
+	KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_PIPE,     _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q,     \
+	KC_GRV,  KC_AT,   KC_LPRN, KC_RPRN, KC_AMPR,     FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK,     \
+	KC_BSLS, KC_LT,   KC_LCBR, KC_RCBR ,KC_GT,       OS_MEH,  REPEAT,  _______, _______, _______,  \
+	                                        __THUMBS_
 #define _NUM \
-	KC_EXLM, KC_AT,   _______, _______, _______,      _______, KC_HASH,KC_AMPR, _______,  _______,   \
-	KC_7,    FIVE,    THREE,   ONE,     KC_PLUS,      KC_PAST, ZERO,   TWO,     FOUR,     KC_6,   \
-	_______, _______, KC_HASH, KC_9,    KC_PERC,      KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS, \
-	                           NAV_SPC, OS_MEH,       REPEAT,  OS_LSFT
+	SW_APP,  KC_ESC,  TAB_L,   TAB_R,   _______,      KC_PLUS, SIX,    SEVEN,   EIGHT,    KC_PAST,  \
+	OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, OS_MEH,       KC_EQL , ZERO,   ONE,     TWO,      NINE,     \
+	Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED,       KC_MINS, THREE,  FOUR,    FIVE,     KC_SLSH,  \
+	                                        __THUMBS_
 
-// clang-format off
 #define _SYM \
-	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, KC_NO, \
-      KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_PIPE,   KC_GRV,  KC_QUES, KC_LBRC, KC_RBRC, KC_NO, \
-      KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS, \
-	                           NAV_SPC, OS_MEH,      REPEAT,  OS_LSFT
+	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, _COMMA_, \
+    SEVEN,   FIVE,    THREE,    ONE,     NINE,     EIGHT,   ZERO,    TWO,     FOUR,    SIX, \
+    KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, __DOT__, \
+	                                        __THUMBS_
 
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 

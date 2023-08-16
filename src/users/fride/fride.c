@@ -155,25 +155,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     unregister_weak_mods(MOD_MASK_CSAG);
                     send_char('f');
                     return false;
-                // one time shift after space?
-                case NAV_SPC:
-                  set_oneshot_mods(MOD_BIT(KC_LSFT));
-                  return false;
-                case KC_DOT:
+               case ___A___:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    SEND_STRING("nd");
+                    return false;
+               case ___Y___:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    SEND_STRING("ou");
+                    return false;
+               case KC_QUES:
+               case KC_EXLM:
+               case __DOT__:
                     unregister_weak_mods(MOD_MASK_CSAG);
                     send_char(' ');
                     add_oneshot_mods(MOD_MASK_SHIFT);
                     //set_repeat_key_keycode(KC_SPC);
                     return false;
-                case KC_I:
-                  SEND_STRING("ng");
-                  return false;                
+                // one time shift after space?
+                case NAV_SPC:
+                  set_oneshot_mods(MOD_BIT(KC_LSFT));
+                  return false;                           
             }
        }       
     }
   
     switch (keycode) {   
-      case NUM_REP:
+      case SYM_REP:
         if (record->event.pressed) {
             if (record->tap.count > 0) {
                 keyrecord_t press;
@@ -414,7 +421,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case NAV_SPC:
     case SYM_SPC:
-    case NUM_REP:
+    case SYM_REP:
       return true;
   }
 
@@ -430,9 +437,8 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
-    case NUM_REP:
+    case SYM_REP:
     case NAV_SPC:
-    case ___A___: // number layer toggle!
       return 0;  // Bypass Achordion for these keys.
   }
 
@@ -442,7 +448,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 // reeat
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
     switch (keycode) {
-        case NUM_REP:
+        case SYM_REP:
         case NAV_SPC:
             return false;
         case KC_A ... KC_Y:
@@ -457,7 +463,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
 bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
-    case NUM_REP:
+    case SYM_REP:
     case NAV_SPC:
         return false;
 
@@ -471,4 +477,8 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
   }
 
   return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+   return update_tri_layer_state(state, SYMNAV, NUM, NAV);
 }

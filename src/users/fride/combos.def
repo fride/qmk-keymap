@@ -2,11 +2,11 @@
 //  ___V___,    ___M___, ___L___, ___C___, ___P___,      ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
 //  ___S___,    ___T___, ___R___, ___D___, ___Y___,      ___F___,    ___N___, ___E___, ___A___, ___I___
 //  ___X___,    ___K___, ___J___, ___G___, ___W___,      ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
-//                                NAV_SPC, OS_MEH,      OS_LSFT, NUM_REP
+//                                NAV_SPC, OS_MEH,      OS_LSFT, SYM_REP
 COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 
 COMB( CMB_BOOT,         QK_BOOT,        ___V___, _COMMA_)
-COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, NUM_REP)
+COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, SYM_REP)
 
 COMB(CMB_Q,               QU,             ___V___, ___M___)
 // COMB(CMB_AE,           A_UML,          HM_N, HM_A)
@@ -30,6 +30,9 @@ COMB(CMB_RBRC,    KC_RBRC,    ___U___,___E___)
 COMB(CMB_ENT,     KC_ENT,     ___N___, ___E___, ___A___)
 COMB(CMB_TAB,     KC_TAB,     ___T___, ___R___, ___D___)
 
+// test
+COMB(CMB_0,     KC_0,     SYM_REP, ___N___)
+
 // COMB(CMB_LPRN,    KC_LPRN,    HM_D, HM_N)
 // COMB(CMB_RPRN,    KC_RPRN,    HM_D, MAGIC)
 // COMB(CMB_LCBR,    KC_LCBR,    HM_D, HM_E)
@@ -41,7 +44,10 @@ COMB(CMB_TAB,     KC_TAB,     ___T___, ___R___, ___D___)
 
 
 
-// one shot mods. Not needed!?
+// one shot mods.
+COMB(CMB_LSFT,    OS_LSFT,    ___D___, ___Y___)
+COMB(CMB_RSFT,    OS_LSFT,    ___F___, ___N___)
+
 // COMB(CMB_LCTL,    OS_LCTL,    HM_E, HM_A)
 // COMB(CMB_RCTL,    OS_LCTL,    HM_T, HM_R)
 // COMB(CMB_LGUI,    OS_LGUI,    KC_J, KC_G)
