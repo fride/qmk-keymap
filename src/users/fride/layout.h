@@ -130,10 +130,10 @@ enum custom_keycodes {
 #define ___B___ KC_B
 #define ___C___ LGUI_T(KC_C)
 #define ___D___ LSFT_T(KC_D)
-#define ___E___ LT(SYM,KC_E)
+#define ___E___ LSFT_T(KC_E)
 #define ___F___ KC_F
 #define ___G___ KC_G
-#define ___H___ KC_H
+#define ___H___ LSFT_T(KC_H)
 #define ___I___ LT(NUM,KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
