@@ -36,8 +36,8 @@
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-   [ALPHA]  = TOTEM(_BASE),   
-   [NAV]    = TOTEM(_NAV), 
+   [ALPHA]  = TOTEM(_BIRD),   
+   [SYMNAV]    = TOTEM(_SYMNAV), 
    [NUM]    = TOTEM(_NUM), 
-   [SYM]   = TOTEM(_SYM1) 
+   [NAV]   = TOTEM(_NAV) 
 };

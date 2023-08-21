@@ -5,6 +5,7 @@
 #include "features/swapper.h"
 #include "features/tap_hold.h"
 #include "features/achordion.h"
+#include "features/process_records.h"
 #include "layout.h"
 
 
@@ -40,47 +41,47 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
-      case HM_A:
+      case ___A___:
         return KC_O;
-      case KC_B:
+      case ___B___:
         return KC_N;  // TODO BEFORE
-      case KC_C: // C
+      case ___C___: // C
         return KC_Y;
-      case KC_D:
+      case ___D___:
         return KC_Y;
-      case HM_E:
+      case ___E___:
         return KC_U;
-      case KC_F:
+      case ___F___:
         return KC_N;
-      case HM_N:
+      case ___N___:
         return KC_F;  // Fuenf!
-      case KC_G:
+      case ___G___:
         return KC_Y;
-      case HM_I:
+      case ___I___:
         return MG_ION;
-      case KC_J:
+      case ___J___:
         return MG_UST;
-      case KC_K:
+      case ___K___:
         return KC_S;
-      case KC_L:
+      case ___L___:
         return KC_K;
-      case KC_M:
+      case ___M___:
         return KC_T; // AMT and co in Germann ;)
-      case KC_O:
+      case ___O___:
         return KC_A;
-      case KC_P:
+      case ___P___:
         return KC_Y;
-      case KC_R:
+      case ___R___:
         return KC_L;
-      case HM_S:
+      case ___S___:
         return KC_K;
-      case HM_T:
+      case ___T___:
         return KC_M; //ment does not work that well with german
-      case KC_U:
+      case ___U___:
         return KC_E;
-      case KC_V:
+      case ___V___:
         return MG_VER;
-      case KC_Y:
+      case ___Y___:
         return KC_P;
       case KC_EQL:
         return KC_GT;
@@ -88,10 +89,13 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_RPRN;
       case KC_MINS:
         return KC_GT;
-//case NAV_SPC:
-//        return MG_THE;
+    case NAV_SPC:
+        return MG_THE;
       case KC_ESC:
         return KC_COLON;
+      case KC_COMM:
+      case KC_DOT:
+        return M_SENTENCE; // ODO does not work!
       case KC_1 ... KC_0:
         return KC_DOT;
       default:
@@ -108,23 +112,10 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   return KC_TRNS;
 }
 
-bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
-                                  uint8_t *remembered_mods) {
-  // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
-  // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.
-  switch (keycode) {
-    case KC_A ... KC_Y:
-      if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
-        *remembered_mods &= ~MOD_MASK_SHIFT;
-      }
-      break;
-  }
-
-  return true;
-}
+//TODO what is this!?
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
-  if (!process_achordion(keycode, record)) { return false; }
+  // if (!process_achordion(keycode, record)) { return false; }
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -160,30 +151,52 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
        if (rep_count > 0) {
             switch (keycode) {
-               case KC_N:
+               case ___N___:
                     unregister_weak_mods(MOD_MASK_CSAG);
                     send_char('f');
+                    return false;
+               case ___A___:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    SEND_STRING("nd");
+                    return false;
+               case ___Y___:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    SEND_STRING("ou");
+                    return false;
+               case KC_QUES:
+               case KC_EXLM:
+               case __DOT__:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    send_char(' ');
+                    add_oneshot_mods(MOD_MASK_SHIFT);
+                    //set_repeat_key_keycode(KC_SPC);
                     return false;
                 // one time shift after space?
                 case NAV_SPC:
                   set_oneshot_mods(MOD_BIT(KC_LSFT));
-                  return false;
-                case KC_I:
-                  SEND_STRING("ng");
-                  return false;                
+                  return false;                           
             }
        }       
     }
   
-    switch (keycode) {
-        // TODO REPEAT with Layer or Mods test
-        case LT(NUM,REPEAT):
-            if (record->event.pressed && record->tap.count > 0) {
-              tap_code16(KC_AT);
-              tap_code16(REPEAT);
-              return false;
+    switch (keycode) {   
+      case SYM_REP:
+        if (record->event.pressed) {
+            if (record->tap.count > 0) {
+                keyrecord_t press;
+                press.event.type    = KEY_EVENT;
+                press.tap.count     = 1;
+                press.event.pressed = true;
+                process_repeat_key(QK_REP, &press);
+                keyrecord_t release;
+                release.event.type    = KEY_EVENT;
+                release.tap.count     = 1;
+                release.event.pressed = false;
+                process_repeat_key(QK_REP, &release);
+                return PROCESS_RECORD_RETURN_TRUE;
             }
-            break;
+        }
+        break;
       case LPAREN:
         if (record->event.pressed) {
           if (shifted) {tap_code16(KC_LT);}
@@ -285,6 +298,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case MG_MENT:
       if (record->event.pressed) {
           SEND_STRING("ment");
+          return false;
+      }
+      case M_SENTENCE:
+      if (record->event.pressed) {
+          tap_code16(KC_SPC);
+          add_weak_mods(MOD_BIT(KC_LSFT));
           return false;
       }
       case MG_THE:
@@ -391,38 +410,74 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
 
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
-
   return false;
 }
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand
-  switch (tap_hold_keycode) {
-    case SYM_SPC:
-    case NAV_R:
-      return true;
-  }
+// bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+//                      uint16_t other_keycode, keyrecord_t* other_record) {
+//   // Exceptionally consider the following chords as holds, even though they
+//   // are on the same hand
+//   switch (tap_hold_keycode) {
+//     case NAV_SPC:
+//     case SYM_SPC:
+//     case SYM_REP:
+//       return true;
+//   }
 
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+//   // Also allow same-hand holds when the other key is in the rows below the
+//   // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+//   if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+//     return true;
+//   }
+
+//   // Otherwise, follow the opposite hands rule.
+//   return achordion_opposite_hands(tap_hold_record, other_record);
+// }
+
+// uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+//   switch (tap_hold_keycode) {
+//     case SYM_REP:
+//     case NAV_SPC:
+//       return 0;  // Bypass Achordion for these keys.
+//   }
+
+//   return 1000;  // Otherwise use a timeout of 1 second
+// }
+
+// reeat
+bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
+    switch (keycode) {
+        case SYM_REP:
+        case NAV_SPC:
+            return false;
+        case KC_A ... KC_Y:
+              if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+                *remembered_mods &= ~MOD_MASK_SHIFT;
+              }
+          break;
+    }
     return true;
-  }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
 }
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    case KC_X:
+
+bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
+                                  uint8_t *remembered_mods) {
+  switch (keycode) {
+    case SYM_REP:
     case NAV_SPC:
-    // case HOME_SC:
-    // case QHOME_Z:
-    //case QHOME_SL:
-      return 0;  // Bypass Achordion for these keys.
+        return false;
+
+    // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
+    // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.
+    case KC_A ... KC_Y:
+      if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+        *remembered_mods &= ~MOD_MASK_SHIFT;
+      }
+      break;
   }
 
-  return 1000;  // Otherwise use a timeout of 1 second
+  return true;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+   return update_tri_layer_state(state, SYMNAV, NUM, NAV);
 }
