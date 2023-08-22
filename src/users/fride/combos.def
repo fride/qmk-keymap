@@ -1,16 +1,16 @@
 // Layout key reference
-//  ___X___, ___C___, ___L___, ___F___, ___X___,   ___Z___, ___Y___, ___O___, ___U___, _SQUOT_, \
-// 	___R___, ___S___, ___N___, ___T___, ___P___,   ___K___, ___H___, ___E___, ___I___, ___A___, \
-//	___Q___, ___W___, ___M___, ___G___, ___B___,   ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
-//       NUMWORD, OS_LSFT,   NAV_SPC, OSL(SYMNAV)
+//  ___X___, ___W___, ___M___, ___G___, _DQUOT_,  _HASH__, __DOT__, _SQUOT_, ___J___, ___B___, \
+//	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_, ___A___, ___E___, ___I___, ___H___, \
+//	___V___, ___P___, ___L___, ___D___, _SLASH_, _MINUS_, ___U___, ___O___, ___Y___, ___F___, \
+//                              ___R___, OS_LSFT,  NAV_SPC ,NAV_SPC
 COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 
 COMB( CMB_BOOT,         QK_BOOT,         ___X___, _SQUOT_)
 COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, SYM_REP)
 
-COMB(CMB_Q,               QU,               ___L___, ___F___)
+COMB(CMB_Q,               QU,               ___X___, ___W___)
 COMB(CMB_V,               KC_V,             ___C___, ___L___)
-COMB(CMB_Z,               KC_Z,             ___W___, ___M___)
+COMB(CMB_Z,               KC_Z,             ___P___, ___L___)
 
 // COMB(CMB_AE,           A_UML,          HM_N, HM_A)
 // COMB(CMB_UE,           U_UML,          HM_N, KC_U)
@@ -30,8 +30,8 @@ COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___R___)
 COMB(CMB_RPRN,    KC_RPRN,    MAGIC, ___N___)
 COMB(CMB_RBRC,    KC_RBRC,    ___U___,___E___)
 
-COMB(CMB_ENT,     KC_ENT,     ___H___, ___E___, ___I___)
-COMB(CMB_TAB,     KC_TAB,     ___S___, ___N___, ___T___)
+COMB(CMB_ENT,     KC_ENT,     ___A___, ___E___, ___I___)
+COMB(CMB_TAB,     KC_TAB,     ___C___, ___N___, ___T___)
 
 // test
 COMB(CMB_0,     KC_0,     SYM_REP, ___N___)
@@ -48,8 +48,8 @@ COMB(CMB_0,     KC_0,     SYM_REP, ___N___)
 
 
 // one shot mods.
-// COMB(CMB_LSFT,    OS_LSFT,    ___E___, ___I___)
-// COMB(CMB_RSFT,    OS_LSFT,    ___S___, ___N___)
+COMB(CMB_LSFT,    OS_LSFT,    ___W___, ___M___)
+COMB(CMB_RSFT,    OS_LSFT,    _SQUOT_, ___J___)
 
 // COMB(CMB_LCTL,    OS_LCTL,    HM_E, HM_A)
 // COMB(CMB_RCTL,    OS_LCTL,    HM_T, HM_R)

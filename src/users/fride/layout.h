@@ -126,27 +126,27 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-#define ___A___ KC_A
+#define ___A___ RSFT_T(KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ KC_D
-#define ___E___ KC_E
+#define ___D___ LGUI_T(KC_D)
+#define ___E___ RCTL_T(KC_E)
 #define ___F___ KC_F
 #define ___G___ KC_G
 #define ___H___ KC_H
-#define ___I___ KC_I
+#define ___I___ RCTL_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ KC_N
+#define ___N___ LCTL_T(KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ KC_R
-#define ___S___ KC_S
-#define ___T___ KC_T
-#define ___U___ KC_U
+#define ___S___ LALT_T(KC_S)
+#define ___T___ LSFT_T(KC_T)
+#define ___U___ RGUI_T(KC_U)
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
@@ -157,12 +157,8 @@ enum custom_keycodes {
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
 #define _DQUOT_ KC_DQUO
-
-
-// does not work with the totem ;)
-// #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
-// #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
-
+#define _HASH__ KC_HASH
+#define _MINUS_ KC_MINS
 
 #define FIVE  LCTL_T(KC_5)
 #define THREE LALT_T(KC_3)
@@ -218,17 +214,27 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define __THUMBS_ NUMWORD, OS_LSFT,   NAV_SPC, OSL(SYMNAV)
 
 
+/*
+Hands Down Vibranium v (vv) from https://sites.google.com/alanreiser.com/handsdown/home/hands-down-neu
+
+  xz  wq m  g  "!   #@ .: '? j  b
+  s   c  n  t  k    ,; a  e  i  h
+  v   p  l  d  /*   -+ u  o  y  f
+            r             ␣   
+*/
 // clang-format off
 #define _BASE \
 	______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
 	______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
 	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \
 	                                        __THUMBS_
-#define _BIRD \
-	___X___, ___C___, ___L___, ___F___, ___V___, ___Z___, ___Y___, ___O___, ___U___, _SQUOT_, \
-	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
-	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
-	                                        __THUMBS_
+
+#define _VIBRANIUMVV \
+	___X___, ___W___, ___M___, ___G___, _DQUOT_, _HASH__, __DOT__, _SQUOT_, ___J___, ___B___, \
+	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_, ___A___, ___E___, ___I___, ___H___, \
+	___V___, ___P___, ___L___, ___D___, _SLASH_, _MINUS_, ___U___, ___O___, ___Y___, ___F___, \
+                              ___R___, OS_LSFT,  OS_LSFT ,NAV_SPC
+
 // SYM_REP, 
 // OS_MEH
 // clang-format off
@@ -240,12 +246,12 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 
 // clang-format off
 #define _SYMNAV \
-	KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_PIPE,     _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q,     \
+	KC_TILD, KC_PLUS, KC_MINS, KC_EQL,  KC_CIRC,     _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q,     \
 	KC_GRV,  KC_AT,   KC_LPRN, KC_RPRN, KC_AMPR,     FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK,     \
 	KC_BSLS, KC_LT,   KC_LCBR, KC_RCBR ,KC_GT,       OS_MEH,  REPEAT,  _______, _______, _______,  \
 	                                        __THUMBS_
 #define _NUM \
-	SW_APP,  KC_ESC,  TAB_L,   TAB_R,   _______,      KC_PLUS, SIX,    SEVEN,   EIGHT,    KC_PAST,  \
+	KC_TILD, KC_PLUS, KC_MINS, KC_EQL,  KC_CIRC,      KC_PLUS, SIX,    SEVEN,   EIGHT,    KC_PAST,  \
 	OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, OS_MEH,       KC_EQL , ZERO,   ONE,     TWO,      NINE,     \
 	Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED,       KC_MINS, THREE,  FOUR,    FIVE,     KC_SLSH,  \
 	                                        __THUMBS_

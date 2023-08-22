@@ -115,7 +115,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 //TODO what is this!?
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
-  // if (!process_achordion(keycode, record)) { return false; }
+  if (!process_achordion(keycode, record)) { return false; }
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -413,36 +413,36 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
   return false;
 }
 
-// bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-//                      uint16_t other_keycode, keyrecord_t* other_record) {
-//   // Exceptionally consider the following chords as holds, even though they
-//   // are on the same hand
-//   switch (tap_hold_keycode) {
-//     case NAV_SPC:
-//     case SYM_SPC:
-//     case SYM_REP:
-//       return true;
-//   }
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand
+  switch (tap_hold_keycode) {
+    case NAV_SPC:
+    case SYM_SPC:
+    case SYM_REP:
+      return true;
+  }
 
-//   // Also allow same-hand holds when the other key is in the rows below the
-//   // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-//   if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
-//     return true;
-//   }
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+    return true;
+  }
 
-//   // Otherwise, follow the opposite hands rule.
-//   return achordion_opposite_hands(tap_hold_record, other_record);
-// }
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
 
-// uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-//   switch (tap_hold_keycode) {
-//     case SYM_REP:
-//     case NAV_SPC:
-//       return 0;  // Bypass Achordion for these keys.
-//   }
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    case SYM_REP:
+    case NAV_SPC:
+      return 0;  // Bypass Achordion for these keys.
+  }
 
-//   return 1000;  // Otherwise use a timeout of 1 second
-// }
+  return 1000;  // Otherwise use a timeout of 1 second
+}
 
 // reeat
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
@@ -478,6 +478,6 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
   return true;
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-   return update_tri_layer_state(state, SYMNAV, NUM, NAV);
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//    return update_tri_layer_state(state, SYMNAV, NUM, NAV);
+// }
