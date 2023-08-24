@@ -34,5 +34,5 @@ SRC += features/swapper.c
 SRC += features/nshot_mod.c
 SRC += features/custom_shift_keys.c
 SRC += features/tap_hold.c
-# SRC += features/achordion.c
+SRC += features/achordion.c
 SRC += fride.c

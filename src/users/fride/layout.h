@@ -71,6 +71,7 @@ enum custom_keycodes {
   ARROW_L,
   ARROW_R,  
   QU,
+  KC_SCH,
 
   COPY_PASTE,
   SP_MOD, // oneshot modifier and tap, nav layer on hold. See 'NAV_MOD'
@@ -118,8 +119,6 @@ enum custom_keycodes {
 #define NAV_SPC LT(NAV, KC_SPC)
 #define SYM_REP LT(SYM, QK_REP)
 
-
-
 #define ESC_SYM LT(SYM, KC_ESC)
 #define CLN_NUM LT(SYM, KC_COLON)
 
@@ -129,23 +128,23 @@ enum custom_keycodes {
 #define ___A___ KC_A
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ KC_D
-#define ___E___ KC_E
+#define ___D___ RGUI_T(KC_D)
+#define ___E___ RCTL_T(KC_E)
 #define ___F___ KC_F
-#define ___G___ KC_G
-#define ___H___ KC_H
-#define ___I___ KC_I
+#define ___G___ LGUI_T(KC_G)
+#define ___H___ RSFT_T(KC_H)
+#define ___I___ ALT_T(KC_I)
 #define ___J___ KC_J
-#define ___K___ KC_K
+#define ___K___ RALT_T(KC_K)
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ KC_N
+#define ___N___ LCTL_T(KC_N)
 #define ___O___ KC_O
-#define ___P___ KC_P
+#define ___P___ RALT_T(KC_P)
 #define ___Q___ KC_Q
-#define ___R___ KC_R
-#define ___S___ KC_S
-#define ___T___ KC_T
+#define ___R___ LT(NUM,KC_R)
+#define ___S___ LALT_T(KC_S)
+#define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
@@ -159,23 +158,17 @@ enum custom_keycodes {
 #define _DQUOT_ KC_DQUO
 
 
-// does not work with the totem ;)
-// #define HRML(k1, k2, k3, k4) LT(SYM,k1), LCTL_T(k2), LALT_T(k3), LGUI_T(k4)
-// #define HRMR(k1, k2, k3, k4) RGUI_T(k1), RALT_T(k2), LCTL_T(k3), LT(SYM, k4)
-
-
-#define FIVE  LCTL_T(KC_5)
-#define THREE LALT_T(KC_3)
-#define ONE   LGUI_T(KC_1)
-#define ZERO  RGUI_T(KC_0)
-#define TWO   RALT_T(KC_2)
-#define FOUR  RCTL_T(KC_4)
-#define SIX   KC_6
+#define ONE   LSFT_T(KC_1)
+#define THREE LCTL_T(KC_3)
+#define FIVE  LALT_T(KC_5)
 #define SEVEN KC_7
-#define EIGHT KC_8
-#define NINE  KC_9
+#define NINE  LGUI_T(KC_9)
 
-
+#define ZERO  RSFT_T(KC_0)
+#define TWO   RCTL_T(KC_2)
+#define FOUR  RALT_T(KC_4)
+#define SIX   KC_6
+#define EIGHT RGUI_T(KC_8)
 
 #define _______ KC_TRNS
 #define _XXXXX_ KC_NO
@@ -192,40 +185,12 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 // clang-format off
 
 
-#define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
-#define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
-#define ______________MAGICSTURDY_L2_______________  ___S___,    ___T___, ___R___, ___D___, ___Y___
-#define ______________MAGICSTURDY_R2_______________  ___F___,    ___N___, ___E___, ___A___, ___I___
-#define ______________MAGICSTURDY_L3_______________  ___X___,    ___K___, ___J___, ___G___, ___W___
-#define ______________MAGICSTURDY_R3_______________  ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
-
-#define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
-#define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
-#define ______________MAGICSTURDY_L2_______________  ___S___,    ___T___, ___R___, ___D___, ___Y___
-#define ______________MAGICSTURDY_R2_______________  ___F___,    ___N___, ___E___, ___A___, ___I___
-#define ______________MAGICSTURDY_L3_______________  ___X___,    ___K___, ___J___, ___G___, ___W___
-#define ______________MAGICSTURDY_R3_______________  ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
-
-
-#define ______________NUMBERLAYER_L1_______________  KC_EXLM, KC_AT,   _______, _______, _______
-#define ______________NUMBERLAYER_L2_______________  KC_7,    FIVE,    THREE,   ONE,     KC_PLUS
-#define ______________NUMBERLAYER_L3_______________  _______, _______, KC_HASH, KC_9,    KC_PERC
-#define ______________NUMBERLAYER_R1_______________  _______, KC_HASH,KC_AMPR, _______,  _______
-#define ______________NUMBERLAYER_R2_______________  KC_PAST, ZERO,   TWO,     FOUR,     KC_6
-#define ______________NUMBERLAYER_R3_______________  KC_CIRC, KC_8,   KC_COMM, KC_DOT,   KC_UNDS
-
-
-#define __THUMBS_ NUMWORD, OS_LSFT,   NAV_SPC, OSL(SYMNAV)
+#define __THUMBS_ ___R___, REPEAT,  MAGIC, NAV_SPC
 
 
 // clang-format off
 #define _BASE \
-	______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
-	______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
-	______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \
-	                                        __THUMBS_
-#define _BIRD \
-	___X___, ___C___, ___L___, ___F___, ___V___, ___Z___, ___Y___, ___O___, ___U___, _SQUOT_, \
+	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_, \
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
 	                                        __THUMBS_
@@ -245,9 +210,9 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	KC_BSLS, KC_LT,   KC_LCBR, KC_RCBR ,KC_GT,       OS_MEH,  REPEAT,  _______, _______, _______,  \
 	                                        __THUMBS_
 #define _NUM \
-	SW_APP,  KC_ESC,  TAB_L,   TAB_R,   _______,      KC_PLUS, SIX,    SEVEN,   EIGHT,    KC_PAST,  \
-	OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, OS_MEH,       KC_EQL , ZERO,   ONE,     TWO,      NINE,     \
-	Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED,       KC_MINS, THREE,  FOUR,    FIVE,     KC_SLSH,  \
+	KC_CIRC, KC_EQL,  KC_MINS, KC_UNDS, KC_PAST,      KC_BSLS, KC_HASH,KC_AMPR, KC_PIPE,  KC_TILD,  \
+	SEVEN,   FIVE,    THREE,   ONE,     KC_PLUS,      KC_EQL , ZERO,   TWO,     FOUR,     SIX,     \
+	_______, KC_COLON,KC_SCLN, NINE    ,ALFRED,       KC_MINS, EIGHT,  _COMMA_, __DOT__,  KC_SLSH,  \
 	                                        __THUMBS_
 
 #define _SYM \
