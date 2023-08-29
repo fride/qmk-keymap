@@ -3,17 +3,19 @@
 
 enum layers {
     ALPHA,
-    ALPHA2,
+    SYMNAV,
     NUM,
     SYM,
-    UTIL,
+    MODS,
     FUN,
+    NAV
 };
 
 // Tap Dance keycodes
 enum td_keycodes {
     ALT_LP // Our example key: `LALT` when held, `(` when tapped. Add additional keycodes for each tapdance.
 };
+
 
 enum custom_keycodes {
   QUOTE = SAFE_RANGE,
@@ -81,12 +83,7 @@ enum custom_keycodes {
   MOUSE_TGL,
   SLASH,
   UNDER,
-  ALFRED,
-
-  // lates stuff
-  QUOTE_BRACKET,
-  KC_PH,
-  KC_TH
+  ALFRED
 };
 
 // macOS shortcuts
@@ -111,39 +108,43 @@ enum custom_keycodes {
 #define SPACE_L A(G(KC_LEFT))
 #define SPACE_R A(G(KC_RGHT))
 
+#define NAV_R LT(NAV,KC_R)
+#define SYM_SPC LT(SYM,KC_SPC)
+
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
 
 // thumb keys!
-#define NAV_SPC LT(UTIL, KC_SPC)
-#define SYM_SPC LT(SYM,  KC_SPC)
-#define SYM_REP LT(SYM,  QK_REP)
+#define NAV_SPC LT(NAV, KC_SPC)
+#define SYM_REP LT(SYM, QK_REP)
 
+#define ESC_SYM LT(SYM, KC_ESC)
+#define CLN_NUM LT(SYM, KC_COLON)
 
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-#define ___A___ LT(FUN,KC_A)
+#define ___A___ KC_A
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ KC_D
-#define ___E___ KC_E
+#define ___D___ RGUI_T(KC_D)
+#define ___E___ RCTL_T(KC_E)
 #define ___F___ KC_F
-#define ___G___ KC_G
-#define ___H___ KC_H
-#define ___I___ KC_I
+#define ___G___ LGUI_T(KC_G)
+#define ___H___ RSFT_T(KC_H)
+#define ___I___ ALT_T(KC_I)
 #define ___J___ KC_J
-#define ___K___ KC_K
+#define ___K___ RALT_T(KC_K)
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ KC_N
+#define ___N___ LCTL_T(KC_N)
 #define ___O___ KC_O
-#define ___P___ KC_P
+#define ___P___ RALT_T(KC_P)
 #define ___Q___ KC_Q
 #define ___R___ LT(NUM,KC_R)
-#define ___S___ KC_S
-#define ___T___ LT(NUM,KC_T)
+#define ___S___ LALT_T(KC_S)
+#define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
@@ -154,10 +155,7 @@ enum custom_keycodes {
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
-#define _DQUOT_ QUOTE_BRACKET
-#define _MINUS_ KC_MINS
-#define __HASH_ KC_HASH
-#define _SEMIC_ KC_SCLN
+#define _DQUOT_ KC_DQUO
 
 
 #define ONE   LSFT_T(KC_1)
@@ -190,60 +188,12 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define __THUMBS_ OS_LSFT, REPEAT,  MAGIC, NAV_SPC
 
 
-#define ______________MAGICSTURDY_L1_______________ ___V___, ___M___, ___L___, ___C___, ___P___
-#define ______________MAGICSTURDY_R1_______________ ___B___, MAGIC,   ___U___, ___O___, _SQUOT_
-#define ______________MAGICSTURDY_L2_______________ ___S___, ___T___, ___R___, ___D___, ___Y___
-#define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
-#define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
-#define ______________MAGICSTURDY_R3_______________ ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_
-
-#define _________________BIRD__L1__________________ ___X___, ___C___, ___L___, ___F___, KC_LPRN
-#define _________________BIRD__R1__________________ KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_
-#define _________________BIRD__L2__________________ MAGIC,   ___S___, ___N___, ___T___, ___P___
-#define _________________BIRD__R2__________________ ___K___, ___H___, ___E___, ___I___, ___A___
-#define _________________BIRD__L3__________________ ___Q___, ___W___, ___M___, ___G___, ___B___
-#define _________________BIRD__R3__________________ ___J___, ___D___, _COMMA_, __DOT__, _SLASH_
-
-
-#define _______________NUMBERS___L1________________ SW_APP,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC
-#define _______________NUMBERS___L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
-#define _______________NUMBERS___L3________________ Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED
-
-#define _______________NUMBERS___R1________________ KC_PLUS, SEVEN,   EIGHT,   NINE,    KC_PAST
-#define _______________NUMBERS___R2________________ ZERO,    FOUR,    FIVE,    SIX,     KC_EQL
-#define _______________NUMBERS___R3________________ KC_MINS, ONE,     TWO,     THREE,   KC_SLSH
-
-
-#define ________________SYMBOLS_L1_________________ KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_PIPE
-#define ________________SYMBOLS_L2_________________ KC_GRV,  KC_AT,   KC_LPRN, KC_RPRN, KC_AMPR
-#define ________________SYMBOLS_L3_________________ KC_BSLS, KC_LT,   KC_LCBR, KC_RCBR ,KC_GT
-
-#define ________________SYMBOLS_R1_________________ _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q
-#define ________________SYMBOLS_R2_________________ FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK
-#define ________________SYMBOLS_R3_________________ OS_MEH,  REPEAT,  _______, _______, _______
-
-#define ________________UTILITY_L1________________ SW_APP,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC
-#define ________________UTILITY_L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
-#define ________________UTILITY_L3________________ Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED
-
-#define ________________UTILITY_R1________________ _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q
-#define ________________UTILITY_R2________________ FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK
-#define ________________UTILITY_R3________________ OS_MEH,  REPEAT,  _______, _______, _______
-
-
 // clang-format off
 #define _BASE \
 	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_, \
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
-                                            __THUMBS_
-
-#define _BIRD \
-	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_, \
-	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
-	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
-	                                         __THUMBS_
-
+	                                        __THUMBS_
 // SYM_REP, 
 // OS_MEH
 // clang-format off
@@ -266,7 +216,7 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	                                        __THUMBS_
 
 #define _SYM \
-	KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, _COMMA_, \
+	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, _COMMA_, \
     SEVEN,   FIVE,    THREE,    ONE,     NINE,     EIGHT,   ZERO,    TWO,     FOUR,    SIX, \
     KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, __DOT__, \
 	                                        __THUMBS_
