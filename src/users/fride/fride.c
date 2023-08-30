@@ -6,7 +6,6 @@
 #include "features/tap_hold.h"
 #include "features/achordion.h"
 #include "features/process_records.h"
-#include "features/adaptive_keys.h"
 #include "layout.h"
 
 
@@ -17,8 +16,7 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_COMM, KC_SCLN},
     {KC_MINS, KC_PLUS},
     {KC_QUOTE, KC_RBRC},
-    {KC_SLASH, KC_PAST},
-    {QUOTE_BRACKET, KC_LEFT_BRACKET}
+    {KC_SLASH, KC_PAST}
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
@@ -54,15 +52,15 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___D___:
         return KC_Y;
       case ___E___:
-        return KC_U;
+        return KC_O;
       case ___F___:
         return KC_T;
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
         return KC_Y;
-      // case ___H___:
-        // return KC_Y;
+      case ___H___:
+        return KC_Y;
       case ___I___:
         return MG_ION;
       case ___J___:
@@ -70,25 +68,23 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___K___:
         return KC_S;
       case ___L___:
-        return KC_M; // N is wose!
+        return KC_N;
       case ___M___:
         return KC_T; // AMT and co in Germann ;)
       case ___O___:
-        return KC_E;
+        return KC_A;
       case ___P___:
         return KC_F;
       case ___R___:
         return KC_L;
       case ___S___:
-        return KC_K;
+        return KC_C;
       case ___T___:
         return KC_M; //ment does not work that well with german
       case ___U___:
-        return KC_I;
+        return KC_E;
       case ___V___:
         return MG_VER;
-      case ___W___:
-        return KC_S;
       case ___Y___:
         return KC_P;
       case KC_EQL:
@@ -97,7 +93,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_RPRN;
       case KC_MINS:
         return KC_GT;
-      case NAV_SPC:
+    case NAV_SPC:
         return MG_THE;
       case KC_ESC:
         return KC_COLON;
@@ -145,10 +141,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     if (!process_tap_hold(keycode, record)) {
         return false;
-    }
-
-    if (!process_adaptive_key(keycode, record)) {
-      return false;
     }
 
     // this overrides the repeat keys.
@@ -233,7 +225,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case CANCEL:  
         if (record->event.pressed) {
   //     stop_leading();
-          layer_off(UTIL);
+          layer_off(NAV);
           layer_off(NUM);
           layer_off(SYM);
           //disable_caps_word();
@@ -248,44 +240,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SYMWORD:
         process_sym_word_activation(record);
         return false;
-      // case CLN_NUM: {
-      //   if (record->event.pressed && record->tap.count > 0) {
-      //     tap_code16(KC_COLON);
-      //     return false;
-      //   } 
-      //   break;        
-      // }    
-      
-      // " normal, [ shifted.
-      case QUOTE_BRACKET: {
-        if (record->event.pressed) {
-          tap_code16(KC_DQUO);
+      case CLN_NUM: {
+        if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_COLON);
           return false;
         } 
         break;        
       }    
-      case KC_PH: {
-        if (record->event.pressed) {
-          SEND_STRING("ph");
+      case ESC_SYM: {
+        if (record->event.pressed && record->tap.count > 0) {
+          tap_code16(KC_ESC);
           return false;
         } 
         break;        
       }    
-      case KC_TH: {
-        if (record->event.pressed) {
-          SEND_STRING("th");
-          return false;
-        } 
-        break;        
-      }    
-
-      // case ESC_SYM: {
-      //   if (record->event.pressed && record->tap.count > 0) {
-      //     tap_code16(KC_ESC);
-      //     return false;
-      //   } 
-      //   break;        
-      // }    
       case KC_SCH:
         if (record->event.pressed) {
           SEND_STRING("sch");
@@ -374,7 +342,6 @@ bool tap_hold(uint16_t keycode) {
       case KC_DOWN:
       case KC_RIGHT:
       case QU:
-      case KC_TH:
       case CPYPASTE:
         return true;
     }
@@ -384,12 +351,7 @@ bool tap_hold(uint16_t keycode) {
 void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
       case QU:
-        // TODO handle Shift!
         SEND_STRING("qu");
-        break;
-      case KC_TH:
-        // TODO handle Shift!
-        SEND_STRING("th");
         break;
       case CPYPASTE:
         tap_code16(G(KC_C));
@@ -402,10 +364,6 @@ void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
       case QU:
         tap_code16(KC_Q);
-        break;
-      case KC_TH:
-        // TODO handle Shift!
-        SEND_STRING("tion");
         break;
       case CPYPASTE:
         tap_code16(G(KC_V));
@@ -458,18 +416,6 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     }
 }
 
-
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
-  switch (keycode) {
-    case ___S___:
-    case ___T___:
-    case ___I___:
-    case ___A___:
-      return TAPPING_TERM + 30;
-    default:
-      return TAPPING_TERM;
-  }
-}
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
   return false;
@@ -482,6 +428,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case NAV_SPC:
     case SYM_SPC:
+    case ___R___:
     case SYM_REP:
       return true;
   }
@@ -499,7 +446,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case SYM_REP:
-    case SYM_SPC:
+    case ___R___: // Num R
     case NAV_SPC:
       return 0;  // Bypass Achordion for these keys.
   }
@@ -511,7 +458,6 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
     switch (keycode) {
         case SYM_REP:
-        case SYM_SPC:
         case NAV_SPC:
             return false;
         case KC_A ... KC_Y:
@@ -527,7 +473,6 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
     case SYM_REP:
-    case SYM_SPC:
     case NAV_SPC:
         return false;
 
@@ -544,5 +489,5 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 }
 
 // layer_state_t layer_state_set_user(layer_state_t state) {
-//    return update_tri_layer_state(state, NUM, SYM, UTIL);
+//    return update_tri_layer_state(state, SYMNAV, NUM, NAV);
 // }
