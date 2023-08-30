@@ -43,6 +43,6 @@ for more options.
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
 
-// Autoshift! I'm to slow with the pinkies!
-// https://github.com/qmk/qmk_firmware/blob/master/docs/feature_auto_shift.md
-#define AUTO_SHIFT_TIMEOUT_PER_KEY
+// Enable adaptive roles.
+#define ADAPTIVE_KEYS_ENABLE 
+#define ADAPTIVE_TERM (TAPPING_TERM/2) // rolling threshold

@@ -83,7 +83,10 @@ enum custom_keycodes {
   MOUSE_TGL,
   SLASH,
   UNDER,
-  ALFRED
+  ALFRED,
+
+  // lates stuff
+  QUOTE_BRACKET
 };
 
 // macOS shortcuts
@@ -117,6 +120,7 @@ enum custom_keycodes {
 
 // thumb keys!
 #define NAV_SPC LT(NAV, KC_SPC)
+#define SYM_SPC LT(SYM, KC_SPC)
 #define SYM_REP LT(SYM, QK_REP)
 
 #define ESC_SYM LT(SYM, KC_ESC)
@@ -142,7 +146,7 @@ enum custom_keycodes {
 #define ___O___ KC_O
 #define ___P___ RALT_T(KC_P)
 #define ___Q___ KC_Q
-#define ___R___ LT(NUM,KC_R)
+#define ___R___ LT(NAV,KC_R)
 #define ___S___ LCTL_T(KC_S)
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
@@ -155,7 +159,7 @@ enum custom_keycodes {
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
-#define _DQUOT_ KC_DQUO
+#define _DQUOT_ QUOTE_BRACKET
 #define _MINUS_ KC_MINS
 #define __HASH_ KC_MINS
 
@@ -204,18 +208,18 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 
 
 /*  Base (alpha) Layer  Hands Down Vibranium-vv
- ╭─────────────────────╮ ╭──────────────────────╮
- │  X   W   M   G  "[  │ │  #$  .:  ']   J   B  │
- │  S   C   N   T   K  | |  ,;   A   E   I   H  │
- │  V   P   L   D   /* │ │  -+   U   O   Y   F  │
- ╰──────╮  App  R REP  │ │  MGC SPC TAB  ╭──────╯
-        ╰──────────────╯ ╰───────────────╯
+     ╭─────────────────────╮ ╭──────────────────────╮
+     │  X   W   M   G  "[  │ │  #$  .:  ']   J   B  │
+ ___ │  S   C   N   T   K  | |  ,;   A   E   I   H  │ ___
+     │  V   P   L   D   /* │ │  -+   U   O   Y   F  │
+     ╰──────╮  ___  R REP  │ │  MGC SPC ___  ╭──────╯
+            ╰──────────────╯ ╰───────────────╯
 */
 #define _VIBRANIUM_VV \
 	___X___, ___W___, ___M___, ___G___, _DQUOT_, __HASH_, __DOT__, _SQUOT_, ___J___, ___B___, \
 	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_, ___A___, ___E___, ___I___, ___H___, \
 	___V___, ___F___, ___L___, ___D___, _SLASH_, _MINUS_, ___U___, ___O___, ___Y___, ___P___, \
-	                                    ___R___, REPEAT,  MAGIC, NAV_SPC
+	                                    ___R___, REPEAT,  MAGIC, SYM_SPC
 
 // SYM_REP, 
 // OS_MEH

@@ -30,6 +30,7 @@ GRAVE_ESC_ENABLE = no
 
 REPEAT_KEY_ENABLE = yes
 
+
 SRC += features/layermodes.c
 SRC += features/casemodes.c
 SRC += features/swapper.c

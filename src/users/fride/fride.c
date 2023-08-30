@@ -6,6 +6,7 @@
 #include "features/tap_hold.h"
 #include "features/achordion.h"
 #include "features/process_records.h"
+#include "features/adaptive_keys.h"
 #include "layout.h"
 
 
@@ -16,7 +17,8 @@ const custom_shift_key_t custom_shift_keys[] = {
     {KC_COMM, KC_SCLN},
     {KC_MINS, KC_PLUS},
     {KC_QUOTE, KC_RBRC},
-    {KC_SLASH, KC_PAST}
+    {KC_SLASH, KC_PAST},
+    {QUOTE_BRACKET, KC_LEFT_BRACKET}
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
@@ -58,7 +60,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
-        return KC_Y;
+        return KC_L;
       case ___H___:
         return KC_Y;
       case ___I___:
@@ -141,6 +143,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     if (!process_tap_hold(keycode, record)) {
         return false;
+    }
+
+    if (!process_adaptive_key(keycode, record)) {
+      return false;
     }
 
     // this overrides the repeat keys.
@@ -247,6 +253,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         } 
         break;        
       }    
+      
+      // " normal, [ shifted.
+      case QUOTE_BRACKET: {
+        if (record->event.pressed) {
+          tap_code16(KC_DQUO);
+          return false;
+        } 
+        break;        
+      }    
+
       case ESC_SYM: {
         if (record->event.pressed && record->tap.count > 0) {
           tap_code16(KC_ESC);
@@ -351,6 +367,7 @@ bool tap_hold(uint16_t keycode) {
 void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
       case QU:
+        // TODO handle Shift!
         SEND_STRING("qu");
         break;
       case CPYPASTE:
