@@ -6,19 +6,19 @@
 #include "features/tap_hold.h"
 #include "features/achordion.h"
 #include "features/process_records.h"
-#include "features/adaptive_keys.h"
 #include "layout.h"
 
 
 #define IS_SHIFTED(mods) (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, KC_COLON},
+    {KC_DOT, KC_COLON}, 
     {KC_COMM, KC_SCLN},
     {KC_MINS, KC_PLUS},
     {KC_QUOTE, KC_RBRC},
     {KC_SLASH, KC_PAST}
 };
+
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
     sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
 
@@ -43,16 +43,63 @@ bool wap_app_cancel(uint16_t keycode) {
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
+      case ___A___:
+        return KC_O;
+      case ___B___:
+        return KC_N;  // TODO BEFORE
+      case ___C___: // C
+        return KC_Y;
+      case ___D___:
+        return KC_Y;
+      case ___E___:
+        return KC_O;
+      case ___F___:
+        return KC_T;
+      case ___N___:
+        return KC_F;  // Fuenf!
+      case ___G___:
+        return KC_Y;
+      case ___H___:
+        return KC_Y;
+      case ___I___:
+        return MG_ION;
+      case ___J___:
+        return MG_UST;
+      case ___K___:
+        return KC_S;
+      case ___L___:
+        return KC_N;
+      case ___M___:
+        return KC_T; // AMT and co in Germann ;)
+      case ___O___:
+        return KC_A;
+      case ___P___:
+        return KC_F;
+      case ___R___:
+        return KC_L;
+      case ___S___:
+        return KC_C;
+      case ___T___:
+        return KC_M; //ment does not work that well with german
+      case ___U___:
+        return KC_E;
+      case ___V___:
+        return MG_VER;
+      case ___Y___:
+        return KC_P;
       case KC_EQL:
         return KC_GT;
       case KC_LPRN:
         return KC_RPRN;
       case KC_MINS:
         return KC_GT;
-//case NAV_SPC:
-//        return MG_THE;
+    case NAV_SPC:
+        return MG_THE;
       case KC_ESC:
         return KC_COLON;
+      case KC_COMM:
+      case KC_DOT:
+        return M_SENTENCE; // ODO does not work!
       case KC_1 ... KC_0:
         return KC_DOT;
       default:
@@ -61,7 +108,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   } else if ((mods & MOD_MASK_CTRL)) {
     switch (keycode) {
       case KC_A:  // Ctrl+A -> Ctrl+K
-        return C(KC_C);
+        return C(KC_K);
       case KC_C:  // Ctrl+C -> Ctrl+C
         return C(KC_C);
     }
@@ -70,8 +117,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
-  // TODO Use this if home row mods are used!
-  // if (!process_achordion(keycode, record)) { return false; }
+  if (!process_achordion(keycode, record)) { return false; }
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -97,10 +143,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
     }
 
-    if (!process_adaptive_key(keycode, record)) {
-      return false;
-    }
-
     // this overrides the repeat keys.
     // because nf is a commonn bigram in german ;)
     if (record->event.pressed) {
@@ -111,63 +153,52 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
        if (rep_count > 0) {
             switch (keycode) {
-               case KC_N:
+               case ___N___:
                     unregister_weak_mods(MOD_MASK_CSAG);
                     send_char('f');
+                    return false;
+               case ___A___:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    SEND_STRING("nd");
+                    return false;
+               case ___Y___:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    SEND_STRING("ou");
+                    return false;
+               case KC_QUES:
+               case KC_EXLM:
+               case __DOT__:
+                    unregister_weak_mods(MOD_MASK_CSAG);
+                    send_char(' ');
+                    add_oneshot_mods(MOD_MASK_SHIFT);
+                    //set_repeat_key_keycode(KC_SPC);
                     return false;
                 // one time shift after space?
                 case NAV_SPC:
                   set_oneshot_mods(MOD_BIT(KC_LSFT));
-                  return false;
-                case KC_I:
-                  SEND_STRING("ng");
-                  return false;                
+                  return false;                           
             }
        }       
     }
   
-    switch (keycode) {
-        case SYM_MAG:
-            if (record->event.pressed) {
-                if (record->tap.count > 0) {
-                    keyrecord_t press;
-                    press.event.type    = KEY_EVENT;
-                    press.tap.count     = 1;
-                    press.event.pressed = true;
-                    process_repeat_key(QK_ALT_REPEAT_KEY, &press);
-                    keyrecord_t release;
-                    release.event.type    = KEY_EVENT;
-                    release.tap.count     = 1;
-                    release.event.pressed = false;
-                    process_repeat_key(QK_ALT_REPEAT_KEY, &release);
-                    return PROCESS_RECORD_RETURN_TRUE;
-                }
+    switch (keycode) {   
+      case SYM_REP:
+        if (record->event.pressed) {
+            if (record->tap.count > 0) {
+                keyrecord_t press;
+                press.event.type    = KEY_EVENT;
+                press.tap.count     = 1;
+                press.event.pressed = true;
+                process_repeat_key(QK_REP, &press);
+                keyrecord_t release;
+                release.event.type    = KEY_EVENT;
+                release.tap.count     = 1;
+                release.event.pressed = false;
+                process_repeat_key(QK_REP, &release);
+                return PROCESS_RECORD_RETURN_TRUE;
             }
-           break;
-         case SYM_REP:
-                if (record->event.pressed) {
-                    if (record->tap.count > 0) {
-                        keyrecord_t press;
-                        press.event.type    = KEY_EVENT;
-                        press.tap.count     = 1;
-                        press.event.pressed = true;
-                        process_repeat_key(QK_REP, &press);
-                        keyrecord_t release;
-                        release.event.type    = KEY_EVENT;
-                        release.tap.count     = 1;
-                        release.event.pressed = false;
-                        process_repeat_key(QK_REP, &release);
-                        return PROCESS_RECORD_RETURN_TRUE;
-                    }
-                }
-               break;
-        case LT(NUM,REPEAT):
-            if (record->event.pressed && record->tap.count > 0) {
-              tap_code16(KC_AT);
-              tap_code16(REPEAT);
-              return false;
-            }
-            break;
+        }
+        break;
       case LPAREN:
         if (record->event.pressed) {
           if (shifted) {tap_code16(KC_LT);}
@@ -223,14 +254,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         } 
         break;        
       }    
-
-      // case ESC_SYM: {
-      //   if (record->event.pressed && record->tap.count > 0) {
-      //     tap_code16(KC_ESC);
-      //     return false;
-      //   }
-      //   break;
-      // }
       case KC_SCH:
         if (record->event.pressed) {
           SEND_STRING("sch");
@@ -240,19 +263,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case A_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_A) SS_UP(X_LALT));
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_A));
           return false;
         }
       case O_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_O) SS_UP(X_LALT) ) ;
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_O));
           return false;
         }
       case U_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) );
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_U));
           return false;
         }
       case SZ:
@@ -283,6 +306,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case MG_MENT:
       if (record->event.pressed) {
           SEND_STRING("ment");
+          return false;
+      }
+      case M_SENTENCE:
+      if (record->event.pressed) {
+          tap_code16(KC_SPC);
+          add_weak_mods(MOD_BIT(KC_LSFT));
           return false;
       }
       case MG_THE:
@@ -389,7 +418,6 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
 
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
-
   return false;
 }
 
@@ -400,6 +428,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case NAV_SPC:
     case SYM_SPC:
+    case ___R___:
     case SYM_REP:
       return true;
   }
@@ -413,13 +442,12 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
+
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
-    case KC_X:
+    case SYM_REP:
+    case ___R___: // Num R
     case NAV_SPC:
-    // case HOME_SC:
-    // case QHOME_Z:
-    //case QHOME_SL:
       return 0;  // Bypass Achordion for these keys.
   }
 
@@ -459,3 +487,7 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 
   return true;
 }
+
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//    return update_tri_layer_state(state, SYMNAV, NUM, NAV);
+// }

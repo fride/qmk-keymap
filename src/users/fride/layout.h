@@ -125,25 +125,25 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-#define ___A___ KC_A
+#define ___A___ RSFT_T(KC_A)
 #define ___B___ KC_B
-#define ___C___ KC_C
+#define ___C___ LALT_T(KC_C)
 #define ___D___ RGUI_T(KC_D)
-#define ___E___ RCTL_T(KC_E)
+#define ___E___ RGUI_T(KC_E)
 #define ___F___ KC_F
 #define ___G___ LGUI_T(KC_G)
-#define ___H___ RSFT_T(KC_H)
-#define ___I___ ALT_T(KC_I)
+#define ___H___ RCTL_T(KC_H)
+#define ___I___ RALT_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ RALT_T(KC_K)
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LCTL_T(KC_N)
+#define ___N___ LGUI_T(KC_N)
 #define ___O___ KC_O
 #define ___P___ RALT_T(KC_P)
 #define ___Q___ KC_Q
 #define ___R___ LT(NUM,KC_R)
-#define ___S___ LALT_T(KC_S)
+#define ___S___ LCTL_T(KC_S)
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -156,6 +156,8 @@ enum custom_keycodes {
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
 #define _DQUOT_ KC_DQUO
+#define _MINUS_ KC_MINS
+#define __HASH_ KC_MINS
 
 
 #define ONE   LSFT_T(KC_1)
@@ -194,6 +196,27 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
 	                                        __THUMBS_
+#define _APTMAK26 \
+	_XXXXX_, ___W___, ___F___, ___P___, ___B___, ___J___, ___L___, ___U___, ___Y___, _XXXXX_, \
+	___R___, ___S___, ___T___, ___H___, ___K___, ___X___, ___N___, ___A___, ___I___, ___O___, \
+	_XXXXX_, ___C___, ___G___, ___D___, _XXXXX_, _XXXXX_, ___M___, _COMMA_, __DOT__, _XXXXX_, \
+	                                        NAV_SPC, REPEAT,  MAGIC, ___E___
+
+
+/*  Base (alpha) Layer  Hands Down Vibranium-vv
+ ╭─────────────────────╮ ╭──────────────────────╮
+ │  X   W   M   G  "[  │ │  #$  .:  ']   J   B  │
+ │  S   C   N   T   K  | |  ,;   A   E   I   H  │
+ │  V   P   L   D   /* │ │  -+   U   O   Y   F  │
+ ╰──────╮  App  R REP  │ │  MGC SPC TAB  ╭──────╯
+        ╰──────────────╯ ╰───────────────╯
+*/
+#define _VIBRANIUM_VV \
+	___X___, ___W___, ___M___, ___G___, _DQUOT_, __HASH_, __DOT__, _SQUOT_, ___J___, ___B___, \
+	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_, ___A___, ___E___, ___I___, ___H___, \
+	___V___, ___F___, ___L___, ___D___, _SLASH_, _MINUS_, ___U___, ___O___, ___Y___, ___P___, \
+	                                    ___R___, REPEAT,  MAGIC, NAV_SPC
+
 // SYM_REP, 
 // OS_MEH
 // clang-format off
