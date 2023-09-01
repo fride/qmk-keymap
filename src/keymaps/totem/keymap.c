@@ -36,8 +36,9 @@
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-   [ALPHA]  = TOTEM(_VIBRANIUM_VV),   
+   [ALPHA]  = TOTEM(_BASE),   
    [SYM]    = TOTEM(_SYM), 
+   [ACCENT]    = TOTEM(_ACCENT), 
    [NUM]    = TOTEM(_NUM), 
    [NAV]   = TOTEM(_NAV) 
 };

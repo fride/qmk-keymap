@@ -246,13 +246,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SYMWORD:
         process_sym_word_activation(record);
         return false;
-      case CLN_NUM: {
-        if (record->event.pressed && record->tap.count > 0) {
-          tap_code16(KC_COLON);
-          return false;
-        } 
-        break;        
-      }    
+      // case CLN_NUM: {
+      //   if (record->event.pressed && record->tap.count > 0) {
+      //     tap_code16(KC_COLON);
+      //     return false;
+      //   } 
+      //   break;        
+      // }    
       
       // " normal, [ shifted.
       case QUOTE_BRACKET: {
@@ -262,14 +262,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         } 
         break;        
       }    
-
-      case ESC_SYM: {
-        if (record->event.pressed && record->tap.count > 0) {
-          tap_code16(KC_ESC);
+      case KC_PH: {
+        if (record->event.pressed) {
+          SEND_STRING("ph");
           return false;
         } 
         break;        
       }    
+      case KC_TH: {
+        if (record->event.pressed) {
+          SEND_STRING("th");
+          return false;
+        } 
+        break;        
+      }    
+
+      // case ESC_SYM: {
+      //   if (record->event.pressed && record->tap.count > 0) {
+      //     tap_code16(KC_ESC);
+      //     return false;
+      //   } 
+      //   break;        
+      // }    
       case KC_SCH:
         if (record->event.pressed) {
           SEND_STRING("sch");
@@ -358,6 +372,7 @@ bool tap_hold(uint16_t keycode) {
       case KC_DOWN:
       case KC_RIGHT:
       case QU:
+      case KC_TH:
       case CPYPASTE:
         return true;
     }
@@ -370,6 +385,10 @@ void tap_hold_send_tap(uint16_t keycode) {
         // TODO handle Shift!
         SEND_STRING("qu");
         break;
+      case KC_TH:
+        // TODO handle Shift!
+        SEND_STRING("th");
+        break;
       case CPYPASTE:
         tap_code16(G(KC_C));
         break;
@@ -381,6 +400,10 @@ void tap_hold_send_hold(uint16_t keycode) {
     switch (keycode) {
       case QU:
         tap_code16(KC_Q);
+        break;
+      case KC_TH:
+        // TODO handle Shift!
+        SEND_STRING("tion");
         break;
       case CPYPASTE:
         tap_code16(G(KC_V));
@@ -445,7 +468,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case NAV_SPC:
     case SYM_SPC:
-    case ___R___:
     case SYM_REP:
       return true;
   }
@@ -463,7 +485,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case SYM_REP:
-    case ___R___: // Num R
     case NAV_SPC:
       return 0;  // Bypass Achordion for these keys.
   }
