@@ -17,7 +17,6 @@ enum td_keycodes {
     ALT_LP // Our example key: `LALT` when held, `(` when tapped. Add additional keycodes for each tapdance.
 };
 
-
 enum custom_keycodes {
   QUOTE = SAFE_RANGE,
   LEADER,
@@ -129,39 +128,40 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-#define ___A___ RCTL_T(KC_A)
+#define ___A___ LALT_T(KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ KC_D
-#define ___E___ RGUI_T(KC_E)
-#define ___F___ KC_F
+#define ___D___ LSFT_T(KC_D)
+#define ___E___ RCTL_T(KC_E)
+#define ___F___ RALT_T(KC_F)
 #define ___G___ KC_G
-#define ___H___ RSFT_T(KC_H)
-#define ___I___ LALT_T(KC_I)
+#define ___H___ KC_H
+#define ___I___ LT(SYM,KC_I)
 #define ___J___ KC_J
-#define ___K___ RALT_T(KC_K)
-#define ___L___ KC_L
+#define ___K___ KC_K
+#define ___L___ LGUI_T(KC_L)
 #define ___M___ KC_M
-#define ___N___ LGUI_T(KC_N)
+#define ___N___ RSFT_T(KC_N)
 #define ___O___ KC_O
-#define ___P___ RALT_T(KC_P)
+#define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ LCTL_T(KC_R)
-#define ___S___ LALT_T(KC_S)
-#define ___T___ LSFT_T(KC_T)
-#define ___U___ KC_U
+#define ___S___ LT(SYM,KC_S)
+#define ___T___ LALT_T(KC_T)
+#define ___U___ RGUI_T(KC_U)
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ KC_Y
+#define ___Y___ RALT_T(KC_Y)
 #define ___Z___ KC_Z
 #define _COMMA_ KC_COMM
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
-#define _SQUOT_ LT(ACCENT,KC_QUOT)
+#define _SQUOT_ KC_QUOT
 #define _DQUOT_ QUOTE_BRACKET
 #define _MINUS_ KC_MINS
 #define __HASH_ KC_HASH
+#define _SEMIC_ KC_SCLN
 
 
 #define ONE   LSFT_T(KC_1)
@@ -194,38 +194,46 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define __THUMBS_ OS_LSFT, REPEAT,  MAGIC, NAV_SPC
 
 
+/*
+    V M L C P "        | B ^ U O , \
+    S T R D Y Q        $ F N E A I -
+    X K J G W            Z H ' ? .
+
+*/
+#define _MAGIC_STURDY \
+	___V___, ___M___, ___L___, ___C___, ___P___,    ___B___, MAGIC,   ___U___, ___O___, _SQUOT_, \
+	___S___, ___T___, ___R___, ___D___, ___Y___,    ___F___, ___N___, ___E___, ___A___, ___I___, \
+	___X___, ___K___, ___J___, ___G___, ___W___,    ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
+                                NAV_SPC, KC_BSPC,   REPEAT,  OS_LSFT
+                                
+                                //OS_LSFT, REPEAT,    REPEAT, NAV_SPC
+
+#define ______________MAGICSTURDY_L1_______________ ___V___, ___M___, ___L___, ___C___, ___P___
+#define ______________MAGICSTURDY_R1_______________ ___B___, MAGIC,   ___U___, ___O___, _SQUOT_
+#define ______________MAGICSTURDY_L2_______________ ___S___, ___T___, ___R___, ___D___, ___Y___
+#define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
+#define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
+#define ______________MAGICSTURDY_R3_______________ ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_
+
+#define _______________NUMBERS___L1________________ KC_CIRC, KC_EQL,  KC_MINS, KC_UNDS, KC_PAST
+#define _______________NUMBERS___R1________________ KC_BSLS, KC_HASH, KC_AMPR, KC_PIPE, KC_TILD
+#define _______________NUMBERS___L2________________ SEVEN,   FIVE,    THREE,   ONE,     KC_PLUS
+#define _______________NUMBERS___R2________________ KC_EQL , ZERO,    TWO,     FOUR,    SIX
+#define _______________NUMBERS___L3________________ KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO
+#define _______________NUMBERS___R3________________ KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, __DOT__
+
+
 // clang-format off
 #define _BASE \
 	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_, \
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
-	                                        __THUMBS_
+                                            __THUMBS_
 #define _ACCENT \
 	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, A(KC_A), A(KC_O), A(KC_U), _SQUOT_, \
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, A(KC_S), ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
 	                                        __THUMBS_
-#define _APTMAK26 \
-	_XXXXX_, ___W___, ___F___, ___P___, ___B___, ___J___, ___L___, ___U___, ___Y___, _XXXXX_, \
-	___R___, ___S___, ___T___, ___H___, ___K___, ___X___, ___N___, ___A___, ___I___, ___O___, \
-	_XXXXX_, ___C___, ___G___, ___D___, _XXXXX_, _XXXXX_, ___M___, _COMMA_, __DOT__, _XXXXX_, \
-	                                        NAV_SPC, REPEAT,  MAGIC, ___E___
-
-
-/*  Base (alpha) Layer  Hands Down Vibranium-vv
-    https://github.com/moutis/zmk-Zen/blob/main/config/moutis_combos.dtsi
-     ╭─────────────────────╮ ╭──────────────────────╮
-     │  X   W   M   G  "[  │ │  #$  .:  ']   J   B  │
- ___ │  S   C   N   T   K  | |  ,;   A   E   I   H  │ ___
-     │  V   P   L   D   /* │ │  -+   U   O   Y   F  │
-     ╰──────╮  ___  R REP  │ │  MGC SPC ___  ╭──────╯
-            ╰──────────────╯ ╰───────────────╯
-*/
-#define _VIBRANIUM_VV \
-	___X___, ___W___, ___M___, ___G___, _DQUOT_, __HASH_, __DOT__, _SQUOT_, ___J___, ___B___, \
-	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_, ___A___, ___E___, ___I___, ___H___, \
-	___V___, ___P___, ___L___, ___D___, _SLASH_, _MINUS_, ___U___, ___O___, ___Y___, ___F___, \
-	                                    ___R___, REPEAT,  MAGIC, SYM_SPC
 
 // SYM_REP, 
 // OS_MEH
@@ -249,7 +257,7 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	                                        __THUMBS_
 
 #define _SYM \
-	  KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, _COMMA_, \
+	KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, KC_NO,     KC_NO,   KC_HASH, KC_AT,   KC_CIRC, _COMMA_, \
     SEVEN,   FIVE,    THREE,    ONE,     NINE,     EIGHT,   ZERO,    TWO,     FOUR,    SIX, \
     KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO,     KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, __DOT__, \
 	                                        __THUMBS_

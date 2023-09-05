@@ -6,7 +6,6 @@
 #include "features/tap_hold.h"
 #include "features/achordion.h"
 #include "features/process_records.h"
-#include "features/adaptive_keys.h"
 #include "layout.h"
 
 
@@ -54,15 +53,15 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___D___:
         return KC_Y;
       case ___E___:
-        return KC_O;
+        return KC_U;
       case ___F___:
-        return KC_T;
+        return KC_N;
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
-        return KC_L;
-      case ___H___:
         return KC_Y;
+      // case ___H___:
+        // return KC_Y;
       case ___I___:
         return MG_ION;
       case ___J___:
@@ -70,7 +69,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___K___:
         return KC_S;
       case ___L___:
-        return KC_N;
+        return KC_K;
       case ___M___:
         return KC_T; // AMT and co in Germann ;)
       case ___O___:
@@ -80,7 +79,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___R___:
         return KC_L;
       case ___S___:
-        return KC_C;
+        return KC_K;
       case ___T___:
         return KC_M; //ment does not work that well with german
       case ___U___:
@@ -95,7 +94,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_RPRN;
       case KC_MINS:
         return KC_GT;
-    case NAV_SPC:
+      case NAV_SPC:
         return MG_THE;
       case KC_ESC:
         return KC_COLON;
@@ -143,10 +142,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     if (!process_tap_hold(keycode, record)) {
         return false;
-    }
-
-    if (!process_adaptive_key(keycode, record)) {
-      return false;
     }
 
     // this overrides the repeat keys.
@@ -456,6 +451,18 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     }
 }
 
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
+  switch (keycode) {
+    case ___S___:
+    case ___T___:
+    case ___I___:
+    case ___A___:
+      return TAPPING_TERM + 30;
+    default:
+      return TAPPING_TERM;
+  }
+}
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t *combo) { 
   return false;
