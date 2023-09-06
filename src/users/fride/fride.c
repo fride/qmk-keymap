@@ -4,7 +4,7 @@
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
-#include "features/achordion.h"
+#include "features/adaptive_keys.h"
 #include "layout.h"
 
 
@@ -145,7 +145,7 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
-  if (!process_achordion(keycode, record)) { return false; }
+  // if (!process_achordion(keycode, record)) { return false; }
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -156,6 +156,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                  NULL);
 
   process_nshot_state(keycode, record);
+
+  if (!process_adaptive_key(keycode, record)) {
+    return false;
+  }
 
   if (!process_custom_shift_keys(keycode, record)) { 
     return false; 
@@ -446,34 +450,34 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
   return false;
 }
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand
-  switch (tap_hold_keycode) {
-    case SYM_SPC:
-    case NAV_REP:
-      return true;
-  }
+// bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+//                      uint16_t other_keycode, keyrecord_t* other_record) {
+//   // Exceptionally consider the following chords as holds, even though they
+//   // are on the same hand
+//   switch (tap_hold_keycode) {
+//     case SYM_SPC:
+//     case NAV_REP:
+//       return true;
+//   }
 
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
-    return true;
-  }
+//   // Also allow same-hand holds when the other key is in the rows below the
+//   // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+//   if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+//     return true;
+//   }
 
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    case KC_X:
-    case NAV_REP:
-    case ___R___:
-    case NAV_SPC:
-    case ___A___: // number layer toggle!
-      return 0;  // Bypass Achordion for these keys.
-  }
+//   // Otherwise, follow the opposite hands rule.
+//   return achordion_opposite_hands(tap_hold_record, other_record);
+// }
+// uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+//   switch (tap_hold_keycode) {
+//     case KC_X:
+//     case NAV_REP:
+//     case ___R___:
+//     case NAV_SPC:
+//     case ___A___: // number layer toggle!
+//       return 0;  // Bypass Achordion for these keys.
+//   }
 
-  return 1000;  // Otherwise use a timeout of 1 second
-}
+//   return 1000;  // Otherwise use a timeout of 1 second
+// }

@@ -1,0 +1,12 @@
+// define adaptive keys here.
+// name, first key, second key, return, keys...
+
+
+//Left hand adaptives
+// (most are single-handed neighbor fingers, bc speed, dexterity limits)
+
+// better a real combo!?
+AK(CW, KC_C, KC_W, false, KC_BSPC, KC_S, KC_C)
+AK(PG, KC_P, KC_G, false, KC_BSPC, KC_S, KC_P)
+
+AK(CF, KC_C, KC_F, false, KC_K)

@@ -6,15 +6,9 @@
 
 COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 
-COMB( CMB_BOOT,         QK_BOOT,        ___X___, _SQUOT_)
-COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, OS_LSFT)
+COMB( CMB_BOOT,         QK_BOOT,        ___V___, KC_MINS)
+COMB( CMB_NUMWORD,       NUMWORD,        NAV_SPC, ___E___)
 
-COMB( CMB_Q,              KC_Q,        NAV_SPC, OS_LSFT)
-
-// COMB(CMB_AE,           A_UML,          HM_N, HM_A)
-// COMB(CMB_UE,           U_UML,          HM_N, KC_U)
-// COMB(CMB_OE,           O_UML,          HM_N, KC_O)
-// COMB(CMB_SZ,           A(KC_S),        HM_N, HM_S)
 
 // see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
 
@@ -29,7 +23,7 @@ COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___R___)
 COMB(CMB_RPRN,    KC_RPRN,    MAGIC, ___N___)
 COMB(CMB_RBRC,    KC_RBRC,    ___U___,___E___)
 
-COMB(CMB_ENT,     KC_ENT,     ___A___, ___E___, ___I___)
+COMB(CMB_ENT,     KC_ENT,     ___N___, ___I___, ___O___)
 COMB(CMB_TAB,     KC_TAB,     ___C___, ___N___, ___T___)
 
 // COMB(CMB_LPRN,    KC_LPRN,    HM_D, HM_N)

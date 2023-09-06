@@ -121,25 +121,25 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH) 
 
 
-#define ___A___ LT(NUM,KC_A)
+#define ___A___ KC_A
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ LT(SYM,KC_D)
+#define ___D___ KC_D
 #define ___E___ KC_E
 #define ___F___ KC_F
-#define ___G___ LGUI_T(KC_G)
-#define ___H___ RGUI_T(KC_H)
-#define ___I___ LT(SYM,KC_I)
-#define ___J___ LALT_T(KC_J)
-#define ___K___ LCTL_T(KC_K)
+#define ___G___ KC_G
+#define ___H___ KC_H
+#define ___I___ KC_I
+#define ___J___ KC_J
+#define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LT(SYM,KC_N)
+#define ___N___ KC_N
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LT(NAV,KC_R)
-#define ___S___ LT(SYM, KC_S)
+#define ___R___ KC_R
+#define ___S___ KC_S
 #define ___T___ KC_T
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -196,19 +196,12 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 */
 // clang-format off
 
-#define ______________HD_VIBRANIU_L1_______________  ___X___,    ___W___, ___M___, ___G___, ___J___
-#define ______________HD_VIBRANIU_R1_______________  KC_SCLN,    __DOT__, KC_EQL,  _SLASH_, _SQUOT_
-#define ______________HD_VIBRANIU_L2_______________  ___S___,    ___C___, ___N___, ___T___, ___B___
-#define ______________HD_VIBRANIU_R2_______________  _COMMA_,    ___A___, ___E___, ___I___, ___H___
-#define ______________HD_VIBRANIU_L3_______________  ___V___,    ___P___, ___L___, ___D___, ___K___
-#define ______________HD_VIBRANIU_R3_______________  KC_MINS,    ___U___, ___O___, ___Y___, ___F___
-
-#define ______________MAGICSTURDY_L1_______________  ___V___,    ___M___, ___L___, ___C___, ___P___
-#define ______________MAGICSTURDY_R1_______________  ___B___,    MAGIC,   ___U___, ___O___, _COMMA_
-#define ______________MAGICSTURDY_L2_______________  ___S___,    ___T___, ___R___, ___D___, ___Y___
-#define ______________MAGICSTURDY_R2_______________  ___F___,    ___N___, ___E___, ___A___, ___I___
-#define ______________MAGICSTURDY_L3_______________  ___X___,    ___K___, ___J___, ___G___, ___W___
-#define ______________MAGICSTURDY_R3_______________  ___Z___,    ___H___, _SQUOT_, _SLASH_, __DOT__
+#define ______________RSTHD_PRIME_L1_______________  ___V___, ___C___, ___W___, ___F___, ___K___
+#define ______________RSTHD_PRIME_R1_______________  ___J___, ___M___, ___U___, ___N___, ___N___
+#define ______________RSTHD_PRIME_L2_______________  ___S___, ___C___, ___N___, ___T___, ___B___
+#define ______________RSTHD_PRIME_R2_______________  _COMMA_, ___A___, ___E___, ___I___, ___H___
+#define ______________RSTHD_PRIME_L3_______________  ___V___, ___P___, ___L___, ___D___, ___K___
+#define ______________RSTHD_PRIME_R3_______________  KC_MINS, ___U___, ___O___, ___Y___, ___F___
 
 
 #define ______________NUMBERLAYER_L1_______________  KC_EXLM, KC_AT,   _______, _______, _______

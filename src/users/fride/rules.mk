@@ -1,10 +1,13 @@
 AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE      = yes
+CAPS_WORD_ENABLE  = no
 MOUSEKEY_ENABLE   = yes
 TAP_DANCE_ENABLE  = no
 
 # Easy definition of combos
 VPATH +=  keyboards/gboards/
+
+VPATH += $(USER_PATH)/defs
 
 APPLY_USERSPACE			= yes
 
@@ -35,5 +38,7 @@ SRC += features/swapper.c
 SRC += features/nshot_mod.c
 SRC += features/custom_shift_keys.c
 SRC += features/tap_hold.c
-SRC += features/achordion.c
+SRC += features/tap_hold.c
+SRC += features/adaptive_keys.c
+# SRC += features/achordion.c
 SRC += fride.c
