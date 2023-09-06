@@ -226,7 +226,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case CANCEL:  
         if (record->event.pressed) {
   //     stop_leading();
-          layer_off(NAV);
+          layer_off(UTIL);
           layer_off(NUM);
           layer_off(SYM);
           //disable_caps_word();
@@ -492,6 +492,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case SYM_REP:
+    case SYM_SPC:
     case NAV_SPC:
       return 0;  // Bypass Achordion for these keys.
   }
@@ -503,6 +504,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
     switch (keycode) {
         case SYM_REP:
+        case SYM_SPC:
         case NAV_SPC:
             return false;
         case KC_A ... KC_Y:
@@ -518,6 +520,7 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
     case SYM_REP:
+    case SYM_SPC:
     case NAV_SPC:
         return false;
 
@@ -534,5 +537,5 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 }
 
 // layer_state_t layer_state_set_user(layer_state_t state) {
-//    return update_tri_layer_state(state, SYMNAV, NUM, NAV);
+//    return update_tri_layer_state(state, NUM, SYM, UTIL);
 // }

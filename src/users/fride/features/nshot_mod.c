@@ -126,7 +126,7 @@ bool is_nshot_cancel_key(uint16_t keycode) {
         case CLEAR:
         case CANCEL:
         case NAV_SPC:
-            if (layer_state_is(NAV)) {
+            if (layer_state_is(UTIL)) {
                 return true;
             } else {
                 return false;

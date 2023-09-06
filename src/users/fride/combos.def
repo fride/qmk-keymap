@@ -9,8 +9,6 @@ COMB( combo_canel,      CANCEL,         ___S___, ___I___)
 COMB(CMB_NUMWORD,       NUMWORD,        OS_LSFT, NAV_SPC)
 COMB( CMB_BOOT,         QK_BOOT,        ___V___, _SQUOT_)
 
-COMB(CMB_TT_NAV,		TT(NAV),		MAGIC,   ___U___, ___O___)
-
 COMB(CMB_Q,               QU,               ___V___, ___M___)
 // COMB(CMB_Z,               KC_Z,             ___L___, ___C___)
 // COMB(CMB_W,               KC_W,             ___V___, ___M___)
@@ -30,10 +28,10 @@ COMB(CMB_ESC,     KC_ESC,     ___N___, ___T___)
 COMB(CMB_COLON,   KC_COLON,   __DOT__, ___J___)
 COMB(CMB_SCOLON,  KC_SCLN,    _COMMA_, ___A___)
 
-// COMB(CMB_LPRN,    KC_LPRN,    ___F___, ___T___)
-// COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___N___)
-// COMB(CMB_RPRN,    KC_RPRN,    ___Y___, ___H___)
-// COMB(CMB_RBRC,    KC_RBRC,    ___O___,___E___)
+COMB(CMB_LPRN,    KC_LPRN,    ___C___, ___D___)
+COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___R___)
+COMB(CMB_RPRN,    KC_RPRN,    MAGIC,   ___N___)
+COMB(CMB_RBRC,    KC_RBRC,    ___U___, ___E___)
 
 COMB(CMB_ENT,     KC_ENT,     ___N___, ___E___, ___A___)
 COMB(CMB_TAB,     KC_TAB,     ___T___, ___R___, ___D___)

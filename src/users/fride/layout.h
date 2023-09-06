@@ -3,13 +3,10 @@
 
 enum layers {
     ALPHA,
-    SYMNAV,
     NUM,
     SYM,
-    ACCENT,
-    MODS,
+    UTIL,
     FUN,
-    NAV
 };
 
 // Tap Dance keycodes
@@ -118,41 +115,39 @@ enum custom_keycodes {
 #define REPEAT QK_REPEAT_KEY
 
 // thumb keys!
-#define NAV_SPC LT(NAV, KC_SPC)
-#define SYM_SPC LT(SYM, KC_SPC)
-#define SYM_REP LT(SYM, QK_REP)
+#define NAV_SPC LT(UTIL, KC_SPC)
+#define SYM_SPC LT(SYM,  KC_SPC)
+#define SYM_REP LT(SYM,  QK_REP)
 
-// #define ESC_SYM LT(SYM, KC_ESC)
-// #define CLN_NUM LT(SYM, KC_COLON)
 
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-#define ___A___ LALT_T(KC_A)
+#define ___A___ LT(FUN,KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ LSFT_T(KC_D)
-#define ___E___ RCTL_T(KC_E)
-#define ___F___ RALT_T(KC_F)
+#define ___D___ KC_D
+#define ___E___ KC_E
+#define ___F___ KC_F
 #define ___G___ KC_G
 #define ___H___ KC_H
-#define ___I___ LT(SYM,KC_I)
+#define ___I___ KC_I
 #define ___J___ KC_J
 #define ___K___ KC_K
-#define ___L___ LGUI_T(KC_L)
+#define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ RSFT_T(KC_N)
+#define ___N___ KC_N
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LCTL_T(KC_R)
-#define ___S___ LT(SYM,KC_S)
-#define ___T___ LALT_T(KC_T)
-#define ___U___ RGUI_T(KC_U)
+#define ___R___ KC_R
+#define ___S___ KC_S
+#define ___T___ LT(NUM,KC_T)
+#define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ RALT_T(KC_Y)
+#define ___Y___ KC_Y
 #define ___Z___ KC_Z
 #define _COMMA_ KC_COMM
 #define __DOT__ KC_DOT
@@ -215,12 +210,30 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
 #define ______________MAGICSTURDY_R3_______________ ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_
 
-#define _______________NUMBERS___L1________________ KC_CIRC, KC_EQL,  KC_MINS, KC_UNDS, KC_PAST
-#define _______________NUMBERS___R1________________ KC_BSLS, KC_HASH, KC_AMPR, KC_PIPE, KC_TILD
-#define _______________NUMBERS___L2________________ SEVEN,   FIVE,    THREE,   ONE,     KC_PLUS
-#define _______________NUMBERS___R2________________ KC_EQL , ZERO,    TWO,     FOUR,    SIX
-#define _______________NUMBERS___L3________________ KC_NO,   KC_LT,   KC_GT,   KC_PERC, KC_NO
-#define _______________NUMBERS___R3________________ KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, __DOT__
+#define _______________NUMBERS___L1________________ SW_APP,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC
+#define _______________NUMBERS___L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
+#define _______________NUMBERS___L3________________ Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED
+
+#define _______________NUMBERS___R1________________ KC_PLUS, SEVEN,   EIGHT,   NINE,    KC_PAST
+#define _______________NUMBERS___R2________________ ZERO,    FOUR,    FIVE,    SIX,     KC_EQL
+#define _______________NUMBERS___R3________________ KC_MINS, ONE,     TWO,     THREE,   KC_SLSH
+
+
+#define ________________SYMBOLS_L1_________________ KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_PIPE
+#define ________________SYMBOLS_L2_________________ KC_GRV,  KC_AT,   KC_LPRN, KC_RPRN, KC_AMPR
+#define ________________SYMBOLS_L3_________________ KC_BSLS, KC_LT,   KC_LCBR, KC_RCBR ,KC_GT
+
+#define ________________SYMBOLS_R1_________________ _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q
+#define ________________SYMBOLS_R2_________________ FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK
+#define ________________SYMBOLS_R3_________________ OS_MEH,  REPEAT,  _______, _______, _______
+
+#define ________________UTILITY_L1________________ SW_APP,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC
+#define ________________UTILITY_L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
+#define ________________UTILITY_L3________________ Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED
+
+#define ________________UTILITY_R1________________ _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q
+#define ________________UTILITY_R2________________ FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK
+#define ________________UTILITY_R3________________ OS_MEH,  REPEAT,  _______, _______, _______
 
 
 // clang-format off
@@ -229,11 +242,7 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
                                             __THUMBS_
-#define _ACCENT \
-	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, A(KC_A), A(KC_O), A(KC_U), _SQUOT_, \
-	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, A(KC_S), ___I___, ___A___, \
-	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
-	                                        __THUMBS_
+
 
 // SYM_REP, 
 // OS_MEH
