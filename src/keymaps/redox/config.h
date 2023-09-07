@@ -80,5 +80,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AUTO_SHIFT_TIMEOUT_PER_KEY
 
 // Enable adaptive roles.
-#define ADAPTIVE_KEYS_ENABLE
+#define ADAPTIVE_KEYS_ENABLE 
 #define ADAPTIVE_TERM (TAPPING_TERM/2) // rolling threshold

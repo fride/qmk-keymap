@@ -6,6 +6,7 @@ enum layers {
     SYMNAV,
     NUM,
     SYM,
+    ACCENT,
     MODS,
     FUN,
     NAV
@@ -86,7 +87,9 @@ enum custom_keycodes {
   ALFRED,
 
   // lates stuff
-  QUOTE_BRACKET
+  QUOTE_BRACKET,
+  KC_PH,
+  KC_TH
 };
 
 // macOS shortcuts
@@ -111,9 +114,6 @@ enum custom_keycodes {
 #define SPACE_L A(G(KC_LEFT))
 #define SPACE_R A(G(KC_RGHT))
 
-#define NAV_R LT(NAV,KC_R)
-#define SYM_SPC LT(SYM,KC_SPC)
-
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
@@ -123,30 +123,30 @@ enum custom_keycodes {
 #define SYM_SPC LT(SYM, KC_SPC)
 #define SYM_REP LT(SYM, QK_REP)
 
-#define ESC_SYM LT(SYM, KC_ESC)
-#define CLN_NUM LT(SYM, KC_COLON)
+// #define ESC_SYM LT(SYM, KC_ESC)
+// #define CLN_NUM LT(SYM, KC_COLON)
 
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
 #define ___A___ RSFT_T(KC_A)
-#define ___B___ KC_B
-#define ___C___ LALT_T(KC_C)
-#define ___D___ RGUI_T(KC_D)
+#define ___B___ LALT_T(KC_B)
+#define ___C___ KC_C
+#define ___D___ KC_D
 #define ___E___ RGUI_T(KC_E)
 #define ___F___ KC_F
-#define ___G___ LGUI_T(KC_G)
+#define ___G___ KC_G
 #define ___H___ RCTL_T(KC_H)
-#define ___I___ RALT_T(KC_I)
+#define ___I___ LALT_T(KC_I)
 #define ___J___ KC_J
-#define ___K___ RALT_T(KC_K)
+#define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
 #define ___N___ LGUI_T(KC_N)
 #define ___O___ KC_O
-#define ___P___ RALT_T(KC_P)
+#define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LT(NAV,KC_R)
+#define ___R___ KC_R
 #define ___S___ LCTL_T(KC_S)
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
@@ -158,10 +158,10 @@ enum custom_keycodes {
 #define _COMMA_ KC_COMM
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
-#define _SQUOT_ KC_QUOT
+#define _SQUOT_ LT(ACCENT,KC_QUOT)
 #define _DQUOT_ QUOTE_BRACKET
 #define _MINUS_ KC_MINS
-#define __HASH_ KC_MINS
+#define __HASH_ KC_HASH
 
 
 #define ONE   LSFT_T(KC_1)
@@ -200,26 +200,27 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
 	                                        __THUMBS_
-#define _APTMAK26 \
-	_XXXXX_, ___W___, ___F___, ___P___, ___B___, ___J___, ___L___, ___U___, ___Y___, _XXXXX_, \
-	___R___, ___S___, ___T___, ___H___, ___K___, ___X___, ___N___, ___A___, ___I___, ___O___, \
-	_XXXXX_, ___C___, ___G___, ___D___, _XXXXX_, _XXXXX_, ___M___, _COMMA_, __DOT__, _XXXXX_, \
-	                                        NAV_SPC, REPEAT,  MAGIC, ___E___
+#define _ACCENT \
+	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, A(KC_A), A(KC_O), A(KC_U), _SQUOT_, \
+	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, A(KC_S), ___I___, ___A___, \
+	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
+	                                        __THUMBS_
 
 
 /*  Base (alpha) Layer  Hands Down Vibranium-vv
-     ╭─────────────────────╮ ╭──────────────────────╮
-     │  X   W   M   G  "[  │ │  #$  .:  ']   J   B  │
- ___ │  S   C   N   T   K  | |  ,;   A   E   I   H  │ ___
-     │  V   P   L   D   /* │ │  -+   U   O   Y   F  │
-     ╰──────╮  ___  R REP  │ │  MGC SPC ___  ╭──────╯
-            ╰──────────────╯ ╰───────────────╯
+    https://github.com/moutis/zmk-Zen/blob/main/config/moutis_combos.dtsi
+     ╭────────────────────-─╮ ╭──────────────────────╮
+     │  X   W   M   G  "[   │ │  #$  .:  ']   J   B  │
+ ___ │  S   C   N   T   K   | |  ,;   A   E   I   H  │ ___
+     │  V   P   L   D   / * │ │  -+   U   O   Y   F  │
+     ╰──────╮  ___  R REP   │ │  MGC SPC ___  ╭──────╯
+            ╰─────────────-─╯ ╰───────────────╯
 */
 #define _VIBRANIUM_VV \
-	___X___, ___W___, ___M___, ___G___, _DQUOT_, __HASH_, __DOT__, _SQUOT_, ___J___, ___B___, \
-	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_, ___A___, ___E___, ___I___, ___H___, \
-	___V___, ___F___, ___L___, ___D___, _SLASH_, _MINUS_, ___U___, ___O___, ___Y___, ___P___, \
-	                                    ___R___, REPEAT,  MAGIC, SYM_SPC
+	___X___, ___W___, ___M___, ___G___, _DQUOT_, __HASH_,   __DOT__, _SQUOT_, ___J___, ___B___, \
+	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_,   ___A___, ___E___, ___I___, ___H___, \
+	___V___, ___P___, ___L___, ___D___, _SLASH_, _MINUS_,   ___U___, ___O___, ___Y___, ___F___, \
+	                                    ___R___, REPEAT,    MAGIC, NAV_SPC
 
 // SYM_REP, 
 // OS_MEH
