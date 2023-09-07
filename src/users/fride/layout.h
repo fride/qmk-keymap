@@ -130,8 +130,8 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH) 
 
 #define ___A___ RSFT_T(KC_A)
-#define ___B___ LALT_T(KC_B)
-#define ___C___ KC_C
+#define ___B___ KC_B
+#define ___C___ LALT_T(KC_C)
 #define ___D___ KC_D
 #define ___E___ RGUI_T(KC_E)
 #define ___F___ KC_F
