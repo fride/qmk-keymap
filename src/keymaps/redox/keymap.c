@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
        KC_LSFT ,______________MAGICSTURDY_L3_______________ ,KC_NO   ,  KC_NO ,        KC_HOME ,KC_NO   ,______________MAGICSTURDY_R3_______________ ,KC_RSFT ,
     //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-       KC_NO ,KC_UP   ,KC_UP   ,KC_DOWN ,        NAV_SPC,    NUMWORD , KC_DEL ,        KC_BSPC , SYM_REP,    SYM_REP ,     KC_LEFT ,KC_RIGHT ,ARROW_R,KC_NO
+       KC_NO ,KC_UP   ,KC_UP   ,KC_DOWN ,        NAV_SPC,    NUMWORD , KC_DEL ,        KC_BSPC , SYM_REP,    OS_LSFT ,     KC_LEFT ,KC_RIGHT ,ARROW_R,KC_NO
     //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
     ),
    [NUM] =  MY_REDOX(
