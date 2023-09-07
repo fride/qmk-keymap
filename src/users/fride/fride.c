@@ -240,19 +240,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case A_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_A));
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_A) SS_UP(X_LALT));
           return false;
         }
       case O_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_O));
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_O) SS_UP(X_LALT) ) ;
           return false;
         }
       case U_UML:
         if (record->event.pressed) {
           // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_U));
+          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) );
           return false;
         }
       case SZ:
