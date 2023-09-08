@@ -1,3 +1,5 @@
+
+
 build: clean
     DOCKER_BUILDKIT=1 docker buildx build -o type=local,dest=result . 
 redox:
@@ -21,8 +23,7 @@ flash:
     cp result/result/totem_fride.uf2 /Volumes/RPI-RP2/
 
 redox-flash: redox
-    avrdude -p atmega32u4 -c avr109 -U flash:w:/Users/jgf/code/private/totem-qmk/result/result/redox_rev1_base_fride.hex:i -P /dev/cu.cu.usbmodem5301 -C '/Applications/QMK Toolbox.app/Contents/Resources/avrdude.conf'
-
+    ./flash_redox.sh    
 
 clean:
     rm -rf result/result/*
