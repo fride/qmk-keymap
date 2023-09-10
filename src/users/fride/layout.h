@@ -3,6 +3,7 @@
 
 enum layers {
     ALPHA,
+    ALPHA2,
     NUM,
     SYM,
     UTIL,
@@ -140,7 +141,7 @@ enum custom_keycodes {
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ KC_R
+#define ___R___ LT(NUM,KC_R)
 #define ___S___ KC_S
 #define ___T___ LT(NUM,KC_T)
 #define ___U___ KC_U
@@ -189,26 +190,20 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define __THUMBS_ OS_LSFT, REPEAT,  MAGIC, NAV_SPC
 
 
-/*
-    V M L C P "        | B ^ U O , \
-    S T R D Y Q        $ F N E A I -
-    X K J G W            Z H ' ? .
-
-*/
-#define _MAGIC_STURDY \
-	___V___, ___M___, ___L___, ___C___, ___P___,    ___B___, MAGIC,   ___U___, ___O___, _SQUOT_, \
-	___S___, ___T___, ___R___, ___D___, ___Y___,    ___F___, ___N___, ___E___, ___A___, ___I___, \
-	___X___, ___K___, ___J___, ___G___, ___W___,    ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
-                                NAV_SPC, KC_BSPC,   REPEAT,  OS_LSFT
-                                
-                                //OS_LSFT, REPEAT,    REPEAT, NAV_SPC
-
 #define ______________MAGICSTURDY_L1_______________ ___V___, ___M___, ___L___, ___C___, ___P___
 #define ______________MAGICSTURDY_R1_______________ ___B___, MAGIC,   ___U___, ___O___, _SQUOT_
 #define ______________MAGICSTURDY_L2_______________ ___S___, ___T___, ___R___, ___D___, ___Y___
 #define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
 #define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
 #define ______________MAGICSTURDY_R3_______________ ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_
+
+#define _________________BIRD__L1__________________ ___X___, ___C___, ___L___, ___F___, KC_LPRN
+#define _________________BIRD__R1__________________ KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_
+#define _________________BIRD__L2__________________ MAGIC,   ___S___, ___N___, ___T___, ___P___
+#define _________________BIRD__R2__________________ ___K___, ___H___, ___E___, ___I___, ___A___
+#define _________________BIRD__L3__________________ ___Q___, ___W___, ___M___, ___G___, ___B___
+#define _________________BIRD__R3__________________ ___J___, ___D___, _COMMA_, __DOT__, _SLASH_
+
 
 #define _______________NUMBERS___L1________________ SW_APP,  KC_HASH, KC_DLR,  KC_PERC, KC_CIRC
 #define _______________NUMBERS___L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
@@ -243,6 +238,11 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
                                             __THUMBS_
 
+#define _BIRD \
+	___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_, \
+	___R___, ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
+	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
+	                                         __THUMBS_
 
 // SYM_REP, 
 // OS_MEH
