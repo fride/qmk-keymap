@@ -1,39 +1,45 @@
 /* Layout key reference
-	___X___, ___W___, ___M___, ___G___, _DQUOT_, __HASH_,   __DOT__, _SQUOT_, ___J___, ___B___, \
-	___S___, ___C___, ___N___, ___T___, ___K___, _COMMA_,   ___A___, ___E___, ___I___, ___H___, \
-	___V___, ___P___, ___L___, ___D___, _SLASH_, _MINUS_,   ___U___, ___O___, ___Y___, ___F___, \
-	                                    ___R___, REPEAT,    MAGIC, NAV_SPC
-
+		___X___, ___C___, ___L___, ___F___, KC_LPRN, KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_, \
+    	MAGIC,   ___S___, ___N___, ___T___, ___P___, ___K___, ___H___, ___E___, ___I___, ___A___, \
+    	___Q___, ___W___, ___M___, ___G___, ___B___, ___J___, ___D___, _COMMA_, __DOT__, _SLASH_, \
+    	                                         __THUMBS_
+                                ___R___, REPEAT,    REPEAT, NAV_SPC
 */
 
-COMB( combo_canel,      CANCEL,         ___S___, ___H___)
-COMB(CMB_NUMWORD,       NUMWORD,        ___R___, SYM_SPC)
-COMB( CMB_BOOT,         QK_BOOT,         ___X___, ___B___)
+COMB( combo_canel,      CANCEL,         MAGIC, ___A___)
+COMB(CMB_NUMWORD,       NUMWORD,        NAV_SPC, ___R___)
+COMB( CMB_BOOT,         QK_BOOT,        ___X___, _SQUOT_)
 
-COMB(CMB_Q,               QU,               ___X___, ___W___)
+COMB(CMB_Q,               QU,               ___X___, ___C___)
+COMB(CMB_V,               KC_V,             ___C___, ___L___)
 COMB(CMB_Z,               KC_Z,             ___W___, ___M___)
-// COMB(CMB_V,               KC_V,             ___C___, ___L___)
-// COMB(CMB_SCH,             KC_SCH,           ___C___,___L___, ___F___)
-
-
-//COMB(CMB_PH,             KC_PH,           ___Y___, ___P___)
-//COMB(CMB_TH,             KC_TH,           ___N___, ___T___)
+COMB(CMB_UE,              RALT(KC_U),       ___Y___, ___U___)
+COMB(CMB_OE,              RALT(KC_O),       ___Y___, ___O___)
+COMB(CMB_AE,              RALT(KC_A),       ___H___, ___A___)
 
 COMB(CMB_MINS,            KC_MINS,          ___D___, _COMMA_)
 COMB(CMB_SLSH,            KC_SLSH,          _COMMA_, __DOT__)
 COMB(CMB_EQL,             KC_EQL,           ___D___, __DOT__)
+COMB(CMB_BSL,             KC_BSLS,          ___D___, _COMMA_,__DOT__)
 
+COMB(CMB_BSCPS,         KC_BSPC,            ___Y___, KC_RPRN)
+COMB(CMB_DEL,           KC_DEL,             ___F___, KC_LPRN)
+COMB(CMB_LPRN,          KC_LPRN,            ___T___, ___P___)
+COMB(CMB_RPRN,          KC_RPRN,            ___K___, ___H___)
+
+COMB(CMB_LCTL,    OS_LCTL,    ___E___, ___I___)
+COMB(CMB_RCTL,    OS_LCTL,    ___S___, ___N___)
 
 // see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
 
 COMB(CMB_ESC,     KC_ESC,     ___N___, ___T___)
-COMB(CMB_COLON,   KC_COLON,   __DOT__, ___J___)
-COMB(CMB_SCOLON,  KC_SCLN,    _COMMA_, ___A___)
+COMB(CMB_COLON,   KC_COLON,   ___H___, ___E___)
+COMB(CMB_SCOLON,  KC_SCLN,    ___H___, _COMMA_)
 
-// COMB(CMB_LPRN,    KC_LPRN,    ___F___, ___T___)
-// COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___N___)
-// COMB(CMB_RPRN,    KC_RPRN,    ___Y___, ___H___)
-// COMB(CMB_RBRC,    KC_RBRC,    ___O___,___E___)
+//COMB(CMB_LPRN,    KC_LPRN,    ___F___, ___T___)
+//COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___N___)
+//COMB(CMB_RPRN,    KC_RPRN,    ___Y___, ___H___)
+//COMB(CMB_RBRC,    KC_RBRC,    ___O___, ___E___)
 
 COMB(CMB_ENT,     KC_ENT,     ___H___, ___E___, ___I___)
 COMB(CMB_TAB,     KC_TAB,     ___S___, ___N___, ___T___)

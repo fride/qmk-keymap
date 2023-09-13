@@ -2,7 +2,6 @@
 // name, first key, second key, return, keys...
 
 
-// this or the magic key!?
-AK(GM, ___G___, ___M___, false, KC_L)
-AK(TN, ___T___, ___N___, false, KC_H)
-AK(WM, ___W___, ___M___, false, KC_H)
+AK(SF, ___S___, ___F___, false, KC_C)
+AK(SG, ___S___, ___G___, false, KC_W)
+AK(MG, ___M___, ___G___, false, KC_L)
