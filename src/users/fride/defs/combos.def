@@ -8,33 +8,23 @@
 
 COMB( combo_canel,      CANCEL,         MAGIC, ___A___)
 COMB(CMB_NUMWORD,       NUMWORD,        NAV_SPC, ___R___)
-COMB( CMB_BOOT,         QK_BOOT,        ___X___, _SQUOT_)
+COMB( CMB_BOOT,         QK_BOOT,        ___X___, __DOT__)
 
-COMB(CMB_Q,               QU,               ___X___, ___C___)
+COMB(CMB_Q,               KC_Q,             ___X___, ___C___)
 COMB(CMB_V,               KC_V,             ___C___, ___L___)
 COMB(CMB_Z,               KC_Z,             ___W___, ___M___)
-COMB(CMB_UE,              RALT(KC_U),       ___Y___, ___U___)
-COMB(CMB_OE,              RALT(KC_O),       ___Y___, ___O___)
-COMB(CMB_AE,              RALT(KC_A),       ___H___, ___A___)
 
-COMB(CMB_MINS,            KC_MINS,          ___D___, _COMMA_)
-COMB(CMB_SLSH,            KC_SLSH,          _COMMA_, __DOT__)
-COMB(CMB_EQL,             KC_EQL,           ___D___, __DOT__)
-COMB(CMB_BSL,             KC_BSLS,          ___D___, _COMMA_,__DOT__)
 
-COMB(CMB_BSCPS,         KC_BSPC,            ___Y___, KC_RPRN)
-COMB(CMB_DEL,           KC_DEL,             ___F___, KC_LPRN)
-COMB(CMB_LPRN,          KC_LPRN,            ___T___, ___P___)
-COMB(CMB_RPRN,          KC_RPRN,            ___K___, ___H___)
+// one shot mods.
 
 COMB(CMB_LCTL,    OS_LCTL,    ___E___, ___I___)
 COMB(CMB_RCTL,    OS_LCTL,    ___S___, ___N___)
 
 // see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
 
-COMB(CMB_ESC,     KC_ESC,     ___N___, ___T___)
-COMB(CMB_COLON,   KC_COLON,   ___H___, ___E___)
-COMB(CMB_SCOLON,  KC_SCLN,    ___H___, _COMMA_)
+COMB(CMB_ESC,     ESC_SYM,     ___N___, ___T___)
+COMB(CMB_COLON,   COLON_SYM,   ___H___, ___E___)
+COMB(CMB_SCOLON,  KC_SCLN,     ___H___, KC_LPRN)
 
 //COMB(CMB_LPRN,    KC_LPRN,    ___F___, ___T___)
 //COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___N___)
@@ -58,9 +48,7 @@ COMB(CMB_0,     KC_0,     SYM_REP, ___N___)
 
 
 
-// one shot mods.
-// COMB(CMB_LSFT,    OS_LSFT,    ___E___, ___I___)
-// COMB(CMB_RSFT,    OS_LSFT,    ___S___, ___N___)
+
 
 // COMB(CMB_LCTL,    OS_LCTL,    HM_E, HM_A)
 // COMB(CMB_RCTL,    OS_LCTL,    HM_T, HM_R)

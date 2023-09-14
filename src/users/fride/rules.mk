@@ -1,4 +1,4 @@
-AUTO_SHIFT_ENABLE = no
+AUTO_SHIFT_ENABLE = yes
 COMBO_ENABLE      = yes
 MOUSEKEY_ENABLE   = yes
 TAP_DANCE_ENABLE  = no
@@ -30,13 +30,13 @@ GRAVE_ESC_ENABLE = no
 
 REPEAT_KEY_ENABLE = yes
 
-
 SRC += features/layermodes.c
 SRC += features/casemodes.c
 SRC += features/swapper.c
 SRC += features/nshot_mod.c
-SRC += features/custom_shift_keys.c
 SRC += features/tap_hold.c
 SRC += features/achordion.c
 SRC += features/adaptive_keys.c
 SRC += fride.c
+SRC += auto_shift.c
+SRC += repeats.c

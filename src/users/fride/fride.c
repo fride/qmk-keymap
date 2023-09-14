@@ -1,28 +1,19 @@
 #include QMK_KEYBOARD_H
-#include "features/custom_shift_keys.h"
 #include "features/layermodes.h"
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
+#ifdef ACHORDION
 #include "features/achordion.h"
+#endif
 #include "features/process_records.h"
 #include "features/adaptive_keys.h"
 #include "layout.h"
 
 
 #define IS_SHIFTED(mods) (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
-
-const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, KC_COLON}, 
-    {KC_COMM, KC_SCLN},
-    {KC_MINS, KC_PLUS},
-    {KC_QUOTE, KC_RBRC},
-    {KC_SLASH, KC_PAST},
-    {QUOTE_BRACKET, KC_LEFT_BRACKET}
-};
-
-uint8_t NUM_CUSTOM_SHIFT_KEYS =
-    sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
+#define UMLAUT(KC) tap_code16(A(KC))
+#define UPPER_UMLAUT(KC) tap_code16( S(A(KC)) )
 
 // ┌─────────────────────────────────────────────────┐
 // │ s W A P P E R                                   │
@@ -42,86 +33,10 @@ bool wap_app_cancel(uint16_t keycode) {
   return true;
 }
 
-uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
-  if ((mods & ~MOD_MASK_SHIFT) == 0) {
-    switch (keycode) {
-      case ___A___:
-        return KC_O;
-      case ___B___:
-        return KC_N;  // TODO BEFORE
-      case ___C___: // C
-        return KC_Y;
-      case ___D___:
-        return KC_Y;
-      case ___E___:
-        return KC_U;
-      case ___F___:
-        return KC_T;
-      case ___N___:
-        return KC_F;  // Fuenf!
-      case ___G___:
-        return KC_Y;
-      // case ___H___:
-        // return KC_Y;
-      case ___I___:
-        return MG_ION;
-      case ___J___:
-        return MG_UST;
-      case ___K___:
-        return KC_S;
-      case ___L___:
-        return KC_M; // N is wose!
-      case ___M___:
-        return KC_T; // AMT and co in Germann ;)
-      case ___O___:
-        return KC_E;
-      case ___P___:
-        return KC_F;
-      case ___R___:
-        return KC_L;
-      case ___S___:
-        return KC_K;
-      case ___T___:
-        return KC_M; //ment does not work that well with german
-      case ___U___:
-        return KC_I;
-      case ___V___:
-        return MG_VER;
-      case ___W___:
-        return KC_S;
-      case ___Y___:
-        return KC_P;
-      case KC_EQL:
-        return KC_GT;
-      case KC_LPRN:
-        return KC_RPRN;
-      case KC_MINS:
-        return KC_GT;
-      case NAV_SPC:
-        return MG_THE;
-      case KC_ESC:
-        return KC_COLON;
-      case KC_COMM:
-      case KC_DOT:
-        return M_SENTENCE; // ODO does not work!
-      case KC_1 ... KC_0:
-        return KC_DOT;
-      default:
-        return KC_N;
-    }
-  } else if ((mods & MOD_MASK_CTRL)) {
-    switch (keycode) {
-      case KC_A:  // Ctrl+A -> Ctrl+K
-        return C(KC_K);
-      case KC_C:  // Ctrl+C -> Ctrl+C
-        return C(KC_C);
-    }
-  }
-  return KC_TRNS;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {  
-  if (!process_achordion(keycode, record)) { return false; }
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+#ifdef ACHORDION
+   if (!process_achordion(keycode, record)) { return false; }
+#endif
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -133,9 +48,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
   process_nshot_state(keycode, record);
 
-  if (!process_custom_shift_keys(keycode, record)) { 
-    return false; 
-  }
   const uint8_t mods = get_mods();
   const bool shifted = (mods | get_weak_mods()
 #ifndef NO_ACTION_ONESHOT
@@ -248,22 +160,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       case SYMWORD:
         process_sym_word_activation(record);
         return false;
-      // case CLN_NUM: {
-      //   if (record->event.pressed && record->tap.count > 0) {
-      //     tap_code16(KC_COLON);
-      //     return false;
-      //   } 
-      //   break;        
-      // }    
-      
-      // " normal, [ shifted.
-      case QUOTE_BRACKET: {
-        if (record->event.pressed) {
-          tap_code16(KC_DQUO);
-          return false;
-        } 
-        break;        
-      }    
+       case COLON_SYM: {
+         if (record->event.pressed && record->tap.count > 0) {
+           tap_code16(KC_COLON);
+           return false;
+         }
+         break;
+       }
+
       case KC_PH: {
         if (record->event.pressed) {
           SEND_STRING("ph");
@@ -279,37 +183,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         break;        
       }    
 
-      // case ESC_SYM: {
-      //   if (record->event.pressed && record->tap.count > 0) {
-      //     tap_code16(KC_ESC);
-      //     return false;
-      //   } 
-      //   break;        
-      // }    
-      case KC_SCH:
-        if (record->event.pressed) {
-          SEND_STRING("sch");
-          return false;
-        }
-        break;
-      case A_UML:
-        if (record->event.pressed) {
-          // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_A));
-          return false;
-        }
-      case O_UML:
-        if (record->event.pressed) {
-          // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_O));
-          return false;
-        }
-      case U_UML:
-        if (record->event.pressed) {
-          // TODO SHIFT!
-          SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_U) SS_UP(X_LALT) SS_TAP(X_U));
-          return false;
-        }
+       case ESC_SYM: {
+         if (record->event.pressed && record->tap.count > 0) {
+           tap_code16(KC_ESC);
+           return false;
+         }
+         break;
+       }
       case SZ:
         if (record->event.pressed) {
           SEND_STRING( SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
@@ -373,7 +253,9 @@ bool tap_hold(uint16_t keycode) {
       case KC_UP:
       case KC_DOWN:
       case KC_RIGHT:
-      case QU:
+      case A_UML:
+      case O_UML:
+      case U_UML:
       case KC_TH:
       case CPYPASTE:
         return true;
@@ -394,8 +276,17 @@ void tap_hold_send_tap(uint16_t keycode) {
       case CPYPASTE:
         tap_code16(G(KC_C));
         break;
+      case A_UML:
+        UMLAUT(KC_A);
+        break;
+      case O_UML:
+        UMLAUT(KC_O);
+        break;
+      case U_UML:
+        UMLAUT(KC_U);
+        break;
       default:
-            tap_code16(keycode);
+        tap_code16(keycode);
     }
 }
 void tap_hold_send_hold(uint16_t keycode) {
@@ -403,6 +294,15 @@ void tap_hold_send_hold(uint16_t keycode) {
       case QU:
         tap_code16(KC_Q);
         break;
+       case A_UML:
+         UPPER_UMLAUT(KC_A);
+         break;
+       case O_UML:
+         UPPER_UMLAUT(KC_O);
+         break;
+       case U_UML:
+         UPPER_UMLAUT(KC_U);
+         break;
       case KC_TH:
         // TODO handle Shift!
         SEND_STRING("tion");
@@ -475,6 +375,8 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
   return false;
 }
 
+
+#ifdef ACHORDION
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                      uint16_t other_keycode, keyrecord_t* other_record) {
   // Exceptionally consider the following chords as holds, even though they
@@ -507,39 +409,4 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
   return 1000;  // Otherwise use a timeout of 1 second
 }
-
-// reeat
-bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
-    switch (keycode) {
-        case SYM_REP:
-        case SYM_SPC:
-        case NAV_SPC:
-            return false;
-        case KC_A ... KC_Y:
-              if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
-                *remembered_mods &= ~MOD_MASK_SHIFT;
-              }
-          break;
-    }
-    return true;
-}
-
-bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
-                                  uint8_t *remembered_mods) {
-  switch (keycode) {
-    case SYM_REP:
-    case SYM_SPC:
-    case NAV_SPC:
-        return false;
-
-    // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
-    // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.
-    case KC_A ... KC_Y:
-      if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
-        *remembered_mods &= ~MOD_MASK_SHIFT;
-      }
-      break;
-  }
-
-  return true;
-}
+#endif

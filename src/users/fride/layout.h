@@ -112,8 +112,10 @@ enum custom_keycodes {
 #define SPACE_R A(G(KC_RGHT))
 
 // special keys
-#define MAGIC QK_ALT_REPEAT_KEY
-#define REPEAT QK_REPEAT_KEY
+#define MAGIC       QK_ALT_REPEAT_KEY
+#define REPEAT      QK_REPEAT_KEY
+#define ESC_SYM     LT(SYM,KC_ESC)
+#define COLON_SYM   LT(SYM,KC_COLON)
 
 // thumb keys!
 #define NAV_SPC LT(UTIL, KC_SPC)
@@ -124,7 +126,7 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH) 
 
-#define ___A___ LT(FUN,KC_A)
+#define ___A___ KC_A
 #define ___B___ KC_B
 #define ___C___ KC_C
 #define ___D___ KC_D
@@ -141,9 +143,9 @@ enum custom_keycodes {
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LT(NUM,KC_R)
+#define ___R___ KC_R
 #define ___S___ KC_S
-#define ___T___ LT(NUM,KC_T)
+#define ___T___ KC_T
 #define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
@@ -189,12 +191,22 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 
 #define __THUMBS_ OS_LSFT, REPEAT,  MAGIC, NAV_SPC
 
-#define _________________BIRD__L1__________________ ___X___, ___C___, ___L___, ___F___, KC_LPRN
-#define _________________BIRD__R1__________________ KC_RPRN, ___Y___, ___O___, ___U___, _SQUOT_
+#define _________________BIRD__L1__________________ ___X___, ___C___, ___L___, ___F___, _SLASH_
 #define _________________BIRD__L2__________________ MAGIC,   ___S___, ___N___, ___T___, ___P___
+#define _________________BIRD__L3__________________ _COMMA_, ___W___, ___M___, ___G___, ___B___
+#define _________________BIRD__R1__________________ KC_BSLS, ___Y___, ___O___, ___U___, __DOT__
 #define _________________BIRD__R2__________________ ___K___, ___H___, ___E___, ___I___, ___A___
-#define _________________BIRD__L3__________________ ___Q___, ___W___, ___M___, ___G___, ___B___
-#define _________________BIRD__R3__________________ ___J___, ___D___, _COMMA_, __DOT__, _SLASH_
+#define _________________BIRD__R3__________________ ___J___, ___D___, KC_LPRN, KC_RPRN, KC_UNDS
+
+
+#define _________________GERM__L1__________________ _______, _______, _______, _______, SZ
+#define _________________GERM__L2__________________ _______, _______, _______, _______, _______
+#define _________________GERM__L3__________________ _______, _______, _______, _______, _______
+#define _________________GERM__R1__________________ _______, _______, _______, _______, _______
+#define _________________GERM__R2__________________ _______, _______, _______, _______, _______
+#define _________________GERM__R3__________________ _______, _______, O_UML, A_UML, U_UML
+
+
 
 
 #define _______________SYMNUMS___L1________________ KC_GRV,  KC_EQL,  KC_MINS, KC_UNDS, KC_PAST
