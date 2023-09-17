@@ -265,10 +265,6 @@ bool tap_hold(uint16_t keycode) {
 
 void tap_hold_send_tap(uint16_t keycode) {
     switch (keycode) {
-      case QU:
-        // TODO handle Shift!
-        SEND_STRING("qu");
-        break;
       case KC_TH:
         // TODO handle Shift!
         SEND_STRING("th");
@@ -384,7 +380,10 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case NAV_SPC:
     case SYM_SPC:
-    case ___R___:
+    case ESC_SYM:
+    case COLON_SYM:
+    case ___R___: // numbers
+    case ___A___: // numbers
       return true;
   }
 
@@ -403,7 +402,10 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     case SYM_REP:
     case SYM_SPC:
     case NAV_SPC:
-    case ___R___:
+    case ___R___: // numbers ;)
+    case ___A___: // numbers ;)
+    case ESC_SYM:
+    case COLON_SYM:
       return 0;  // Bypass Achordion for these keys.
   }
 

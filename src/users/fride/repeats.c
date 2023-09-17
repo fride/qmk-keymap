@@ -18,7 +18,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
-        return KC_Y;
+        return KC_W;
       // case ___H___:
         // return KC_Y;
       case ___I___:
@@ -28,13 +28,13 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___K___:
         return KC_S;
       case ___L___:
-        return KC_M; // N is wose!
+        return KC_K; // N is wose!
       case ___M___:
         return KC_T; // AMT and co in Germann ;)
       case ___O___:
-        return KC_E;
+        return KC_A;
       case ___P___:
-        return KC_F;
+        return KC_Y;
       case ___R___:
         return KC_L;
       case ___S___:
@@ -42,7 +42,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___T___:
         return KC_M; //ment does not work that well with german
       case ___U___:
-        return KC_I;
+        return KC_E;
       case ___V___:
         return MG_VER;
       case ___W___:

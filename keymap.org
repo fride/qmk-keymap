@@ -1,0 +1,48 @@
+#+title: keymap
+#+author: jnfrd
+#+startup: content
+
+Maybe I will do this later in Emacs. Right now maybe better not.
+
+Why in an org file?
+ - I like org
+ - I can use numbers for the combos instead of keycodes.
+
+
+   
+
+* The keymap
+** The layout
+#+name: keycount
+| 40 |
+
+#+name: special_keys
+| ___R___ | LT(NUM,KC_R) |
+
+#+name: layers
+| _base  |
+| _lower |
+| _raise |
+| _adj   |
+
+*** Base layer
+#+name: base_layer
+|       | KC_W  | KC_P  | KC_G       | KC_D   | KC_Z       |   | &kp SEMI  | &kp DOT   | &kp FSLH   | &kp SQT | xxx   | &kp RALT  |
+| &kp Z | KC_C  | KC_N  | KC_S       | KC_T   | KC_K       |   | &kp COMMA | &kp A     | &kp E      | &kp I   | &kp O | &kp EQUAL |
+|       | KC_Y  | KC_B  | KC_F       | KC_M   | KC_V       |   | &kp MINUS | &kp H     | &kp U      | &kp Y   | &kp K |           |
+|       |       |       | &mo _lower | &kp T  | &kp RETURN |   | &kp TAB   | &kp SPACE | &mo _raise |         |       |           |
+
+
+
+#+name: generate-layer
+#+begin_src elisp :var input=test-keycode count=keycount :noweb yes :results value drawer
+<<keycode-parsing>>
+
+(setq input (remove "" (flatten-tree input))) ; flat is justice
+
+(let ((ln (length input))
+      (x (caar count)))
+  (unless (eq ln x) (error "invalid layout size, required %d, found %d" x ln)))
+
+(concat "<" (string-join (mapcar #'parse-key input) " ") ">")
+#+end_src

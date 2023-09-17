@@ -6,13 +6,15 @@
                                 ___R___, REPEAT,    REPEAT, NAV_SPC
 */
 
-COMB( combo_canel,      CANCEL,         MAGIC, ___A___)
-COMB(CMB_NUMWORD,       NUMWORD,        NAV_SPC, ___R___)
+COMB( combo_canel,      CANCEL,         ___E___, ___A___)
+COMB(CMB_NUMWORD,       TG(NUM),        ___Y___, ___O___, ___U___)
 COMB( CMB_BOOT,         QK_BOOT,        ___X___, __DOT__)
 
 COMB(CMB_Q,               KC_Q,             ___X___, ___C___)
 COMB(CMB_V,               KC_V,             ___C___, ___L___)
 COMB(CMB_Z,               KC_Z,             ___W___, ___M___)
+COMB(CMB_EX,              KC_EXLM,          ___D___, KC_LPRN)
+COMB(CMB_QUW,             KC_QUES,          KC_LPRN, KC_RPRN)
 
 
 // one shot mods.
@@ -26,10 +28,10 @@ COMB(CMB_ESC,     ESC_SYM,     ___N___, ___T___)
 COMB(CMB_COLON,   COLON_SYM,   ___H___, ___E___)
 COMB(CMB_SCOLON,  KC_SCLN,     ___H___, KC_LPRN)
 
-//COMB(CMB_LPRN,    KC_LPRN,    ___F___, ___T___)
-//COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___N___)
-//COMB(CMB_RPRN,    KC_RPRN,    ___Y___, ___H___)
-//COMB(CMB_RBRC,    KC_RBRC,    ___O___, ___E___)
+COMB(CMB_LPRN,    KC_LPRN,    ___F___, ___T___)
+COMB(CMB_LBRC,    KC_LBRC,    ___L___, ___N___)
+COMB(CMB_RPRN,    KC_RPRN,    ___Y___, ___H___)
+COMB(CMB_RBRC,    KC_RBRC,    ___O___, ___E___)
 
 COMB(CMB_ENT,     KC_ENT,     ___H___, ___E___, ___I___)
 COMB(CMB_TAB,     KC_TAB,     ___S___, ___N___, ___T___)

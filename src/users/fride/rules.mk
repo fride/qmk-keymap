@@ -1,4 +1,4 @@
-AUTO_SHIFT_ENABLE = yes
+AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE      = yes
 MOUSEKEY_ENABLE   = yes
 TAP_DANCE_ENABLE  = no
@@ -38,5 +38,5 @@ SRC += features/tap_hold.c
 SRC += features/achordion.c
 SRC += features/adaptive_keys.c
 SRC += fride.c
-SRC += auto_shift.c
+# SRC += auto_shift.c
 SRC += repeats.c

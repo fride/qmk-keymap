@@ -82,3 +82,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Enable adaptive roles.
 #define ADAPTIVE_KEYS_ENABLE
 #define ADAPTIVE_TERM (TAPPING_TERM/2) // rolling threshold
+
+#define ACHORDION
