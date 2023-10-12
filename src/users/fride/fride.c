@@ -3,9 +3,8 @@
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
-#ifdef ACHORDION
 #include "features/achordion.h"
-#endif
+#include "features/sentence_case.h"
 #include "features/process_records.h"
 #include "features/adaptive_keys.h"
 #include "layout.h"
@@ -34,9 +33,8 @@ bool wap_app_cancel(uint16_t keycode) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-#ifdef ACHORDION
    if (!process_achordion(keycode, record)) { return false; }
-#endif
+   if (!process_sentence_case(keycode, record)) { return false; }
   process_num_word(keycode, record);
   sym_mode_process(keycode, record);
 
@@ -343,7 +341,9 @@ void tap_hold_send_hold(uint16_t keycode) {
 }
 
 void matrix_scan_user(void) {
+    accordion_task();
     tap_hold_matrix_scan();
+    sentence_case_task();
 }
 
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {

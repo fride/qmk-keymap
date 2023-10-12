@@ -37,6 +37,6 @@ SRC += features/nshot_mod.c
 SRC += features/tap_hold.c
 SRC += features/achordion.c
 SRC += features/adaptive_keys.c
+SRC += features/sentence_case.c
 SRC += fride.c
-# SRC += auto_shift.c
 SRC += repeats.c

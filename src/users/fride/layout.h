@@ -251,3 +251,5 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 
 
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 
+
+#define ACHORDION
