@@ -21,5 +21,5 @@ COMB(CMB_ESC,     ESC_SYM,     ___R___, ___D___)
 COMB(CMB_COLON,   COLON_SYM,   ___H___, ___A___)
 COMB(CMB_SCOLON,  KC_SCLN,     ___H___, _COMMA_)
 
-COMB(CMB_ENT,     KC_ENT,     ___H___, ___E___, ___A___)
+COMB(CMB_ENT,     KC_ENT,     ___N___, ___E___, ___A___)
 COMB(CMB_TAB,     KC_TAB,     ___T___, ___R___, ___D___)
