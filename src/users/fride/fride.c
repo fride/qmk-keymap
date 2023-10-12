@@ -382,8 +382,9 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     case SYM_SPC:
     case ESC_SYM:
     case COLON_SYM:
-    case ___R___: // numbers
-    case ___A___: // numbers
+    case ___R___:
+    case ___Y___:
+    case ___A___:
       return true;
   }
 
@@ -404,6 +405,7 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     case NAV_SPC:
     case ___R___: // numbers ;)
     case ___A___: // numbers ;)
+    case ___Y___:
     case ESC_SYM:
     case COLON_SYM:
       return 0;  // Bypass Achordion for these keys.

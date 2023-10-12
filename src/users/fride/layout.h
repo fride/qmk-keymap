@@ -189,26 +189,6 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 
 #define __THUMBS_ ___R___, MAGIC, REPEAT, MAGIC, OS_LSFT, NAV_SPC
 
-#define _________________BIRD__L1__________________ ___X___, ___C___, ___L___, ___F___, _SLASH_
-#define _________________BIRD__L2__________________ ___Z___,   ___S___, ___N___, ___T___, ___P___
-#define _________________BIRD__L3__________________ _COMMA_, ___W___, ___M___, ___G___, ___B___
-
-#define _________________BIRD__R1__________________ _SQUOT_, ___Y___, ___O___, ___U___, __DOT__
-#define _________________BIRD__R2__________________ ___K___, ___H___, ___E___, ___I___, ___A___
-#define _________________BIRD__R3__________________ ___J___, ___D___, KC_LPRN, KC_RPRN, KC_UNDS
-
-#define BIRD _________________BIRD__L1__________________, _________________BIRD__R1__________________,\
-             _________________BIRD__L2__________________, _________________BIRD__R2__________________,\
-             _________________BIRD__L3__________________, _________________BIRD__R3__________________,\
-                                                      __THUMBS_
-
-#define _________________GERM__L1__________________ _______, _______, _______, _______, SZ
-#define _________________GERM__L2__________________ _______, _______, _______, _______, _______
-#define _________________GERM__L3__________________ _______, _______, _______, _______, _______
-#define _________________GERM__R1__________________ _______, _______, _______, _______, _______
-#define _________________GERM__R2__________________ _______, _______, _______, _______, _______
-#define _________________GERM__R3__________________ _______, _______, O_UML, A_UML, U_UML
-
 
 #define _______________NUMBERS___L1________________ _______, KC_EQL,  KC_PLUS, KC_MINS, _XXXXX_
 #define _______________NUMBERS___L2________________ ___7___, ___5___, ___3___, ___1___, KC_PLUS
@@ -217,15 +197,6 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define _______________NUMBERS___R1________________ _XXXXX_, ___7___, ___8___, ___9___, _COMMA_
 #define _______________NUMBERS___R2________________ _XXXXX_, ___0___, ___2___, ___4___, ___6___
 #define _______________NUMBERS___R3________________ _XXXXX_, ___8___, _SQUOT_, _SLASH_, __DOT__
-
-
-#define ________________SYMBOLS_L1_________________ KC_TILD, KC_PLUS,  KC_PAST, KC_EXLM, _SLASH_
-#define ________________SYMBOLS_L2_________________ MAGIC,   KC_LCBR, KC_RCBR, KC_MINS, KC_BSLS
-#define ________________SYMBOLS_L3_________________ _COMMA_, KC_LT,   KC_GT,   KC_PERC ,KC_NO
-
-#define ________________SYMBOLS_R1_________________ _______, KC_HASH, KC_AT,   KC_CIRC, __DOT__
-#define ________________SYMBOLS_R2_________________ KC_GRV,  KC_QUES, KC_LBRC, KC_RBRC, KC_PIPE
-#define ________________SYMBOLS_R3_________________ KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS
 
 #define ________________UTILITY_L1________________ SW_APP,  BACK,    TAB_L,   TAB_R,   FWD
 #define ________________UTILITY_L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
@@ -245,9 +216,9 @@ This way, ALL symbols + numbers of a traditional board fit on a single layer
 #define ______________MAGICSTURDY_L2_______________ ___S___, ___T___, ___R___, ___D___, ___P___
 #define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
 
-#define ______________MAGICSTURDY_R1_______________ ___Z___, MAGIC,   ___U___, ___O___, _COMMA_
+#define ______________MAGICSTURDY_R1_______________ ___Z___, MAGIC,   ___U___, ___O___, KC_SCLN
 #define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
-#define ______________MAGICSTURDY_R3_______________ ___B___, ___H___, _SQUOT_, _SLASH_, __DOT__
+#define ______________MAGICSTURDY_R3_______________ ___B___, ___H___, _COMMA_, __DOT__, _SLASH_
 
 
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 
