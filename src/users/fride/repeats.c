@@ -79,6 +79,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
                 *remembered_mods &= ~MOD_MASK_SHIFT;
               }
           break;
+         
     }
     return true;
 }

@@ -12,7 +12,7 @@ COMB(CMB_BACPS,         KC_BSPC,        	HOME_F,    HOME_O)
 // COMB(CMB_EQL,         	KC_EQL,        	HOME_O,    HOME_U)
 
 
-COMB(CMB_ESC,     		ESC_SYM,     		HOME_T, HOME_S)
+COMB(CMB_ESC,     		ESC_SYM,     		___R___, ___T___)
 // COMB(CMB_MINS,          KC_MINS,        	HOME_S, HOME_R)
 
 COMB(CMB_COLON,   		COLON_SYM,   		HOME_H, HOME_A)
@@ -32,7 +32,14 @@ COMB(CMB_RBRC,  		KC_RBRC,     		KC_COMM, KC_DOT)
 
 
 
+COMB(CMB_ENT,     KC_ENT,     ___A___, ___E___, ___I___)
+COMB(CMB_TAB,     KC_TAB,     ___S___, ___N___, ___T___)
+
+COMB(CMB_QU,      QU,    ___U___, ___Y___)
+COMB(CMB_Z,       KC_Z,  ___X___, ___F___)
 
 
-COMB(CMB_ENT,     KC_ENT,     HOME_H,  HOME_A,  HOME_E)
-COMB(CMB_TAB,     KC_TAB,     HOME_R,  HOME_T,  HOME_S)
+// digrapohs for h
+
+COMB(COMB_DI_WH,	DI_WH, 	___F___, ___P___)
+COMB(COMB_DI_TH,	DI_TH, 	___N___, ___T___)

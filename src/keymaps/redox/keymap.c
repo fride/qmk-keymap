@@ -31,15 +31,22 @@ n r t s g   y h a e i
 x z m c b   k p ' / .
 */
 
+/*
+     x  f  m  p  b   -  .  /  ,  q
+  z  r  s  n  t  g   '  a  e  i  h  j
+     w  c  l  d  v   :  u  o  y  k
+*/
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
    // gallium with nicer B!
    [ALPHA]  = MY_REDOX(
-        _XXXXX_, KC_1,    KC_2,    KC_3,         KC_4,          KC_5,                                             KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    QK_BOOT,
-        KC_CAPS, KC_Q,    HOME_L,  HOME_D,       HOME_W,        KC_V,    _XXXXX_,                      _XXXXX_,   KC_J,       HOME_F,  HOME_O,  HOME_U,    KC_COMM, KC_SCLN,
-        KC_TAB,  KC_N,    HOME_R,  HOME_T,       HOME_S,        KC_G,    _XXXXX_,                      _XXXXX_,   KC_Y,       HOME_H,  HOME_A,  HOME_E,    KC_I,    KC_EQL,
-        KC_QUES, KC_X,    KC_Z,    KC_M,         KC_C,          KC_B,    _XXXXX_, _XXXXX_,    _XXXXX_, _XXXXX_,   KC_K,       KC_P,    KC_LPRN, KC_RPRN,  KC_DOT,  KC_EXLM,
-        _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_,      MEH_SPC,       OS_LSFT, OS_LSFT,                     OS_LCTL, OS_LCTL,       MAGIC_GUI, _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_
+        _XXXXX_, KC_1, KC_2,  KC_3,     KC_4,          KC_5,                                           KC_6,   KC_7,    KC_8,    KC_9,    KC_0,     QK_BOOT,
+        KC_CAPS, _______________HANDS_D___L1________________, _XXXXX_,                      _XXXXX_,   _______________HANDS_D___R1________________, KC_SCLN,
+                 _______________HANDS_D___L2________________, _XXXXX_,                      _XXXXX_,   _______________HANDS_D___R2________________, 
+        KC_QUES, _______________HANDS_D___L3________________, _XXXXX_, _XXXXX_,    _XXXXX_, _XXXXX_,   _______________HANDS_D___R3________________, KC_EXLM,
+        _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_,      MEH_SPC,       OS_LGUI, OS_LALT,                     OS_LALT, OS_LCTL,       MAGIC_GUI, _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_
     ),
 
    [SYM] =  MY_REDOX(

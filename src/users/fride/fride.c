@@ -8,12 +8,27 @@
 #endif
 #include "features/adaptive_keys.h"
 #include "features/process_records.h"
+#include "features/custom_shift_keys.h"
+
 #include "layout.h"
 
 #define IS_SHIFTED(mods) \
   (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
 #define UMLAUT(KC) tap_code16(A(KC))
 #define UPPER_UMLAUT(KC) tap_code16(S(A(KC)))
+
+const custom_shift_key_t custom_shift_keys[] = {
+    {KC_DOT, KC_EXLM}, 
+    {KC_COMM, KC_QUES},
+    {_DQUOT_, KC_LPRN},
+    {_SQUOT_, KC_RPRN},
+    {KC_MINS, KC_PLUS},
+    {KC_SLASH, KC_PAST},
+    // {KC_EQL, KC_EQL},  // Don't shift =
+    // {KC_SLSH, KC_SLSH},  // Don't shift /
+};
+uint8_t NUM_CUSTOM_SHIFT_KEYS =
+    sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
 
 // ┌─────────────────────────────────────────────────┐
 // │ s W A P P E R                                   │
@@ -66,6 +81,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return false;
   }
 
+  if (!process_custom_shift_keys(keycode, record)) { 
+    return false; 
+  }
   // this overrides the repeat keys.
   // because nf is a commonn bigram in german ;)
   if (record->event.pressed) {
@@ -123,6 +141,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
       }
       break;
+    case _DQUOT_:
+      if (record->event.pressed) {
+        if (shifted) {
+          tap_code16(KC_LPRN);
+        } else {
+          tap_code16(KC_DQUO);
+        }
+        return false;
+      }
+      break;
     case LPAREN:
       if (record->event.pressed) {
         if (shifted) {
@@ -177,22 +205,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
       break;
     }
-
-    case KC_PH: {
-      if (record->event.pressed) {
-        SEND_STRING("ph");
-        return false;
-      }
-      break;
-    }
-    case KC_TH: {
+    case DI_TH:
       if (record->event.pressed) {
         SEND_STRING("th");
-        return false;
       }
       break;
-    }
-
+    case DI_SH:
+       if (record->event.pressed) {
+        SEND_STRING("sh");
+      }
+      break;
+    case DI_CH:
+     if (record->event.pressed) {
+        SEND_STRING("ch");
+      }
+      break;
+    case DI_WH:
+     if (record->event.pressed) {
+        SEND_STRING("wh");
+      }
+      break;
     case ESC_SYM: {
       if (record->event.pressed && record->tap.count > 0) {
         tap_code16(KC_ESC);
@@ -266,6 +298,7 @@ bool tap_hold(uint16_t keycode) {
     case O_UML:
     case U_UML:
     case KC_TH:
+    case QU:
     case CPYPASTE:
       return true;
   }
@@ -274,6 +307,9 @@ bool tap_hold(uint16_t keycode) {
 
 void tap_hold_send_tap(uint16_t keycode) {
   switch (keycode) {
+    case QU:
+      SEND_STRING("qu");
+      break;
     case KC_TH:
       // TODO handle Shift!
       SEND_STRING("th");
@@ -382,10 +418,6 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case ESC_SYM:
     case MAGIC_GUI:
-    case HOME_T:
-      if (other_keycode == KC_Y) {
-        return true;
-      }
     case MEH_SPC:
       return true;
     case HOME_E:
@@ -393,6 +425,10 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
         return true;
       }
       break;
+    case ___T___:
+      if (other_keycode == ___X___) {
+        return true;
+      }
   }
 
   // Also allow same-hand holds when the other key is in the rows below the
