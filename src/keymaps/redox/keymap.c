@@ -25,52 +25,36 @@
 
 #define MY_REDOX(...) LAYOUT(__VA_ARGS__)
 
-#define STURDY TO(ALPHA)
-#define NGRM TO(ALPHA2)
+/*
+q l d w v   j f o u ,
+n r t s g   y h a e i
+x z m c b   k p ' / .
+*/
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    [ALPHA]  = MY_REDOX(
-    //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       KC_F12   ,KC_F1    ,KC_F2  , KC_F3  , KC_F4   ,KC_F5  ,                                             KC_F6    ,KC_F7  , KC_F8 , KC_F9   ,KC_F10 ,KC_F11 ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_ESC  ,______________MAGICSTURDY_L1_______________ ,NGRM ,                             KC_PIPE ,______________MAGICSTURDY_R1_______________, KC_EQL  ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       OS_LSFT  ,______________MAGICSTURDY_L2_______________ ,OS_MEH  ,                          KC_DLR  ,______________MAGICSTURDY_R2_______________ ,KC_MINS ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_LSFT ,______________MAGICSTURDY_L3_______________ ,KC_NO   ,  KC_NO ,        KC_HOME ,KC_NO   ,______________MAGICSTURDY_R3_______________ ,KC_RSFT ,
-    //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-       KC_NO   ,KC_LBRC ,KC_UP   ,KC_DOWN ,     ___Y___,     NUMWORD,  OS_LGUI ,       OS_LCTL ,KC_QUOT,    NAV_SPC ,     KC_LEFT ,KC_RIGHT ,KC_RBRC,KC_NO
-    //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+   // gallium with nicer B!
+   [ALPHA]  = MY_REDOX(
+        _XXXXX_, KC_1,    KC_2,    KC_3,         KC_4,          KC_5,                                             KC_6,       KC_7,    KC_8,    KC_9,    KC_0,    QK_BOOT,
+        KC_CAPS, KC_Q,    HOME_L,  HOME_D,       HOME_W,        KC_V,    _XXXXX_,                      _XXXXX_,   KC_J,       HOME_F,  HOME_O,  HOME_U,    KC_COMM, KC_SCLN,
+        KC_TAB,  KC_N,    HOME_R,  HOME_T,       HOME_S,        KC_G,    _XXXXX_,                      _XXXXX_,   KC_Y,       HOME_H,  HOME_A,  HOME_E,    KC_I,    KC_EQL,
+        KC_QUES, KC_X,    KC_Z,    KC_M,         KC_C,          KC_B,    _XXXXX_, _XXXXX_,    _XXXXX_, _XXXXX_,   KC_K,       KC_P,    KC_LPRN, KC_RPRN,  KC_DOT,  KC_EXLM,
+        _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_,      MEH_SPC,       OS_LSFT, OS_LSFT,                     OS_LCTL, OS_LCTL,       MAGIC_GUI, _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_
     ),
-
-    [ALPHA2]  = MY_REDOX(
-    //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       KC_F12   ,KC_F1    ,KC_F2  , KC_F3  , KC_F4   ,KC_F5  ,                                             KC_F6    ,KC_F7  , KC_F8 , KC_F9   ,KC_F10 ,KC_F11 ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_ESC  , KC_B,    KC_Y,   KC_O,    KC_U,    KC_COMM,  STURDY,                             KC_NO,    KC_DOT,  KC_L,    KC_D,    KC_W,    KC_V,    KC_Q,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       OS_LSFT, KC_C,     KC_I,    KC_E,   KC_A,    KC_LT,    KC_NO ,                            KC_NO,    KC_LT,   KC_H,    KC_T,    KC_S,    KC_N,    KC_Z,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       OS_LSFT , KC_G,   KC_X,     KC_J,    KC_K,    KC_MINS, KC_NO,   KC_NO,          KC_NO,    KC_NO,  KC_SLASH, KC_R,    KC_M,   KC_F,    KC_P,     OS_LSFT,
-    //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-       KC_NO   ,KC_LBRC ,KC_UP   ,KC_DOWN ,     MAGIC  ,     NUMWORD,  OS_LGUI ,       OS_LCTL ,KC_QUOT,      NAV_SPC ,     KC_LEFT ,KC_RIGHT ,KC_RBRC,KC_NO
-    //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
-    ),
-
 
    [SYM] =  MY_REDOX(
-    //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       KC_F12   ,KC_F1    ,KC_F2  , KC_F3  , KC_F4   ,KC_F5  ,                                             KC_F6    ,KC_F7  , KC_F8 , KC_F9   ,KC_F10 ,KC_F11 ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_ESC  ,_______________NUMBERS___L1________________  ,KC_F19  ,                          KC_PIPE ,_______________NUMBERS___R1________________  ,KC_EQL  ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_Q    ,_______________NUMBERS___L2________________  ,OS_MEH  ,                          KC_DLR  ,_______________NUMBERS___R2________________  ,KC_MINS ,
-    //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_LSFT ,_______________NUMBERS___L3________________  ,KC_NO   ,  KC_NO ,        KC_HOME ,KC_NO   ,_______________NUMBERS___R3________________  ,KC_RSFT ,
-    //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-       KC_NO ,  KC_UP   ,KC_UP   ,KC_DOWN ,     OS_LSFT,    NUMWORD , KC_DEL ,        KC_BSPC , SYM_REP,     ___0___ ,     KC_LEFT ,KC_RIGHT ,ARROW_R,KC_NO
-    //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+        _XXXXX_, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    QK_BOOT,
+        _______, KC_QUOT, KC_LT,   KC_GT,   KC_DQUO, KC_DOT,  _______,                         _______, KC_AMPR, _______, KC_LBRC, KC_RBRC, KC_PERC, _______, 
+        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, _______,                         _______, KC_PIPE, KC_COLN, KC_LPRN, KC_RPRN, KC_QUES, _______,
+        _______, KC_CIRC, KC_SLSH, KC_ASTR, KC_SLSH, _______, _______, _______,       _______, _______, KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_AT,   _______,
+        _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_, MEH_SPC, OS_LSFT, OS_LSFT,                          OS_LCTL, OS_LCTL,MAGIC_GUI, _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_
+    ),
+   [SYM2] =  MY_REDOX(
+        _XXXXX_, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    QK_BOOT,
+        _______, KC_QUOT, KC_LT,   KC_GT,   KC_DQUO, KC_DOT,  _______,                         _______, KC_AMPR, _______, KC_LBRC, KC_RBRC, KC_PERC, _______, 
+        _______, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL,  KC_HASH, _______,                         _______, KC_PIPE, KC_COLN, KC_LPRN, KC_RPRN, KC_QUES, _______,
+        _______, KC_CIRC, KC_SLSH, KC_ASTR, KC_SLSH, _______, _______, _______,       _______, _______, KC_TILD, KC_DLR,  KC_LCBR, KC_RCBR, KC_AT,   _______,
+        _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_, MEH_SPC, OS_LSFT, OS_LSFT,                          OS_LCTL, OS_LCTL,MAGIC_GUI, _XXXXX_, _XXXXX_, _XXXXX_, _XXXXX_
     ),
 
    [NUM] = MY_REDOX(

@@ -2,10 +2,10 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-  ALPHA,
-  ALPHA2,
+  ALPHA,  
   NUM,
   SYM,
+  SYM2,
   UTIL,
   FUN,
 };
@@ -88,6 +88,8 @@ enum custom_keycodes {
   KC_TH
 };
 
+
+#define NICE_QU LALT(KC_3)
 // macOS shortcuts
 #define Z_UND G(KC_Z)
 #define Z_CUT G(KC_X)
@@ -115,15 +117,35 @@ enum custom_keycodes {
 #define REPEAT QK_REPEAT_KEY
 #define ESC_SYM LT(SYM, KC_ESC)
 #define COLON_SYM LT(SYM, KC_COLON)
+#define MAGIC_GUI LGUI_T(QK_ALT_REPEAT_KEY)
 
 // thumb keys!
 #define NAV_SPC LT(UTIL, KC_SPC)
 #define SYM_SPC LT(SYM, KC_SPC)
 #define SYM_REP LT(SYM, QK_REP)
+#define MEH_SPC MEH_T(KC_SPC)
 
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 
+
+#define HOME_L LCTL_T(KC_L)
+#define HOME_D LALT_T(KC_D)
+#define HOME_W LGUI_T(KC_W)
+
+#define HOME_F RGUI_T(KC_F)
+#define HOME_O RALT_T(KC_O)
+#define HOME_U RCTL_T(KC_U)
+
+#define HOME_R LT(SYM2,KC_R)
+#define HOME_T LT(SYM,KC_T)
+#define HOME_S LT(UTIL,KC_S)
+
+#define HOME_H LT(UTIL,KC_H)
+#define HOME_A LT(SYM,KC_A)
+#define HOME_E LT(SYM2,KC_E)
+
+// deprected!
 #define ___A___ LALT_T(KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C

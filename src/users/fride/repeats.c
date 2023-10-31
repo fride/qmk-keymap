@@ -2,53 +2,41 @@
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
-    switch (keycode) {
-      case ___A___:
-        return KC_O;
-      case ___B___:
+    switch (keycode) {      
+      case KC_B:
         return KC_N;  // TODO BEFORE
-      case ___C___: // C
-        return KC_K;
-      case ___D___:
+      case KC_D:
         return KC_Y;
-      case ___E___:
-        return KC_U;
-      case ___F___:
-        return KC_T;
-      case ___N___:
-        return KC_F;  // Fuenf!
-      case ___G___:
-        return KC_W;
+      case HOME_E:
+        return KC_O;
+      case HOME_F:
+        return KC_T;      
+      case KC_G:
+        return KC_N;
       // case ___H___:
         // return KC_Y;
-      case ___I___:
+      case KC_I:
         return MG_ION;
-      case ___J___:
+      case KC_J:
         return MG_UST;
-      case ___K___:
+      case KC_K:
         return KC_S;
-      case ___L___:
-        return KC_K; // N is wose!
-      case ___M___:
-        return KC_T; // AMT and co in Germann ;)
-      case ___O___:
-        return KC_A;
-      case ___P___:
-        return KC_Y;
-      case ___R___:
-        return KC_L;
-      case ___S___:
-        return KC_K;
-      case ___T___:
+      case HOME_L:
+        return KC_M; // N is wose!
+      case KC_M:
+        return KC_L; // AMT and co in Germann ;)
+      case HOME_O:
+        return KC_E;            
+      case HOME_S:
+        return KC_C;
+      case HOME_T:
         return KC_M; //ment does not work that well with german
-      case ___U___:
-        return KC_E;
-      case ___V___:
+      case HOME_U:
+        return KC_I;
+      case KC_V:
         return MG_VER;
-      case ___W___:
-        return KC_S;
-      case ___Y___:
-        return KC_P;
+      case KC_W:
+        return KC_R;
       case KC_EQL:
         return KC_GT;
       case KC_LPRN:
@@ -84,7 +72,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
     switch (keycode) {
         case SYM_REP:
         case SYM_SPC:
-        case NAV_SPC:
+        case MAGIC_GUI:
             return false;
         case KC_A ... KC_Y:
               if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
@@ -100,7 +88,7 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
   switch (keycode) {
     case SYM_REP:
     case SYM_SPC:
-    case NAV_SPC:
+    case MAGIC_GUI:
         return false;
 
     // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
