@@ -105,19 +105,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 
   switch (keycode) {
-    case SYM_REP:
-      if (record->event.pressed) {
+    case MAGIC_GUI:
+    // TODO this only ever returns an n
+     if (record->event.pressed) {
         if (record->tap.count > 0) {
           keyrecord_t press;
           press.event.type = KEY_EVENT;
           press.tap.count = 1;
           press.event.pressed = true;
-          process_repeat_key(QK_REP, &press);
+          process_repeat_key(QK_AREP, &press);
           keyrecord_t release;
           release.event.type = KEY_EVENT;
           release.tap.count = 1;
           release.event.pressed = false;
-          process_repeat_key(QK_REP, &release);
+          process_repeat_key(QK_AREP, &release);
           return PROCESS_RECORD_RETURN_TRUE;
         }
       }
@@ -379,14 +380,19 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand
   switch (tap_hold_keycode) {
-    case NAV_SPC:
-    case SYM_SPC:
     case ESC_SYM:
-    case COLON_SYM:
-    case ___R___:
-    case ___Y___:
-    case ___A___:
+    case MAGIC_GUI:
+    case HOME_T:
+      if (other_keycode == KC_Y) {
+        return true;
+      }
+    case MEH_SPC:
       return true;
+    case HOME_E:
+      if (other_keycode == KC_P || other_keycode == KC_PIPE) {
+        return true;
+      }
+      break;
   }
 
   // Also allow same-hand holds when the other key is in the rows below the
@@ -401,13 +407,9 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
-    case SYM_REP:
-    case SYM_SPC:
-    case NAV_SPC:
-    case ___R___:  // numbers ;)
-    case ___A___:  // numbers ;)
-    case ___Y___:
+    case MAGIC_GUI:
     case ESC_SYM:
+    case MEH_SPC:
     case COLON_SYM:
       return 0;  // Bypass Achordion for these keys.
   }
