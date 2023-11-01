@@ -55,7 +55,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 #endif
   process_num_word(keycode, record);
-  sym_mode_process(keycode, record);
 
   update_swapper(&sw_app_active, KC_LGUI, KC_TAB, SW_APP, keycode, record,
                  wap_app_cancel);
@@ -185,7 +184,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         //     stop_leading();
         layer_off(UTIL);
         layer_off(NUM);
-        layer_off(SYM);
         // disable_caps_word();
         disable_num_word();
         layer_move(ALPHA);
@@ -195,16 +193,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     case NUMWORD:
       process_num_word_activation(record);
       return false;
-    case SYMWORD:
-      process_sym_word_activation(record);
-      return false;
-    case COLON_SYM: {
+    case M_LT:
       if (record->event.pressed && record->tap.count > 0) {
-        tap_code16(KC_COLON);
+        if (shifted) {
+          tap_code16(KC_LPRN);
+        } else {
+          tap_code16(KC_LT);
+        }
         return false;
       }
-      break;
-    }
+      break;  
+    case M_GT:
+      if (record->event.pressed && record->tap.count > 0) {
+        if (shifted) {
+          tap_code16(KC_RPRN);
+        } else {
+          tap_code16(KC_GT);
+        }
+        return false;
+      }
+      break;  
+    // case COLON_SYM: {
+    //   if (record->event.pressed && record->tap.count > 0) {
+    //     tap_code16(KC_COLON);
+    //     return false;
+    //   }
+    //   break;
+    // }
     case DI_TH:
       if (record->event.pressed) {
         SEND_STRING("th");
@@ -225,13 +240,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         SEND_STRING("wh");
       }
       break;
-    case ESC_SYM: {
-      if (record->event.pressed && record->tap.count > 0) {
-        tap_code16(KC_ESC);
-        return false;
-      }
-      break;
-    }
+    // case ESC_SYM: {
+    //   if (record->event.pressed && record->tap.count > 0) {
+    //     tap_code16(KC_ESC);
+    //     return false;
+    //   }
+    //   break;
+    // }
     case SZ:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
