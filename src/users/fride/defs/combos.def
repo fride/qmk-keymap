@@ -5,25 +5,25 @@
 	x z m c b   k p ' / .
 */
 
-COMB(combo_canel,      CANCEL,          KC_R,    KC_A)
-COMB(CMB_NUMWORD,       TG(NUM),        MEH_SPC, MAGIC_GUI)
+COMB(combo_canel,       CANCEL,        	    ___R___,    ___A___)
+COMB(CMB_NUMWORD,       TG(NUM),      	    NAV_SPC, MAGIC_GUI)
+COMB(CMB_BACPS,         KC_BSPC,        	___Z___,    ___Y___)
 
-COMB(CMB_BACPS,         KC_BSPC,        	HOME_F,    HOME_O)
 // COMB(CMB_EQL,         	KC_EQL,        	HOME_O,    HOME_U)
 
 
-COMB(CMB_ESC,     		ESC_SYM,     		___R___, ___T___)
+COMB(CMB_ESC,     		KC_ESC,     		___R___, ___T___)
 // COMB(CMB_MINS,          KC_MINS,        	HOME_S, HOME_R)
 
-COMB(CMB_COLON,   		COLON_SYM,   		HOME_H, HOME_A)
+COMB(CMB_COLON,   		KC_COLON,   		___A___, ___E___)
 // COMB(CMB_UNDS,          KC_UNDS,        	HOME_E, HOME_A)
-COMB(CMB_SCOLON,  		KC_SCLN,     		HOME_H, KC_QUOTE)
+COMB(CMB_SCOLON,  		KC_SCLN,     		___A___, ___O___)
 
-COMB(CMB_LPRN,  		KC_LPRN,     		KC_W,   KC_M)
-COMB(CMB_RPRN,  		KC_RPRN,     		KC_M,   KC_G)
+//COMB(CMB_LPRN,  		KC_LPRN,     		KC_W,   KC_M)
+//COMB(CMB_RPRN,  		KC_RPRN,     		KC_M,   KC_G)
 
-COMB(CMB_LBRC,  		KC_LBRC,     		KC_D,   KC_COMM)
-COMB(CMB_RBRC,  		KC_RBRC,     		KC_COMM, KC_DOT)
+//COMB(CMB_LBRC,  		KC_LBRC,     		KC_D,   KC_COMM)
+//COMB(CMB_RBRC,  		KC_RBRC,     		KC_COMM, KC_DOT)
 
 
 
@@ -31,15 +31,18 @@ COMB(CMB_RBRC,  		KC_RBRC,     		KC_COMM, KC_DOT)
 // see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
 
 
+// shift as a combo experiment
+COMB(CMB_RSFT,	OS_LSFT,	___O___, ___Y___)
+COMB(CMB_RCTL,	OS_LCTL,	___E___, ___I___)
+COMB(CMB_LSFT,	OS_LSFT,	___C___, ___L___)
+COMB(CMB_LCTL,	OS_LCTL,	___S___, ___N___)
 
-COMB(CMB_ENT,     KC_ENT,     ___A___, ___E___, ___I___)
+
+COMB(CMB_ENT,     KC_ENT,     ___H___, ___E___, ___I___)
 COMB(CMB_TAB,     KC_TAB,     ___S___, ___N___, ___T___)
-
-COMB(CMB_QU,      QU,    ___U___, ___Y___)
-COMB(CMB_Z,       KC_Z,  ___X___, ___F___)
 
 
 // digrapohs for h
 
-COMB(COMB_DI_WH,	DI_WH, 	___F___, ___P___)
-COMB(COMB_DI_TH,	DI_TH, 	___N___, ___T___)
+
+COMB(COMB_EQL,   	KC_EQL, 	___C___, ___F___)

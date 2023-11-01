@@ -3,10 +3,8 @@
 
 enum layers {
   ALPHA,  
-  NUM,
-  SYM,
-  SYM2,
   UTIL,
+  NUM,  
   FUN,
 };
 
@@ -49,10 +47,13 @@ enum custom_keycodes {
   MG_VER,
   M_SENTENCE,
 
+  // TODO remove this stuff
   DI_TH,
   DI_SH,
   DI_CH,
   DI_WH,
+  DI_GH,
+
   // N-Shot Mods
   OS_LSFT,  // OS Mods
   OS_LCTL,  // OS Mods
@@ -119,63 +120,45 @@ enum custom_keycodes {
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
-#define ESC_SYM LT(SYM, KC_ESC)
-#define COLON_SYM LT(SYM, KC_COLON)
 #define MAGIC_GUI LSFT_T(QK_ALT_REPEAT_KEY)
+
+
+#define M_LT LT(UTIL, KC_LT)
+#define M_GT LT(NUM,  KC_GT)
 
 // thumb keys!
 #define NAV_SPC LT(UTIL, KC_SPC)
-#define SYM_SPC LT(SYM, KC_SPC)
-#define SYM_REP LT(SYM, QK_REP)
-#define MEH_SPC MEH_T(KC_SPC)
 
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 
-
-#define HOME_L LCTL_T(KC_L)
-#define HOME_D LALT_T(KC_D)
-#define HOME_W LGUI_T(KC_W)
-
-#define HOME_F RGUI_T(KC_F)
-#define HOME_O RALT_T(KC_O)
-#define HOME_U RCTL_T(KC_U)
-
-#define HOME_R LT(SYM2,KC_R)
-#define HOME_T LT(SYM,KC_T)
-#define HOME_S LT(UTIL,KC_S)
-
-#define HOME_H LT(UTIL,KC_H)
-#define HOME_A LT(SYM,KC_A)
-#define HOME_E LT(SYM2,KC_E)
-
-#define ___A___ LT(UTIL,KC_A)
+#define ___A___ LALT_T(KC_A)
 #define ___B___ KC_B
-#define ___C___ LCTL_T(KC_C)
-#define ___D___ LGUI_T(KC_D)
-#define ___E___ LT(SYM,KC_E)
+#define ___C___ KC_C
+#define ___D___ KC_D
+#define ___E___ RGUI_T(KC_E)
 #define ___F___ KC_F
 #define ___G___ KC_G
-#define ___H___ KC_H
-#define ___I___ KC_I
+#define ___H___ RSFT_T(KC_H)
+#define ___I___ RCTL_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
-#define ___L___ LALT_T(KC_L)
-#define ___M___ KC_M
-#define ___N___ KC_N
-#define ___O___ LALT_T(KC_O)
+#define ___L___ KC_L
+#define ___M___ RALT_T(KC_M)
+#define ___N___ LGUI_T(KC_N)
+#define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ KC_R
-#define ___S___ LT(SYM,KC_S)
-#define ___T___ LT(UTIL,KC_T)
-#define ___U___ RGUI_T(KC_U)
+#define ___R___ LALT_T(KC_R)
+#define ___S___ LCTL_T(KC_S)
+#define ___T___ LSFT_T(KC_T)
+#define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ RCTL_T(KC_Y)
+#define ___Y___ KC_Y
 #define ___Z___ KC_Z
-#define _COMMA_ KC_COMM
+#define _COMMA_ RALT_T(KC_COMM)
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
@@ -203,13 +186,13 @@ enum custom_keycodes {
 // clang-format off
 #define __THUMBS_ ___R___, MAGIC, REPEAT, MAGIC, OS_LSFT, NAV_SPC
 
-#define _______________HANDS_D___L1________________          ___X___, ___F___, ___M___, ___P___, ___B___
-#define _______________HANDS_D___L2________________ ___Q___, ___R___, ___S___, ___N___, ___T___, ___G___
-#define _______________HANDS_D___L3________________          ___W___, ___C___, ___L___, ___D___, ___V___
+#define _______________ALPHA_1___L1________________          ___X___, ___C___, ___L___, ___F___, ___V___
+#define _______________ALPHA_1___L2________________ OS_LSFT, ___R___, ___S___, ___N___, ___T___, ___P___
+#define _______________ALPHA_1___L3________________          ___Q___, ___W___, ___M___, ___G___, ___B___
 
-#define _______________HANDS_D___R1________________ _MINUS_, __DOT__, _DQUOT_, _SQUOT_, ___J___
-#define _______________HANDS_D___R2________________ _COMMA_, ___A___, ___E___, ___I___, ___H___, ___Z___
-#define _______________HANDS_D___R3________________ _SLASH_, ___U___, ___O___, ___Y___, ___K___
+#define _______________ALPHA_1___R1________________ ___Z___, ___Y___, ___O___, ___U___, _SQUOT_
+#define _______________ALPHA_1___R2________________ ___K___, ___H___, ___E___, ___I___, ___A___, OS_LSFT
+#define _______________ALPHA_1___R3________________ ___J___, ___D___, _COMMA_, __DOT__, _SLASH_
  
 
 #define _______________NUMBERS___L1________________ _______, KC_EQL,  KC_PLUS, KC_MINS, _XXXXX_

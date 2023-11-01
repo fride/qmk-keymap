@@ -19,8 +19,11 @@ CMD ["/bin/bash"]
 ARG KEYMAP=fride
 ARG KEYBOARD=totem
 FROM base as build
+RUN mkdir  /qmk_firmware/.build
+RUN qmk format-json /qmk_firmware/keyboards/redox/keymaps/fride/keymap-yann.json >/qmk_firmware/.build/keymap-yann.json
+#RUN cp /qmk_firmware/keyboards/redox/keymaps/fride/keymap-yann.json /qmk_firmware/.build/keymap-yann.json
+RUN qmk json2c -o /qmk_firmware/.build/generated_keyboard.c /qmk_firmware/keyboards/redox/keymaps/fride/keymap-yann.json
 RUN qmk compile -kb ${KEYBOARD} -km fride
-# RUN qmk compile -kb ferris/0_2 -km fride
 
 FROM scratch as result
 COPY  --from=build /qmk_firmware/.build ./result/
