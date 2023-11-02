@@ -3,20 +3,28 @@
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {      
-      case ___P___:
-      case ___B___:  
-      case ___M___:;
+      case ___A___:
+        return KC_U;
+      case ___C___:
+        return KC_R;
+      case ___D___:
+        return KC_Y;
       case ___F___:
+        return KC_T;
+      case ___B___:  
+      case ___M___:
       case ___G___:
         return KC_L;
+      case ___P___:
+        return KC_T;
+      case ___U___:
+        return KC_I;
       case ___W___:
         return KC_R;
       case ___S___:
         return KC_C;
       case ___I___:
         return MG_ION;
-      case ___A___:
-        return KC_U;
       case ___E___:
         return KC_O;
       case ___O___:

@@ -1,32 +1,53 @@
 /* Layout key reference
 
- 	q l d w v   j f o u ,
-	n r t s g   y h a e i
-	x z m c b   k p ' / .
+ 	x c l f v     z y o u '
+	r s n t p     k h e i a 
+	q w m g b     j d , . /
 */
 
-COMB(combo_canel,       CANCEL,        	    ___R___,    ___A___)
-COMB(CMB_NUMWORD,       NUMWORD,      	    NAV_SPC, MAGIC_GUI)
-
-// top row
+////// Horizontal combos
+// top row left
 COMB(CMB_ESC,			KC_ESC,		    ___C___, ___L___)
+COMB(CMB_MINS,			KC_MINS,        ___C___, ___F___)
 COMB(CMB_LBRC,			KC_LBRC,		___L___, ___F___)
+
+// top row right
 COMB(CMB_RBRC,			KC_RBRC,		___Y___, ___O___)
+COMB(CMB_EQL,			KC_EQL,		    ___Y___, ___U___)
 COMB(CMB_BSPC,			KC_BSPC,		___Z___, ___Y___)
 COMB(CMB_DELWORD,       C(KC_W),        ___Y___, ___U___, ___O___)
 COMB(CMB_SCLN,			KC_COLON,		___O___, ___U___)
 
-// home row
+// home row left
 COMB(CMB_LT,       KC_LT,       ___T___, ___P___)
 COMB(CMB_TAB,      KC_TAB,      ___S___, ___N___, ___T___)
+COMB(CMB_DQUO,     KC_DQUO,     ___S___, ___T___)
 COMB(CMB_LPRN,     KC_LPRN,     ___N___, ___T___)
 
-
+// home row right
 COMB(CMB_ENT,      KC_ENT,       ___H___, ___E___, ___I___)
 COMB(CMB_RPRN,     KC_RPRN,     ___H___, ___E___)
+COMB(CMB_QUOT,     KC_QUOT,     ___H___, ___I___)
 COMB(CMB_GT,       KC_GT,       ___H___, ___K___)
+// home row, both sides:
+COMB(combo_canel,       CANCEL,        	    ___R___,    ___A___)
 
-
-// bottom row
+// bottom row left
 COMB(CMB_LCBR,     KC_LCBR,     ___M___, ___G___)
+
+// bottom row right
 COMB(CMB_RCBR,     KC_RCBR,     ___D___, _COMMA_)
+COMB(CMB_UNDS,     KC_UNDS,     __DOT__, _COMMA_)
+
+// thumbs
+COMB(CMB_NUMWORD,       NUMWORD,      	    NAV_SPC, MAGIC_GUI)
+COMB(CMB_0,             KC_0,      	        MAGIC_GUI, ___H___)
+COMB(CMB_2,             KC_2,      	        MAGIC_GUI, ___E___)
+COMB(CMB_4,             KC_4,      	        MAGIC_GUI, ___I___)
+COMB(CMB_6,             KC_6,      	        MAGIC_GUI, ___A___)
+COMB(CMB_8,             KC_8,      	        MAGIC_GUI, ___D___)
+COMB(CMB_1,             KC_1,      	        NAV_SPC, ___T___)
+COMB(CMB_3,             KC_3,      	        NAV_SPC, ___N___)
+COMB(CMB_5,             KC_5,      	        NAV_SPC, ___S___)
+COMB(CMB_7,             KC_7,      	        NAV_SPC, ___R___)
+COMB(CMB_9,             KC_9,      	        NAV_SPC, ___G___)
