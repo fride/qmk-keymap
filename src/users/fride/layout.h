@@ -149,8 +149,8 @@ enum custom_keycodes {
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ KC_R
-#define ___S___ RCTL_T(KC_S)
+#define ___R___ LALT_T(KC_R)
+#define ___S___ LCTL_T(KC_S)
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -167,15 +167,16 @@ enum custom_keycodes {
 #define __HASH_ KC_HASH
 #define _SEMIC_ KC_SCLN
 
-#define ___0___ KC_0
-#define ___1___ KC_1
-#define ___2___ KC_2
-#define ___3___ KC_3
-#define ___4___ KC_4
-#define ___5___ KC_5
-#define ___6___ KC_6
-#define ___7___ KC_7
+#define ___0___ RSFT_T(KC_0)
+#define ___2___ RGUI_T(KC_2)
+#define ___4___ RCTL_T(KC_4)
+#define ___6___ LALT_T(KC_6)
 #define ___8___ KC_8
+
+#define ___1___ LSFT_T(KC_1)
+#define ___3___ LGUI_T(KC_3)
+#define ___5___ LCTL_T(KC_5)
+#define ___7___ LALT_T(KC_7)
 #define ___9___ KC_9
 
 #define _______ KC_TRNS

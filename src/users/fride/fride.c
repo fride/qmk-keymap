@@ -441,19 +441,9 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand
   switch (tap_hold_keycode) {
-    case ESC_SYM:
     case MAGIC_GUI:
-    case MEH_SPC:
+    case NAV_SPC:
       return true;
-    case HOME_E:
-      if (other_keycode == KC_P || other_keycode == KC_PIPE) {
-        return true;
-      }
-      break;
-    case ___T___:
-      if (other_keycode == ___X___) {
-        return true;
-      }
   }
 
   // Also allow same-hand holds when the other key is in the rows below the
@@ -469,9 +459,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     case MAGIC_GUI:
-    case ESC_SYM:
-    case MEH_SPC:
-    case COLON_SYM:
+    case NAV_SPC:
       return 0;  // Bypass Achordion for these keys.
   }
 
