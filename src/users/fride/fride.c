@@ -23,10 +23,10 @@ const custom_shift_key_t custom_shift_keys[] = {
     {_DQUOT_, KC_LPRN},
     {_SQUOT_, KC_RPRN},
     {KC_MINS, KC_PLUS},
-    {KC_SLASH, KC_PAST},
-    // {KC_EQL, KC_EQL},  // Don't shift =
-    // {KC_SLSH, KC_SLSH},  // Don't shift /
+    {KC_COLN, KC_SCLN},
+    {KC_SLASH, KC_PAST}    
 };
+
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
     sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
 
@@ -146,6 +146,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
           tap_code16(KC_LPRN);
         } else {
           tap_code16(KC_DQUO);
+        }
+        return false;
+      }
+      break;
+    case _COMMA_:
+      if (record->event.pressed) {
+        if (shifted) {
+          tap_code16(KC_QUES);
+        } else {
+          tap_code16(KC_COMM);
         }
         return false;
       }
