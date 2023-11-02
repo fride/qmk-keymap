@@ -106,14 +106,14 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_LALT",
-      "KC_LCTL",
-      "KC_LGUI",
-      "KC_LSFT",
+      "ANY(OS_LALT)",
+      "ANY(OS_LCTL)",
+      "ANY(OS_LGUI)",
+      "ANY(OS_LSFT)",
       "OSM(MOD_MEH)",
       "KC_NO",
       "KC_NO",
-      "ANY(FWD)",
+      "KC_TRNS",
       "KC_LEFT",
       "KC_DOWN",
       "KC_RGHT",
@@ -145,7 +145,7 @@
       "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS",
-      "KC_LGUI",
+      "KC_NO",
       "KC_NO",
       "KC_NO",
       "KC_NO"
@@ -223,5 +223,5 @@
       "KC_NO"
     ]
   ],
-  "author": ""
+  "author": "jnfrd"
 }

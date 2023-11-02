@@ -149,8 +149,8 @@ enum custom_keycodes {
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LALT_T(KC_R)
-#define ___S___ LCTL_T(KC_S)
+#define ___R___ KC_R
+#define ___S___ RCTL_T(KC_S)
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -186,14 +186,21 @@ enum custom_keycodes {
 // clang-format off
 #define __THUMBS_ ___R___, MAGIC, REPEAT, MAGIC, OS_LSFT, NAV_SPC
 
-#define _______________ALPHA_1___L1________________          ___X___, ___C___, ___L___, ___F___, ___V___
-#define _______________ALPHA_1___L2________________ OS_LSFT, ___R___, ___S___, ___N___, ___T___, ___P___
-#define _______________ALPHA_1___L3________________          ___Q___, ___W___, ___M___, ___G___, ___B___
+#define _______________ALPHA_1___L1________________  ___X___, ___C___, ___L___, ___F___, ___V___
+#define _______________ALPHA_1___L2________________  ___R___, ___S___, ___N___, ___T___, ___P___
+#define _______________ALPHA_1___L3________________  ___Q___, ___W___, ___M___, ___G___, ___B___
 
 #define _______________ALPHA_1___R1________________ ___Z___, ___Y___, ___O___, ___U___, _SQUOT_
-#define _______________ALPHA_1___R2________________ ___K___, ___H___, ___E___, ___I___, ___A___, OS_LSFT
+#define _______________ALPHA_1___R2________________ ___K___, ___H___, ___E___, ___I___, ___A___
 #define _______________ALPHA_1___R3________________ ___J___, ___D___, _COMMA_, __DOT__, _SLASH_
  
+#define BASE	\
+  _______________ALPHA_1___L1________________, _______________ALPHA_1___R1________________, \
+  _______________ALPHA_1___L2________________, _______________ALPHA_1___R2________________, \
+  _______________ALPHA_1___L3________________, _______________ALPHA_1___R3________________, \
+      KC_NO, NAV_SPC, M_LT, M_GT, MAGIC_GUI, KC_NO
+
+
 
 #define _______________NUMBERS___L1________________ _______, KC_EQL,  KC_PLUS, KC_MINS, _XXXXX_
 #define _______________NUMBERS___L2________________ ___7___, ___5___, ___3___, ___1___, KC_PLUS

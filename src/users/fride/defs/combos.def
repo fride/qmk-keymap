@@ -6,43 +6,27 @@
 */
 
 COMB(combo_canel,       CANCEL,        	    ___R___,    ___A___)
-COMB(CMB_NUMWORD,       TG(NUM),      	    NAV_SPC, MAGIC_GUI)
-COMB(CMB_BACPS,         KC_BSPC,        	___Z___,    ___Y___)
+COMB(CMB_NUMWORD,       NUMWORD,      	    NAV_SPC, MAGIC_GUI)
 
-// COMB(CMB_EQL,         	KC_EQL,        	HOME_O,    HOME_U)
+// top row
+COMB(CMB_ESC,			KC_ESC,		    ___C___, ___L___)
+COMB(CMB_LBRC,			KC_LBRC,		___L___, ___F___)
+COMB(CMB_RBRC,			KC_RBRC,		___Y___, ___O___)
+COMB(CMB_BSPC,			KC_BSPC,		___Z___, ___Y___)
+COMB(CMB_DELWORD,       C(KC_W),        ___Y___, ___U___, ___O___)
+COMB(CMB_SCLN,			KC_COLON,		___O___, ___U___)
 
-
-COMB(CMB_ESC,     		KC_ESC,     		___R___, ___T___)
-// COMB(CMB_MINS,          KC_MINS,        	HOME_S, HOME_R)
-
-COMB(CMB_COLON,   		KC_COLON,   		___A___, ___E___)
-// COMB(CMB_UNDS,          KC_UNDS,        	HOME_E, HOME_A)
-COMB(CMB_SCOLON,  		KC_SCLN,     		___A___, ___O___)
-
-//COMB(CMB_LPRN,  		KC_LPRN,     		KC_W,   KC_M)
-//COMB(CMB_RPRN,  		KC_RPRN,     		KC_M,   KC_G)
-
-//COMB(CMB_LBRC,  		KC_LBRC,     		KC_D,   KC_COMM)
-//COMB(CMB_RBRC,  		KC_RBRC,     		KC_COMM, KC_DOT)
+// home row
+COMB(CMB_LT,       KC_LT,       ___T___, ___P___)
+COMB(CMB_TAB,      KC_TAB,      ___S___, ___N___, ___T___)
+COMB(CMB_LPRN,     KC_LPRN,     ___N___, ___T___)
 
 
+COMB(CMB_ENT,      KC_ENT,       ___H___, ___E___, ___I___)
+COMB(CMB_RPRN,     KC_RPRN,     ___H___, ___E___)
+COMB(CMB_GT,       KC_GT,       ___H___, ___K___)
 
 
-// see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
-
-
-// shift as a combo experiment
-COMB(CMB_RSFT,	OS_LSFT,	___O___, ___Y___)
-COMB(CMB_RCTL,	OS_LCTL,	___E___, ___I___)
-COMB(CMB_LSFT,	OS_LSFT,	___C___, ___L___)
-COMB(CMB_LCTL,	OS_LCTL,	___S___, ___N___)
-
-
-COMB(CMB_ENT,     KC_ENT,     ___H___, ___E___, ___I___)
-COMB(CMB_TAB,     KC_TAB,     ___S___, ___N___, ___T___)
-
-
-// digrapohs for h
-
-
-COMB(COMB_EQL,   	KC_EQL, 	___C___, ___F___)
+// bottom row
+COMB(CMB_LCBR,     KC_LCBR,     ___M___, ___G___)
+COMB(CMB_RCBR,     KC_RCBR,     ___D___, _COMMA_)
