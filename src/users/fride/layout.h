@@ -202,26 +202,32 @@ enum custom_keycodes {
 #define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
 
 #define _ALPHA \
-  KC_X,         KC_C,         KC_L,         KC_F,         KC_V,      KC_Z, KC_Y,         KC_O,            KC_U,         KC_QUOT, \
-  LALT_T(KC_R), LCTL_T(KC_S), LGUI_T(KC_N), LSFT_T(KC_T), KC_P,      KC_K, RSFT_T(KC_H), RGUI_T(KC_E),    RCTL_T(KC_I), LALT_T(KC_A),  \
-  KC_Q,         KC_W,         RALT_T(KC_M), KC_G,         KC_B,      KC_J, KC_D,         RALT_T(KC_COMM), KC_DOT,       KC_SLSH, \
-                              NAV_SPC,      KC_1,         KC_2,      KC_2, OSL(WINNAV),   MAGIC_GUI
+  KC_X,         KC_C,         KC_L,         KC_F,         KC_V,      KC_Z,    KC_Y,         KC_O,            KC_U,         KC_QUOT, \
+  LALT_T(KC_R), LCTL_T(KC_S), LGUI_T(KC_N), LSFT_T(KC_T), KC_P,      KC_K,    RSFT_T(KC_H), RGUI_T(KC_E),    RCTL_T(KC_I), LALT_T(KC_A),  \
+  KC_Q,         KC_W,         RALT_T(KC_M), KC_G,         KC_B,      KC_J,    KC_D,         RALT_T(KC_COMM), KC_DOT,       KC_SLSH, \
+                              NAV_SPC,      OSL(FUN),         SPACE_R,   SPACE_R, OSL(WINNAV),   MAGIC_GUI
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
   OS_LALT, OS_LCTL, OS_LGUI, OS_LSFT, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
   Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, \
-                    NAV_SPC, KC_1,    KC_2,                KC_2,  KC_1,   MAGIC_GUI
+                    NAV_SPC, KC_1,    KC_2,                KC_2,  KC_1,    KC_SPC
 #define _NUM \
   KC_GRV,      KC_NO,         KC_NO,        KC_NO,        KC_PLUS,      KC_BSLS, KC_HASH,      KC_AMPR,      KC_PIPE,      KC_TILD, \
   LALT_T(KC_7), LCTL_T(KC_5), LGUI_T(KC_3), LSFT_T(KC_1), KC_ASTR,      KC_NO,   RSFT_T(KC_0), RGUI_T(KC_2), RCTL_T(KC_4), LALT_T(KC_6), \
   KC_NO,        KC_COLN,      KC_SCLN,      KC_9,         KC_NO,        KC_NO,   KC_8,         KC_COMM,      KC_DOT,       KC_SLSH, \
                               NAV_SPC,      KC_1,         KC_2,         KC_2,  KC_1,   MAGIC_GUI
 #define _WINNAV \
-  KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,      KC_BSLS, KC_HASH,      A(S(KC_K)),      KC_PIPE,      KC_TILD, \
-  A(KC_R),      WN_WEST,      A(KC_F),      WN_EAST,      KC_ASTR,      KC_NO,   S(A(KC_H)),   RGUI_T(KC_2), S(A(KC_L)), LALT_T(KC_6), \
-  KC_NO,        KC_NO,        WN_SOUTH,      KC_NO,        KC_NO,        KC_NO,   KC_8,         A(S(KC_J)),      KC_DOT,       KC_SLSH, \
+  KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,      KC_BSLS, MEH(KC_6),    MEH(KC_7),      MEH(KC_8),     KC_TILD, \
+  SPACE_L,      WN_WEST,      A(KC_F),      WN_EAST,      SPACE_R,      KC_NO,   MEH(KC_4),    MEH(KC_5),      MEH(KC_6),     LALT_T(KC_6), \
+  KC_NO,        KC_NO,        WN_SOUTH,     KC_NO,        KC_NO,        KC_NO,   MEH(KC_1),    MEH(KC_2),      MEH(KC_3),     KC_SLSH, \
                               NAV_SPC,      KC_1,         KC_2,         KC_2,  KC_1,   MAGIC_GUI
+
+#define _FUN \
+  KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,           KC_BSLS, KC_F7,        KC_F8,           KC_F9,      KC_F10, \
+  OS_LALT,      OS_LCTL,      OS_LGUI,      OS_LSFT,      OSM(MOD_MEH),      KC_NO,   KC_F4,        KC_F5,           KC_F6,      KC_F11, \
+  KC_NO,        KC_NO,        WN_SOUTH,     KC_NO,        KC_NO,             KC_NO,   KC_F1,        KC_F2,           KC_F3,      KC_F12, \
+                              KC_NO,        KC_NO,        KC_NO,             KC_2,    KC_1,         MAGIC_GUI
 
 
 #define CONV_REDOX( \
@@ -230,10 +236,10 @@ enum custom_keycodes {
   k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
             k59, k60, k61,        k64, k65, k66 \
 ) \
-     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO    ,                                           KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,QK_BOOT, \
+     KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6    ,KC_NO, \
      KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_NO   ,                          KC_NO   ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_EQL,  \
      KC_ESC  ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_QUOT, \
-     KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,KC_NO   ,        KC_HOME ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT, \
+     KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT, \
      KC_NO  ,KC_NO   ,KC_NO    ,KC_NO   ,     k59     ,    k60     ,k61     ,        k64     ,k65     ,    k66     ,     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO 
 
 #define REDOX(k) CONV_REDOX(k)
