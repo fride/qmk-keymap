@@ -5,6 +5,7 @@ enum layers {
   ALPHA,  
   UTIL,
   NUM,  
+  WINNAV,
   FUN,
 };
 
@@ -90,7 +91,15 @@ enum custom_keycodes {
   // lates stuff
   QUOTE_BRACKET,
   KC_PH,
-  KC_TH
+  KC_TH,
+
+  // window management.
+  WN_WEST,
+  WN_EAST,
+  WN_NORTH,
+  WN_SOUTH,
+  W_ROTATE,
+  W_ROTATE2
 };
 
 
@@ -184,54 +193,47 @@ enum custom_keycodes {
 #define ___________________________________________ \
   _______, _______, _______, _______, _______
 
-// clang-format off
-#define __THUMBS_ ___R___, MAGIC, REPEAT, MAGIC, OS_LSFT, NAV_SPC
 
-#define _______________ALPHA_1___L1________________  ___X___, ___C___, ___L___, ___F___, ___V___
-#define _______________ALPHA_1___L2________________  ___R___, ___S___, ___N___, ___T___, ___P___
-#define _______________ALPHA_1___L3________________  ___Q___, ___W___, ___M___, ___G___, ___B___
+// ----------------
 
-#define _______________ALPHA_1___R1________________ ___Z___, ___Y___, ___O___, ___U___, _SQUOT_
-#define _______________ALPHA_1___R2________________ ___K___, ___H___, ___E___, ___I___, ___A___
-#define _______________ALPHA_1___R3________________ ___J___, ___D___, _COMMA_, __DOT__, _SLASH_
- 
-#define BASE	\
-  _______________ALPHA_1___L1________________, _______________ALPHA_1___R1________________, \
-  _______________ALPHA_1___L2________________, _______________ALPHA_1___R2________________, \
-  _______________ALPHA_1___L3________________, _______________ALPHA_1___R3________________, \
-      KC_NO, NAV_SPC, M_LT, M_GT, MAGIC_GUI, KC_NO
+// layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
 
+// Layout aliases for json keymap
+#define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
 
+#define _ALPHA \
+  KC_X,         KC_C,         KC_L,         KC_F,         KC_V,      KC_Z, KC_Y,         KC_O,            KC_U,         KC_QUOT, \
+  LALT_T(KC_R), LCTL_T(KC_S), LGUI_T(KC_N), LSFT_T(KC_T), KC_P,      KC_K, RSFT_T(KC_H), RGUI_T(KC_E),    RCTL_T(KC_I), LALT_T(KC_A),  \
+  KC_Q,         KC_W,         RALT_T(KC_M), KC_G,         KC_B,      KC_J, KC_D,         RALT_T(KC_COMM), KC_DOT,       KC_SLSH, \
+                              NAV_SPC,      KC_1,         KC_2,      KC_2, OSL(WINNAV),   MAGIC_GUI
 
-#define _______________NUMBERS___L1________________ _______, KC_EQL,  KC_PLUS, KC_MINS, _XXXXX_
-#define _______________NUMBERS___L2________________ ___7___, ___5___, ___3___, ___1___, KC_PLUS
-#define _______________NUMBERS___L3________________ _______, _XXXXX_, _XXXXX_, ___9___, KC_PAST
-
-#define _______________NUMBERS___R1________________ _XXXXX_, ___7___, ___8___, ___9___, _COMMA_
-#define _______________NUMBERS___R2________________ _XXXXX_, ___0___, ___2___, ___4___, ___6___
-#define _______________NUMBERS___R3________________ _XXXXX_, ___8___, _SQUOT_, _SLASH_, __DOT__
-
-#define ________________UTILITY_L1________________ SW_APP,  BACK,    TAB_L,   TAB_R,   FWD
-#define ________________UTILITY_L2________________ OS_LCTL, OS_LALT, OS_LGUI, OS_LSFT, OS_MEH
-#define ________________UTILITY_L3________________ Z_UND  , Z_CUT,   Z_CPY  , Z_PST   ,ALFRED
-
-#define ________________UTILITY_R1________________ _______, KC_BSPC, KC_UP,   KC_DEL,  KC_Q
-#define ________________UTILITY_R2________________ FWD,     KC_LEFT, KC_DOWN, KC_RIGHT,BACK
-#define ________________UTILITY_R3________________ _______, _______,  _______, _______, _______
-
-#define UTILITY								\
-  ________________UTILITY_L1________________, ________________UTILITY_R1________________, \
-  ________________UTILITY_L2________________, ________________UTILITY_R2________________, \
-  ________________UTILITY_L3________________, ________________UTILITY_R3________________, \
-    __THUMBS_
-
-#define ______________MAGICSTURDY_L1_______________ ___V___, ___M___, ___L___, ___C___, ___Q___
-#define ______________MAGICSTURDY_L2_______________ ___S___, ___T___, ___R___, ___D___, ___P___
-#define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
-
-#define ______________MAGICSTURDY_R1_______________ ___Z___, MAGIC,   ___U___, ___O___, KC_SCLN
-#define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
-#define ______________MAGICSTURDY_R3_______________ ___B___, ___H___, _COMMA_, __DOT__, _SLASH_
+#define _UTIL \
+  SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
+  OS_LALT, OS_LCTL, OS_LGUI, OS_LSFT, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
+  Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, \
+                    NAV_SPC, KC_1,    KC_2,                KC_2,  KC_1,   MAGIC_GUI
+#define _NUM \
+  KC_GRV,      KC_NO,         KC_NO,        KC_NO,        KC_PLUS,      KC_BSLS, KC_HASH,      KC_AMPR,      KC_PIPE,      KC_TILD, \
+  LALT_T(KC_7), LCTL_T(KC_5), LGUI_T(KC_3), LSFT_T(KC_1), KC_ASTR,      KC_NO,   RSFT_T(KC_0), RGUI_T(KC_2), RCTL_T(KC_4), LALT_T(KC_6), \
+  KC_NO,        KC_COLN,      KC_SCLN,      KC_9,         KC_NO,        KC_NO,   KC_8,         KC_COMM,      KC_DOT,       KC_SLSH, \
+                              NAV_SPC,      KC_1,         KC_2,         KC_2,  KC_1,   MAGIC_GUI
+#define _WINNAV \
+  KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,      KC_BSLS, KC_HASH,      A(S(KC_K)),      KC_PIPE,      KC_TILD, \
+  A(KC_R),      WN_WEST,      A(KC_F),      WN_EAST,      KC_ASTR,      KC_NO,   S(A(KC_H)),   RGUI_T(KC_2), S(A(KC_L)), LALT_T(KC_6), \
+  KC_NO,        KC_NO,        WN_SOUTH,      KC_NO,        KC_NO,        KC_NO,   KC_8,         A(S(KC_J)),      KC_DOT,       KC_SLSH, \
+                              NAV_SPC,      KC_1,         KC_2,         KC_2,  KC_1,   MAGIC_GUI
 
 
-#define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 
+#define CONV_REDOX( \
+  k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
+  k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
+  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
+            k59, k60, k61,        k64, k65, k66 \
+) \
+     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO    ,                                           KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,KC_NO   ,QK_BOOT, \
+     KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_NO   ,                          KC_NO   ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_EQL,  \
+     KC_ESC  ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_QUOT, \
+     KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,KC_NO   ,        KC_HOME ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT, \
+     KC_NO  ,KC_NO   ,KC_NO    ,KC_NO   ,     k59     ,    k60     ,k61     ,        k64     ,k65     ,    k66     ,     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO 
+
+#define REDOX(k) CONV_REDOX(k)

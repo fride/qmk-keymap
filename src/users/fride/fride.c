@@ -178,6 +178,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
         return false;
       }
+    case W_ROTATE:
+        if (record->event.pressed) {
+          tap_code16(A(KC_R));
+          return false;
+        }
+        break;
+    case W_ROTATE2:
+        if (record->event.pressed) {
+          tap_code16(A(A(KC_R)));
+          return false;
+        }
+        break;
     case ALFRED:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_SPACE) SS_UP(X_LALT));
@@ -322,8 +334,11 @@ bool tap_hold(uint16_t keycode) {
     case A_UML:
     case O_UML:
     case U_UML:
-    case KC_TH:
     case QU:
+    case WN_WEST:
+    case WN_EAST:
+    case WN_NORTH:
+    case WN_SOUTH:
     case CPYPASTE:
       return true;
   }
@@ -332,12 +347,20 @@ bool tap_hold(uint16_t keycode) {
 
 void tap_hold_send_tap(uint16_t keycode) {
   switch (keycode) {
+    case  WN_WEST:
+      tap_code16(A(KC_H));
+      break;
+    case  WN_NORTH:
+      tap_code16(A(KC_K));
+      break;
+    case  WN_SOUTH:
+      tap_code16(A(KC_J));
+      break;
+    case  WN_EAST:
+      tap_code16(A(KC_L));
+      break;
     case QU:
       SEND_STRING("qu");
-      break;
-    case KC_TH:
-      // TODO handle Shift!
-      SEND_STRING("th");
       break;
     case CPYPASTE:
       tap_code16(G(KC_C));
@@ -357,6 +380,18 @@ void tap_hold_send_tap(uint16_t keycode) {
 }
 void tap_hold_send_hold(uint16_t keycode) {
   switch (keycode) {
+    case  WN_WEST:
+      tap_code16(A(A(KC_H)));
+      break;
+    case  WN_NORTH:
+      tap_code16(A(S(KC_K)));
+      break;
+    case  WN_SOUTH:
+      tap_code16(A(S(KC_J)));
+      break;
+    case  WN_EAST:
+      tap_code16(A(A(KC_L)));
+      break;
     case QU:
       tap_code16(KC_Q);
       break;
@@ -368,10 +403,6 @@ void tap_hold_send_hold(uint16_t keycode) {
       break;
     case U_UML:
       UPPER_UMLAUT(KC_U);
-      break;
-    case KC_TH:
-      // TODO handle Shift!
-      SEND_STRING("tion");
       break;
     case CPYPASTE:
       tap_code16(G(KC_V));
