@@ -10,13 +10,14 @@
 COMB(CMB_ESC,			KC_ESC,		    ___C___, ___L___)
 COMB(CMB_MINS,			KC_MINS,        ___C___, ___F___)
 COMB(CMB_LBRC,			KC_LBRC,		___L___, ___F___)
+COMB(CMB_DEL,			KC_DEL,		    ___F___, ___V___)
 
 // top row right
 COMB(CMB_RBRC,			KC_RBRC,		___Y___, ___O___)
 COMB(CMB_EQL,			KC_EQL,		    ___Y___, ___U___)
 COMB(CMB_BSPC,			KC_BSPC,		___Z___, ___Y___)
 COMB(CMB_DELWORD,       C(KC_W),        ___Y___, ___U___, ___O___)
-COMB(CMB_SCLN,			KC_COLON,		___O___, ___U___)
+COMB(CMB_SCLN,			KC_SCLN,		___O___, ___U___)
 
 // home row left
 COMB(CMB_LT,       KC_LT,       ___T___, ___P___)
