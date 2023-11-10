@@ -235,13 +235,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
       }
       break;  
-    // case COLON_SYM: {
-    //   if (record->event.pressed && record->tap.count > 0) {
-    //     tap_code16(KC_COLON);
-    //     return false;
-    //   }
-    //   break;
-    // }
+    case COLON_SYM: {
+      if (record->event.pressed && record->tap.count > 0) {
+        tap_code16(KC_COLON);
+        return false;
+      }
+      break;
+    }
     case DI_TH:
       if (record->event.pressed) {
         SEND_STRING("th");
@@ -466,34 +466,4 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t* combo) { return false; }
 
-#ifdef ACHORDION
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand
-  switch (tap_hold_keycode) {
-    case MAGIC_GUI:
-    case NAV_SPC:
-      return true;
-  }
 
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
-    return true;
-  }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    case MAGIC_GUI:
-    case NAV_SPC:
-      return 0;  // Bypass Achordion for these keys.
-  }
-
-  return 1000;  // Otherwise use a timeout of 1 second
-}
-#endif
