@@ -5,6 +5,7 @@ enum layers {
   ALPHA,  
   UTIL,
   NUM,  
+  SYM,
   WINNAV,
   FUN,
 };
@@ -129,8 +130,10 @@ enum custom_keycodes {
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
-#define MAGIC_GUI LSFT_T(QK_ALT_REPEAT_KEY)
+#define MAGIC_GUI LALT_T(QK_ALT_REPEAT_KEY)
 
+#define ESC_SYM LT(SYM,KC_ESC)
+#define COLON_SYM LT(SYM,KC_COLON)
 
 #define M_LT LT(UTIL, KC_LT)
 #define M_GT LT(NUM,  KC_GT)
@@ -141,21 +144,21 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 
-#define ___A___ LALT_T(KC_A)
+#define ___A___ RGUI_T(KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
 #define ___D___ KC_D
-#define ___E___ RGUI_T(KC_E)
-#define ___F___ KC_F
+#define ___E___ LT(NUM,KC_E)
+#define ___F___ LCTL_T(KC_F)
 #define ___G___ KC_G
 #define ___H___ RSFT_T(KC_H)
 #define ___I___ RCTL_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
-#define ___L___ KC_L
-#define ___M___ RALT_T(KC_M)
+#define ___L___ LALT_T(KC_L)
+#define ___M___ KC_M
 #define ___N___ LGUI_T(KC_N)
-#define ___O___ KC_O
+#define ___O___ LALT_T(KC_O)
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ LALT_T(KC_R)
@@ -165,9 +168,9 @@ enum custom_keycodes {
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ KC_Y
+#define ___Y___ RCTL_T(KC_Y)
 #define ___Z___ KC_Z
-#define _COMMA_ RALT_T(KC_COMM)
+#define _COMMA_ KC_COMM
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
@@ -201,16 +204,48 @@ enum custom_keycodes {
 // Layout aliases for json keymap
 #define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
 
-#define _ALPHA \
-  KC_X,         KC_C,         KC_L,         KC_F,         KC_V,      KC_Z,    KC_Y,         KC_O,            KC_U,         KC_QUOT, \
-  LALT_T(KC_R), LCTL_T(KC_S), LGUI_T(KC_N), LSFT_T(KC_T), KC_P,      KC_K,    RSFT_T(KC_H), RGUI_T(KC_E),    RCTL_T(KC_I), LALT_T(KC_A),  \
-  KC_Q,         KC_W,         RALT_T(KC_M), KC_G,         KC_B,      KC_J,    KC_D,         RALT_T(KC_COMM), KC_DOT,       KC_SLSH, \
-                              NAV_SPC,      OSL(FUN),         SPACE_R,   SPACE_R, OSL(WINNAV),   MAGIC_GUI
+/*
+V M L C P "        | B ^ U O , \
+S T R D Y Q        $ F N E A I -
+X K J G W            Z H ' ? .
+        ⎵ ⇥     / @ ⇧
+*/
+
+#define _MAGIC_STURDY \
+  ___V___ ,___M___ ,___L___ ,___C___ ,___P___   ,___B___ ,MAGIC   ,___U___, ___O___ ,_COMMA_, \
+  ___S___ ,___T___ ,___R___ ,___D___ ,___Y___   ,___F___ ,___N___ ,___E___ ,___A___ ,___I___, \
+  ___X___ ,___K___ ,___J___ ,___G___ ,___W___   ,___Z___ ,___H___ ,LPAREN  ,RPAREN  ,__DOT__, \
+                    NAV_SPC ,OSL(FUN),SPACE_L   ,SPACE_R ,OSL(WINNAV), OS_LSFT
+
+/*
+x c l f v   z y o u '
+r s n t p   k h e i a
+q w m g b   j d , . /
+*/
+#define _BIRD \
+  ___X___ ,___C___ ,___L___ ,___F___ ,___V___   ,___Z___ ,___Y___ ,___O___, ___U___, _COMMA_, \
+  ___R___ ,___S___ ,___N___ ,___T___ ,___P___   ,___K___ ,___H___ ,___E___ ,___I___ ,___A___, \
+  ___Q___ ,___W___ ,___M___ ,___G___ ,___B___   ,___J___ ,___D___ ,KC_LPRN ,KC_RPRN ,__DOT__, \
+                      NAV_SPC,NAV_SPC,SPACE_L   ,SPACE_R,  LT(NUM,KC_E), MAGIC_GUI
+
+/* @ is the magic key!
+
+x c l f v   z y o u '
+r s n t p   k h a i @
+q w m g b   j d , . /
+              e
+*/
+#define _BIRD_JAN \
+  ___X___ ,___C___ ,___L___ ,___F___ ,___V___   ,___Z___ ,___Y___ ,___O___, ___U___ ,_COMMA_, \
+  ___R___ ,___S___ ,___N___ ,___T___ ,___P___   ,___K___ ,___H___ ,___A___ ,___I___ ,MAGIC_GUI,   \
+  ___Q___ ,___W___ ,___M___ ,___G___ ,___B___   ,___J___ ,___D___ ,LPAREN  ,RPAREN  ,__DOT__, \
+                     NAV_SPC,NAV_SPC,SPACE_L   ,SPACE_R,  OS_LSFT, ___E___
+
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
   OS_LALT, OS_LCTL, OS_LGUI, OS_LSFT, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
-  Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO, \
+  Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
                     NAV_SPC, KC_1,    KC_2,                KC_2,  KC_1,    KC_SPC
 #define _NUM \
   KC_GRV,      KC_NO,         KC_NO,        KC_NO,        KC_PLUS,      KC_BSLS, KC_HASH,      KC_AMPR,      KC_PIPE,      KC_TILD, \
@@ -236,10 +271,10 @@ enum custom_keycodes {
   k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
             k59, k60, k61,        k64, k65, k66 \
 ) \
-     KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6    ,KC_NO, \
-     KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_NO   ,                          KC_NO   ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_EQL,  \
-     KC_ESC  ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_QUOT, \
-     KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT, \
+     KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6    ,KC_NO   , \
+     KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_NO   ,                          KC_NO   ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_EQL  , \
+     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
+     KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
      KC_NO  ,KC_NO   ,KC_NO    ,KC_NO   ,     k59     ,    k60     ,k61     ,        k64     ,k65     ,    k66     ,     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO 
 
 #define REDOX(k) CONV_REDOX(k)
