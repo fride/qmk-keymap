@@ -1,0 +1,65 @@
+layout:
+  qmk_keyboard: corne_rotated
+  qmk_layout: LAYOUT_split_3x5_3
+layers:
+  DEF:
+    - [X, C, L, F, "(", ")", Y, O, U, "'"]
+    - [{h: Ctrl, t: R}, {h: Gui, t: S}, {h: Alt, t: N}, {h: Shift, t: T}, P, K, {h: Shift, t: H}, {h: Alt, t: E}, {h: Gui, t: I}, {h: Ctrl, t: "A"}]
+    - ["", W, M, G, B, J, D, ",", ., ""]
+    - {h: "",   t: "", type: ghost}
+    - {h: NUM,  t: R}
+    - REPEAT
+    - MAGIC
+    - {h: NAV, t: Space}
+    - {h: "",   t: "", type: ghost}
+  NUM:
+    - ["`", "=", "-", "_", "*", "\\", "#", "&", "|", "~"]
+    - ["7", "5", "3", "1", "+", "'''", "0", "2", "4", "6"]
+    - [null, ":", ";", "8", "", "", "9", ",", ".", ""]
+    - {h: "",   t: "", type: ghost}
+    - {type: held}
+    - REPEAT
+    - MAGIC
+    - {h: NAV, t: Space}
+    - {h: "",   t: "", type: ghost}
+  SYM:
+    - ["!", "@", "#", "$", "%", "\\", "7", "8", "9", ","]
+    - ["+", "=", "_", "-", "^", "0", "4", "5", "6", "."]
+    - [null, null, "¿", "*", "&", ";", "1", "2", "3", "/"]
+    - {t: Gui, type: ghost}
+    - Space
+    - {t: Bspace, h: FUN}
+    - {type: held}
+    - Shift
+    - {t: Alt, type: ghost}
+  NAV:
+    - ["Win Close", "Tab Prev", "Tab Next", "Tab Close", "Vol Up", Home, "Page Down", "Page Up", End, null]
+    - [Ctrl, Gui, Alt, {h: Shift, t: Tab}, "Vol Down", Left, Down, Up, Right, Calc]
+    - [null, "Win Prev", "Win Next", "Paste", "Play Pause", Insert, Delete, Prev, Next, null]
+    - {t: Gui, type: ghost}
+    - Ctrl
+    - {type: held}
+    - {t: Space, h: FUN}
+    - Shift
+    - {t: Alt, type: ghost}
+  FUN:
+    - [F1, F2, F3, F4, F5, "Caps Lock", null, DEF, CLM, GME]
+    - [F6, F7, F8, F9, F10, BT1, BT2, BT3, BT4, BT5]
+    - [null, "Desk Prev", "Desk Next", F11, F12, "Out USB", "Out BLE", "Print Scrn", "Pause Break", "BT CLR"]
+    - {t: Boot, type: ghost}
+    - Reset
+    - {type: held}
+    - {type: held}
+    - Reset
+    - {t: Boot, type: ghost}
+combos:
+  - {p: [0, 1], k: "Qu", l: ["DEF"]}
+  - {p: [1, 2], k: "V", l: ["DEF"]}
+  - {p: [1, 3],   k: "Sch", l: ["DEF"], align: top, offset: 0.3}
+  - {p: [12, 13], k: "(", l: ["DEF"]}
+  - {p: [16, 17], k: ")", l: ["DEF"]}
+  - {p: [11, 12], k: "[", l: ["DEF"]}
+  - {p: [17, 18], k: "]", l: ["DEF"]}
+  - {p: [26, 27], k: "-", l: ["DEF"]}
+  - {p: [27, 28], k: "/", l: ["DEF"]}
+  - {p: [26, 28], k: "=", l: ["DEF"], align: bottom, offset: 0.1}
