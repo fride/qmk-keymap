@@ -5,6 +5,7 @@ enum layers {
   ALPHA,  
   UTIL,
   NUM,  
+  NUM2,  
   SYM,
   WINNAV,
   FUN,
@@ -130,7 +131,7 @@ enum custom_keycodes {
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
-#define MAGIC_GUI LALT_T(QK_ALT_REPEAT_KEY)
+#define MAGIC_GUI LSFT_T(QK_ALT_REPEAT_KEY)
 
 #define ESC_SYM LT(SYM,KC_ESC)
 #define COLON_SYM LT(SYM,KC_COLON)
@@ -144,11 +145,11 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 
-#define ___A___ RGUI_T(KC_A)
+#define ___A___ LALT_T(KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
 #define ___D___ KC_D
-#define ___E___ LT(NUM,KC_E)
+#define ___E___ RGUI_T(KC_E)
 #define ___F___ LCTL_T(KC_F)
 #define ___G___ KC_G
 #define ___H___ RSFT_T(KC_H)
@@ -198,7 +199,6 @@ enum custom_keycodes {
 
 
 // ----------------
-
 // layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
 
 // Layout aliases for json keymap
@@ -228,18 +228,6 @@ q w m g b   j d , . /
   ___Q___ ,___W___ ,___M___ ,___G___ ,___B___   ,___J___ ,___D___ ,KC_LPRN ,KC_RPRN ,__DOT__, \
                       NAV_SPC,NAV_SPC,SPACE_L   ,SPACE_R,  LT(NUM,KC_E), MAGIC_GUI
 
-/* @ is the magic key!
-
-x c l f v   z y o u '
-r s n t p   k h a i @
-q w m g b   j d , . /
-              e
-*/
-#define _BIRD_JAN \
-  ___X___ ,___C___ ,___L___ ,___F___ ,___V___   ,___Z___ ,___Y___ ,___O___, ___U___ ,_COMMA_, \
-  ___R___ ,___S___ ,___N___ ,___T___ ,___P___   ,___K___ ,___H___ ,___A___ ,___I___ ,MAGIC_GUI,   \
-  ___Q___ ,___W___ ,___M___ ,___G___ ,___B___   ,___J___ ,___D___ ,LPAREN  ,RPAREN  ,__DOT__, \
-                     NAV_SPC,NAV_SPC,SPACE_L   ,SPACE_R,  OS_LSFT, ___E___
 
 
 #define _UTIL \
@@ -247,11 +235,19 @@ q w m g b   j d , . /
   OS_LALT, OS_LCTL, OS_LGUI, OS_LSFT, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
   Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
                     NAV_SPC, KC_1,    KC_2,                KC_2,  KC_1,    KC_SPC
+
 #define _NUM \
   KC_GRV,      KC_NO,         KC_NO,        KC_NO,        KC_PLUS,      KC_BSLS, KC_HASH,      KC_AMPR,      KC_PIPE,      KC_TILD, \
   LALT_T(KC_7), LCTL_T(KC_5), LGUI_T(KC_3), LSFT_T(KC_1), KC_ASTR,      KC_NO,   RSFT_T(KC_0), RGUI_T(KC_2), RCTL_T(KC_4), LALT_T(KC_6), \
   KC_NO,        KC_COLN,      KC_SCLN,      KC_9,         KC_NO,        KC_NO,   KC_8,         KC_COMM,      KC_DOT,       KC_SLSH, \
                               NAV_SPC,      KC_1,         KC_2,         KC_2,  KC_1,   MAGIC_GUI
+                              
+#define _NUM2 \
+  _SLASH_, ___7___, ___8___, ___9___, KC_PLUS,    _______, ___4___, ___5___, ___6___, _COMMA_, \
+  ___0___, ___1___, ___2___, ___3___, KC_MINS,    ___0___, ___1___, ___2___, ___3___, ___0___, \
+  KC_PAST, ___4___, ___5___, ___6___, KC_EQL ,    _______, ___7___, ___8___, ___9___, __DOT__, \
+                              NAV_SPC,      KC_1,         KC_2,         KC_2,  KC_1,   MAGIC_GUI
+
 #define _WINNAV \
   KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,      KC_BSLS, MEH(KC_6),    MEH(KC_7),      MEH(KC_8),     KC_TILD, \
   SPACE_L,      WN_WEST,      A(KC_F),      WN_EAST,      SPACE_R,      KC_NO,   MEH(KC_4),    MEH(KC_5),      MEH(KC_6),     LALT_T(KC_6), \
@@ -273,7 +269,7 @@ q w m g b   j d , . /
 ) \
      KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6    ,KC_NO   , \
      KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_NO   ,                          KC_NO   ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_EQL  , \
-     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
+     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    k26     , \
      KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
      KC_NO  ,KC_NO   ,KC_NO    ,KC_NO   ,     k59     ,    k60     ,k61     ,        k64     ,k65     ,    k66     ,     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO 
 

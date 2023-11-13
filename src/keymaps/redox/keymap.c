@@ -5,9 +5,10 @@
 
 // see the json file for a nicer display
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[ALPHA] = LAYOUT_redox(REDOX(_BIRD_JAN)),	
+	[ALPHA] = LAYOUT_redox(REDOX(_MAGIC_STURDY)),	
 	[UTIL] = LAYOUT_redox(REDOX(_UTIL)),	
 	[NUM] = LAYOUT_redox(REDOX(_NUM)),	
+	[NUM2] = LAYOUT_redox(REDOX(_NUM2)),	
 	[WINNAV] = LAYOUT_redox(REDOX(_WINNAV)),	
 	[FUN] = LAYOUT_redox(REDOX(_FUN)),	
 };

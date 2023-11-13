@@ -174,7 +174,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         if (shifted) {
           tap_code16(KC_GT);
         } else {
-          tap_code16(KC_LPRN);
+          tap_code16(KC_RPRN);
         }
         return false;
       }
