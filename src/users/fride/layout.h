@@ -150,16 +150,16 @@ enum custom_keycodes {
 #define ___C___ KC_C
 #define ___D___ LSFT_T(KC_D)
 #define ___E___ RGUI_T(KC_E)
-#define ___F___ LCTL_T(KC_F)
+#define ___F___ KC_F
 #define ___G___ KC_G
-#define ___H___ RSFT_T(KC_H)
+#define ___H___ KC_H
 #define ___I___ LALT_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
-#define ___L___ LALT_T(KC_L)
+#define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LGUI_T(KC_N)
-#define ___O___ LALT_T(KC_O)
+#define ___N___ RSFT_T(KC_N)
+#define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ LGUI_T(KC_R)
@@ -169,7 +169,7 @@ enum custom_keycodes {
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ RCTL_T(KC_Y)
+#define ___Y___ KC_Y
 #define ___Z___ KC_Z
 #define _COMMA_ KC_COMM
 #define __DOT__ KC_DOT
@@ -212,10 +212,10 @@ X K J G W            Z H ' ? .
 */
 
 #define _MAGIC_STURDY \
-  ___V___ ,___M___ ,___L___ ,___C___ ,___Q___   ,___B___ ,MAGIC   ,___U___, ___O___ ,_COMMA_, \
-  ___S___ ,___T___ ,___R___ ,___D___ ,___P___   ,___F___ ,___N___ ,___E___ ,___A___ ,___I___, \
+  ___V___ ,___M___ ,___L___ ,___C___ ,___P___   ,___B___ ,MAGIC   ,___U___, ___O___ ,_COMMA_, \
+  ___S___ ,___T___ ,___R___ ,___D___ ,___Y___   ,___F___ ,___N___ ,___E___ ,___A___ ,___I___, \
   ___X___ ,___K___ ,___J___ ,___G___ ,___W___   ,___Z___ ,___H___ ,LPAREN  ,RPAREN  ,__DOT__, \
-                    NAV_SPC ,OSL(FUN),SPACE_L   ,SPACE_R ,OSL(WINNAV), ___Y___
+                    NAV_SPC ,KC_LGUI,SPACE_L    ,KC_F19 ,KC_F19, OS_LSFT
 
 /*
 x c l f v   z y o u '
