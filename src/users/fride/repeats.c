@@ -112,16 +112,26 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
   return true;
 }
 
-#ifdef ACHORDION
+
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                      uint16_t other_keycode, keyrecord_t* other_record) {
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand
   switch (tap_hold_keycode) {
     case MAGIC_GUI:
-    case NAV_SPC:
+    case MEH_SPC:
     case ___E___:
       return true;
+    case ___T___:
+      switch (other_keycode)
+      {
+        case ___X___:
+        case ___C___:
+          return true;
+      
+      default:
+        break;
+      }
   }
 
   // Also allow same-hand holds when the other key is in the rows below the
@@ -143,4 +153,3 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
   return 1000;  // Otherwise use a timeout of 1 second
 }
-#endif
