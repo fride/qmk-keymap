@@ -149,34 +149,34 @@ enum custom_keycodes {
 #define ___A___ KC_A
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ RGUI_T(KC_D)
+#define ___D___ LT(UTIL,KC_D)
 #define ___E___ LT(SYM,KC_E)
 #define ___F___ KC_F
 #define ___G___ LGUI_T(KC_G)
-#define ___H___ LT(UTIL,KC_H)
-#define ___I___ LT(NUM,KC_I)
-#define ___J___ KC_J
-#define ___K___ RALT_T(KC_K)
+#define ___H___ RGUI_T(KC_H)
+#define ___I___ KC_I
+#define ___J___ LALT_T(KC_J)
+#define ___K___ LCTL_T(KC_K)
 #define ___L___ KC_L
-#define ___M___ LALT_T(KC_M)
-#define ___N___ LT(SYM,KC_N)
+#define ___M___ KC_M
+#define ___N___ LT(UTIL,KC_N)
 #define ___O___ KC_O
-#define ___P___ RALT_T(KC_P)
+#define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ KC_R
-#define ___S___ LT(NUM,KC_S)
-#define ___T___ LT(UTIL,KC_T)
+#define ___R___ LT(SYM,KC_R)
+#define ___S___ LT(SYM,KC_S)
+#define ___T___ KC_T
 #define ___U___ KC_U
 #define ___V___ KC_V
-#define ___W___ LCTL_T(KC_W)
+#define ___W___ KC_W
 #define ___X___ KC_X
 #define ___Y___ KC_Y
 #define ___Z___ KC_Z
 #define _COMMA_ LALT_T(KC_COMM)
 #define __DOT__ LCTL_T(KC_DOT)
-#define _SLASH_ KC_SLSH
+#define _SLASH_ RCTL_T(KC_SLSH)
 #define _SQUOT_ KC_QUOT
-#define _DQUOT_ QUOTE_BRACKET
+#define _DQUOT_ LALT(KC_QUOT)
 #define _MINUS_ KC_MINS
 #define __HASH_ KC_HASH
 #define _SEMIC_ KC_SCLN
@@ -206,15 +206,18 @@ enum custom_keycodes {
 #define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
 
 /*
-x c l f v   z y o u '
-r s n t p   k h e i a
-q w m g b   j d , . /
+V M L C P "        | B ^ U O , \
+S T R D Y Q        $ F N E A I -
+X K J G W            Z H ' ? .
+        ⎵ ⇥     / @ ⇧
 */
-#define _BIRD \
-  ___X___ ,___C___ ,___L___ ,___F___ ,___V___   ,___Z___ ,___Y___ ,___O___, ___U___, _SEMIC_, \
-  ___R___ ,___S___ ,___N___ ,___T___ ,___P___   ,___K___ ,___H___ ,___E___ ,___I___ ,___A___, \
-  ___Q___ ,___W___ ,___M___ ,___G___ ,___B___   ,___J___ ,___D___ ,_COMMA_ ,__DOT__ ,_SEMIC_, \
-                    MEH_SPC ,OS_LGUI ,SPACE_L   ,SPACE_R,  KC_F19, MAGIC_GUI
+#define _BASE \
+  ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, MAGIC,   ___U___, ___O___, _COMMA_, \
+  ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _SQUOT_, _SLASH_, __DOT__, \
+                    MEH_SPC, OS_LGUI, SPACE_L,      KC_BSLS, REPEAT,  OS_LSFT
+
+
 
 
 
@@ -255,10 +258,10 @@ q w m g b   j d , . /
   k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
             k59, k60, k61,        k64, k65, k66 \
 ) \
-     KC_NO   ,KC_F1   ,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F6   ,KC_F7   ,KC_F8   ,KC_F9   ,KC_F10  ,KC_NO   , \
-     KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_F11   ,                         KC_F12  ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_EQL  , \
-     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_LBRC ,                          KC_RBRC ,k36     ,k37     ,k38     ,k39     ,k40 ,    k26     , \
+     KC_NO   ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0  ,KC_NO   , \
+     KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_F11   ,                         KC_F12  ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_BSLS , \
+     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_Q     ,                         KC_DLR  ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
      KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
-     KC_LCTL ,KC_LALT   ,KC_NO    ,KC_NO   ,     k59     ,    k60     ,k61     ,        k64     ,k65     ,    k66     ,     KC_NO   ,KC_NO   ,KC_NO   ,KC_NO 
+     KC_LCTL ,KC_LALT   ,KC_LEFT    ,KC_RIGHT   ,     k59     ,    k60     ,k61     ,        k64     ,k65     , k66     ,KC_LBRC  ,KC_RBRC,KC_NO   ,KC_NO 
 
 #define REDOX(k) CONV_REDOX(k)
