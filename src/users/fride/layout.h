@@ -50,13 +50,6 @@ enum custom_keycodes {
   MG_VER,
   M_SENTENCE,
 
-  // TODO remove this stuff
-  DI_TH,
-  DI_SH,
-  DI_CH,
-  DI_WH,
-  DI_GH,
-
   // N-Shot Mods
   OS_LSFT,  // OS Mods
   OS_LCTL,  // OS Mods
@@ -146,10 +139,10 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 
-#define ___A___ KC_A
+#define ___A___ LT(NUM2,KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ LT(SYM,KC_D)
+#define ___D___ LT(UTIL,KC_D)
 #define ___E___ LT(SYM,KC_E)
 #define ___F___ MEH_T(KC_F)
 #define ___G___ LGUI_T(KC_G)
@@ -159,7 +152,7 @@ enum custom_keycodes {
 #define ___K___ LCTL_T(KC_K)
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LT(SYM,KC_N)
+#define ___N___ LT(UTIL,KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
@@ -214,10 +207,8 @@ X K J G W            Z H ' ? .
 #define _BASE \
   ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, MAGIC,   ___U___, ___O___, _COMMA_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
-  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, KC_LPRN, KC_RPRN, __DOT__, \
-                    NAV_SPC, NUMWORD, SPACE_L,      KC_BSLS, REPEAT,  OS_LSFT
-
-
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, LPAREN , RPAREN , __DOT__, \
+                    NAV_SPC, NUMWORD, SPACE_L,      KC_BSLS, OS_LCTL,  OS_LSFT
 
 
 
@@ -231,6 +222,12 @@ X K J G W            Z H ' ? .
   KC_TILD ,KC_PLUS ,KC_PAST, KC_EXLM, _______      ,_______, KC_HASH,  KC_AT,   KC_CIRC, _COMMA_, \
   ___7___ ,___5___ ,___3___ ,___1___, KC_BSLS      ,___0___, ___0___,  ___2___, ___4___, ___6___ , \
   _______ ,KC_LT   ,KC_GT,   ___9___, _______      ,KC_SLSH, ___8___,  KC_LPRN, KC_RPRN, __DOT__, \
+                    _______, _______, _______      ,_______, _______, _______
+
+#define _NUM2 \
+  KC_SLSH ,___7___, ___8___, ___9___, KC_PLUS      ,_______, KC_HASH,  KC_AT,   _XXXXX_, _COMMA_, \
+  ___0___, ___1___, ___2___, ___3___, KC_MINS      ,_______, _______,  _______, _XXXXX_, _______ , \
+  KC_PAST ,___4___, ___5___, ___6___, KC_EQL       ,KC_SLSH, KC_LGUI,  KC_LSFT, _XXXXX_, __DOT__, \
                     _______, _______, _______      ,_______, _______, _______
                               
 #define _SYM \
@@ -260,7 +257,7 @@ X K J G W            Z H ' ? .
 ) \
      KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6  ,KC_NO   , \
      KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_F11   ,                         KC_F12  ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_BSLS , \
-     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR  ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
+     k43     ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR  ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
      KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
      KC_LCTL ,KC_LALT   ,KC_LEFT    ,KC_RIGHT   ,     k59     ,    k60     ,k61     ,        k64     ,k65     , k66     ,KC_LBRC  ,KC_RBRC,KC_NO   ,KC_NO 
 

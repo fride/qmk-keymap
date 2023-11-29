@@ -242,33 +242,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
       break;
     }
-    case DI_TH:
-      if (record->event.pressed) {
-        SEND_STRING("th");
+    case ESC_SYM: {
+      if (record->event.pressed && record->tap.count > 0) {
+        tap_code16(KC_ESC);
+        return false;
       }
       break;
-    case DI_SH:
-       if (record->event.pressed) {
-        SEND_STRING("sh");
-      }
-      break;
-    case DI_CH:
-     if (record->event.pressed) {
-        SEND_STRING("ch");
-      }
-      break;
-    case DI_WH:
-     if (record->event.pressed) {
-        SEND_STRING("wh");
-      }
-      break;
-    // case ESC_SYM: {
-    //   if (record->event.pressed && record->tap.count > 0) {
-    //     tap_code16(KC_ESC);
-    //     return false;
-    //   }
-    //   break;
-    // }
+    }
     case SZ:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
