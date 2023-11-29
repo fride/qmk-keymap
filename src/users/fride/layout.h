@@ -149,9 +149,9 @@ enum custom_keycodes {
 #define ___A___ KC_A
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ LT(UTIL,KC_D)
+#define ___D___ LT(SYM,KC_D)
 #define ___E___ LT(SYM,KC_E)
-#define ___F___ KC_F
+#define ___F___ MEH_T(KC_F)
 #define ___G___ LGUI_T(KC_G)
 #define ___H___ RGUI_T(KC_H)
 #define ___I___ KC_I
@@ -159,7 +159,7 @@ enum custom_keycodes {
 #define ___K___ LCTL_T(KC_K)
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LT(UTIL,KC_N)
+#define ___N___ LT(SYM,KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
@@ -170,7 +170,7 @@ enum custom_keycodes {
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ KC_Y
+#define ___Y___ MEH_T(KC_Y)
 #define ___Z___ KC_Z
 #define _COMMA_ LALT_T(KC_COMM)
 #define __DOT__ LCTL_T(KC_DOT)
@@ -214,8 +214,8 @@ X K J G W            Z H ' ? .
 #define _BASE \
   ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, MAGIC,   ___U___, ___O___, _COMMA_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
-  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _SQUOT_, _SLASH_, __DOT__, \
-                    MEH_SPC, OS_LGUI, SPACE_L,      KC_BSLS, REPEAT,  OS_LSFT
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, KC_LPRN, KC_RPRN, __DOT__, \
+                    NAV_SPC, NUMWORD, SPACE_L,      KC_BSLS, REPEAT,  OS_LSFT
 
 
 
@@ -228,16 +228,16 @@ X K J G W            Z H ' ? .
                     KC_SPC, _______, _______            , _______, _______, _______
 
 #define _NUM \
-  _______ ,_______ ,_______, KC_PLUS, _______      ,_______, ___7___,  ___8___,  ___9___, _______, \
-  _______ ,_______ ,KC_COLN , KC_MINS, _______      ,___0___, ___4___,  ___5___,  ___6___, KC_EQL , \
-  _______ ,_______ ,_______, _______, _______      ,_______, ___1___,  ___2___,  ___3___, _______, \
+  KC_TILD ,KC_PLUS ,KC_PAST, KC_EXLM, _______      ,_______, KC_HASH,  KC_AT,   KC_CIRC, _COMMA_, \
+  ___7___ ,___5___ ,___3___ ,___1___, KC_BSLS      ,___0___, ___0___,  ___2___, ___4___, ___6___ , \
+  _______ ,KC_LT   ,KC_GT,   ___9___, _______      ,KC_SLSH, ___8___,  KC_LPRN, KC_RPRN, __DOT__, \
                     _______, _______, _______      ,_______, _______, _______
                               
 #define _SYM \
-  S(KC_1), S(KC_2) ,S(KC_3) ,S(KC_4), KC_PLUS,    S(KC_6),  S(KC_7), S(KC_8), KC_QUES, _COMMA_, \
-  KC_PLUS, KC_EQL  ,KC_LPRN ,KC_RPRN, KC_DQUO,    KC_COLON, KC_RBRC, KC_LBRC, KC_RCBR, KC_LCBR, \
-  KC_LT,   KC_PIPE ,KC_PIPE ,KC_GT   ,KC_BSLS ,   KC_GRV  , KC_UNDS, KC_SLSH, KC_TILD,  KC_SCLN, \
-                              _______, _______, _______, _______, _______, _______
+  KC_TILD ,KC_PLUS ,KC_PAST, KC_EXLM, _______      ,_______, KC_HASH,  KC_AT,   KC_CIRC, _COMMA_, \
+  KC_PIPE ,KC_LCBR ,KC_RCBR ,KC_MINS, KC_BSLS      ,KC_GRV,  KC_QUES,  KC_LBRC, KC_RBRC, KC_DLR , \
+  KC_UNDS ,KC_LT   ,KC_GT,   KC_PERC, _______      ,KC_SLSH, KC_AMPR,  KC_LPRN, KC_RPRN, __DOT__, \
+                    _______, _______, _______      ,_______, _______, _______
 
 #define _WINNAV \
   KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,      KC_BSLS, MEH(KC_6),    MEH(KC_7),      MEH(KC_8),     KC_TILD, \
@@ -258,9 +258,9 @@ X K J G W            Z H ' ? .
   k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
             k59, k60, k61,        k64, k65, k66 \
 ) \
-     KC_NO   ,KC_1    ,KC_2    ,KC_3    ,KC_4    ,KC_5    ,                                            KC_6    ,KC_7    ,KC_8    ,KC_9    ,KC_0  ,KC_NO   , \
+     KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6  ,KC_NO   , \
      KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_F11   ,                         KC_F12  ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_BSLS , \
-     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_Q     ,                         KC_DLR  ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
+     KC_Q    ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR  ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
      KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
      KC_LCTL ,KC_LALT   ,KC_LEFT    ,KC_RIGHT   ,     k59     ,    k60     ,k61     ,        k64     ,k65     , k66     ,KC_LBRC  ,KC_RBRC,KC_NO   ,KC_NO 
 

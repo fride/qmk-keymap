@@ -1,27 +1,30 @@
 /*
-x c l f v   z y o u '
-r s n t p   k h e i a
-q w m g b   j d , . /
+V M L C P            B ^ U O , \
+S T R D Y            F N E A I -
+X K J G W            Z H ' ? .
+    ⎵ ⇥              @ ⇧
 */
+
+COMB(CMB_NUM,           NUMWORD,            NAV_SPC, OS_LSFT)
 
 ////// Horizontal combos
 // top row left
 COMB(CMB_CANCEL,		CANCEL,		        ___R___, ___I___)
-COMB(CMB_GT,   		        KC_GT,       	        ___D___, ___Y___)
-COMB(CMB_LT,       		KC_LT,       	        ___F___, ___N___)
+COMB(CMB_GT,   		        KC_GT,       	___D___, ___Y___)
+COMB(CMB_LT,       		KC_LT,       	    ___F___, ___N___)
 
-COMB(CMB_ENT,      		KC_ENT,         	___H___ ,___E___ ,___I___)
-COMB(CMB_TAB,      		KC_TAB,         	___S___, ___N___, ___T___)
+COMB(CMB_ENT,      		KC_ENT,         	___H___ ,___E___ ,___A___)
+COMB(CMB_TAB,      		KC_TAB,         	___T___, ___R___, ___D___)
 
 COMB(CMB_EQL,      		KC_EQL,         	___Y___, ___O___)
-COMB(CMB_MINS,      	        KC_MINS,        	___Y___, ___U___)
+COMB(CMB_MINS,      	KC_MINS,        	___Y___, ___U___)
 COMB(CMB_DEL_WORD, 		C(KC_W),        	___Y___, ___O___, ___U___)
-COMB(CMB_BSPC, 			KC_BSPC,      	        ___O___, ___U___)
+COMB(CMB_BSPC, 			KC_BSPC,      	    ___O___, ___U___)
 
-COMB(CMB_ESC,			ESC_SYM,		___N___, ___T___)
-COMB(CMB_COLON,			COLON_SYM,		___H___, ___E___)
-COMB(CMB_SQUOTE,		KC_QUOT,		___H___, ___I___)
-COMB(CMB_DQUOTE,		KC_DQUO,		___S___, ___T___)
+COMB(CMB_ESC,			ESC_SYM,		___R___, ___D___)
+COMB(CMB_COLON,			COLON_SYM,		___N___, ___E___)
+COMB(CMB_SQUOTE,		KC_QUOT,		___N___, ___A___)
+COMB(CMB_DQUOTE,		KC_DQUO,		___T___, ___D___)
 
 COMB(CMB_SCLN,			COLON_SYM,		___H___, KC_LPRN)
 COMB(CMB_SLSH,			KC_SLSH,		___H___, KC_LPRN)
