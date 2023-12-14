@@ -5,6 +5,7 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
         case KC_DOT:
         case KC_COMM:
+        case KC_MINS:
             return true;
         default:
             return false;
@@ -14,10 +15,13 @@ bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
 void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch(keycode) {
         case KC_DOT:
-            register_code16((!shifted) ? KC_DOT : KC_EXLM);
+            register_code16((!shifted) ? KC_DOT : KC_COLON);
             break;
         case KC_COMM:
-            register_code16((!shifted) ? KC_COMM : KC_QUES);
+            register_code16((!shifted) ? KC_COMM : KC_SCLN);
+            break;
+        case KC_MINS:
+            register_code16((!shifted) ? KC_MINS : KC_PLUS);
             break;
         default:
             if (shifted) {
@@ -31,10 +35,13 @@ void autoshift_press_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
 void autoshift_release_user(uint16_t keycode, bool shifted, keyrecord_t *record) {
     switch(keycode) {
         case KC_DOT:
-            unregister_code16((!shifted) ? KC_DOT : KC_EXLM);
+            unregister_code16((!shifted) ? KC_DOT : KC_COLON);
             break;
         case KC_COMM:
-            unregister_code16((!shifted) ? KC_COMM : KC_QUES);
+            unregister_code16((!shifted) ? KC_COMM : KC_SCLN);
+            break;
+        case KC_MINS:
+            unregister_code16((!shifted) ? KC_MINS : KC_PLUS);
             break;
         default:
             // & 0xFF gets the Tap key for Tap Holds, required when using Retro Shift

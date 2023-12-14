@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "layout.h"
 #include "features/layermodes.h"
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
@@ -8,27 +9,13 @@
 #endif
 #include "features/adaptive_keys.h"
 #include "features/process_records.h"
-#include "features/custom_shift_keys.h"
+// needed for the combotimeouts!
 
-#include "layout.h"
 
 #define IS_SHIFTED(mods) \
   (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
 #define UMLAUT(KC) tap_code16(A(KC))
 #define UPPER_UMLAUT(KC) tap_code16(S(A(KC)))
-
-const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, KC_EXLM}, 
-    {KC_COMM, KC_QUES},
-    {_DQUOT_, KC_LPRN},
-    {_SQUOT_, KC_RPRN},
-    {KC_MINS, KC_PLUS},
-    {KC_COLN, KC_SCLN},
-    {KC_SLASH, KC_PAST}    
-};
-
-uint8_t NUM_CUSTOM_SHIFT_KEYS =
-    sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
 
 // ┌─────────────────────────────────────────────────┐
 // │ s W A P P E R                                   │
@@ -80,9 +67,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return false;
   }
 
-  if (!process_custom_shift_keys(keycode, record)) { 
-    return false; 
-  }
   // this overrides the repeat keys.
   // because nf is a commonn bigram in german ;)
   if (record->event.pressed) {
@@ -138,26 +122,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
           process_repeat_key(QK_AREP, &release);
           return PROCESS_RECORD_RETURN_TRUE;
         }
-      }
-      break;
-    case _DQUOT_:
-      if (record->event.pressed) {
-        if (shifted) {
-          tap_code16(KC_LPRN);
-        } else {
-          tap_code16(KC_DQUO);
-        }
-        return false;
-      }
-      break;
-    case _COMMA_:
-      if (record->event.pressed) {
-        if (shifted) {
-          tap_code16(KC_QUES);
-        } else {
-          tap_code16(KC_COMM);
-        }
-        return false;
       }
       break;
     case LPAREN:
@@ -257,6 +221,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     case MG_ION:
       if (record->event.pressed) {
         SEND_STRING("on");
+        return false;
+      }
+    case BI_PH:
+      if (record->event.pressed) {
+        SEND_STRING("ph");
         return false;
       }
     case MG_VER:
@@ -425,12 +394,7 @@ void tap_hold_send_hold(uint16_t keycode) {
 
 void matrix_scan_user(void) { tap_hold_matrix_scan(); }
 
-uint16_t get_combo_term(uint16_t index, combo_t* combo) {
-  switch (index) {
-    default:
-      return COMBO_TERM;
-  }
-}
+
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   switch (keycode) {

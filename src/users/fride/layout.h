@@ -94,7 +94,9 @@ enum custom_keycodes {
   WN_NORTH,
   WN_SOUTH,
   W_ROTATE,
-  W_ROTATE2
+  W_ROTATE2,
+
+  BI_PH,
 };
 
 
@@ -129,47 +131,49 @@ enum custom_keycodes {
 #define ESC_SYM LT(SYM,KC_ESC)
 #define COLON_SYM LT(SYM,KC_COLON)
 
-#define M_LT LT(UTIL, KC_LT)
-#define M_GT LT(NUM,  KC_GT)
+#define M_LT LT(NUM, KC_LT)
+#define M_GT LT(SYM, KC_GT)
 
 // thumb keys!
 #define NAV_SPC LT(UTIL, KC_SPC)
 #define MEH_SPC MEH_T(KC_SPC)
-
+#define NUM_QUO LT(NUM, KC_QUOT)
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 
-#define ___A___ LT(NUM2,KC_A)
+
+
+#define ___A___ RSFT_T(KC_A)
 #define ___B___ KC_B
-#define ___C___ KC_C
-#define ___D___ LT(UTIL,KC_D)
-#define ___E___ LT(SYM,KC_E)
-#define ___F___ MEH_T(KC_F)
-#define ___G___ LGUI_T(KC_G)
-#define ___H___ RGUI_T(KC_H)
-#define ___I___ KC_I
-#define ___J___ LALT_T(KC_J)
-#define ___K___ LCTL_T(KC_K)
+#define ___C___ LALT_T(KC_C)
+#define ___D___ MEH_T(KC_D)
+#define ___E___ RGUI_T(KC_E)
+#define ___F___ KC_F
+#define ___G___ KC_G
+#define ___H___ RCTL_T(KC_H)
+#define ___I___ RALT_T(KC_I)
+#define ___J___ KC_J
+#define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LT(UTIL,KC_N)
+#define ___N___ LGUI_T(KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LT(SYM,KC_R)
-#define ___S___ LT(SYM,KC_S)
-#define ___T___ KC_T
-#define ___U___ KC_U
+#define ___R___ KC_R
+#define ___S___ LCTL_T(KC_S)
+#define ___T___ LSFT_T(KC_T)
+#define ___U___ MEH_T(KC_U)
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ MEH_T(KC_Y)
+#define ___Y___ RALT_T(KC_Y)
 #define ___Z___ KC_Z
-#define _COMMA_ LALT_T(KC_COMM)
-#define __DOT__ LCTL_T(KC_DOT)
-#define _SLASH_ RCTL_T(KC_SLSH)
+#define _COMMA_ KC_COMM
+#define __DOT__ KC_DOT
+#define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
-#define _DQUOT_ LALT(KC_QUOT)
+#define _DQUOT_ KC_DQUO
 #define _MINUS_ KC_MINS
 #define __HASH_ KC_HASH
 #define _SEMIC_ KC_SCLN
@@ -195,28 +199,54 @@ enum custom_keycodes {
 // ----------------
 // layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
 
-// Layout aliases for json keymap
-#define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
-
-/*
-V M L C P "        | B ^ U O , \
-S T R D Y Q        $ F N E A I -
-X K J G W            Z H ' ? .
-        ⎵ ⇥     / @ ⇧
-*/
-#define _BASE \
+#define _STURDY \
   ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, MAGIC,   ___U___, ___O___, _COMMA_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
-  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, LPAREN , RPAREN , __DOT__, \
-                    NAV_SPC, NUMWORD, SPACE_L,      KC_BSLS, OS_LCTL,  OS_LSFT
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SLASH_, \
+                    NUMWORD, NAV_SPC, M_LT,         M_GT,    OS_LSFT,  OS_LSFT
+
+/*
+  b l d w z        ' f o u j 
+  n r t s g        y h a e i
+  q x m c v        k p , . /
+*/
+#define _GRAPHITE \
+  ___B___, ___L___, ___D___, ___W___, ___Z___,      _SQUOT_, ___F___, ___O___, ___U___, ___J___, \
+  ___N___, ___R___, ___T___, ___S___, ___G___,      ___Y___, ___H___, ___A___, ___E___, ___I___, \
+  ___Q___, ___X___, ___M___, ___C___, ___V___,      ___K___, ___P___, _COMMA_, __DOT__, _SLASH_, \
+                    NUMWORD, MAGIC_GUI, KC_DEL,   KC_BSPC, NAV_SPC,  OSL(SYM)
+
+
+#define _BASE \
+  ___V___, ___W___, ___F___, ___P___, ___K___,      ___J___, ___L___, ___U___, ___Y___, _SQUOT_, \
+  ___A___, ___R___, ___S___, ___T___, ___G___,      ___M___, ___N___, ___E___, ___I___, ___O___, \
+  _XXXXX_, ___X___, ___C___, ___D___, _XXXXX_,      _XXXXX_, ___H___, _COMMA_ , __DOT__ , _XXXXX_, \
+                    NUM_QUO, NAV_SPC, SPACE_L,      KC_BSLS, OS_LSFT,  NUMWORD
+
+
+/*
+     ╭─────────────────────╮ ╭──────────────────────╮
+ESC  │  X   W   M   G  "[  │ │  #$  .:  ']   J   B  │ BSP
+TAB  │  S   C   N   T   K  | |  ,;   A   E   I   H  │ Tg(Num)
+LSFT │  V   P   L   D  / * │ │  -+   U   O   Y   F  │ RSFT
+     ╰──────╮  App BSP  R  │ │  SPC RET TAB  ╭──────╯
+            ╰──────────────╯ ╰───────────────╯
+*/
+#define _HANDS_DOWN_VV \
+  ___X___, ___W___, ___M___, ___G___, _DQUOT_,      KC_HASH, __DOT__, _SQUOT_, ___J___, ___B___, \
+  ___S___, ___C___, ___N___, ___T___, ___K___,      _COMMA_, ___A___, ___E___, ___I___, ___H___, \
+  ___V___, ___P___, ___L___, ___D___, KC_SLSH,      KC_MINS, ___U___, ___O___, ___Y___, ___F___, \
+                    SPACE_L, ___R___, M_LT,         M_GT, NAV_SPC,  SPACE_R
+
+
 
 
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
-  OS_LALT, OS_LCTL, OS_LGUI, OS_LSFT, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
+  KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
   Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
-                    KC_SPC, _______, _______            , _______, _______, _______
+                    KC_SPC, KC_SPC,   KC_F19            , _______, _______, _______
 
 #define _NUM \
   KC_TILD ,KC_PLUS ,KC_PAST, KC_EXLM, _______      ,_______, KC_HASH,  KC_AT,   KC_CIRC, _COMMA_, \
@@ -249,6 +279,9 @@ X K J G W            Z H ' ? .
                               KC_NO,        KC_NO,        KC_NO,             KC_2,    KC_1,         MAGIC_GUI
 
 
+// Layout aliases for json keymap
+#define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
+
 #define CONV_REDOX( \
   k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
   k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
@@ -257,8 +290,41 @@ X K J G W            Z H ' ? .
 ) \
      KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6  ,KC_NO   , \
      KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_F11   ,                         KC_F12  ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_BSLS , \
-     k43     ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR  ,k36     ,k37     ,k38     ,k39     ,k40 ,    KC_MINS , \
+     k15     ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR   ,k36     ,k37     ,k38     ,k39     ,k40 ,    k26 , \
      KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
-     KC_LCTL ,KC_LALT   ,KC_LEFT    ,KC_RIGHT   ,     k59     ,    k60     ,k61     ,        k64     ,k65     , k66     ,KC_LBRC  ,KC_RBRC,KC_NO   ,KC_NO 
+     KC_LCTL ,KC_LALT ,KC_LEFT ,KC_RIGHT   ,     k59     ,    k60     ,k61     ,        k64      ,k65     ,k66     ,KC_LBRC ,KC_RBRC ,KC_NO   ,KC_NO 
 
 #define REDOX(k) CONV_REDOX(k)
+
+#define LAYOUT_TOTEM(...) LAYOUT(__VA_ARGS__)
+
+#define TOTEM(k) CONV_TOTEM(k)
+
+#define CONV_TOTEM( \
+  k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
+  k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
+  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
+            k59, k60, k61,        k64, k65, k66 \
+) \
+        k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
+        k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
+KC_NO,  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, KC_NO, \
+                  k59, k60, k61,        k64, k65, k66
+
+
+// -------------------------------------------------------------------------------------------------------- //
+
+#define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__)
+
+#define FERRIS(k) CONV_FERRIS(k)
+
+#define CONV_FERRIS( \
+  k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
+  k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
+  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
+            k59, k60, k61,        k64, k65, k66 \
+) \
+        k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
+        k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
+        k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
+                      k60, k61,         k64, k65

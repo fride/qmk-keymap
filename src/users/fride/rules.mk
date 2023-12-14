@@ -2,6 +2,9 @@ AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE      = yes
 MOUSEKEY_ENABLE   = yes
 TAP_DANCE_ENABLE  = no
+KEY_OVERRIDE_ENABLE = yes
+
+
 
 # Easy definition of combos
 VPATH +=  keyboards/gboards/

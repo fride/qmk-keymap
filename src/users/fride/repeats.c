@@ -15,11 +15,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___E___:
         return KC_U;
       case ___F___:
-        return KC_T;
+        return KC_Y;
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
-        return KC_Y;
+        return KC_S;
       case ___H___:
         return KC_Y;
       case ___I___:
@@ -35,11 +35,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___O___:
         return KC_A;
       case ___P___:
-        return KC_Y;
+        return KC_H;
       case ___R___:
         return KC_L;
       case ___S___:
-        return KC_K;
+        return KC_C;
       case ___T___:
         return KC_M; //ment does not work that well with german
       case ___U___:
@@ -47,7 +47,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___V___:
         return MG_VER;
       case ___W___:
-        return KC_Y;
+        return KC_S;
       case ___Y___:
         return KC_P;
       case KC_EQL:
@@ -64,7 +64,14 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case KC_DOT:
         return M_SENTENCE; // ODO does not work!
       case KC_1 ... KC_0:
-        return KC_DOT;
+        return KC_DOT;      
+  
+      case KC_GT:
+        return KC_MINS;
+      case KC_PIPE:
+        return KC_GT;
+      case KC_PAST:
+        return KC_GT;
       default:
         return KC_N;
     }
@@ -118,17 +125,17 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand
   switch (tap_hold_keycode) {
-    case MAGIC_GUI:
+    case ___R___:
     case MEH_SPC:
     case COLON_SYM:
     case ESC_SYM:
-    case ___E___:
       return true;
-    case ___T___:
+    case ___D___:
       switch (other_keycode)
       {
-        case ___X___:
-        case ___C___:
+        case ___V___:
+        case ___M___:
+        case MAGIC:
           return true;
       
       default:
@@ -148,10 +155,11 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
-    case MAGIC_GUI:
+   // case ___D___: // otherwise the repeat and the delete code clash! :/
     case NAV_SPC:
     case COLON_SYM:
     case ESC_SYM:
+    case MAGIC_GUI:
       return 0;  // Bypass Achordion for these keys.
   }
 

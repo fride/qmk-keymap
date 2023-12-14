@@ -46,3 +46,7 @@ for more options.
 // Enable adaptive roles.
 #define ADAPTIVE_KEYS_ENABLE 
 #define ADAPTIVE_TERM (TAPPING_TERM/2) // rolling threshold
+
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_INVERT_ON_SHIFT
+#define ACHORDION
