@@ -1,15 +1,17 @@
 #include QMK_KEYBOARD_H
+
+
 #include "layout.h"
 #include "features/layermodes.h"
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
+
+#include "features/adaptive_keys.h"
+#include "features/process_records.h"
 #ifdef ACHORDION
 #include "features/achordion.h"
 #endif
-#include "features/adaptive_keys.h"
-#include "features/process_records.h"
-// needed for the combotimeouts!
 
 
 #define IS_SHIFTED(mods) \
@@ -36,11 +38,11 @@ bool wap_app_cancel(uint16_t keycode) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+
 #ifdef ACHORDION
-  if (!process_achordion(keycode, record)) {
-    return false;
-  }
+  if (!process_achordion(keycode, record)) { return false; }
 #endif
+
   process_num_word(keycode, record);
 
   update_swapper(&sw_app_active, KC_LGUI, KC_TAB, SW_APP, keycode, record,
@@ -63,9 +65,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return false;
   }
 
-  if (!process_adaptive_key(keycode, record)) {
-    return false;
-  }
 
   // this overrides the repeat keys.
   // because nf is a commonn bigram in german ;)
@@ -106,7 +105,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 
   switch (keycode) {
-    case MAGIC_GUI:
+    case REP_SFT:
     // TODO this only ever returns an n
      if (record->event.pressed) {
         if (record->tap.count > 0) {
@@ -114,12 +113,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
           press.event.type = KEY_EVENT;
           press.tap.count = 1;
           press.event.pressed = true;
-          process_repeat_key(QK_AREP, &press);
+          process_repeat_key(QK_REPEAT_KEY, &press);
           keyrecord_t release;
           release.event.type = KEY_EVENT;
           release.tap.count = 1;
           release.event.pressed = false;
-          process_repeat_key(QK_AREP, &release);
+          process_repeat_key(QK_REPEAT_KEY, &release);
           return PROCESS_RECORD_RETURN_TRUE;
         }
       }
@@ -198,7 +197,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
         return false;
       }
-      break;  
+      break;
+    case UM_CTL: {
+      if (record->event.pressed && record->tap.count > 0) {
+        tap_code16(A(KC_U));
+        return false;
+      }
+      break;
+    }
     case COLON_SYM: {
       if (record->event.pressed && record->tap.count > 0) {
         tap_code16(KC_COLON);
@@ -394,12 +400,9 @@ void tap_hold_send_hold(uint16_t keycode) {
 
 void matrix_scan_user(void) { tap_hold_matrix_scan(); }
 
-
-
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   switch (keycode) {
     case ___S___:
-    case ___T___:
     case ___I___:
     case ___A___:
       return TAPPING_TERM + 30;
@@ -410,4 +413,55 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t* combo) { return false; }
 
+#ifdef ACHORDION
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand
+  switch (tap_hold_keycode) {
+    case UM_CTL:
+    case MEH_SPC:
+    case COLON_SYM:
+    case ESC_SYM:
+      return true;    
+    default:
+      break;
+  }
 
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+    return true;
+  }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    // case ___D___: // otherwise the repeat and the delete code clash! :/
+    case NAV_SPC:
+    case COLON_SYM:
+    case ESC_SYM:
+    case UM_CTL:
+      return 0;  // Bypass Achordion for these keys.
+  }
+
+  return 1000;  // Otherwise use a timeout of 1 second
+}
+
+// uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode) {
+//   if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+//     return 0;  // Disable streak detection on layer-tap keys.
+//   }
+
+//   // Otherwise, tap_hold_keycode is a mod-tap key.
+//   uint8_t mod = mod_config(QK_MOD_TAP_GET_MODS(tap_hold_keycode));
+//   if ((mod & MOD_LSFT) != 0) {
+//     return 0;  // Disable for Shift mod-tap keys.
+//   } else {
+//     return 100;
+//   }
+// }
+#endif

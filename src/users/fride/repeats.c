@@ -19,7 +19,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
-        return KC_S;
+        return KC_Y;
       case ___H___:
         return KC_Y;
       case ___I___:
@@ -35,11 +35,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___O___:
         return KC_A;
       case ___P___:
-        return KC_H;
+        return KC_Y;
       case ___R___:
         return KC_L;
       case ___S___:
-        return KC_C;
+        return KC_K;
       case ___T___:
         return KC_M; //ment does not work that well with german
       case ___U___:
@@ -47,7 +47,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___V___:
         return MG_VER;
       case ___W___:
-        return KC_S;
+        return KC_Y;
       case ___Y___:
         return KC_P;
       case KC_EQL:
@@ -90,7 +90,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 // reeat
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
     switch (keycode) {
-        case MAGIC_GUI:
+        case REP_SFT:
             return false;
         case KC_A ... KC_Y:
               if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
@@ -105,7 +105,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
 bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
-    case MAGIC_GUI:
+    case REP_SFT:
       return false;
     // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
     // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.
@@ -120,48 +120,3 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
 }
 
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t* other_record) {
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand
-  switch (tap_hold_keycode) {
-    case ___R___:
-    case MEH_SPC:
-    case COLON_SYM:
-    case ESC_SYM:
-      return true;
-    case ___D___:
-      switch (other_keycode)
-      {
-        case ___V___:
-        case ___M___:
-        case MAGIC:
-          return true;
-      
-      default:
-        break;
-      }
-  }
-
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
-    return true;
-  }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-   // case ___D___: // otherwise the repeat and the delete code clash! :/
-    case NAV_SPC:
-    case COLON_SYM:
-    case ESC_SYM:
-    case MAGIC_GUI:
-      return 0;  // Bypass Achordion for these keys.
-  }
-
-  return 1000;  // Otherwise use a timeout of 1 second
-}

@@ -50,5 +50,5 @@ for more options.
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_INVERT_ON_SHIFT
-// #define ACHORDION
-// #define ACHORDION_STREAK
+#define ACHORDION
+#define ACHORDION_STREAK

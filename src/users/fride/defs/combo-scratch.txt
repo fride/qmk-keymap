@@ -1,5 +1,38 @@
 
 
+
+// for SturdY!
+COMB(CMB_AT,           KC_AT,          ___M___, ___T___)
+COMB(CMB_HASH,         KC_HASH,        ___L___, ___R___)
+COMB(CMB_DLR,          KC_DLR,         ___C___, ___D___)
+COMB(CMB_PERC,         KC_PERC,        ___P___, ___Y___)
+
+COMB(CMB_CIRC,         KC_CIRC,        ___B___, ___F___)
+COMB(CMB_PLUS,         KC_PLUS,        MAGIC,   ___N___)
+COMB(CMB_PAST,         KC_PAST,        ___U___, ___E___)
+COMB(CMB_AMPR,         KC_AMPR,        ___O___, ___A___)
+
+COMB(CMB_GRV,          KC_GRV,         ___T___, ___K___)
+COMB(CMB_BSLS,         KC_BSLS,        ___R___, ___J___)
+COMB(CMB_EQL,          KC_EQL,         ___D___, ___G___)
+COMB(CMB_TILD,         KC_TILD,        ___Y___, ___W___)
+
+COMB(CMB_UNDS,         KC_UNDS,        ___F___, ___Z___)
+COMB(CMB_MINS,         KC_MINS,        ___N___, ___H___)
+COMB(CMB_SLSH,         KC_SLSH,        ___E___, _COMMA_)
+COMB(CMB_PIPE,         KC_PIPE,        ___A___, __DOT__)
+
+
+// parenths....
+COMB(CMB_LBRC,         KC_LBRC,        MAGIC,   ___U___)
+COMB(CMB_RBRC,         KC_RBRC,        ___U___, ___O___)
+COMB(CMB_LPRN,         KC_LPRN,        ___N___, ___E___)
+COMB(CMB_RPRN,         KC_RPRN,        ___E___, ___A___)
+COMB(CMB_LCBR,         KC_LCBR,        ___H___, _COMMA_)
+COMB(CMB_RCBR,         KC_RCBR,        _COMMA_, __DOT__)
+
+
+
 /////// graphite
 
 /*
