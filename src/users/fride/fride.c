@@ -1,34 +1,23 @@
 #include QMK_KEYBOARD_H
+
+
+#include "layout.h"
 #include "features/layermodes.h"
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
+
+#include "features/adaptive_keys.h"
+#include "features/process_records.h"
 #ifdef ACHORDION
 #include "features/achordion.h"
 #endif
-#include "features/adaptive_keys.h"
-#include "features/process_records.h"
-#include "features/custom_shift_keys.h"
 
-#include "layout.h"
 
 #define IS_SHIFTED(mods) \
   (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
 #define UMLAUT(KC) tap_code16(A(KC))
 #define UPPER_UMLAUT(KC) tap_code16(S(A(KC)))
-
-const custom_shift_key_t custom_shift_keys[] = {
-    {KC_DOT, KC_EXLM}, 
-    {KC_COMM, KC_QUES},
-    {_DQUOT_, KC_LPRN},
-    {_SQUOT_, KC_RPRN},
-    {KC_MINS, KC_PLUS},
-    {KC_COLN, KC_SCLN},
-    {KC_SLASH, KC_PAST}    
-};
-
-uint8_t NUM_CUSTOM_SHIFT_KEYS =
-    sizeof(custom_shift_keys) / sizeof(*custom_shift_keys);
 
 // ┌─────────────────────────────────────────────────┐
 // │ s W A P P E R                                   │
@@ -49,11 +38,11 @@ bool wap_app_cancel(uint16_t keycode) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+
 #ifdef ACHORDION
-  if (!process_achordion(keycode, record)) {
-    return false;
-  }
+  if (!process_achordion(keycode, record)) { return false; }
 #endif
+
   process_num_word(keycode, record);
 
   update_swapper(&sw_app_active, KC_LGUI, KC_TAB, SW_APP, keycode, record,
@@ -76,13 +65,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return false;
   }
 
-  if (!process_adaptive_key(keycode, record)) {
-    return false;
-  }
 
-  if (!process_custom_shift_keys(keycode, record)) { 
-    return false; 
-  }
   // this overrides the repeat keys.
   // because nf is a commonn bigram in german ;)
   if (record->event.pressed) {
@@ -122,7 +105,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 
   switch (keycode) {
-    case MAGIC_GUI:
+    case REP_SFT:
     // TODO this only ever returns an n
      if (record->event.pressed) {
         if (record->tap.count > 0) {
@@ -130,34 +113,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
           press.event.type = KEY_EVENT;
           press.tap.count = 1;
           press.event.pressed = true;
-          process_repeat_key(QK_AREP, &press);
+          process_repeat_key(QK_REPEAT_KEY, &press);
           keyrecord_t release;
           release.event.type = KEY_EVENT;
           release.tap.count = 1;
           release.event.pressed = false;
-          process_repeat_key(QK_AREP, &release);
+          process_repeat_key(QK_REPEAT_KEY, &release);
           return PROCESS_RECORD_RETURN_TRUE;
         }
-      }
-      break;
-    case _DQUOT_:
-      if (record->event.pressed) {
-        if (shifted) {
-          tap_code16(KC_LPRN);
-        } else {
-          tap_code16(KC_DQUO);
-        }
-        return false;
-      }
-      break;
-    case _COMMA_:
-      if (record->event.pressed) {
-        if (shifted) {
-          tap_code16(KC_QUES);
-        } else {
-          tap_code16(KC_COMM);
-        }
-        return false;
       }
       break;
     case LPAREN:
@@ -174,7 +137,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         if (shifted) {
           tap_code16(KC_GT);
         } else {
-          tap_code16(KC_LPRN);
+          tap_code16(KC_RPRN);
         }
         return false;
       }
@@ -234,7 +197,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
         return false;
       }
-      break;  
+      break;
+    case UM_CTL: {
+      if (record->event.pressed && record->tap.count > 0) {
+        tap_code16(A(KC_U));
+        return false;
+      }
+      break;
+    }
     case COLON_SYM: {
       if (record->event.pressed && record->tap.count > 0) {
         tap_code16(KC_COLON);
@@ -242,33 +212,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
       break;
     }
-    case DI_TH:
-      if (record->event.pressed) {
-        SEND_STRING("th");
+    case ESC_SYM: {
+      if (record->event.pressed && record->tap.count > 0) {
+        tap_code16(KC_ESC);
+        return false;
       }
       break;
-    case DI_SH:
-       if (record->event.pressed) {
-        SEND_STRING("sh");
-      }
-      break;
-    case DI_CH:
-     if (record->event.pressed) {
-        SEND_STRING("ch");
-      }
-      break;
-    case DI_WH:
-     if (record->event.pressed) {
-        SEND_STRING("wh");
-      }
-      break;
-    // case ESC_SYM: {
-    //   if (record->event.pressed && record->tap.count > 0) {
-    //     tap_code16(KC_ESC);
-    //     return false;
-    //   }
-    //   break;
-    // }
+    }
     case SZ:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
@@ -277,6 +227,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     case MG_ION:
       if (record->event.pressed) {
         SEND_STRING("on");
+        return false;
+      }
+    case BI_PH:
+      if (record->event.pressed) {
+        SEND_STRING("ph");
         return false;
       }
     case MG_VER:
@@ -445,17 +400,9 @@ void tap_hold_send_hold(uint16_t keycode) {
 
 void matrix_scan_user(void) { tap_hold_matrix_scan(); }
 
-uint16_t get_combo_term(uint16_t index, combo_t* combo) {
-  switch (index) {
-    default:
-      return COMBO_TERM;
-  }
-}
-
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   switch (keycode) {
     case ___S___:
-    case ___T___:
     case ___I___:
     case ___A___:
       return TAPPING_TERM + 30;
@@ -466,4 +413,55 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t* combo) { return false; }
 
+#ifdef ACHORDION
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally consider the following chords as holds, even though they
+  // are on the same hand
+  switch (tap_hold_keycode) {
+    case UM_CTL:
+    case MEH_SPC:
+    case COLON_SYM:
+    case ESC_SYM:
+      return true;    
+    default:
+      break;
+  }
 
+  // Also allow same-hand holds when the other key is in the rows below the
+  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+    return true;
+  }
+
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    // case ___D___: // otherwise the repeat and the delete code clash! :/
+    case NAV_SPC:
+    case COLON_SYM:
+    case ESC_SYM:
+    case UM_CTL:
+      return 0;  // Bypass Achordion for these keys.
+  }
+
+  return 1000;  // Otherwise use a timeout of 1 second
+}
+
+// uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode) {
+//   if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+//     return 0;  // Disable streak detection on layer-tap keys.
+//   }
+
+//   // Otherwise, tap_hold_keycode is a mod-tap key.
+//   uint8_t mod = mod_config(QK_MOD_TAP_GET_MODS(tap_hold_keycode));
+//   if ((mod & MOD_LSFT) != 0) {
+//     return 0;  // Disable for Shift mod-tap keys.
+//   } else {
+//     return 100;
+//   }
+// }
+#endif

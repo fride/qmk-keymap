@@ -3,10 +3,18 @@
 build: clean
     DOCKER_BUILDKIT=1 docker buildx build -o type=local,dest=result . 
 
+totem:
+    DOCKER_BUILDKIT=1 docker buildx build --build-arg="KEYBOARD=totem" -o type=local,dest=result . 
 redox:
     DOCKER_BUILDKIT=1 docker buildx build --build-arg="KEYBOARD=redox" -o type=local,dest=result . 
 planck:
     DOCKER_BUILDKIT=1 docker buildx build --build-arg="KEYBOARD=planck/rev6" -o type=local,dest=result . 
+ferris:
+    DOCKER_BUILDKIT=1 docker buildx build --build-arg="KEYBOARD=ferris/0_2" -o type=local,dest=result . 
+
+ferris_flash: ferris
+    ./flash_ferris.sh    
+
 fetch_totem_src:
     git submodule add -f git@github.com:GEIGEIGEIST/qmk-config-totem.git
     git submodule sync

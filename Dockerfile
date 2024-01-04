@@ -1,11 +1,17 @@
 FROM docker.io/qmkfm/base_container:latest as base
-RUN pip install qmk && \
+RUN <<EOF
+    pip install qmk
     qmk setup -y -H /qmk_firmware
+EOF
 WORKDIR /qmk_firmware
-RUN mkdir -p /qmk_firmware/keyboards/totem
-RUN mkdir -p /qmk_firmware/users/fride
-RUN mkdir -p /qmk_firmware/keyboards/totem/keymaps/totem
-RUN mkdir -p /qmk_firmware/keyboards/redox/keymaps/fride
+RUN <<EOF
+git fetch && git pull -r
+git status
+mkdir -p /qmk_firmware/keyboards/totem
+mkdir -p /qmk_firmware/users/fride
+mkdir -p /qmk_firmware/keyboards/totem/keymaps/totem
+mkdir -p /qmk_firmware/keyboards/redox/keymaps/fride
+EOF
 
 COPY ./qmk-config-totem/totem/ /qmk_firmware/keyboards/totem/
 COPY ./src/keymaps/totem/ /qmk_firmware/keyboards/totem/keymaps/fride/
