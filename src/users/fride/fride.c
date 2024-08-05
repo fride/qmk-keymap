@@ -65,7 +65,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return false;
   }
 
-
   // this overrides the repeat keys.
   // because nf is a commonn bigram in german ;)
   if (record->event.pressed) {
@@ -105,6 +104,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 
   switch (keycode) {
+    case _MAGIC_:
+    // TODO this only ever returns an n
+     if (record->event.pressed) {
+        if (record->tap.count > 0) {
+          keyrecord_t press;
+          press.event.type = KEY_EVENT;
+          press.tap.count = 1;
+          press.event.pressed = true;
+          process_repeat_key(QK_ALT_REPEAT_KEY, &press);
+          keyrecord_t release;
+          release.event.type = KEY_EVENT;
+          release.tap.count = 1;
+          release.event.pressed = false;
+          process_repeat_key(QK_ALT_REPEAT_KEY, &release);
+          return PROCESS_RECORD_RETURN_TRUE;
+        }
+      }
+      break;
     case REP_SFT:
     // TODO this only ever returns an n
      if (record->event.pressed) {

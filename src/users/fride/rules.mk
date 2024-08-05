@@ -4,7 +4,6 @@ MOUSEKEY_ENABLE     = yes
 KEY_OVERRIDE_ENABLE = no
 REPEAT_KEY_ENABLE   = yes
 
-
 # Easy definition of combos
 VPATH +=  keyboards/gboards/
 VPATH += $(USER_PATH)/defs
