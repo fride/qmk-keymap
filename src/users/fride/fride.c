@@ -440,6 +440,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     case MEH_SPC:
     case COLON_SYM:
     case ESC_SYM:
+    case ___E___:
       return true;    
     default:
       break;
