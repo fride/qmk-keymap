@@ -87,9 +87,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 }
 
 
-// reeat
+// repeat
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
-    switch (keycode) {
+    switch (keycode) { 
+        case _MAGIC_:
+            return false;
         case REP_SFT:
             return false;
         case KC_A ... KC_Y:
@@ -105,6 +107,8 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
 bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
+    case _MAGIC_:
+      return false;
     case REP_SFT:
       return false;
     // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
