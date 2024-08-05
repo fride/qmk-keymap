@@ -147,25 +147,27 @@ enum custom_keycodes {
 #define OS_MEH OSM(MOD_MEH)
 #define UM_CTL LCTL_T(KC_U)
 
+// Home row - how to do!? shift gui alt ctrl
+
 #define ___A___ RGUI_T(KC_A)
 #define ___B___ KC_B
-#define ___C___ LALT_T(KC_C)
+#define ___C___ RSFT_T(KC_C)
 #define ___D___ KC_D
-#define ___E___ KC_E
+#define ___E___ LT(NUM,KC_E)
 #define ___F___ KC_F
 #define ___G___ KC_G
 #define ___H___ KC_H
-#define ___I___ RCTL_T(KC_I)
+#define ___I___ LALT(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LALT_T(KC_N)
+#define ___N___ LSFT_T(KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LCTL_T(KC_R)
-#define ___S___ LSFT_T(KC_S)
+#define ___R___ LALT_T(KC_R)
+#define ___S___ LCTL_T(KC_S)
 #define ___T___ LGUI_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -173,7 +175,7 @@ enum custom_keycodes {
 #define ___X___ KC_X
 #define ___Y___ KC_Y
 #define ___Z___ KC_Z
-#define _MAGIC_ RSFT_T(MAGIC)
+#define _MAGIC_ RCTL_T(MAGIC)
 #define _COMMA_ KC_COMM
 #define __DOT__ KC_DOT
 #define _SLASH_ KC_SLSH
@@ -184,16 +186,16 @@ enum custom_keycodes {
 #define _SEMIC_ KC_SCLN
 #define _QUEST_ KC_QUES
 
-#define ___0___ KC_0
-#define ___2___ KC_2
-#define ___4___ KC_4
-#define ___6___ KC_6
+#define ___0___ RSFT_T(KC_0)
+#define ___2___ RGUI_T(KC_2)
+#define ___4___ LALT_T(KC_4)
+#define ___6___ RCTL_T(KC_6)
 #define ___8___ KC_8
 
-#define ___1___ KC_1
-#define ___3___ KC_3
-#define ___5___ KC_5
-#define ___7___ KC_7
+#define ___1___ LSFT_T(KC_1)
+#define ___3___ LGUI_T(KC_3)
+#define ___5___ LALT_T(KC_5)
+#define ___7___ LCTL_T(KC_7)
 #define ___9___ KC_9
 
 #define _______ KC_TRNS
@@ -209,7 +211,7 @@ enum custom_keycodes {
   ___V___, ___L___, ___H___, ___K___, ___Q___,      ___J___, ___F___, ___O___, ___U___, _COMMA_, \
   ___S___, ___R___, ___N___, ___T___, ___W___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
   ___Z___, ___X___, ___M___, ___D___, ___B___,      ___P___, ___G___, _SQUOT_, _SEMIC_, __DOT__, \
-                    OS_LSFT, NAV_SPC, SPACE_L,      KC_BSLS, ___E___, OS_SYM
+                    NAV_SPC, OS_LSFT, SPACE_L,      KC_BSLS, OS_LSFT, ___E___
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
@@ -218,30 +220,11 @@ enum custom_keycodes {
                     KC_SPC, KC_SPC,   KC_F19            , _______, _XXXXX_, _______
 
 #define _NUM \
-  KC_TILD ,KC_PLUS ,KC_PAST, KC_EXLM, _______      ,_______, KC_HASH,  KC_AT,   KC_CIRC, _COMMA_, \
-  ___7___ ,___5___ ,___3___ ,___1___, KC_BSLS      ,___0___, ___0___,  ___2___, ___4___, ___6___ , \
-  _______ ,KC_LT   ,KC_GT,   ___9___, _______      ,KC_SLSH, ___8___,  KC_LPRN, KC_RPRN, __DOT__, \
-                    _______, _______, _______      ,_______, _______, _______
-
-#define _NUM2 \
-  KC_SLSH ,___7___, KC_LALT, KC_LCTL, KC_PLUS      ,_______, ___1___, ___2___, ___3___, _COMMA_, \
-  ___0___, _XXXXX_, KC_LGUI, KC_LSFT, OSM(MOD_MEH)      ,_______, ___4___, ___5___, ___6___, _______ , \
-  KC_PAST ,___4___, ___5___, ___6___, KC_EQL       ,KC_SLSH, ___7___, ___8___, ___9___, __DOT__, \
-                    _______, KC_SPC,  _______      ,_______, ___0___, _______
-
-#define _ALWAYS_ACC \
-  _______ ,KC_ESC, KC_COLON, _______, _______      ,_______, _______,  _______, _______, _______, \
-  _______, KC_PERC,_SLASH_, KC_ENTER, _______      ,_______, _______,  _______, _______, _______ , \
-  _______ ,_______, _______, S(KC_1), _______      ,_______, _______,  _______, _______, QK_BOOT, \
-                    _______, _______, _______      ,_______, _______, _______
-
-/*
-#define _SYM \
-  KC_TILD ,KC_PLUS ,KC_PAST, KC_EXLM, _______      ,_______, KC_HASH,  KC_AT,   KC_CIRC, _COMMA_, \
-  KC_PIPE ,KC_LCBR ,KC_RCBR ,KC_MINS, KC_BSLS      ,KC_GRV,  KC_QUES,  KC_LBRC, KC_RBRC, KC_DLR , \
-  KC_UNDS ,KC_LT   ,KC_GT,   KC_PERC, _______      ,KC_SLSH, KC_AMPR,  KC_LPRN, KC_RPRN, __DOT__, \
-                    _______, _______, _______      ,_______, _______, _______
-*/
+  KC_GRV   , KC_EQUAL, KC_MINUS, KC_UNDS, KC_PAST      ,KC_BSLS, KC_HASH,  KC_AMPR, KC_PIPE,  _COMMA_, \
+  ___7___  , ___5___ , ___3___ , ___1___, KC_PLUS      ,KC_CIRC, ___0___,  ___2___, ___4___,  ___6___ , \
+  KC_TILDE , KC_LT   , KC_GT,    ___9___, KC_SLASH     ,KC_AT,   ___8___,  _SEMIC_, KC_COLON, __DOT__, \
+                        KC_LT,   KC_GT  , _______      ,_XXXXX_, _XXXXX_, _XXXXX_
+ 
 #define _SYM \
   KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, MAGIC,    KC_LBRC, KC_RBRC, _______, \
   KC_EXLM ,KC_MINS ,KC_PLUS ,KC_EQL,  KC_HASH      ,KC_PIPE, KC_COLON, KC_LPRN, KC_RPRN, KC_PERC , \
@@ -272,7 +255,7 @@ enum custom_keycodes {
 ) \
      KC_NO   ,KC_7    ,KC_5    ,KC_3    ,KC_1    ,KC_9    ,                                            KC_8    ,KC_0    ,KC_2    ,KC_4    ,KC_6  ,KC_NO   , \
      KC_TAB  ,k15     ,k16     ,k17     ,k18     ,k19     ,KC_F11   ,                         KC_F12  ,k22     ,k23     ,k24     ,k25     ,k26     ,KC_BSLS , \
-     k15     ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR   ,k36     ,k37     ,k38     ,k39     ,k40 ,    k26 , \
+     OS_LSFT ,k29     ,k30     ,k31     ,k32     ,k33     ,KC_DLR  ,                         KC_DLR   ,k36     ,k37     ,k38     ,k39     ,k40 ,    OS_LSFT , \
      KC_LSFT ,k43     ,k44     ,k45     ,k46     ,k47     ,KC_NO   ,QK_BOOT ,        QK_BOOT ,KC_NO   ,k50     ,k51     ,k52     ,k53     ,k54     ,KC_RSFT , \
      KC_LCTL ,KC_LALT ,KC_LEFT ,KC_RIGHT   ,     k59     ,    k60     ,k61     ,        k64      ,k65     ,k66     ,KC_LBRC ,KC_RBRC ,KC_NO   ,KC_NO 
 
