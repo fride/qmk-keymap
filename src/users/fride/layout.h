@@ -162,13 +162,13 @@ enum custom_keycodes {
 #define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LSFT_T(KC_N)
+#define ___N___ LGUI_T(KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ LALT_T(KC_R)
 #define ___S___ LCTL_T(KC_S)
-#define ___T___ LGUI_T(KC_T)
+#define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
