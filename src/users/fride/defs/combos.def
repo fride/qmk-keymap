@@ -58,16 +58,16 @@ COMB(CMB_RPAREN,      KC_RPRN,           ___C___, ___A___)
 
 
 // thumbs numbers and symbols
-COMB(CMB_0,         KC_0,          NAV_SPC, ___C___)
-COMB(CMB_2,         KC_2,          NAV_SPC, ___A___)
-COMB(CMB_4,         KC_4,          NAV_SPC, ___I___)
-COMB(CMB_6,         KC_6,          NAV_SPC, _MAGIC_)
-COMB(CMB_8,         KC_8,          NAV_SPC, ___G___)
-COMB(CMB_1,         KC_1,          ___E___, ___T___)
-COMB(CMB_3,         KC_3,          ___E___, ___N___)
-COMB(CMB_5,         KC_5,          ___E___, ___R___)
-COMB(CMB_7,         KC_7,          ___E___, ___S___)
-COMB(CMB_9,         KC_9,          ___E___, ___D___)
+COMB(CMB_0,         KC_0,          ___E___, ___C___)
+COMB(CMB_2,         KC_2,          ___E___, ___A___)
+COMB(CMB_4,         KC_4,          ___E___, ___I___)
+COMB(CMB_6,         KC_6,          ___E___, _MAGIC_)
+COMB(CMB_8,         KC_8,          ___E___, ___G___)
+COMB(CMB_1,         KC_1,          NAV_SPC, ___T___)
+COMB(CMB_3,         KC_3,          NAV_SPC, ___N___)
+COMB(CMB_5,         KC_5,          NAV_SPC, ___R___)
+COMB(CMB_7,         KC_7,          NAV_SPC, ___S___)
+COMB(CMB_9,         KC_9,          NAV_SPC, ___D___)
 
 // TODO - My no like!
 // COMB(CMB_AE,       A(KC_A),        ___E___, KC_LPRN)
