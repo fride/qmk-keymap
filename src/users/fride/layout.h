@@ -159,11 +159,11 @@ enum custom_keycodes {
 #define ___H___ KC_H
 #define ___I___ LALT_T(KC_I)
 #define ___J___ KC_J
-#define ___K___ KC_Kïĳ
+#define ___K___ MEH_T(KC_K)
 #define ___L___ RALT_T(KC_L)
 #define ___M___ KC_M
 #define ___N___ LGUI_T(KC_N)
-#define ___O___ KC_O
+#define ___O___ MEH_T(KC_O)
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ LALT_T(KC_R)
@@ -171,9 +171,9 @@ enum custom_keycodes {
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ RALT_T(KC_U)
 #define ___V___ KC_V
-#define ___W___ KC_W
+#define ___W___ HYPR_T(KC_W)
 #define ___X___ KC_X
-#define ___Y___ KC_Y
+#define ___Y___ HYPR_T(KC_Y)
 #define ___Z___ KC_Z
 #define _MAGIC_ RCTL_T(MAGIC)
 #define _COMMA_ KC_COMM
