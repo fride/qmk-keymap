@@ -10,6 +10,7 @@ COMB(CMB_COLON,        COLON_SYM,         ___C___, ___A___)
 COMB(CMB_ENTER,        KC_ENTER,          ___C___, ___A___, ___I___)
  
 COMB(BOOT,            QK_BOOT,          ___V___, _COMMA_)
+COMB(BOOT2,            QK_BOOT,          KC_V, KC_Z)
 COMB(CMB_NUM,         NUMWORD,          NAV_SPC, ___E___)
 COMB(CMB_CANCEL,	    CANCEL,		        ___R___, MAGIC)
 

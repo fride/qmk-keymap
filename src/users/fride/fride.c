@@ -236,6 +236,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
       break;
     }
+    case KC_TH:
+      if (record->event.pressed) {
+        tap_code16(KC_T);
+        tap_code16(KC_H);
+        return false;
+      }      
+    break;
     case SZ:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));

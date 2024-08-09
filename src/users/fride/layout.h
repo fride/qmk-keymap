@@ -98,7 +98,6 @@ enum custom_keycodes {
   W_ROTATE2,
 
   BI_PH,
-
 };
 
 
@@ -212,6 +211,21 @@ enum custom_keycodes {
   ___S___, ___R___, ___N___, ___T___, ___W___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
   ___Z___, ___X___, ___M___, ___D___, ___B___,      ___P___, ___G___, _SQUOT_, _SEMIC_, __DOT__, \
                     NAV_SPC, OS_LSFT, SPACE_L,      KC_BSLS, OS_LSFT, ___E___
+
+
+/*
+See https://www.reddit.com/r/KeyboardLayouts/comments/1ej6q9n/comment/lgcvjp5/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button - but forfe is fine!/
+v g l þ *  * u o p z
+c s n t m  k i e a h
+x f w d b  j y , . '
+           r
+*/
+
+#define _HANDS_DOWN \
+         KC_V,          KC_G,         KC_L,        KC_TH,          KC_BSPC,               KC_DEL,        KC_U,          KC_O,           KC_P,           KC_Z, \
+  LCTL_T(KC_C),  LALT_T(KC_S), LGUI_T(KC_N), LSFT_T(KC_T),  HYPR_T(KC_M),          HYPR_T(KC_K),  RSFT_T(KC_I),  RGUI_T(KC_E),   LALT_T(KC_A),   RCTL_T(KC_H), \
+         KC_X,          KC_F,         KC_W,   MEH_T(KC_D) ,        KC_B,                  KC_J,    MEH_T(KC_Y),         KC_COMM,         KC_DOT,         KC_QUOT, \
+                               LT(NUM,KC_R),        OS_LSFT,       SPACE_L,              KC_BSLS,       OS_LSFT,        NAV_SPC
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
