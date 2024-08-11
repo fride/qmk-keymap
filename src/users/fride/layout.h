@@ -208,10 +208,10 @@ enum custom_keycodes {
 // layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
 
 #define _DHORF_E \
-  ___V___, ___L___, ___H___, ___K___, ___Q___,      ___J___, ___F___, ___O___, ___U___, _COMMA_, \
+  ___V___, ___L___, ___H___, ___K___, _SQUOT_,      ___J___, ___F___, ___O___, ___U___, ___Q___, \
   ___S___, ___R___, ___N___, ___T___, ___W___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
-  ___Z___, ___X___, ___M___, ___D___, ___B___,      ___P___, ___G___, _SQUOT_, _SEMIC_, __DOT__, \
-                    NAV_SPC, OS_LSFT, SPACE_L,      KC_BSLS, OS_LSFT, ___E___
+  ___Z___, ___X___, ___M___, ___D___, ___B___,      ___P___, ___G___, _COMMA_, __DOT__, _SEMIC_, \
+                    NAV_SPC, OS_LCTL, OS_LSFT,    OS_LSFT, OS_LALT, ___E___
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
@@ -223,7 +223,7 @@ enum custom_keycodes {
   KC_GRV   , KC_EQUAL, KC_MINUS, KC_UNDS, KC_PAST      ,KC_BSLS, KC_HASH,  KC_AMPR, KC_PIPE,  _COMMA_, \
   ___7___  , ___5___ , ___3___ , ___1___, KC_PLUS      ,KC_CIRC, ___0___,  ___2___, ___4___,  ___6___ , \
   KC_TILDE , KC_LT   , KC_GT,    ___9___, KC_SLASH     ,KC_AT,   ___8___,  _SEMIC_, KC_COLON, __DOT__, \
-                        KC_LT,   KC_GT  , _______      ,_XXXXX_, _XXXXX_, _XXXXX_
+                        KC_SPC,  KC_LT  , KC_GT        ,_XXXXX_, _XXXXX_, _XXXXX_
  
 #define _SYM \
   KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, MAGIC,    KC_LBRC, KC_RBRC, _______, \
