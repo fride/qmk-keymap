@@ -6,7 +6,7 @@
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
-
+#include "features/custom_shift_keys.h"
 #include "features/adaptive_keys.h"
 #include "features/process_records.h"
 #ifdef ACHORDION
@@ -14,16 +14,28 @@
 #endif
 
 
+
+const custom_shift_key_t custom_shift_keys[] = {
+  {KC_DOT , KC_QUES}, // Shift . is ?
+  {KC_COMM, KC_EXLM}, // Shift , is !
+  {KC_MINS, KC_EQL }, // Shift - is =
+  {KC_COLN, KC_SCLN}, // Shift : is ;
+};
+
+uint8_t NUM_CUSTOM_SHIFT_KEYS =
+    sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+
+
 #define IS_SHIFTED(mods) \
   (mods | get_weak_mods() | get_oneshot_mods() & MOD_MASK_SHIFT);
 #define UMLAUT(KC) tap_code16(A(KC))
-#define UPPER_UMLAUT(KC) tap_code16(S(A(KC)))
 
 // ┌─────────────────────────────────────────────────┐
 // │ s W A P P E R                                   │
 // └─────────────────────────────────────────────────┘
 bool sw_app_active = false;
 bool sw_win_active = false;
+
 
 bool wap_app_cancel(uint16_t keycode) {
   switch (keycode) {
@@ -42,7 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 #ifdef ACHORDION
   if (!process_achordion(keycode, record)) { return false; }
 #endif
-
+  if (!process_custom_shift_keys(keycode, record)) { return false; }
   process_num_word(keycode, record);
 
   update_swapper(&sw_app_active, KC_LGUI, KC_TAB, SW_APP, keycode, record,
@@ -52,6 +64,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                  NULL);
 
   process_nshot_state(keycode, record);
+   
 
   const uint8_t mods = get_mods();
   const bool shifted = (mods | get_weak_mods()
@@ -236,11 +249,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
       break;
     }
-    case SZ:
+    case KC_TH:
       if (record->event.pressed) {
-        SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
+        // TODO shift!?
+        SEND_STRING("th");
         return false;
       }
+    case KC_PH:
+      if (record->event.pressed) {
+        // TODO shift!?
+        SEND_STRING("ph");
+        return false;
+      }
+
     case MG_ION:
       if (record->event.pressed) {
         SEND_STRING("on");
@@ -303,9 +324,6 @@ bool tap_hold(uint16_t keycode) {
     case KC_UP:
     case KC_DOWN:
     case KC_RIGHT:
-    case A_UML:
-    case O_UML:
-    case U_UML:
     case QU:
     case WN_WEST:
     case WN_EAST:
@@ -337,15 +355,6 @@ void tap_hold_send_tap(uint16_t keycode) {
     case CPYPASTE:
       tap_code16(G(KC_C));
       break;
-    case A_UML:
-      UMLAUT(KC_A);
-      break;
-    case O_UML:
-      UMLAUT(KC_O);
-      break;
-    case U_UML:
-      UMLAUT(KC_U);
-      break;
     default:
       tap_code16(keycode);
   }
@@ -366,16 +375,7 @@ void tap_hold_send_hold(uint16_t keycode) {
       break;
     case QU:
       tap_code16(KC_Q);
-      break;
-    case A_UML:
-      UPPER_UMLAUT(KC_A);
-      break;
-    case O_UML:
-      UPPER_UMLAUT(KC_O);
-      break;
-    case U_UML:
-      UPPER_UMLAUT(KC_U);
-      break;
+      break;    
     case CPYPASTE:
       tap_code16(G(KC_V));
       break;
