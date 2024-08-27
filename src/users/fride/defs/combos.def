@@ -12,11 +12,17 @@ COMB(CMB_ENTER,        KC_ENTER,          ___C___, ___A___, ___I___)
 COMB(BOOT,            QK_BOOT,          ___V___, _COMMA_)
 COMB(CMB_NUM,         NUMWORD,          NAV_SPC, ___E___)
 COMB(CMB_CANCEL,	    CANCEL,		        ___R___, MAGIC)
+COMB(CMB_LSHIFT,      OS_LSFT,          ___O___, ___U___)
+COMB(CMB_RSHIFT,      OS_LSFT,          ___L___, ___H___)
+
+
 
 // symbols
 COMB(CMB_ESC2,        KC_ESC,            ___H___, ___K___)
 COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
-COMB(CMB_MINUS,       KC_MINUS,          ___O___, ___U___)
+
+
+
 COMB(CMB_LBRC,        KC_LBRC,           ___R___, ___N___)
 COMB(CMB_LPAREN,      KC_LPRN,           ___N___, ___T___)
 COMB(CMB_RBRC,        KC_RBRC,           ___A___, ___I___)
