@@ -4,6 +4,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA]  = LAYOUT_redox(REDOX(_DHORF_E)),	
+	[ALPHA2]  = LAYOUT_redox(REDOX(_UML)),	
 	[UTIL]   = LAYOUT_redox(REDOX(_UTIL)),	
 	[NUM]    = LAYOUT_redox(REDOX(_NUM)),	
 	[SYM]    = LAYOUT_redox(REDOX(_SYM)),	
