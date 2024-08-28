@@ -143,6 +143,7 @@ bool is_nshot_ignored_key(uint16_t keycode) {
         //case NAVMODE:
         case NAV_SPC:
         case NUMWORD:
+        case __PUQ__:
         case OS_LSFT:
         case OS_LCTL:
         case OS_LALT:

@@ -148,6 +148,7 @@ enum custom_keycodes {
 #define NUM_QUO LT(NUM, KC_QUOT)
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
+#define OS_HYPR OSM(MOD_HYPR)
 #define UM_CTL LCTL_T(KC_U)
 
 // Home row - how to do!? shift gui alt ctrl
@@ -233,7 +234,7 @@ x c l d g - u o y k
                     NAV_SPC, OS_LCTL, OS_LSFT,    OS_LSFT, OS_LALT, ___E___
 
 #define _UML \
-  KC_WH   ,_______, _______, _______, _______      ,_______, _______,  A(KC_O), A(KC_S), _______, \
+  KC_WH   ,_______, _______, _______, _______      ,_______, NEXTSEN,  OS_HYPR, A(KC_S), _______, \
   KC_SCH,  KC_SCH, _______, KC_TH   , _______      ,_______, A(KC_A),  A(KC_E), _______, _______ , \
   _______ ,KC_CH,  _______, _______, _______       ,_______, A(KC_U),  A(KC_O), _______, _______, \
                     _______, _______, _______      ,_______, _______, _______

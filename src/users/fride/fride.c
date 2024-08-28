@@ -184,12 +184,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     
     case KC_SCH:  // Next sentence macro.
       if (record->event.pressed) {
-        SEND_STRING("sch");
+        tap_code16(KC_S);
+        tap_code16(KC_C);
+        tap_code16(KC_H);
       }
       return false;
     case KC_TH:  // Next sentence macro.
       if (record->event.pressed) {
-        SEND_STRING("th");
+        tap_code16(KC_T);
+        tap_code16(KC_H);
+        // SEND_STRING("th");
       }
       return false;
     case KC_WH:  // Next sentence macro.
