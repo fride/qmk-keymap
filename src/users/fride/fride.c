@@ -181,6 +181,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         add_oneshot_mods(MOD_BIT(KC_LSFT));  // Set one-shot mod for shift.
       }
       return false;
+    
+    case KC_SCH:  // Next sentence macro.
+      if (record->event.pressed) {
+        SEND_STRING("sch");
+      }
+      return false;
+    case KC_TH:  // Next sentence macro.
+      if (record->event.pressed) {
+        SEND_STRING("th");
+      }
+      return false;
+    case KC_WH:  // Next sentence macro.
+      if (record->event.pressed) {
+        SEND_STRING("wh");
+      }
+      return false;
+    case KC_CH:  // Next sentence macro.
+      if (record->event.pressed) {
+        SEND_STRING("ch");
+      }
+      return false;
     case CANCEL:
       if (record->event.pressed) {
         //     stop_leading();

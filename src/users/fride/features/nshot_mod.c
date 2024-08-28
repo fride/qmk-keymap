@@ -122,15 +122,17 @@ void process_nshot_state(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool is_nshot_cancel_key(uint16_t keycode) {
+    
     switch (keycode) {
         case CLEAR:
         case CANCEL:
+            return true;
         case NAV_SPC:
-        //     if (layer_state_is(UTIL)) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }            
+            if (layer_state_is(UTIL)) {
+                return true;
+            } else {
+                return false;
+            } 
         default:
             return false;
     }

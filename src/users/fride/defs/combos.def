@@ -1,32 +1,33 @@
 /*
-  ___V___, ___L___, ___H___, ___K___, ___Q___,      ___J___, ___F___, ___O___, ___U___, _COMMA_, \
-  ___S___, ___R___, ___N___, ___T___, ___W___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
-  ___Z___, ___X___, ___M___, ___D___, ___B___,      ___P___, ___G___, _SQUOT_, _SEMIC_, __DOT__, \
-                    NAV_SPC, OS_LSFT, SPACE_L,      KC_BSLS, OS_LSFT, ___E___
+  ___W___, ___F___, ___M___, ___P___, ___V___,      ___J___, __DOT__, __PUQ__, _DQUOT_, _SQUOT_, \
+  ___R___, ___S___, ___N___, ___T___, ___B___,      _COMMA_, ___A___, ___E___, ___I___, ___H___, \
+  ___X___, ___C___, ___L___, ___D___, ___G___,      ___Z___, ___U___, ___O___, ___Y___, ___K___, \
+                    NAV_SPC, OS_LCTL, OS_LSFT,    OS_LSFT, OSL(NUM), OS_LSFT
 */
 
-COMB(CMB_TAB,          KC_TAB,            ___R___, ___N___, ___T___)
-COMB(CMB_COLON,        COLON_SYM,         ___C___, ___A___)
-COMB(CMB_ENTER,        KC_ENTER,          ___C___, ___A___, ___I___)
+COMB(CMB_TAB,          KC_TAB,            ___S___, ___N___, ___T___)
+COMB(CMB_COLON,        COLON_SYM,         ___A___, ___E___)
+COMB(CMB_ENTER,        KC_ENTER,          ___A___, ___E___, ___I___)
  
-COMB(BOOT,            QK_BOOT,          ___V___, _COMMA_)
-COMB(CMB_NUM,         NUMWORD,          NAV_SPC, ___E___)
-COMB(CMB_CANCEL,	    CANCEL,		        ___R___, MAGIC)
-COMB(CMB_LSHIFT,      OS_LSFT,          ___O___, ___U___)
-COMB(CMB_RSHIFT,      OS_LSFT,          ___L___, ___H___)
+COMB(BOOT,            QK_BOOT,          ___W___, _SQUOT_)
+COMB(COMBO_KC_Q,      KC_Q,             ___W___, ___F___)
+COMB(CMB_NUM,         NUMWORD,          NAV_SPC, OS_LSFT)
+COMB(CMB_CANCEL,	    CANCEL,		        ___R___, ___H___)
 
+// COMB(CMB_LSHIFT,      OS_LSFT,          ___O___, ___U___)
+// COMB(CMB_RSHIFT,      OS_LSFT,          ___L___, ___H___)
 
 
 // symbols
-COMB(CMB_ESC2,        KC_ESC,            ___H___, ___K___)
-COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
+// COMB(CMB_ESC2,        KC_ESC,            ___H___, ___K___)
+// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
 
 
 
-COMB(CMB_LBRC,        KC_LBRC,           ___R___, ___N___)
-COMB(CMB_LPAREN,      KC_LPRN,           ___N___, ___T___)
-COMB(CMB_RBRC,        KC_RBRC,           ___A___, ___I___)
-COMB(CMB_RPAREN,      KC_RPRN,           ___C___, ___A___)
+// COMB(CMB_LBRC,        KC_LBRC,           ___R___, ___N___)
+// COMB(CMB_LPAREN,      KC_LPRN,           ___N___, ___T___)
+// COMB(CMB_RBRC,        KC_RBRC,           ___A___, ___I___)
+// COMB(CMB_RPAREN,      KC_RPRN,           ___C___, ___A___)
 
 // old stuff .......
 
@@ -64,16 +65,16 @@ COMB(CMB_RPAREN,      KC_RPRN,           ___C___, ___A___)
 
 
 // thumbs numbers and symbols
-COMB(CMB_0,         KC_0,          ___E___, ___C___)
-COMB(CMB_2,         KC_2,          ___E___, ___A___)
-COMB(CMB_4,         KC_4,          ___E___, ___I___)
-COMB(CMB_6,         KC_6,          ___E___, _MAGIC_)
-COMB(CMB_8,         KC_8,          ___E___, ___G___)
-COMB(CMB_1,         KC_1,          NAV_SPC, ___T___)
-COMB(CMB_3,         KC_3,          NAV_SPC, ___N___)
-COMB(CMB_5,         KC_5,          NAV_SPC, ___R___)
-COMB(CMB_7,         KC_7,          NAV_SPC, ___S___)
-COMB(CMB_9,         KC_9,          NAV_SPC, ___D___)
+// COMB(CMB_0,         KC_0,          ___E___, ___C___)
+// COMB(CMB_2,         KC_2,          ___E___, ___A___)
+// COMB(CMB_4,         KC_4,          ___E___, ___I___)
+// COMB(CMB_6,         KC_6,          ___E___, _MAGIC_)
+// COMB(CMB_8,         KC_8,          ___E___, ___G___)
+// COMB(CMB_1,         KC_1,          NAV_SPC, ___T___)
+// COMB(CMB_3,         KC_3,          NAV_SPC, ___N___)
+// COMB(CMB_5,         KC_5,          NAV_SPC, ___R___)
+// CO// MB(CMB_7,         KC_7,          NAV_SPC, ___S___)
+// COMB(CMB_9,         KC_9,          NAV_SPC, ___D___)
 
 // TODO - My no like!
 // COMB(CMB_AE,       A(KC_A),        ___E___, KC_LPRN)
