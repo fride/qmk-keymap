@@ -331,7 +331,7 @@ bool tap_hold(uint16_t keycode) {
     case A_UML:
     case O_UML:
     case U_UML:
-    case QU:
+    case KC_QU:
     case WN_WEST:
     case WN_EAST:
     case WN_NORTH:
@@ -356,8 +356,8 @@ void tap_hold_send_tap(uint16_t keycode) {
     case  WN_EAST:
       tap_code16(A(KC_L));
       break;
-    case QU:
-      SEND_STRING("qu");
+    case KC_QU:
+      SEND_STRING("qu"); // TODO Oneshot tut dann nicht :/
       break;
     case CPYPASTE:
       tap_code16(G(KC_C));
@@ -389,7 +389,7 @@ void tap_hold_send_hold(uint16_t keycode) {
     case  WN_EAST:
       tap_code16(A(A(KC_L)));
       break;
-    case QU:
+    case KC_QU:
       tap_code16(KC_Q);
       break;
     case A_UML:

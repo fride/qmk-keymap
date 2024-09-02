@@ -5,15 +5,28 @@
                     NAV_SPC, OS_LCTL, OS_LSFT,    OS_LSFT, OSL(NUM), OS_LSFT
 */
 
-COMB(CMB_TAB,          KC_TAB,            ___S___, ___N___, ___T___)
-COMB(CMB_COLON,        COLON_SYM,         ___A___, ___E___)
-COMB(CMB_ESC,          ESC_SYM,            ___N___, ___T___)
-COMB(CMB_ENTER,        KC_ENTER,          ___A___, ___E___, ___I___)
- 
-COMB(BOOT,            QK_BOOT,          ___W___, _SQUOT_)
-COMB(COMBO_KC_Q,      KC_Q,             ___W___, ___F___)
+// thumbs.
 COMB(CMB_NUM,         NUMWORD,          NAV_SPC, OS_LSFT)
+
+COMB(COMBO_KC_Q,      KC_Q,             ___W___, ___F___)
+COMB(COMBO_KC_QU,     KC_QU,             ___M___, ___P___)
+
+COMB(CMB_TAB,          KC_TAB,             ___S___, ___N___, ___T___)
+COMB(CMB_COLON,        COLON_SYM,          ___A___, ___E___)
+COMB(CMB_SCOLON,       KC_SCLN,            ___A___, ___O___)
+COMB(CMB_ESC,          ESC_SYM,            ___N___, ___T___)
+COMB(CMB_ENTER,        KC_ENTER,           ___A___, ___E___, ___I___)
+ 
+
+COMB(BOOT,            QK_BOOT,          ___W___, _SQUOT_)
 COMB(CMB_CANCEL,	    CANCEL,		        ___R___, ___H___)
+
+
+// mods on combos
+COMB(CMB_LCTL,         OS_LCTL,           ___S___, ___N___)
+COMB(CMB_RCTL,         OS_LCTL,           ___E___, ___I___)
+COMB(CMB_LGUI,         OS_LGUI,           ___D___, ___L___)
+COMB(CMB_RGUI,         OS_LGUI,           ___U___, ___O___)
 
 
 // COMB(CMB_LSHIFT,      OS_LSFT,          ___O___, ___U___)
@@ -21,8 +34,9 @@ COMB(CMB_CANCEL,	    CANCEL,		        ___R___, ___H___)
 
 
 // symbols
-// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
-
+COMB(CMB_EQUAL,       KC_EQUAL,          __DOT__, __PUQ__)
+// COMB(CMB_AT,          KC_AT,             __DOT__, __PUQ__)
+COMB(CMB_DOLLAR,      KC_DOLLAR,         ___O___, ___Y___)
 
 
 // COMB(CMB_LBRC,        KC_LBRC,           ___R___, ___N___)
@@ -76,6 +90,34 @@ COMB(CMB_3,         KC_3,          NAV_SPC, ___N___)
 COMB(CMB_5,         KC_5,          NAV_SPC, ___S___)
 COMB(CMB_7,         KC_7,          NAV_SPC, ___R___)
 COMB(CMB_9,         KC_9,          NAV_SPC, ___D___)
+
+/*
+
+//    KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, _XXXXX_,      _XXXXX_, KC_HASH, KC_AT,   KC_CIRC, KC_DOT, \
+//    KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_BSLS,      GRV,     KC_QUES, KC_LBRC, KC_RBRC, REPEAT, \
+//    KC_COMM, KC_LABK, KC_RABK, KC_PERC, _XXXXX_,      KC_SLSH, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS, \
+*/
+
+// symbols left
+COMB(COMB_TILD,  KC_TILD,  OS_LSFT, ___W___)      
+COMB(COMB_PLUS,  KC_PLUS,  OS_LSFT, ___F___)      
+COMB(COMB_ASTR,  KC_ASTR,  OS_LSFT, ___M___)      
+COMB(COMB_EXLM,  KC_EXLM,  OS_LSFT, ___P___)      
+
+COMB(COMB_PIPE,  KC_PIPE,  OS_LSFT, ___R___)      
+COMB(COMB_LCBR,  KC_LCBR,  OS_LSFT, ___S___)      
+COMB(COMB_RCBR,  KC_RCBR,  OS_LSFT, ___N___)      
+COMB(COMB_MINS,  KC_MINS,  OS_LSFT, ___T___)      
+COMB(COMB_BSLS,  KC_BSLS,  OS_LSFT, ___B___)      
+
+COMB(COMB_COMM,  KC_COMM,  OS_LSFT, ___X___)      
+COMB(COMB_LBRK,  KC_LCBR,  OS_LSFT, ___C___)      
+COMB(COMB_RBRK,  KC_RABK,  OS_LSFT, ___L___)      
+COMB(COMB_PERC,  KC_PERC,  OS_LSFT, ___D___)      
+
+// symbols right
+
+
 
 // TODO - My no like!
 // COMB(CMB_AE,       A(KC_A),        ___E___, KC_LPRN)
