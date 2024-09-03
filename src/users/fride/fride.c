@@ -121,8 +121,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
           return PROCESS_RECORD_RETURN_TRUE;
         }
       }
-      break;
-    case REP_SFT:
+      break;    
+    case REP_CTL:
     // TODO this only ever returns an n
      if (record->event.pressed) {
         if (record->tap.count > 0) {
@@ -440,7 +440,8 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     case MEH_SPC:
     case COLON_SYM:
     case ESC_SYM:
-    case ___E___:
+    case REP_CTL:
+    case TH_SLASH:
       return true;    
     default:
       break;

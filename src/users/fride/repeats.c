@@ -92,7 +92,7 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
     switch (keycode) { 
         case _MAGIC_:
             return false;
-        case REP_SFT:
+        case REP_CTL:
             return false;
         case KC_A ... KC_Y:
               if ((*remembered_mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
@@ -109,7 +109,7 @@ bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
   switch (keycode) {
     case _MAGIC_:
       return false;
-    case REP_SFT:
+    case REP_CTL:
       return false;
     // Forget Shift on letter keys A-Y when Shift or AltGr are the only mods.
     // Exceptionally, I want to remember Shift on Z for "ZZ" in Vim.

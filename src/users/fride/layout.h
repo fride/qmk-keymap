@@ -130,8 +130,7 @@ enum custom_keycodes {
 
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
-#define REPEAT QK_REPEAT_KEY
-#define REP_SFT LSFT_T(QK_REPEAT_KEY)
+#define REP_CTL LCTL_T(QK_REPEAT_KEY)
 #define ENT_GUI LGUI_T(KC_ENTER)
 
 #define ESC_SYM LT(SYM,KC_ESC)
@@ -147,6 +146,8 @@ enum custom_keycodes {
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 #define UM_CTL LCTL_T(KC_U)
+
+#define TH_SLASH LALT_T(KC_SLASH)
 
 // Home row - how to do!? shift gui alt ctrl
 
@@ -207,6 +208,20 @@ enum custom_keycodes {
 
 // ----------------
 // layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
+
+
+#define ______________MAGICSTURDY_L1_______________ ___V___, ___M___, ___L___, ___C___, ___P___
+#define ______________MAGICSTURDY_R1_______________ ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_
+#define ______________MAGICSTURDY_L2_______________ ___S___, ___T___, ___R___, ___D___, ___Y___
+#define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
+#define ______________MAGICSTURDY_L3_______________ ___X___, ___K___, ___J___, ___G___, ___W___
+#define ______________MAGICSTURDY_R3_______________ ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_
+
+#define _MAGIC_STURDY \
+  ______________MAGICSTURDY_L1_______________, ______________MAGICSTURDY_R1_______________, \
+  ______________MAGICSTURDY_L2_______________, ______________MAGICSTURDY_R2_______________, \
+  ______________MAGICSTURDY_L3_______________, ______________MAGICSTURDY_R3_______________, \
+                    NAV_SPC, OS_LCTL, OS_LSFT, TH_SLASH, REP_CTL, OS_LSFT
 
 #define _DHORF_E \
   ___V___, ___L___, ___H___, ___K___, ___Q___,      ___J___, ___F___, ___O___, ___U___, _COMMA_, \
