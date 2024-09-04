@@ -6,7 +6,7 @@ enum layers {
   ALPHA2,
   UTIL,
   NUM,  
-  NUM2,  
+  SYM,  
   SYM_LEFT,
   SYM_RIGHT,
   WINNAV,
@@ -100,7 +100,7 @@ enum custom_keycodes {
   W_ROTATE2,
 
   BI_PH,
-
+  ARROW,
   LMAGIC,
   RMAGIC,
 };
@@ -178,10 +178,8 @@ enum custom_keycodes {
 //                         KC_SPC,  KC_LT  , KC_GT        ,_XXXXX_, _XXXXX_, _XXXXX_
  */
 
- 
- 
 #define _SYM \
-  KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, MAGIC,    KC_LBRC, KC_RBRC, _______, \
+  KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, ARROW,    KC_LBRC, KC_RBRC, _______, \
   KC_EXLM ,KC_MINS ,KC_PLUS ,KC_EQL,  KC_HASH      ,KC_PIPE, KC_COLON, KC_LPRN, KC_RPRN, KC_PERC , \
   _______ ,KC_SLSH ,KC_PAST, KC_CIRC, _______      ,KC_TILD, KC_AMPR,  KC_LCBR, KC_RCBR, _______, \
                     _______, _______, _______      ,_______, _______, _______

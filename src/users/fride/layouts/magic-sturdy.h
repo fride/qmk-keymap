@@ -15,7 +15,7 @@
 #define ___F___ KC_F
 #define ___G___ LT(NUM,KC_G)
 #define ___H___ KC_H
-#define ___I___ LT(SYM_LEFT,KC_I)
+#define ___I___ LT(SYM,KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
 #define ___L___ KC_L
@@ -25,7 +25,7 @@
 #define ___P___ KC_P
 #define ___Q___ KC_Q
 #define ___R___ LALT_T(KC_R)
-#define ___S___ LT(SYM_RIGHT,KC_S)
+#define ___S___ LT(SYM,KC_S)
 #define ___T___ LCTL_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -60,7 +60,7 @@
   ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
   ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
-                    NAV_SPC, _XXXXX_, _XXXXX_,      _XXXXX_, _XXXXX_, OS_LSFT
+                    NAV_SPC, KC_UNDS, _XXXXX_,      _XXXXX_, REPEAT , OS_LSFT
 
 
 #define _SYM_LEFT \
@@ -79,4 +79,4 @@
   _______ , _______, _______, _______, _______      ,KC_BSLS,  ___7___, ___8___, ___9___,  _COMMA_, \
   OS_LSFT , OS_LCTL, OS_LALT, OS_LGUI, _______      ,KC_SLASH, ___4___, ___5___, ___6___,  ___0___ , \
   _______ , _______, OS_LGUI, _XXXXX_, _______      ,KC_AT,    ___1___, ___2___, ___3___, __DOT__, \
-                    _______,  _______ , _______     ,_______, _______, ___0___
+                    _XXXXX_,  _XXXXX_ , _XXXXX_     ,_______, KC_SPC,   ___0___

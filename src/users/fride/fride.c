@@ -70,12 +70,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   process_nshot_state(keycode, record);
 
   const uint8_t mods = get_mods();
-  const bool shifted = (mods | get_weak_mods()
+  const uint8_t all_mods = (mods | get_weak_mods()
 #ifndef NO_ACTION_ONESHOT
                         | get_oneshot_mods()
 #endif  // NO_ACTION_ONESHOT
-                            ) &
-                       MOD_MASK_SHIFT;
+  );
+  const uint8_t shift_mods = all_mods & MOD_MASK_SHIFT;
+  const bool alt = all_mods & MOD_BIT(KC_LALT);
 
   if (!process_tap_hold(keycode, record)) {
     return false;
@@ -118,7 +119,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
     }
   }
-
+  
   switch (keycode) {
 
     case LMAGIC: { process_left_magic(get_last_keycode(), get_last_mods()); set_last_keycode(KC_SPC); } return false;
@@ -141,6 +142,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
       }
       break;
+    case ARROW:
+      if (record->event.pressed) {
+        if (alt) {
+          if (shift_mods) {
+            SEND_STRING("<=>");
+          } else {
+            SEND_STRING("<->");
+          }
+        } else {
+          if (shift_mods) {
+            SEND_STRING("=>");
+          } else {
+            SEND_STRING("->");
+          }
+        }        
+        return false;
+      }
+      break;
+      
     case REP_SFT:
     // TODO this only ever returns an n
      if (record->event.pressed) {
@@ -159,24 +179,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
       }
       break;
-    case LPAREN:
-      if (record->event.pressed) {
-        if (shifted) {
-          tap_code16(KC_LT);
-        } else {
-          tap_code16(KC_LPRN);
-        }
-        return false;
-      }
-    case RPAREN:
-      if (record->event.pressed) {
-        if (shifted) {
-          tap_code16(KC_GT);
-        } else {
-          tap_code16(KC_RPRN);
-        }
-        return false;
-      }
     case W_ROTATE:
         if (record->event.pressed) {
           tap_code16(A(KC_R));
@@ -214,20 +216,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     case NUMWORD:
       process_num_word_activation(record);
       return false;
-    // case COLON_SYM: {
-    //   if (record->event.pressed && record->tap.count > 0) {
-    //     tap_code16(KC_COLON);
-    //     return false;
-    //   }
-    //   break;
-    // }
-    // case ESC_SYM: {
-    //   if (record->event.pressed && record->tap.count > 0) {
-    //     tap_code16(KC_ESC);
-    //     return false;
-    //   }
-    //   break;
-    // }
+  
     case SZ:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
@@ -271,7 +260,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
     case MG_THE:
       if (record->event.pressed) {
-        if (shifted) {
+        if (shift_mods) {
           SEND_STRING("the");
         } else {
           SEND_STRING("The");
@@ -420,19 +409,26 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   }
 }
 
-
-
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t* combo) { return false; }
 
 #ifdef ACHORDION
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                      uint16_t other_keycode, keyrecord_t* other_record) {
+  uint8_t row = other_record->event.key.row % (MATRIX_ROWS / 2);
+  if (!(1 <= row && row <= 3)) { return true; }
+
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand
   switch (tap_hold_keycode) {
-    case MEH_SPC:
-    case ___E___:
+    case ___S___:
+    case ___I___:
+      if (row == 0) { return true; }
+      break;
+    // Exceptionally allow G + J as a same-hand chord.
+    case ___G___:
+      if (other_keycode == KC_J) { return true; }
+      break;
       return true;    
     default:
       break;

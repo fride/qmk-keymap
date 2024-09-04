@@ -1,29 +1,23 @@
 /*
-  ___V___, ___L___, ___H___, ___K___, ___Q___,      ___J___, ___F___, ___O___, ___U___, _COMMA_, \
-  ___S___, ___R___, ___N___, ___T___, ___W___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
-  ___Z___, ___X___, ___M___, ___D___, ___B___,      ___P___, ___G___, _SQUOT_, _SEMIC_, __DOT__, \
-                    NAV_SPC, OS_LSFT, SPACE_L,      KC_BSLS, OS_LSFT, ___E___
+  ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
+  ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
+                    NAV_SPC, _XXXXX_, _XXXXX_,      _XXXXX_, _XXXXX_, OS_LSFT
 */
 
-COMB(CMB_TAB,          KC_TAB,            ___R___, ___N___, ___T___)
-// COMB(CMB_COLON,        COLON_SYM,         ___C___, ___A___)
-COMB(CMB_ENTER,        KC_ENTER,          ___C___, ___A___, ___I___)
+COMB(CMB_TAB,          KC_TAB,            ___D___, ___R___, ___T___)
+COMB(CMB_COLON,        KC_COLON,         ___R___, ___D___)
+COMB(CMB_ESC2,          KC_ESC,            ___N___, ___E___)
+COMB(CMB_ENTER,        KC_ENTER,          ___N___, ___E___, ___A___)
+COMB(CMB_Q   ,        KC_Q,          ___K___, ___J___)
  
 COMB(BOOT,            QK_BOOT,          ___V___, _COMMA_)
 COMB(CMB_NUM,         NUMWORD,          NAV_SPC, ___E___)
 COMB(CMB_CANCEL,	    CANCEL,		        ___R___, MAGIC)
-COMB(CMB_LSHIFT,      OS_LSFT,          ___O___, ___U___)
-COMB(CMB_RSHIFT,      OS_LSFT,          ___L___, ___H___)
-
-
+COMB(umlaut_ue,	      A(KC_U),		      _MAGIC_, ___U___)
+COMB(umlaut_oe,	      A(KC_O),		      _MAGIC_, ___O___)
+COMB(umlaut_ae,	      A(KC_A),		      _MAGIC_, ___A___)
+COMB(umlaut_sz,	      A(KC_S),		      _MAGIC_, ___S___)
 
 // symbols
-COMB(CMB_ESC2,        KC_ESC,            ___H___, ___K___)
-COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
-
-
-
-COMB(CMB_LBRC,        KC_LBRC,           ___R___, ___N___)
-COMB(CMB_LPAREN,      KC_LPRN,           ___N___, ___T___)
-COMB(CMB_RBRC,        KC_RBRC,           ___A___, ___I___)
-COMB(CMB_RPAREN,      KC_RPRN,           ___C___, ___A___)
+// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
