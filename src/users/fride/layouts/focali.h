@@ -6,15 +6,15 @@
 #define UM_CTL LCTL_T(KC_U)
 #define NUM_SPC LT(NUM,KC_SPC)
 
-#define ___A___ RSFT_T(KC_A)
+#define ___A___ RCTL_T(KC_A)
 #define ___B___ KC_B
-#define ___C___ LALT_T(KC_C)
+#define ___C___ RSFT_T(KC_C)
 #define ___D___ LT(NUM,KC_D)
-#define ___E___ RCTL_T(KC_E)
+#define ___E___ KC_E
 #define ___F___ KC_F
 #define ___G___ KC_G
-#define ___H___ RGUI_T(KC_H)
-#define ___I___ RSFT_T(KC_I)
+#define ___H___ KC_H
+#define ___I___ LALT_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
 #define ___L___ KC_L
@@ -23,8 +23,8 @@
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LT(UTIL,KC_R)
-#define ___S___ LCTL_T(KC_S)
+#define ___R___ LALT_T(KC_R)
+#define ___S___ LGUI_T(KC_S)
 #define ___T___ LSFT_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
@@ -57,15 +57,15 @@
 #define ___9___ KC_9
 
 #define _ALPHA \
-  ___V___, ___W___, ___M___, ___G___, ___J___,      __HASH_, ___U___, ___O___, _ALPA_, _SQUOT_, \
-  ___S___, ___C___, ___N___, ___T___, ___K___,      _COMMA_, ___I___, ___E___, ___A___, ___H___, \
-  ___X___, ___P___, ___L___, ___D___, ___B___,      _MINUS_, ___Y___, _SLASH_, __DOT__, ___F___, \
-                    ___R___, _MAGIC_, OS_LSFT,      OS_LSFT, _MAGIC_, NUM_SPC
+  ___V___, ___L___, ___H___, ___G___, ___K___,      ___Q___, ___F___, ___O___, ___U___, _SQUOT_, \
+  ___S___, ___R___, ___N___, ___T___, ___B___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
+  ___Z___, ___X___, ___M___, ___D___, ___P___,      _SQUOT_, ___W___, __DOT__, _SEMIC_, _COMMA_, \
+                    NAV_SPC, _MAGIC_, OS_LSFT,      OS_LSFT, _MAGIC_, ___E___
 
 #define _ALPHA2 \
-  KC_Q    ,KC_Z   , _______, _______, _______      ,_______, A(KC_U),  A(KC_O), ARROW  , A(KC_S), \
-  A(KC_S), KC_LBRC, KC_LCBR, KC_LPRN, _______      ,A(KC_O), A(KC_A),  A(KC_A), _______, _______ , \
-  _______ ,KC_RBRC, KC_RCBR, KC_RPRN, _______      ,_______, _______,  _______, _______, _______, \
+  KC_Q    ,KC_Z   , _______, _______, _______      ,_______, _______, A(KC_O), A(KC_U),  A(KC_S), \
+  A(KC_S), KC_LBRC, KC_LCBR, KC_LPRN, _______      ,_______, _______, A(KC_A), _______, ARROW , \
+  _______ ,KC_RBRC, KC_RCBR, KC_RPRN, _______      ,_______, _______, _______, _______, _______, \
                     _______, _______, _______      ,_______, _______, _______
 
 #define _NUM \

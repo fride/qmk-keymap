@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "layout.h"
 #include "g/keymap_combo.h"
-
+#include "fride.c"
 
 // Layout aliases for json keymap
 #define LAYOUT_redox(...) LAYOUT(__VA_ARGS__)
@@ -22,7 +22,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA]  = LAYOUT_redox(REDOX(_ALPHA)),	
-	[ALPHA2]  = LAYOUT_redox(REDOX(_UML)),	
+	[ALPHA2]  = LAYOUT_redox(REDOX(_ALPHA2)),	
 	[UTIL]   = LAYOUT_redox(REDOX(_UTIL)),	
 	[NUM]    = LAYOUT_redox(REDOX(_NUM)),	
 	[SYM]    = LAYOUT_redox(REDOX(_SYM)),	

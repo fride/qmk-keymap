@@ -5,19 +5,19 @@
                     NAV_SPC, _XXXXX_, _XXXXX_,      _XXXXX_, _XXXXX_, OS_LSFT
 */
 
-COMB(CMB_TAB,          KC_TAB,            ___D___, ___R___, ___T___)
-COMB(CMB_COLON,        KC_COLON,         ___R___, ___D___)
-COMB(CMB_ESC2,          KC_ESC,            ___N___, ___E___)
-COMB(CMB_ENTER,        KC_ENTER,          ___N___, ___E___, ___A___)
-COMB(CMB_Q   ,        KC_Q,          ___K___, ___J___)
+COMB(to_one,          TG(ALT_ALPHA),            ___F___, ___P___)
+
+
+COMB(CMB_TAB,          KC_TAB,            ___C___, ___N___, ___T___)
+COMB(CMB_COLON,        KC_COLON,         ___I___, ___E___)
+COMB(CMB_ESC2,          KC_ESC,            ___N___, ___I___)
+COMB(CMB_ENTER,        KC_ENTER,          ___I___, ___E___, ___A___)
+COMB(CMB_Q   ,        KC_Q,          ___V___, ___W___)
+COMB(CMB_Z   ,        KC_Z,          ___W___, ___M___)
  
-COMB(BOOT,            QK_BOOT,          ___V___, _COMMA_)
-COMB(CMB_NUM,         NUMWORD,          NAV_SPC, ___E___)
-COMB(CMB_CANCEL,	    CANCEL,		        ___R___, MAGIC)
-COMB(umlaut_ue,	      A(KC_U),		      _MAGIC_, ___U___)
-COMB(umlaut_oe,	      A(KC_O),		      _MAGIC_, ___O___)
-COMB(umlaut_ae,	      A(KC_A),		      _MAGIC_, ___A___)
-COMB(umlaut_sz,	      A(KC_S),		      _MAGIC_, ___S___)
+COMB(BOOT,            QK_BOOT,          ___V___, _SQUOT_)
+COMB(CMB_NUM,         NUMWORD,          NUM_SPC, ___R___)
 
 // symbols
+// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
 // COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)

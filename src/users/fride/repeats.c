@@ -11,11 +11,11 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___C___: // C
         return KC_Y;
       case ___D___:
-        return KC_Y;
+        return KC_T;
       case ___E___:
         return KC_U;
       case ___F___:
-        return KC_Y;
+        return KC_S;
       case ___N___:
         return KC_F;  // Fuenf!
       case ___G___:
@@ -31,7 +31,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___L___:
         return KC_K;
       case ___M___:
-        return KC_T; // AMT and co in Germann ;)
+        return KC_B; 
       case ___O___:
         return KC_A;
       case ___P___:
@@ -50,6 +50,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return KC_Y;
       case ___Y___:
         return KC_P;
+      case ___Z___:
+        return KC_S;
       case KC_EQL:
         return KC_GT;
       case KC_LPRN:
@@ -77,9 +79,9 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
     }
   } else if ((mods & MOD_MASK_CTRL)) {
     switch (keycode) {
-      case KC_A:  // Ctrl+A -> Ctrl+K
+      case ___A___:  // Ctrl+A -> Ctrl+K
         return C(KC_K);
-      case KC_C:  // Ctrl+C -> Ctrl+C
+      case ___C___:  // Ctrl+C -> Ctrl+C
         return C(KC_C);
     }
   }
@@ -90,8 +92,6 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 // repeat
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
     switch (keycode) { 
-        case LMAGIC:
-        case RMAGIC:
         case _MAGIC_:
             return false;
         case REP_SFT:
@@ -109,8 +109,6 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
 bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
-    case LMAGIC:
-    case RMAGIC:
     case _MAGIC_:
       return false;
     case REP_SFT:

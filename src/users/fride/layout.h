@@ -4,6 +4,7 @@
 enum layers {
   ALPHA,  
   ALPHA2,
+  ALT_ALPHA,
   UTIL,
   NUM,  
   SYM,  
@@ -101,8 +102,6 @@ enum custom_keycodes {
 
   BI_PH,
   ARROW,
-  LMAGIC,
-  RMAGIC,
 };
 
 
@@ -155,15 +154,23 @@ enum custom_keycodes {
 #include "layouts/magic-sturdy.h"
 #endif
 
+#ifdef PUQ
+#include "layouts/puq.h"
+#endif
+
+#ifdef FOCAL
+#include "layouts/focali.h"
+#endif
+
 // ----------------
 // layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
 
 
-#define _UML \
-  _______ ,_______, _______, _______, _______      ,_______, _______,  A(KC_O), A(KC_U), _______, \
-  A(KC_S), _______, _______, _______, _______      ,_______, A(KC_S),  A(KC_A), _______, _______ , \
-  _______ ,_______, _______, _______, _______      ,_______, _______,  _______, _______, _______, \
-                    _______, _______, _______      ,_______, _______, _______
+#define _ALT_ALPHA \
+  KC_Y    ,KC_C    ,KC_L    ,KC_M    ,KC_K         ,KC_Z   , _MAGIC_,  KC_U    ,_COMMA_, _SQUOT_, \
+  KC_I    ,KC_S    ,KC_N    ,KC_T    ,KC_G         ,KC_P   , KC_H   ,  KC_E    ,KC_A   , KC_O, \
+  KC_Q    ,KC_V    ,KC_W    ,KC_D    ,KC_J         ,KC_B   , KC_F   ,  KC_SLSH ,__DOT__, KC_X, \
+                    KC_R    ,_______ ,_______      ,_______, _______, KC_SPC
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
@@ -212,20 +219,6 @@ KC_NO,  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, KC_NO, \
 
 // -------------------------------------------------------------------------------------------------------- //
 
-#define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__)
-
-#define FERRIS(k) CONV_FERRIS(k)
-
-#define CONV_FERRIS( \
-  k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
-  k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
-  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
-            k59, k60, k61,        k64, k65, k66 \
-) \
-        k15, k16, k17, k18, k19,        k22, k23, k24, k25, k26, \
-        k29, k30, k31, k32, k33,        k36, k37, k38, k39, k40, \
-        k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, \
-                      k60, k61,         k64, k65
 
 
 #define LAYOUT_PLANCK(...) LAYOUT(__VA_ARGS__)

@@ -58,3 +58,4 @@ for more options.
 
 #define ACHORDION
 
+#define FOCAL

@@ -60,7 +60,7 @@
   ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
   ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
-                    NAV_SPC, KC_UNDS, _XXXXX_,      _XXXXX_, REPEAT , OS_LSFT
+                    NAV_SPC, KC_MINS, _XXXXX_,      _XXXXX_, REPEAT , OS_LSFT
 
 
 #define _SYM_LEFT \

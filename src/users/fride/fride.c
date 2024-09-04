@@ -6,7 +6,7 @@
 #include "features/nshot_mod.h"
 #include "features/swapper.h"
 #include "features/tap_hold.h"
-
+#include "features/custom_shift_keys.h"
 #include "features/adaptive_keys.h"
 #include "features/process_records.h"
 #ifdef ACHORDION
@@ -37,21 +37,17 @@ bool wap_app_cancel(uint16_t keycode) {
   return true;
 }
 
-static void process_left_magic(uint16_t keycode, uint8_t mods) {
-  switch (keycode) {    
-    case  NAV_SPC: { SEND_STRING("the"); } break;
-    case  __DOT__: { SEND_STRING("the"); } break;
-  }
-}
 
-static void process_right_magic(uint16_t keycode, uint8_t mods) {
-  switch (keycode) {    
-    case  NAV_SPC: { SEND_STRING("the"); } break;
-    case  __DOT__: { SEND_STRING(" ");  } break;
-    case  ___C___: { SEND_STRING("h"); } break;
-  }
-}
-
+const custom_shift_key_t custom_shift_keys[] = {
+    {__DOT__, KC_QUES},
+    {_COMMA_, KC_EXLM},
+    {_SEMIC_, KC_AT  },
+    // {KC_MPLY, KC_MNXT},
+    {KC_EQL , KC_EQL },  // Don't shift =
+    {KC_SLSH, KC_SLSH},  // Don't shift /
+};
+uint8_t NUM_CUSTOM_SHIFT_KEYS =
+    sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
@@ -67,6 +63,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   update_swapper(&sw_win_active, KC_LGUI, KC_GRV, SW_WIN, keycode, record,
                  NULL);
 
+  if (!process_custom_shift_keys(keycode, record)) { return false; }
+
+  // the onse shot shift is better.
   process_nshot_state(keycode, record);
 
   const uint8_t mods = get_mods();
@@ -121,9 +120,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
   
   switch (keycode) {
-
-    case LMAGIC: { process_left_magic(get_last_keycode(), get_last_mods()); set_last_keycode(KC_SPC); } return false;
-    case RMAGIC: { process_right_magic(get_last_keycode(), get_last_mods()); set_last_keycode(KC_SPC); } return false;
     case _MAGIC_:
     // TODO this only ever returns an n
      if (record->event.pressed) {
@@ -396,7 +392,10 @@ void tap_hold_send_hold(uint16_t keycode) {
   }
 }
 
-void matrix_scan_user(void) { tap_hold_matrix_scan(); }
+void matrix_scan_user(void) { 
+  tap_hold_matrix_scan(); // TODO do I nned this!?
+  achordion_task();
+}
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   switch (keycode) {
@@ -412,59 +411,61 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t* combo) { return false; }
 
-#ifdef ACHORDION
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t* other_record) {
-  uint8_t row = other_record->event.key.row % (MATRIX_ROWS / 2);
-  if (!(1 <= row && row <= 3)) { return true; }
+// TODO this works with either the ferris or with the redox :/
+ #ifdef ACHORDION
+// bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+//                      uint16_t other_keycode, keyrecord_t* other_record) {
+//   uint8_t row = other_record->event.key.row % (MATRIX_ROWS / 2);
+//   if (!(1 <= row && row <= 3)) { return true; }
 
-  // Exceptionally consider the following chords as holds, even though they
-  // are on the same hand
-  switch (tap_hold_keycode) {
-    case ___S___:
-    case ___I___:
-      if (row == 0) { return true; }
-      break;
-    // Exceptionally allow G + J as a same-hand chord.
-    case ___G___:
-      if (other_keycode == KC_J) { return true; }
-      break;
-      return true;    
-    default:
-      break;
-  }
-
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
-    return true;
-  }
-
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    // case ___D___: // otherwise the repeat and the delete code clash! :/
-    case NAV_SPC:
-      return 0;  // Bypass Achordion for these keys.
-  }
-
-  return 1000;  // Otherwise use a timeout of 1 second
-}
-
-// uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode) {
-//   if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
-//     return 0;  // Disable streak detection on layer-tap keys.
+//   // Exceptionally consider the following chords as holds, even though they
+//   // are on the same hand
+//   switch (tap_hold_keycode) {
+//     case ___S___:
+//     case ___I___:
+//       if (row == 0) { return true; }
+//       if (other_keycode == ___M___) { return true; } // TODO check out why the row seems to not work!
+//       break;
+//     // Exceptionally allow G + J as a same-hand chord.
+//     case ___G___:
+//       if (other_keycode == KC_J) { return true; }
+//       break;
+//       return true;    
+//     default:
+//       break;
 //   }
 
-//   // Otherwise, tap_hold_keycode is a mod-tap key.
-//   uint8_t mod = mod_config(QK_MOD_TAP_GET_MODS(tap_hold_keycode));
-//   if ((mod & MOD_LSFT) != 0) {
-//     return 0;  // Disable for Shift mod-tap keys.
-//   } else {
-//     return 100;
+//   // Also allow same-hand holds when the other key is in the rows below the
+//   // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
+//   if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) {
+//     return true;
 //   }
+
+//   // Otherwise, follow the opposite hands rule.
+//   return achordion_opposite_hands(tap_hold_record, other_record);
 // }
+
+// uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+//   switch (tap_hold_keycode) {
+//     // case ___D___: // otherwise the repeat and the delete code clash! :/
+//     case NAV_SPC:
+//       return 0;  // Bypass Achordion for these keys.
+//   }
+
+//   return 800;;  // Otherwise use a timeout of 1 second
+// }
+
+// // uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode) {
+// //   if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+// //     return 0;  // Disable streak detection on layer-tap keys.
+// //   }
+
+// //   // Otherwise, tap_hold_keycode is a mod-tap key.
+// //   uint8_t mod = mod_config(QK_MOD_TAP_GET_MODS(tap_hold_keycode));
+// //   if ((mod & MOD_LSFT) != 0) {
+// //     return 0;  // Disable for Shift mod-tap keys.
+// //   } else {
+// //     return 100;
+// //   }
+// // }
 #endif
