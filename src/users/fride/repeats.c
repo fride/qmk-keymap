@@ -90,6 +90,8 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
 // repeat
 bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* remembered_mods) {
     switch (keycode) { 
+        case LMAGIC:
+        case RMAGIC:
         case _MAGIC_:
             return false;
         case REP_SFT:
@@ -107,6 +109,8 @@ bool remember_last_key_user(uint16_t keycode, keyrecord_t* record, uint8_t* reme
 bool get_repeat_key_eligible_user(uint16_t keycode, keyrecord_t *record,
                                   uint8_t *remembered_mods) {
   switch (keycode) {
+    case LMAGIC:
+    case RMAGIC:
     case _MAGIC_:
       return false;
     case REP_SFT:

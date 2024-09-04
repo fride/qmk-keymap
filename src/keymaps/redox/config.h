@@ -84,3 +84,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define ADAPTIVE_TERM (TAPPING_TERM/2) // rolling threshold
 
 #define ACHORDION
+
+// define the layout to use
+// #define HANDS_DOWN_IE
+#define MAGIC_STURDY

@@ -37,6 +37,22 @@ bool wap_app_cancel(uint16_t keycode) {
   return true;
 }
 
+static void process_left_magic(uint16_t keycode, uint8_t mods) {
+  switch (keycode) {    
+    case  NAV_SPC: { SEND_STRING("the"); } break;
+    case  __DOT__: { SEND_STRING("the"); } break;
+  }
+}
+
+static void process_right_magic(uint16_t keycode, uint8_t mods) {
+  switch (keycode) {    
+    case  NAV_SPC: { SEND_STRING("the"); } break;
+    case  __DOT__: { SEND_STRING(" ");  } break;
+    case  ___C___: { SEND_STRING("h"); } break;
+  }
+}
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 #ifdef ACHORDION
@@ -104,6 +120,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   }
 
   switch (keycode) {
+
+    case LMAGIC: { process_left_magic(get_last_keycode(), get_last_mods()); set_last_keycode(KC_SPC); } return false;
+    case RMAGIC: { process_right_magic(get_last_keycode(), get_last_mods()); set_last_keycode(KC_SPC); } return false;
     case _MAGIC_:
     // TODO this only ever returns an n
      if (record->event.pressed) {
@@ -195,47 +214,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     case NUMWORD:
       process_num_word_activation(record);
       return false;
-    case M_LT:
-      if (record->event.pressed && record->tap.count > 0) {
-        if (shifted) {
-          tap_code16(KC_LPRN);
-        } else {
-          tap_code16(KC_LT);
-        }
-        return false;
-      }
-      break;  
-    case M_GT:
-      if (record->event.pressed && record->tap.count > 0) {
-        if (shifted) {
-          tap_code16(KC_RPRN);
-        } else {
-          tap_code16(KC_GT);
-        }
-        return false;
-      }
-      break;
-    case UM_CTL: {
-      if (record->event.pressed && record->tap.count > 0) {
-        tap_code16(A(KC_U));
-        return false;
-      }
-      break;
-    }
-    case COLON_SYM: {
-      if (record->event.pressed && record->tap.count > 0) {
-        tap_code16(KC_COLON);
-        return false;
-      }
-      break;
-    }
-    case ESC_SYM: {
-      if (record->event.pressed && record->tap.count > 0) {
-        tap_code16(KC_ESC);
-        return false;
-      }
-      break;
-    }
+    // case COLON_SYM: {
+    //   if (record->event.pressed && record->tap.count > 0) {
+    //     tap_code16(KC_COLON);
+    //     return false;
+    //   }
+    //   break;
+    // }
+    // case ESC_SYM: {
+    //   if (record->event.pressed && record->tap.count > 0) {
+    //     tap_code16(KC_ESC);
+    //     return false;
+    //   }
+    //   break;
+    // }
     case SZ:
       if (record->event.pressed) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
@@ -427,6 +419,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
       return TAPPING_TERM;
   }
 }
+
+
+
 // TODO https://github.com/qmk/qmk_firmware/blob/master/docs/feature_combo.md
 bool get_combo_must_tap(uint16_t index, combo_t* combo) { return false; }
 
@@ -436,10 +431,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   // Exceptionally consider the following chords as holds, even though they
   // are on the same hand
   switch (tap_hold_keycode) {
-    case UM_CTL:
     case MEH_SPC:
-    case COLON_SYM:
-    case ESC_SYM:
     case ___E___:
       return true;    
     default:
@@ -460,9 +452,6 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
   switch (tap_hold_keycode) {
     // case ___D___: // otherwise the repeat and the delete code clash! :/
     case NAV_SPC:
-    case COLON_SYM:
-    case ESC_SYM:
-    case UM_CTL:
       return 0;  // Bypass Achordion for these keys.
   }
 

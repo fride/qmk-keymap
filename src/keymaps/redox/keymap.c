@@ -21,11 +21,12 @@
 #define REDOX(k) CONV_REDOX(k)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-	[ALPHA]  = LAYOUT_redox(REDOX(_DHORF_E)),	
+	[ALPHA]  = LAYOUT_redox(REDOX(_ALPHA)),	
 	[ALPHA2]  = LAYOUT_redox(REDOX(_UML)),	
 	[UTIL]   = LAYOUT_redox(REDOX(_UTIL)),	
 	[NUM]    = LAYOUT_redox(REDOX(_NUM)),	
-	[SYM]    = LAYOUT_redox(REDOX(_SYM)),	
+	[SYM_LEFT]    = LAYOUT_redox(REDOX(_SYM_LEFT)),	
+	[SYM_RIGHT]    = LAYOUT_redox(REDOX(_SYM_RIGHT)),	
 	[WINNAV] = LAYOUT_redox(REDOX(_WINNAV)),	
 	[FUN]    = LAYOUT_redox(REDOX(_FUN)),	
 };
