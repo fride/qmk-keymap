@@ -2,6 +2,32 @@
 #include "features/achordion.h"
 
 uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
+#ifdef FOCAL
+if ((mods & ~MOD_MASK_SHIFT) == 0) {
+    switch (keycode) {
+       case ___A___:
+        return KC_O;
+      case ___B___:
+        return KC_T;
+      case ___C___:
+        return KC_Y;
+      case ___D___:
+        return KC_T; // Stadt
+      case ___E___:
+        return KC_E;
+      // case ___F___:
+      case ___R___:
+        return KC_L;
+    }    
+ } else if ((mods & MOD_MASK_CTRL)) {
+      switch (keycode) {
+        case ___A___:  // Ctrl+A -> Ctrl+K
+          return C(KC_K);
+        case ___C___:  // Ctrl+C -> Ctrl+C
+          return C(KC_C);
+    }
+  }
+#else
   if ((mods & ~MOD_MASK_SHIFT) == 0) {
     switch (keycode) {
       case ___A___:
@@ -85,6 +111,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
         return C(KC_C);
     }
   }
+#endif  
   return KC_TRNS;
 }
 
