@@ -3,7 +3,7 @@
  	___V___, ___M___, ___L___, ___C___, ___Q___		___Z___, MAGIC,   ___U___, ___O___, KC_SCLN
 	___S___, ___T___, ___R___, ___D___, ___P___		___F___, ___N___, ___E___, ___A___, ___I___
 	___X___, ___K___, ___J___, ___G___, ___W___		___B___, ___H___, _COMMA_, __DOT__, _SLASH_
-                      ___Y___, NUMWORD, KC_DEL ,   KC_BSPC , SYM_REP, NAV_SPC
+                      ___Y___, NUMWORD, OS_LGUI     OS_LCTL  KC_QUOT  NAV_SPC
 */
 
 COMB( combo_canel,      CANCEL,         ___E___, ___A___)
@@ -12,14 +12,14 @@ COMB( CMB_BOOT,         QK_BOOT,        ___V___, KC_SCLN)
 
 // one shot mods.
 
-COMB(CMB_LCTL,    OS_LCTL,    ___E___, ___I___)
-COMB(CMB_RCTL,    OS_LCTL,    ___S___, ___N___)
+COMB(CMB_LCTL,    OS_LCTL,    ___E___, ___A___)
+COMB(CMB_RCTL,    OS_LCTL,    ___T___, ___R___)
 
 // see https://github.com/digver/zmk-config-urob/blob/main/img/keymap.png?raw=true
 
 COMB(CMB_ESC,     ESC_SYM,     ___R___, ___D___)
-COMB(CMB_COLON,   COLON_SYM,   ___H___, ___A___)
-COMB(CMB_SCOLON,  KC_SCLN,     ___H___, _COMMA_)
+COMB(CMB_COLON,   COLON_SYM,   ___N___, ___E___)
+COMB(CMB_SCOLON,  KC_SCLN,     ___N___, _COMMA_)
 
 COMB(CMB_ENT,     KC_ENT,     ___N___, ___E___, ___A___)
 COMB(CMB_TAB,     KC_TAB,     ___T___, ___R___, ___D___)

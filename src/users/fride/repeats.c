@@ -8,7 +8,7 @@ uint16_t get_alt_repeat_key_keycode_user(uint16_t keycode, uint8_t mods) {
       case ___B___:
         return KC_N;  // TODO BEFORE
       case ___C___: // C
-        return KC_Y;
+        return KC_K;
       case ___D___:
         return KC_Y;
       case ___E___:

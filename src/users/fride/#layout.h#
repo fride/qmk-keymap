@@ -3,7 +3,7 @@
 
 enum layers {
   ALPHA,
-  ALPHA2,
+  ALPHA2, // engram
   NUM,
   SYM,
   UTIL,
@@ -208,6 +208,5 @@ enum custom_keycodes {
 #define ______________MAGICSTURDY_R1_______________ ___Z___, MAGIC,   ___U___, ___O___, KC_SCLN
 #define ______________MAGICSTURDY_R2_______________ ___F___, ___N___, ___E___, ___A___, ___I___
 #define ______________MAGICSTURDY_R3_______________ ___B___, ___H___, _COMMA_, __DOT__, _SLASH_
-
 
 #define LAYOUT_FERRIS(...) LAYOUT(__VA_ARGS__) 
