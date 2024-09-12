@@ -102,6 +102,7 @@ enum custom_keycodes {
 
   BI_PH,
   ARROW,
+  FARROW
 };
 
 
@@ -192,9 +193,9 @@ enum custom_keycodes {
  */
 
 #define _SYM \
-  KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, ARROW,    KC_LBRC, KC_RBRC, _______, \
-  KC_EXLM ,KC_MINS ,KC_PLUS ,KC_EQL,  KC_HASH      ,KC_PIPE, KC_COLON, KC_LPRN, KC_RPRN, KC_PERC , \
-  _______ ,KC_SLSH ,KC_PAST, KC_CIRC, _______      ,KC_TILD, KC_AMPR,  KC_LCBR, KC_RCBR, _______, \
+  KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, ARROW,    KC_LBRC, KC_RBRC, KC_PERC, \
+  KC_EXLM ,KC_MINS ,KC_PLUS ,KC_EQL,  KC_HASH      ,KC_PIPE, KC_COLON, KC_LPRN, KC_RPRN, KC_QUES , \
+  KC_CIRC ,KC_SLSH ,KC_PAST, KC_CIRC, _______      ,KC_TILD, KC_AMPR,  KC_LCBR, KC_RCBR, KC_AT, \
                     _______, _______, _______      ,_______, _______, _______
 
 #define _WINNAV \

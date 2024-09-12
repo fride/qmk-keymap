@@ -1,21 +1,17 @@
 /*
-  ___V___, ___L___, ___H___, ___G___, ___K___,      ___Q___, ___F___, ___O___, ___U___, ___J___, \
-  ___S___, ___R___, ___N___, ___T___, ___B___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
-  ___Z___, ___X___, ___M___, ___D___, ___P___,      _SQUOT_, ___W___, __DOT__, _SEMIC_, _COMMA_, \
-                    NAV_SPC, _MAGIC_, OS_LSFT,      OS_LSFT, _MAGIC_, ___E___
+  ___Z___, ___M___, ___L___, ___C___, ___G___,      ___Q___, _COMMA_, __PUQ__, ___U___, ___P___, \
+  ___S___, ___N___, ___R___, ___T___, ___D___,      ___O___, ___A___, ___E___, ___I___, ___H___, \
+  ___F___, ___B___, ___W___, ___V___, ___J___,      ___X___, _SQUOT_, __DOT__, ___Y___, ___K___, \
+                    NAV_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
 */
 
-COMB(to_one,          TG(ALT_ALPHA),            ___F___, ___P___)
-
-
-COMB(CMB_TAB,           KC_TAB,              ___C___, ___N___, ___T___)
-COMB(CMB_COLON,         CLN_SYM,             ___C___, ___A___)
-COMB(CMB_ESC2,          ESC_SYM,             ___N___, ___T___)
-COMB(CMB_ENTER,         KC_ENTER,           ___C___, ___A___, ___I___)
-COMB(BOOT,              QK_BOOT,             ___V___, ___J___)
-// COMB(CMB_NUM,           NUMWORD,               NUM_SPC, ___R___)
-COMB(CMB_CPAS,          CAPSWORD,             ___T___, ___C___)
-COMB(CMB_SLASH,         KC_SLASH,             ___W___, __DOT__)
+COMB(CMB_TAB,           KC_TAB,               ___N___, ___R___, ___T___)
+COMB(CMB_COLON,         CLN_SYM,              ___A___, ___E___)
+COMB(CMB_ESC2,          ESC_SYM,              ___R___, ___T___)
+COMB(CMB_ENTER,         KC_ENTER,             ___A___, ___E___, ___I___)
+COMB(BOOT,              QK_BOOT,              ___Z___, ___P___)
+COMB(CMB_CPAS,          CAPSWORD,             __PUQ__, ___U___)
+COMB(CMB_SLASH,         KC_SLASH,             _SQUOT_, __DOT__)
 
 // symbols
 // COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)

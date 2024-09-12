@@ -51,6 +51,11 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 //    case NUM_SPC:
     case NAV_SPC:
       return true;
+	case ___T___:
+		if (other_keycode == ___Z___) {
+			return true;
+		}
+		break;
 	default:
         break;
   }

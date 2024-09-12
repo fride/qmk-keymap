@@ -162,6 +162,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         return false;
       }
       break;
+    case FARROW:
+      if (record->event.pressed) {      
+          SEND_STRING("=>");
+        }
+        return false;      
+      break;
       
     case REP_SFT:
     // TODO this only ever returns an n
@@ -216,7 +222,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
 
     case NUMWORD:
-      process__XXXXX_word_activation(record);
+      process_num_word_activation(record);
       return false;
   
     case SZ:
