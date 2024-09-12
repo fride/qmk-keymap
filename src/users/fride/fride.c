@@ -138,6 +138,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         }
       }
       break;
+    case CLN_SYM:
+      if (record->tap.count && record->event.pressed) {
+        tap_code16(KC_COLON);
+        return false;
+      }
+      break;
     case ARROW:
       if (record->event.pressed) {
         if (alt) {
@@ -210,7 +216,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
       }
 
     case NUMWORD:
-      process_num_word_activation(record);
+      process__XXXXX_word_activation(record);
       return false;
   
     case SZ:

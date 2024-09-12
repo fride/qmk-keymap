@@ -1,13 +1,12 @@
 #define NAV_SPC LT(UTIL, KC_SPC)
-#define MEH_SPC MEH_T(KC_SPC)
-#define NUM_QUO LT(NUM, KC_QUOT)
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
-#define UM_CTL LCTL_T(KC_U)
 #define NUM_SPC LT(NUM,KC_SPC)
 
+
+
 #define ___A___ RCTL_T(KC_A)
-#define ___B___ KC_B
+#define ___B___ HYPR_T(KC_B)
 #define ___C___ RSFT_T(KC_C)
 #define ___D___ LT(NUM,KC_D)
 #define ___E___ KC_E
@@ -30,7 +29,7 @@
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ KC_Y
+#define ___Y___ HYPR_T(KC_Y)
 #define ___Z___ KC_Z
 #define _MAGIC_ RGUI_T(MAGIC)
 #define _COMMA_ KC_COMM
@@ -57,10 +56,10 @@
 #define ___9___ KC_9
 
 #define _ALPHA \
-  ___V___, ___L___, ___H___, ___G___, ___K___,      ___Q___, ___F___, ___O___, ___U___, _SQUOT_, \
+  ___V___, ___L___, ___H___, ___G___, ___K___,      ___Q___, ___F___, ___O___, ___U___, ___J___, \
   ___S___, ___R___, ___N___, ___T___, ___B___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
   ___Z___, ___X___, ___M___, ___D___, ___P___,      _SQUOT_, ___W___, __DOT__, _SEMIC_, _COMMA_, \
-                    NAV_SPC, _MAGIC_, OS_LSFT,      OS_LSFT, _MAGIC_, ___E___
+                    NAV_SPC, OS_LSFT, OS_LSFT,      OS_LSFT, OS_LSFT, ___E___
 
 #define _ALPHA2 \
   KC_Q    ,KC_Z   , _______, _______, _______      ,_______, _______, A(KC_O), A(KC_U),  A(KC_S), \

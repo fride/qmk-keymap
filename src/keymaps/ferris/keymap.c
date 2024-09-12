@@ -48,7 +48,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   switch (tap_hold_keycode) {
     case ___R___:
     case ___I___:
-    case NUM_SPC:
+//    case NUM_SPC:
     case NAV_SPC:
       return true;
 	default:

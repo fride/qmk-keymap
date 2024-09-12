@@ -88,5 +88,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // define the layout to use
 // #define HANDS_DOWN_IE
 // #define MAGIC_STURDY
-// #define FOCAL
-#define PUQ
+#define FOCAL
+// #define PUQ

@@ -1,23 +1,22 @@
 /*
-  ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
-  ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
-  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
-                    NAV_SPC, _XXXXX_, _XXXXX_,      _XXXXX_, _XXXXX_, OS_LSFT
+  ___V___, ___L___, ___H___, ___G___, ___K___,      ___Q___, ___F___, ___O___, ___U___, ___J___, \
+  ___S___, ___R___, ___N___, ___T___, ___B___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
+  ___Z___, ___X___, ___M___, ___D___, ___P___,      _SQUOT_, ___W___, __DOT__, _SEMIC_, _COMMA_, \
+                    NAV_SPC, _MAGIC_, OS_LSFT,      OS_LSFT, _MAGIC_, ___E___
 */
 
 COMB(to_one,          TG(ALT_ALPHA),            ___F___, ___P___)
 
 
-COMB(CMB_TAB,          KC_TAB,            ___C___, ___N___, ___T___)
-COMB(CMB_COLON,        KC_COLON,         ___I___, ___E___)
-COMB(CMB_ESC2,          KC_ESC,            ___N___, ___I___)
-COMB(CMB_ENTER,        KC_ENTER,          ___I___, ___E___, ___A___)
-COMB(CMB_Q   ,        KC_Q,          ___V___, ___W___)
-COMB(CMB_Z   ,        KC_Z,          ___W___, ___M___)
- 
-COMB(BOOT,            QK_BOOT,          ___V___, _SQUOT_)
-COMB(CMB_NUM,         NUMWORD,          NUM_SPC, ___R___)
+COMB(CMB_TAB,           KC_TAB,              ___C___, ___N___, ___T___)
+COMB(CMB_COLON,         CLN_SYM,             ___C___, ___A___)
+COMB(CMB_ESC2,          ESC_SYM,             ___N___, ___T___)
+COMB(CMB_ENTER,         KC_ENTER,           ___C___, ___A___, ___I___)
+COMB(BOOT,              QK_BOOT,             ___V___, ___J___)
+// COMB(CMB_NUM,           NUMWORD,               NUM_SPC, ___R___)
+COMB(CMB_CPAS,          CAPSWORD,             ___T___, ___C___)
+COMB(CMB_SLASH,         KC_SLASH,             ___W___, __DOT__)
 
 // symbols
 // COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
-// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
+// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___) 456 444    

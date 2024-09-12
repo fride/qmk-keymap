@@ -130,6 +130,12 @@ enum custom_keycodes {
 #define SPACE_L A(G(KC_LEFT))
 #define SPACE_R A(G(KC_RGHT))
 
+
+// combo keys
+#define ESC_SYM LT(SYM,KC_ESC)
+#define CLN_SYM LT(SYM,KC_COLON)
+
+
 // special keys
 #define MAGIC QK_ALT_REPEAT_KEY
 #define REPEAT QK_REPEAT_KEY
