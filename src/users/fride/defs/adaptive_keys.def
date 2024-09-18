@@ -2,6 +2,6 @@
 // name, first key, second key, return, keys...
 
 
-AK(SF, ___S___, ___F___, false, KC_C)
-AK(SG, ___S___, ___G___, false, KC_W)
+AK(BL, ___B___, ___W___, false, KC_L)
+AK(BR, ___R___, ___V___, false, KC_L)
 AK(MG, ___M___, ___G___, false, KC_L)

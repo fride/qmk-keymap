@@ -20,10 +20,10 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[ALPHA]  = LAYOUT_FERRIS(FERRIS(_ALPHA)),	
-	[ALPHA2]  = LAYOUT_FERRIS(FERRIS(_ALPHA2)),	
-	[ALT_ALPHA]   = LAYOUT_FERRIS(FERRIS(_ALT_ALPHA)),	
+	// [ALPHA2]  = LAYOUT_FERRIS(FERRIS(_ALPHA2)),	
+	// [ALT_ALPHA]   = LAYOUT_FERRIS(FERRIS(_ALT_ALPHA)),	
 	[UTIL]   = LAYOUT_FERRIS(FERRIS(_UTIL)),	
-	[NUM]    = LAYOUT_FERRIS(FERRIS(_NUM)),	
+	[NUM]    = LAYOUT_FERRIS(FERRIS(_NUMWORD)),	
 	[SYM]    = LAYOUT_FERRIS(FERRIS(_SYM)),	
 	[SYM_LEFT]    = LAYOUT_FERRIS(FERRIS(_SYM_LEFT)),	
 	[SYM_RIGHT]    = LAYOUT_FERRIS(FERRIS(_SYM_RIGHT)),	
@@ -50,9 +50,10 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     case ___I___:
 //    case NUM_SPC:
     case NAV_SPC:
+    case MEH_SPC:
       return true;
-	case ___T___:
-		if (other_keycode == ___Z___) {
+	case ___D___:
+		if (other_keycode == ___V___) {
 			return true;
 		}
 		break;

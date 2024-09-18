@@ -58,4 +58,5 @@ for more options.
 
 #define ACHORDION
 
-#define PUQ
+//#define PUQ
+#define MAGIC_STURDY

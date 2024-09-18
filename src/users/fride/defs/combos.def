@@ -1,18 +1,26 @@
 /*
-  ___Z___, ___M___, ___L___, ___C___, ___G___,      ___Q___, _COMMA_, __PUQ__, ___U___, ___P___, \
-  ___S___, ___N___, ___R___, ___T___, ___D___,      ___O___, ___A___, ___E___, ___I___, ___H___, \
-  ___F___, ___B___, ___W___, ___V___, ___J___,      ___X___, _SQUOT_, __DOT__, ___Y___, ___K___, \
-                    NAV_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
+  ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
+  ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
+                    MEH_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
 */
 
-COMB(CMB_TAB,           KC_TAB,               ___N___, ___R___, ___T___)
+
+COMB(CMB_WUM,           NUMWORD,              MEH_SPC, OS_LSFT)
+COMB(CMB_TAB,           KC_TAB,               ___T___, ___R___, ___D___)
 COMB(CMB_COLON,         CLN_SYM,              ___A___, ___E___)
 COMB(CMB_ESC2,          ESC_SYM,              ___R___, ___T___)
-COMB(CMB_ENTER,         KC_ENTER,             ___A___, ___E___, ___I___)
+COMB(CMB_ENTER,         KC_ENTER,             ___N___, ___E___, ___A___)
 COMB(BOOT,              QK_BOOT,              ___Z___, ___P___)
-COMB(CMB_CPAS,          CAPSWORD,             __PUQ__, ___U___)
-COMB(CMB_SLASH,         KC_SLASH,             _SQUOT_, __DOT__)
+//COMB(CMB_CPAS,          CAPSWORD,             __PUQ__, ___U___)
+COMB(CMB_SLASH,         KC_SLASH,             ___H___, _COMMA_)
+COMB(CMB_UNDS ,          KC_UNDS,               ___H___, __DOT__)
+COMB(CMB_DLLR ,          KC_DLR,               _COMMA_, __DOT__)
+COMB(CMB_Q  ,            KC_Q ,                 ___M___, ___L___)
 
-// symbols
-// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
-// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___) 456 444    
+
+// Unlaute!
+COMB(CMB_ULM_U,       ___N___, ___U___,     RALT(KC_U))
+COMB(CMB_ULM_O,       _MAGIC_, ___O___,     RALT(KC_O))
+COMB(CMB_ULM_A,       _MAGIC_, ___A___,     RALT(KC_A))
+COMB(CMB_ULM_S,       _MAGIC_, _SQUOT_,     RALT(KC_S))

@@ -1,0 +1,18 @@
+/*
+  ___Z___, ___M___, ___L___, ___C___, ___G___,      ___Q___, _COMMA_, __PUQ__, ___U___, ___P___, \
+  ___S___, ___N___, ___R___, ___T___, ___D___,      ___O___, ___A___, ___E___, ___I___, ___H___, \
+  ___F___, ___B___, ___W___, ___V___, ___J___,      ___X___, _SQUOT_, __DOT__, ___Y___, ___K___, \
+                    NAV_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
+*/
+
+COMB(CMB_TAB,           KC_TAB,               ___N___, ___R___, ___T___)
+COMB(CMB_COLON,         CLN_SYM,              ___A___, ___E___)
+COMB(CMB_ESC2,          ESC_SYM,              ___R___, ___T___)
+COMB(CMB_ENTER,         KC_ENTER,             ___A___, ___E___, ___I___)
+COMB(BOOT,              QK_BOOT,              ___Z___, ___P___)
+COMB(CMB_CPAS,          CAPSWORD,             __PUQ__, ___U___)
+COMB(CMB_SLASH,         KC_SLASH,             _SQUOT_, __DOT__)
+
+// symbols
+// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___)
+// COMB(CMB_EQUAL,       KC_EQUAL,          ___F___, ___O___) 456 444    

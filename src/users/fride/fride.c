@@ -230,6 +230,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_S) SS_UP(X_LALT));
         return false;
       }
+    case KC_TH:
+      if (record->event.pressed) {
+        SEND_STRING("th");
+        return false;
+      }
     case MG_ION:
       if (record->event.pressed) {
         SEND_STRING("on");

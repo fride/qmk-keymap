@@ -1,5 +1,6 @@
 
-#define NAV_SPC LT(UTIL, KC_SPC)
+//#define NAV_SPC LT(UTIL, KC_SPC)
+#define NAV_SPC HYPR_T(KC_SPC)
 #define MEH_SPC MEH_T(KC_SPC)
 #define NUM_QUO LT(NUM, KC_QUOT)
 #define OS_SYM OSL(SYM)
@@ -70,6 +71,12 @@
   _______ ,_______, _______, _______, _______      ,_______, _______,  _______, _______, _______, \
                     _______, _______, _______      ,_______, _______,  _______
 
+
+#define _UTIL_PUQ \
+  SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
+  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
+  Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
+                    KC_SPC, OS_LGUI,   KC_F19            , _______, _XXXXX_, _______
 
 #define _SYM_LEFT \
     KC_LCBR, KC_AMPR, KC_GRV,  KC_AT,   _______,                         _______, _______, _______, _______, _______,\

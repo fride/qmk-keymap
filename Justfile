@@ -12,6 +12,9 @@ planck:
 ferris:
     DOCKER_BUILDKIT=1 docker buildx build --build-arg="KEYBOARD=ferris/0_2" -o type=local,dest=result . 
 
+planck_flash: planck
+    dfu-util -a 0 -d 0483:DF11 -s 0x08000000:leave -D /Users/jgf/code/private/totem-qmk/result/result/planck_rev6_fride.bin
+    
 ferris_flash: ferris
     ./flash_ferris.sh    
 

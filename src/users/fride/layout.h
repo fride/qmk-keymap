@@ -179,18 +179,25 @@ enum custom_keycodes {
   KC_Q    ,KC_V    ,KC_W    ,KC_D    ,KC_J         ,KC_B   , KC_F   ,  KC_SLSH ,__DOT__, KC_X, \
                     KC_R    ,_______ ,_______      ,_______, _______, KC_SPC
 
+// ikse pfui!
+#define _QWERTY \
+  KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T         ,KC_Y   , KC_U   ,  KC_I    ,KC_O,    KC_P, \
+  KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G         ,KC_H   , KC_J   ,  KC_K    ,KC_L   , KC_O, \
+  KC_Z    ,KC_X    ,KC_V    ,KC_B    ,KC_B         ,KC_N   , KC_N   ,  KC_M ,   KC_COMM, KC_DOT, \
+                    _______    ,_______ ,_______      ,_______, _______, _______
+
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
   Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
                     KC_SPC, KC_SPC,   KC_F19            , _______, _XXXXX_, _______
-/*
-// #define _NUM \
-//   KC_GRV   , KC_EQUAL, KC_MINUS, KC_UNDS, KC_PAST      ,KC_BSLS, KC_HASH,  KC_AMPR, KC_PIPE,  _COMMA_, \
-//   ___7___  , ___5___ , ___3___ , ___1___, KC_PLUS      ,KC_CIRC, ___0___,  ___2___, ___4___,  ___6___ , \
-//   KC_TILDE , KC_LT   , KC_GT,    ___9___, KC_SLASH     ,KC_AT,   ___8___,  _SEMIC_, KC_COLON, __DOT__, \
-//                         KC_SPC,  KC_LT  , KC_GT        ,_XXXXX_, _XXXXX_, _XXXXX_
- */
+
+#define _NUMWORD \
+   KC_GRV   , KC_EQUAL, KC_MINUS, KC_UNDS, KC_PAST      ,KC_BSLS, KC_HASH,  KC_AMPR, KC_PIPE,  _COMMA_, \
+   ___7___  , ___5___ , ___3___ , ___1___, KC_PLUS      ,KC_CIRC, ___0___,  ___2___, ___4___,  ___6___ , \
+   KC_TILDE , KC_LT   , KC_GT,    ___9___, KC_SLASH     ,KC_AT,   ___8___,  _SEMIC_, KC_COLON, __DOT__, \
+                         KC_SPC,  KC_LT  , KC_GT        ,_XXXXX_, _XXXXX_, _XXXXX_
+ 
 
 #define _SYM \
   KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, ARROW,    KC_LBRC, KC_RBRC, KC_PERC, \
@@ -227,23 +234,6 @@ KC_NO,  k43, k44, k45, k46, k47,        k50, k51, k52, k53, k54, KC_NO, \
 // -------------------------------------------------------------------------------------------------------- //
 
 
-
-#define LAYOUT_PLANCK(...) LAYOUT(__VA_ARGS__)
-#define PLANCK(k) CONV_PLANCK(k)
-#define CONV_PLANCK( \
-    k01, k02, k03, k04, k05,    k06, k07, k08, k09, k0a, \
-    k11, k12, k13, k14, k15,    k16, k17, k18, k19, k1a, \
-    k21, k22, k23, k24, k25,    k26, k27, k28, k29, k2a, \
-              k33, k34, k35,    k36, k37, k38            \
-    ) \
-     KC_ESC, k01, k02, k03, k04, k05, \
-     KC_TAB, k11, k12, k13, k14, k15, \
-     OS_LSFT, k21, k22, k23, k24, k25, \
-     KC_LCTL, KC_LALT, KC_LGUI, KC_LALT, KC_RCTL, k36, \
-     k06, k07, k08, k09, k0a, KC_BSPC, \
-     k16, k17, k18, k19, k1a, KC_ENTER, \
-     k26, k27, k28, k29, k2a, OSL(NUM), \
-     k37, OSL(NUM), KC_RGUI, OSL(NUM), k34, k35
 
 
 

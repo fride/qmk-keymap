@@ -57,7 +57,7 @@ if ((mods & ~MOD_MASK_SHIFT) == 0) {
       case ___L___:
         return KC_K;
       case ___M___:
-        return KC_B; 
+        return KC_T; 
       case ___O___:
         return KC_A;
       case ___P___:

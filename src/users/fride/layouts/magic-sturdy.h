@@ -1,32 +1,32 @@
 
 #define NAV_SPC LT(UTIL, KC_SPC)
-#define MEH_SPC MEH_T(KC_SPC)
+#define MEH_SPC HYPR_T(KC_SPC)
 #define NUM_QUO LT(NUM, KC_QUOT)
 #define OS_SYM OSL(SYM)
 #define OS_MEH OSM(MOD_MEH)
 #define UM_CTL LCTL_T(KC_U)
 #define REP_CTL LT(NUM,KKC_DEL
 
-#define ___A___ RCTL_T(KC_A)
+#define ___A___ LT(NUM,KC_A)
 #define ___B___ KC_B
 #define ___C___ KC_C
-#define ___D___ LGUI_T(KC_D)
-#define ___E___ LALT_T(KC_E)
+#define ___D___ LT(UTIL,KC_D)
+#define ___E___ LT(SYM,KC_E)
 #define ___F___ KC_F
-#define ___G___ LT(NUM,KC_G)
-#define ___H___ KC_H
+#define ___G___ LGUI_T(KC_G)
+#define ___H___ RGUI_T(KC_H)
 #define ___I___ LT(SYM,KC_I)
-#define ___J___ KC_J
-#define ___K___ KC_K
+#define ___J___ LALT_T(KC_J)
+#define ___K___ LCTL_T(KC_K)
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ RGUI_T(KC_N)
+#define ___N___ LT(UTIL,KC_N)
 #define ___O___ KC_O
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LALT_T(KC_R)
+#define ___R___ LT(SYM,KC_R)
 #define ___S___ LT(SYM,KC_S)
-#define ___T___ LCTL_T(KC_T)
+#define ___T___ LT(NUM,KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
@@ -34,8 +34,8 @@
 #define ___Y___ KC_Y
 #define ___Z___ KC_Z
 #define _MAGIC_ RALT_T(MAGIC)
-#define _COMMA_ KC_COMM
-#define __DOT__ KC_DOT
+#define _COMMA_ LALT_T(KC_COMM)
+#define __DOT__ RCTL_T(KC_DOT)
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
 #define _DQUOT_ KC_DQUO
@@ -60,7 +60,7 @@
   ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
   ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
-                    NAV_SPC, KC_MINS, _XXXXX_,      _XXXXX_, REPEAT , OS_LSFT
+                    MEH_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
 
 
 #define _SYM_LEFT \
