@@ -60,10 +60,6 @@ enum custom_keycodes {
   OS_LALT,  // OS Mods
   OS_LGUI,  // OS Mods
   TS_LCTL,  // Two-shot ctrl
-
-  // used below in the thumb
-  NEXTSEN,
-
   // German special nonsense
   A_UML,
   O_UML,
@@ -85,6 +81,7 @@ enum custom_keycodes {
   MOUSE_TGL,
   SLASH,
   UNDER,
+
   ALFRED,
 
   // lates stuff
@@ -99,8 +96,6 @@ enum custom_keycodes {
   WN_SOUTH,
   W_ROTATE,
   W_ROTATE2,
-
-  BI_PH,
   ARROW,
   FARROW
 };
@@ -190,7 +185,7 @@ enum custom_keycodes {
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
   Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
-                    KC_SPC, KC_SPC,   KC_F19            , _______, _XXXXX_, _______
+                    _______, _______, _______            , _______, _______, _______
 
 #define _NUMWORD \
    KC_GRV   , KC_EQUAL, KC_MINUS, KC_UNDS, KC_PAST      ,KC_BSLS, KC_HASH,  KC_AMPR, KC_PIPE,  _COMMA_, \
@@ -199,11 +194,14 @@ enum custom_keycodes {
                          KC_SPC,  KC_LT  , KC_GT        ,_XXXXX_, _XXXXX_, _XXXXX_
  
 
+/*
+
 #define _SYM \
   KC_GRV  ,KC_LT   ,KC_GT,   KC_AT  , KC_DOT       ,KC_AMPR, ARROW,    KC_LBRC, KC_RBRC, KC_PERC, \
   KC_EXLM ,KC_MINS ,KC_PLUS ,KC_EQL,  KC_HASH      ,KC_PIPE, KC_COLON, KC_LPRN, KC_RPRN, KC_QUES , \
   KC_CIRC ,KC_SLSH ,KC_PAST, KC_CIRC, _______      ,KC_TILD, KC_AMPR,  KC_LCBR, KC_RCBR, KC_AT, \
                     _______, _______, _______      ,_______, _______, _______
+*/
 
 #define _WINNAV \
   KC_NO,        W_ROTATE,     WN_NORTH,     W_ROTATE2,    KC_PLUS,      KC_BSLS, MEH(KC_6),    MEH(KC_7),      MEH(KC_8),     KC_TILD, \

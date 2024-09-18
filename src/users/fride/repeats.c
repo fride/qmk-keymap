@@ -37,7 +37,7 @@ if ((mods & ~MOD_MASK_SHIFT) == 0) {
       case ___C___: // C
         return KC_Y;
       case ___D___:
-        return KC_T;
+        return KC_Y;
       case ___E___:
         return KC_U;
       case ___F___:
@@ -89,11 +89,11 @@ if ((mods & ~MOD_MASK_SHIFT) == 0) {
       case KC_ESC:
         return KC_COLON;
       case KC_COMM:
+        return M_SENTENCE; // TODO does not work!
       case KC_DOT:
-        return M_SENTENCE; // ODO does not work!
+        return M_SENTENCE; // TODO does not work!
       case KC_1 ... KC_0:
         return KC_DOT;      
-  
       case KC_GT:
         return KC_MINS;
       case KC_PIPE:

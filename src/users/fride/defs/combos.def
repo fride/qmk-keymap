@@ -6,21 +6,69 @@
 */
 
 
-COMB(CMB_WUM,           NUMWORD,              MEH_SPC, OS_LSFT)
-COMB(CMB_TAB,           KC_TAB,               ___T___, ___R___, ___D___)
-COMB(CMB_COLON,         CLN_SYM,              ___A___, ___E___)
-COMB(CMB_ESC2,          ESC_SYM,              ___R___, ___T___)
-COMB(CMB_ENTER,         KC_ENTER,             ___N___, ___E___, ___A___)
-COMB(BOOT,              QK_BOOT,              ___Z___, ___P___)
-//COMB(CMB_CPAS,          CAPSWORD,             __PUQ__, ___U___)
-COMB(CMB_SLASH,         KC_SLASH,             ___H___, _COMMA_)
+COMB(CMB_WUM,            NUMWORD,              MEH_SPC, OS_LSFT)
+COMB(CMB_TAB,            KC_TAB,               ___T___, ___R___, ___D___)
+COMB(CMB_COLON,          CLN_SYM,              ___N___, ___E___)
+COMB(CMB_ESC,            ESC_SYM,              ___R___, ___D___)
+COMB(CMB_ENTER,          KC_ENTER,             ___N___, ___E___, ___A___)
+COMB(BOOT,               QK_BOOT,              ___Z___, ___P___)
+//COMB(CMB_CPAS,         CAPSWORD,             __PUQ__, ___U___)
+COMB(CMB_SLASH,          KC_SLASH,             ___H___, _COMMA_)
 COMB(CMB_UNDS ,          KC_UNDS,               ___H___, __DOT__)
 COMB(CMB_DLLR ,          KC_DLR,               _COMMA_, __DOT__)
 COMB(CMB_Q  ,            KC_Q ,                 ___M___, ___L___)
+COMB(CMB_EQL  ,          KC_EQL ,              ___U___, ___O___)
+COMB(CMB_MINS  ,          KC_MINS ,              _MAGIC_, ___O___)
 
 
 // Unlaute!
-COMB(CMB_ULM_U,       ___N___, ___U___,     RALT(KC_U))
-COMB(CMB_ULM_O,       _MAGIC_, ___O___,     RALT(KC_O))
-COMB(CMB_ULM_A,       _MAGIC_, ___A___,     RALT(KC_A))
-COMB(CMB_ULM_S,       _MAGIC_, _SQUOT_,     RALT(KC_S))
+COMB(CMB_ULM_U,       RALT(KC_U),       _MAGIC_, ___U___)
+COMB(CMB_ULM_O,       RALT(KC_O),       _MAGIC_, ___O___)
+COMB(CMB_ULM_A,       RALT(KC_A),       ___N___, ___A___)
+COMB(CMB_ULM_S,       RALT(KC_S),       _MAGIC_, _SQUOT_)
+
+
+// Symbols
+/*
+      KC_TILD, KC_PLUS, KC_ASTR, KC_EXLM, _XXXXX_,            _XXXXX_, KC_HASH, KC_AT,   KC_CIRC, KC_DOT, \
+      KC_PIPE, KC_LCBR, KC_RCBR, KC_MINS, KC_BSLS,            KC_GRV,  KC_QUES, KC_LBRC, KC_RBRC, KC_SLSH, \
+      KC_COMM, KC_LABK, KC_RABK, KC_PERC, _XXXXX_,            _XXXXX_, KC_AMPR, KC_LPRN, KC_RPRN, KC_UNDS, \
+
+    ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
+    ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
+    ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
+
+
+COMB(CMB_TILD,   KC_TILD,     MEH_SPC, ___V___)
+COMB(CMB_PLUS,   KC_PLUS,     MEH_SPC, ___M___)
+COMB(CMB_ASTR,   KC_ASTR,     MEH_SPC, ___L___)
+COMB(CMB_EXLM,   KC_EXLM,     MEH_SPC, ___C___)
+
+COMB(CMB_PIPE,   KC_PIPE,     MEH_SPC, ___S___)
+COMB(CMB_LCBR,   KC_LCBR,     MEH_SPC, ___T___)
+COMB(CMB_RCBR,   KC_RCBR,     MEH_SPC, ___R___)
+COMB(CMB_MINS,   KC_MINS,     MEH_SPC, ___D___)
+COMB(CMB_BSLS,   KC_BSLS,     MEH_SPC, ___Y___)
+
+COMB(CMB_COMM,   KC_COMM,     MEH_SPC, ___X___)
+COMB(CMB_LABK,   KC_LABK,     MEH_SPC, ___K___)
+COMB(CMB_RABK,   KC_RABK,     MEH_SPC, ___J___)
+COMB(CMB_PERC,   KC_PERC,     MEH_SPC, ___G___)
+
+
+COMB(CMB_HASH,    KC_HASH,    OS_LSFT, _MAGIC_)
+COMB(CMB_AT,      KC_AT,      OS_LSFT, ___U___)
+COMB(CMB_CIRC,    KC_CIRC,    OS_LSFT, ___O___)
+COMB(CMB_DOT,     KC_DOT,     OS_LSFT, _SQUOT_)
+
+COMB(CMB_GRV,     KC_GRV,     OS_LSFT, ___F___)
+COMB(CMB_QUES,    KC_QUES,    OS_LSFT, ___N___)
+COMB(CMB_LBRC,    KC_LBRC,    OS_LSFT, ___E___)
+COMB(CMB_RBRC,    KC_RBRC,    OS_LSFT, ___A___)
+COMB(CMB_SLSH,    KC_SLSH,    OS_LSFT, ___I___)
+
+COMB(CMB_AMPR,    KC_AMPR,    OS_LSFT, ___M___)
+COMB(CMB_LPRN,    KC_LPRN,    OS_LSFT, _COMMA_)
+COMB(CMB_RPRN,    KC_RPRN,    OS_LSFT, __DOT__)
+// COMB(CMB_UNDS,    KC_UNDS,    OS_LSFT, _SEMIC_)
+*/

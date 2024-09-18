@@ -63,6 +63,13 @@
                     MEH_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
 
 
+#define _SYM \
+  KC_EXLM,     KC_AT,   KC_HASH,    KC_DLR,     KC_PERC,       KC_CIRC, KC_AMPR, KC_ASTR, KC_QUES,     KC_QUOT,\
+  KC_PLUS,     KC_EQL,  KC_LPRN,    KC_RPRN,    KC_DQT,        KC_COLN, KC_RBRC,  KC_LBRC, KC_RCBR,     KC_LCBR,\
+  KC_LT,       KC_PIPE, KC_MINS,    KC_GT,      KC_BSLS,       KC_GRV,  KC_UNDS, KC_SLSH, KC_TILD,     KC_SCLN,\
+                        OS_LALT, OS_LGUI, _______,            _______, OS_LCTL , OS_LSFT
+
+
 #define _SYM_LEFT \
     KC_LCBR, KC_AMPR, KC_GRV,  KC_AT,   _______,                         _______, _______, _______, _______, _______,\
     KC_LBRC, KC_CIRC, KC_TILD, KC_LPRN, KC_DOT,                          _______, _______, _______, _______, _______,\
@@ -77,6 +84,6 @@
     
 #define _NUM \
   _______ , _______, _______, _______, _______      ,KC_BSLS,  ___7___, ___8___, ___9___,  _COMMA_, \
-  OS_LSFT , OS_LCTL, OS_LALT, OS_LGUI, _______      ,KC_SLASH, ___4___, ___5___, ___6___,  ___0___ , \
-  _______ , _______, OS_LGUI, _XXXXX_, _______      ,KC_AT,    ___1___, ___2___, ___3___, __DOT__, \
-                    _XXXXX_,  _XXXXX_ , _XXXXX_     ,_______, KC_SPC,   ___0___
+  _______ , _XXXXX_, _______, _______, _______      ,KC_SLASH, ___4___, ___5___, ___6___,  ___0___ , \
+  _______ , _______, OS_LALT, OS_LGUI, _______      ,KC_AT,    ___1___, ___2___, ___3___, __DOT__, \
+                    MEH_SPC,  OS_LGUI , _XXXXX_     ,_______, OS_LCTL,   OS_LSFT

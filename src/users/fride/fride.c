@@ -204,12 +204,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         SEND_STRING(SS_DOWN(X_LALT) SS_TAP(X_SPACE) SS_UP(X_LALT));
         return false;
       }
-    case NEXTSEN:  // Next sentence macro.
-      if (record->event.pressed) {
-        SEND_STRING(". ");
-        add_oneshot_mods(MOD_BIT(KC_LSFT));  // Set one-shot mod for shift.
-      }
-      return false;
     case CANCEL:
       if (record->event.pressed) {
         //     stop_leading();
@@ -238,11 +232,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     case MG_ION:
       if (record->event.pressed) {
         SEND_STRING("on");
-        return false;
-      }
-    case BI_PH:
-      if (record->event.pressed) {
-        SEND_STRING("ph");
         return false;
       }
     case MG_VER:
