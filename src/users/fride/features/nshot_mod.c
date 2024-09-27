@@ -125,6 +125,7 @@ bool is_nshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
         case CLEAR:
         case CANCEL:
+//        case ___R___:
         case NAV_SPC:
         //     if (layer_state_is(UTIL)) {
         //         return true;
@@ -140,6 +141,7 @@ bool is_nshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
         //case NAVMODE:
         case NAV_SPC:
+        //case ___R___:
         case NUMWORD:
         case OS_LSFT:
         case OS_LCTL:

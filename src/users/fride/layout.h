@@ -4,7 +4,6 @@
 enum layers {
   ALPHA,  
   ALPHA2,
-  ALT_ALPHA,
   UTIL,
   NUM,  
   SYM,  
@@ -66,6 +65,9 @@ enum custom_keycodes {
   U_UML,
   SZ,
 
+  // long press umlaut
+
+
   ARROW_L,
   ARROW_R,
   QU,
@@ -99,6 +101,9 @@ enum custom_keycodes {
   ARROW,
   FARROW
 };
+
+
+#define NAV_SPC LT(UTIL, KC_SPC)
 
 
 #define META_DEAD LT(UTIL, KC_LGUI)
@@ -164,26 +169,23 @@ enum custom_keycodes {
 #include "layouts/focali.h"
 #endif
 
+#ifdef PROMETH
+#include "layouts/hands-down-promethius.h"
+#endif
+
 // ----------------
 // layout wrappers inspired by https://github.com/pixelbreaker/qmk_userspace
 
-
-#define _ALT_ALPHA \
-  KC_Y    ,KC_C    ,KC_L    ,KC_M    ,KC_K         ,KC_Z   , _MAGIC_,  KC_U    ,_COMMA_, _SQUOT_, \
-  KC_I    ,KC_S    ,KC_N    ,KC_T    ,KC_G         ,KC_P   , KC_H   ,  KC_E    ,KC_A   , KC_O, \
-  KC_Q    ,KC_V    ,KC_W    ,KC_D    ,KC_J         ,KC_B   , KC_F   ,  KC_SLSH ,__DOT__, KC_X, \
-                    KC_R    ,_______ ,_______      ,_______, _______, KC_SPC
-
 // ikse pfui!
 #define _QWERTY \
-  KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T         ,KC_Y   , KC_U   ,  KC_I    ,KC_O,    KC_P, \
-  KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G         ,KC_H   , KC_J   ,  KC_K    ,KC_L   , KC_O, \
-  KC_Z    ,KC_X    ,KC_V    ,KC_B    ,KC_B         ,KC_N   , KC_N   ,  KC_M ,   KC_COMM, KC_DOT, \
-                    _______    ,_______ ,_______      ,_______, _______, _______
+  KC_Q    ,KC_W    ,KC_E       ,KC_R    ,KC_T         ,KC_Y   , KC_U   ,  KC_I    ,KC_O,    KC_P, \
+  KC_A    ,KC_S    ,KC_D       ,KC_F    ,KC_G         ,KC_H   , KC_J   ,  KC_K    ,KC_L   , KC_O, \
+  KC_Z    ,KC_X    ,KC_V       ,KC_B    ,KC_B         ,KC_N   , KC_N   ,  KC_M ,   KC_COMM, KC_DOT, \
+                    NAV_SPACE  ,OS_LGUI ,_______      ,OS_LALT, OS_LCTL, OS_LSFT
 
 #define _UTIL \
   SW_APP,  TAB_L,   TAB_R,   SW_WIN,  KC_NO,               KC_NO, KC_BSPC, KC_UP,   KC_DEL,  KC_NO, \
-  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
+  OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI, OSM(MOD_MEH),        FWD,   KC_LEFT, KC_DOWN, KC_RGHT, BACK, \
   Z_UND,   Z_CUT,   Z_CPY,   Z_PST,   ALFRED,              KC_NO, KC_ESC,  KC_COLON,KC_NO,   KC_NO, \
                     _______, _______, _______            , _______, _______, _______
 

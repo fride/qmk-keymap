@@ -17,8 +17,9 @@
      KC_NO,   KC_NO, KC_NO, k35, k33, k34,    k37, k38, k36, KC_NO, KC_NO, KC_NO
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+	// [QWERTY]  = LAYOUT_PLANCK(PLANCK(_QWERTY)),	
 	[ALPHA]  = LAYOUT_PLANCK(PLANCK(_ALPHA)),	
-	[ALPHA2]  = LAYOUT_PLANCK(PLANCK(_QWERTY)),	
+	[ALPHA2]  = LAYOUT_PLANCK(PLANCK(_ALPHA2)),	
 	[UTIL]   = LAYOUT_PLANCK(PLANCK(_UTIL)),	
 	[NUM]    = LAYOUT_PLANCK(PLANCK(_NUMWORD)),	
 	[SYM]    = LAYOUT_PLANCK(PLANCK(_SYM)),	
@@ -47,6 +48,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
     case ___I___:
 //    case NUM_SPC:
     case NAV_SPC:
+    case ___E___:
     case MEH_SPC:
       return true;
 	case ___D___:
