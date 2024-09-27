@@ -44,6 +44,8 @@ COMB(CMB_RCBR,   KC_RCBR,     ___U___, ___I___)
 COMB(CMB_SLASH,  KC_SLSH,     __DOT__, _SEMIC_)
 COMB(CMB_BSLS,   KC_BSLS,     __DOT__, ___W___)
 COMB(CMB_GRV,    KC_GRV,      ___L___, ___H___)
+COMB(CMB_AT,     KC_AT,       ___H___, ___G___)
+COMB(CMB_DQT,    KC_DQT,      ___O___, ___U___)
 
 
 

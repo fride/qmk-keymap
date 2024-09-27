@@ -15,7 +15,28 @@ if ((mods & ~MOD_MASK_SHIFT) == 0) {
         return KC_T; // Stadt
       case ___E___:
         return KC_E;
-      // case ___F___:
+      case ___F___:
+        return KC_F;
+      case ___G___:
+        return KC_T;
+      case ___H___:
+        return KC_M;
+      case ___I___:
+        return KC_I;
+      // case ___J___:
+      //   return KC_J; // TODO this makes no sense!
+      case ___K___:
+        return KC_T;
+      case ___L___:
+        return KC_R;
+      case ___M___:
+        return KC_N;
+      case ___N___:
+        return KC_N;
+      case ___O___:
+        return KC_A;
+      case ___P___:
+        return KC_T;
       case ___R___:
         return KC_L;
     }    

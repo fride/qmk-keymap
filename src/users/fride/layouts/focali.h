@@ -7,33 +7,33 @@
 
 
 
-#define ___A___ RCTL_T(KC_A)
+#define ___A___ LALT_T(KC_A)
 #define ___B___ HYPR_T(KC_B)
-#define ___C___ RSFT_T(KC_C)
-#define ___D___ KC_D
+#define ___C___ RGUI_T(KC_C)
+#define ___D___ MEH_T(KC_D)
 #define ___E___ LT(NUM, KC_E)
 #define ___F___ KC_F
 #define ___G___ KC_G
-#define ___H___ KC_H
-#define ___I___ LALT_T(KC_I)
+#define ___H___ RALT_T(KC_H)
+#define ___I___ LCTL_T(KC_I)
 #define ___J___ KC_J
 #define ___K___ KC_K
 #define ___L___ KC_L
 #define ___M___ KC_M
-#define ___N___ LCTL_T(KC_N)
-#define ___O___ KC_O
+#define ___N___ LALT_T(KC_N)
+#define ___O___ RALT_T(KC_O)
 #define ___P___ KC_P
 #define ___Q___ KC_Q
-#define ___R___ LALT_T(KC_R)
-#define ___S___ LGUI_T(KC_S)
-#define ___T___ LSFT_T(KC_T)
+#define ___R___ LCTL_T(KC_R)
+#define ___S___ LSFT_T(KC_S)
+#define ___T___ LGUI_T(KC_T)
 #define ___U___ KC_U
 #define ___V___ KC_V
 #define ___W___ KC_W
-#define ___X___ KC_X
+#define ___X___ MEH_T(KC_X)
 #define ___Y___ HYPR_T(KC_Y)
 #define ___Z___ KC_Z
-#define _MAGIC_ RGUI_T(MAGIC)
+#define _MAGIC_ RSFT_T(MAGIC)
 #define _COMMA_ KC_COMM
 #define __DOT__ LALT_T(KC_DOT)
 #define _SLASH_ KC_SLSH
@@ -70,11 +70,15 @@
   _______ ,KC_RBRC, KC_RCBR, KC_RPRN, _______      ,_______, _______, _______, _______, _______, \
                     _______, _______, _______      ,_______, _______, _______
 
+// inspired by https://github.com/grassfedreeve/zmk-config-akohekohe?tab=readme-ov-file
+
+// and from https://github.com/bredfield/zmk-config/blob/main/images/30%20Key.png
 #define _NUM \
-  _______ , KC_EXLM, KC_AT,   KC_HASH, KC_DLR       ,KC_EQL,  ___7___, ___8___, ___9___, O_UML, \
-  _SEMIC_ , KC_PAST, KC_UNDS, KC_MINS, KC_PIPE      ,___0___, ___4___, ___5___, ___6___,  ___0___ , \
-  A(KC_S) , KC_PLUS, KC_PERC, KC_AMPR, KC_CIRC      ,A_UML,   ___1___, ___2___, ___3___, U_UML, \
-                    KC_LT,    KC_GT  , _XXXXX_     ,_XXXXX_, _XXXXX_,   _XXXXX_
+  KC_GRV  ,KC_EQL  ,KC_MINS, KC_UNDS,  KC_PAST      ,KC_BSLS ,KC_HASH, KC_AMPR ,KC_PIPE ,KC_TILD, \
+  ___1___ ,___2___  ,___3___ ,___4___ ,KC_PLUS      ,KC_GRV ,___7___, ___8___ ,___9___, ___0___, \
+  _XXXXX_ ,KC_COLON,KC_PERC  ,___5___, KC_CIRC       ,KC_AT, ___6___ ,__DOT__, _SEMIC_, _COMMA_, \
+                    KC_LT,    KC_GT  , _XXXXX_      ,_______, _______, _XXXXX_
+
 
 #define _SYM \
   KC_EXLM,     KC_AT,   KC_HASH,    KC_DLR,     KC_PERC,       KC_CIRC, KC_AMPR, KC_ASTR, KC_QUES,     KC_QUOT,\
