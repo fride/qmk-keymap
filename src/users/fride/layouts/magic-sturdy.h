@@ -12,13 +12,13 @@
 #define ___C___ KC_C
 #define ___D___ LT(UTIL,KC_D)
 #define ___E___ LT(SYM,KC_E)
-#define ___F___ KC_F
+#define ___F___ HYPR_T(KC_F)
 #define ___G___ LGUI_T(KC_G)
 #define ___H___ RGUI_T(KC_H)
 #define ___I___ LT(SYM,KC_I)
-#define ___J___ LALT_T(KC_J)
+#define ___J___ LT(MOUSE,KC_J)
 #define ___K___ LCTL_T(KC_K)
-#define ___L___ KC_L
+#define ___L___ RALT_T(KC_L)
 #define ___M___ KC_M
 #define ___N___ LT(UTIL,KC_N)
 #define ___O___ KC_O
@@ -31,7 +31,7 @@
 #define ___V___ KC_V
 #define ___W___ KC_W
 #define ___X___ KC_X
-#define ___Y___ KC_Y
+#define ___Y___ HYPR_T(KC_Y)
 #define ___Z___ KC_Z
 #define _MAGIC_ RALT_T(MAGIC)
 #define _COMMA_ LALT_T(KC_COMM)
@@ -57,11 +57,17 @@
 #define ___9___ KC_9
 
 #define _ALPHA \
-  ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _SQUOT_, \
+  ___V___, ___M___, ___L___, ___C___, ___P___,      ___B___, _MAGIC_, ___U___, ___O___, _COMMA_, \
   ___S___, ___T___, ___R___, ___D___, ___Y___,      ___F___, ___N___, ___E___, ___A___, ___I___, \
-  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _COMMA_, __DOT__, _SEMIC_, \
+  ___X___, ___K___, ___J___, ___G___, ___W___,      ___Z___, ___H___, _SQUOT_, _QUEST_, __DOT__, \
                     MEH_SPC, OS_LGUI, _XXXXX_,      _XXXXX_, OS_LCTL , OS_LSFT
 
+
+#define _MOUSE \
+    _______, _______, _______, _______, _______,                         _______, _______, KC_MS_U, KC_ASTR, KC_RCBR,\
+    KC_BTN3, KC_BTN1, _______, KC_BTN2, KC_BTN4,                         _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_RBRC,\
+    _______, KC_BTN1, _______, KC_BTN2, _______,                         _______, KC_WH_L, KC_WH_R, KC_WH_U, KC_WH_D,\
+                      _______, _______, _______,                         _______, _______, _______
 
 #define _SYM \
   KC_EXLM,     KC_AT,   KC_HASH,    KC_DLR,     KC_PERC,       KC_CIRC, KC_AMPR, KC_ASTR, KC_QUES,     KC_QUOT,\

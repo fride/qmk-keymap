@@ -59,6 +59,6 @@ for more options.
 #define ACHORDION
 
 //#define PUQ
-// #define MAGIC_STURDY
+ #define MAGIC_STURDY
 // #define PROMETH
-#define FOCAL
+// #define FOCAL

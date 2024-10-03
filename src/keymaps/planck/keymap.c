@@ -56,6 +56,14 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 			return true;
 		}
 		break;
+	case ___R___:
+	case ___T___:
+    switch (other_keycode){
+      case OS_LALT:
+      case OS_LGUI:
+        return true;
+    }
+		break;
 	default:
         break;
   }

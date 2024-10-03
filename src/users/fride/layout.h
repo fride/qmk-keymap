@@ -7,8 +7,7 @@ enum layers {
   UTIL,
   NUM,  
   SYM,  
-  SYM_LEFT,
-  SYM_RIGHT,
+  MOUSE,
   WINNAV,
   FUN,
   ALWAYS
@@ -195,6 +194,11 @@ enum custom_keycodes {
    KC_TILDE , KC_LT   , KC_GT,    ___9___, KC_SLASH     ,KC_AT,   ___8___,  _SEMIC_, KC_COLON, __DOT__, \
                          KC_SPC,  KC_LT  , KC_GT        ,_XXXXX_, _XXXXX_, _XXXXX_
  
+ #define _MOUSE \
+    _______, _______, _______, _______, _______,                         _______, _______, KC_MS_U, KC_ASTR, KC_RCBR,\
+    KC_BTN3, KC_BTN1, _______, KC_BTN2, KC_BTN4,                         _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_RBRC,\
+    _______, KC_BTN1, _______, KC_BTN2, _______,                         _______, KC_WH_L, KC_WH_R, KC_WH_U, KC_WH_D,\
+                      _______, _______, _______,                         _______, _______, _______
 
 /*
 

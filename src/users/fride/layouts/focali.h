@@ -19,7 +19,7 @@
 #define ___J___ KC_J
 #define ___K___ KC_K
 #define ___L___ KC_L
-#define ___M___ KC_M
+#define ___M___ LT(MOUSE,KC_M)
 #define ___N___ LALT_T(KC_N)
 #define ___O___ RALT_T(KC_O)
 #define ___P___ KC_P
@@ -39,7 +39,7 @@
 #define _SLASH_ KC_SLSH
 #define _SQUOT_ KC_QUOT
 #define _DQUOT_ KC_DQUO
-#define _MINUS_ KC_MINS
+#define _MINUS_ RSFT_T(KC_MINS)
 #define __HASH_ KC_HASH
 #define _SEMIC_ KC_SCLN
 #define _QUEST_ KC_QUES
@@ -60,9 +60,9 @@
 
 #define _ALPHA \
   ___V___, ___L___, ___H___, ___G___, ___K___,      ___Q___, ___F___, ___O___, ___U___, ___J___, \
-  ___S___, ___R___, ___N___, ___T___, ___B___,      ___Y___, ___C___, ___A___, ___I___, _MAGIC_, \
+  ___S___, ___R___, ___N___, ___T___, ___B___,      ___Y___, ___C___, ___A___, ___I___, _MINUS_, \
   ___Z___, ___X___, ___M___, ___D___, ___P___,      _SQUOT_, ___W___, __DOT__, _SEMIC_, _COMMA_, \
-                    NAV_SPC, OS_LSFT, OS_LSFT,      OS_LSFT, OS_LSFT, ___E___
+                    NAV_SPC, _MAGIC_, OS_LSFT,      OS_LSFT, _MAGIC_, ___E___
 
 #define _ALPHA2 \
   KC_Q    ,KC_Z   , _______, _______, _______      ,_______, _______, A(KC_O), A(KC_U),  A(KC_S), \
@@ -79,7 +79,11 @@
   _XXXXX_ ,KC_COLON,KC_PERC  ,___5___, KC_CIRC       ,KC_AT, ___6___ ,__DOT__, _SEMIC_, _COMMA_, \
                     KC_LT,    KC_GT  , _XXXXX_      ,_______, _______, _XXXXX_
 
-
+#define _MOUSE \
+    _______, _______, _______, _______, _______,                         _______, _______, KC_MS_U, KC_ASTR, KC_RCBR,\
+    KC_BTN3, KC_BTN1, _______, KC_BTN2, KC_BTN4,                         _______, KC_MS_L, KC_MS_D, KC_MS_R, KC_RBRC,\
+    _______, KC_BTN1, _______, KC_BTN2, _______,                         _______, KC_WH_L, KC_WH_R, KC_WH_U, KC_WH_D,\
+                      _______, _______, _______,                         _______, _______, _______
 #define _SYM \
   KC_EXLM,     KC_AT,   KC_HASH,    KC_DLR,     KC_PERC,       KC_CIRC, KC_AMPR, KC_ASTR, KC_QUES,     KC_QUOT,\
   KC_PLUS,     KC_EQL,  KC_LPRN,    KC_RPRN,    KC_DQT,        KC_COLN, KC_RBRC,  KC_LBRC, KC_RCBR,     KC_LCBR,\
