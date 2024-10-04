@@ -6,15 +6,25 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     # must be git not github for submodules
-    qmk_firmware = { url = "git+https://github.com/qmk/qmk_firmware?submodules=1&shallow=1"; flake = false; };
+    qmk_firmware = {
+      url = "git+https://github.com/qmk/qmk_firmware?submodules=1&shallow=1";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, qmk_firmware }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      qmk_firmware,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs { inherit system; };
-	userDir = "/qmk_firmware/users/fride";
-	keyboard = "ferris/0_2";
+        userDir = "/qmk_firmware/users/fride";
+        keyboard = "ferris/0_2";
       in
       rec {
         # TODO could probably make this a standalone thing
@@ -24,24 +34,22 @@
 
           buildInputs = with pkgs; [
             qmk
-	    qmk-udev-rules
-	    git
-	    just
+            git
           ];
 
           postUnpack = ''
-            ln -s ${./src/users/fride} $sourceRoot/users/fride
-	    ln -s ${./src/keymaps/ferris} $sourceRoot/keyboards/ferris/keymaps/fride
+                        ln -s ${./src/users/fride} $sourceRoot/users/fride
+            	    ln -s ${./src/keymaps/ferris} $sourceRoot/keyboards/ferris/keymaps/fride
           '';
 
           buildPhase = ''
-            # make keebio/nyquist/rev2:alternate SKIP_GIT=1
-	    make ferris/0_2:fride SKIP_GIT=1
-	    # qmk compile -kb ${keyboard} -km fride
+                        # make keebio/nyquist/rev2:alternate SKIP_GIT=1
+            	    make ferris/0_2:fride SKIP_GIT=1
+            	    # qmk compile -kb ${keyboard} -km fride
           '';
 
           installPhase = ''
-	    cp ferris_0_2_base_fride.bin $out
+            cp ferris_0_2_base_fride.bin $out
           '';
         };
 
@@ -59,6 +67,6 @@
 
         packages.default = packages.firmware;
         apps.default = apps.flash;
-      });
+      }
+    );
 }
-
